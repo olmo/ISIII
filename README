@@ -1,7 +1,7 @@
 Instrucciones para instalar Git en windows
 
 Primero crear una cuenta en github y descargar e instalar Git y TortoiseGit:
-    http://code.google.com/p/msysgit/downloads/list
+    http://code.google.com/p/msysgit/downloads/list  (Última versión Git-1.7.9-preview20120201.exe )
     http://code.google.com/p/tortoisegit/downloads/list
     
 Al instalar TortoiseGit marcar la opción de openssh.
