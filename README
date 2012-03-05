@@ -9,12 +9,9 @@ Al instalar TortoiseGit marcar la opción de openssh.
 Una vez instalados ambos programas abrir git bash e introducir lo siguiente:
     ssh-keygen -t rsa -C "direccion@email.com"
     
-Guardar en el directorio por defecto e introducir la contraseña que qurais cuando lo pida.
-A continuación abrir el archivo id_rsa.pub que está en C:\Users\Usuario\.ssh con el bloc de notas y
-copiar el contenido.
+Guardar en el directorio por defecto e introducir la contraseña que querais cuando lo pida. A continuación abrir el archivo id_rsa.pub que está en C:\Users\Usuario\.ssh con el bloc de notas y copiar el contenido.
 
-En github entrar en "Account Settings" > "SSH Keys" > "Add new ssh key" y pegar el contenido en de id_rsa.pub
-en el campo de texto key. Pulsad el botón Add key.
+En github entrar en "Account Settings" > "SSH Keys" > "Add new ssh key" y pegar el contenido en de id_rsa.pub en el campo de texto key. Pulsad el botón Add key.
 
 "Account Settings" > "Account Settings": copiad el codigo de la api.
 
@@ -25,3 +22,12 @@ En la ventana de git bash:
     git config --global github.token tokencopiado
     
 Ya está todo configurado. Para obtener la carpeta del proyecto haced click derecho donde querais la carpeta y dadle a "Git clone". En url poned git@github.com:olmo/ISIII.git y dadle a ok.
+
+Si creais un archivo o carpeta nueva al repositorio hay que añadirlo haciendo click derecho sobre ellos y dandole a add en el menú contextual de tortoiseGit.
+
+Para guardar un cambio en el repositorio hay que darle a git commit, introduciendo en message un texto que indique el cambio realizado. Hacer commit NO envía los cambios al servidor, los almacena en local. Se pueden hacer varios commit y luego enviarlos todos juntos al servidor.
+
+Para enviar los cambios al servidor hay que hacer "Push".
+
+Para actualizar el repositorio local si hay cambios en el servidor hay que hacer "Pull".
+
