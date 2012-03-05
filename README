@@ -1,1 +1,27 @@
-blablabla
+Instrucciones para instalar Git en windows
+
+Primero crear una cuenta en github y descargar e instalar Git y TortoiseGit:
+    http://code.google.com/p/msysgit/downloads/list
+    http://code.google.com/p/tortoisegit/downloads/list
+    
+Al instalar TortoiseGit marcar la opción de openssh.
+
+Una vez instalados ambos programas abrir git bash e introducir lo siguiente:
+    ssh-keygen -t rsa -C "direccion@email.com"
+    
+Guardar en el directorio por defecto e introducir la contraseña que qurais cuando lo pida.
+A continuación abrir el archivo id_rsa.pub que está en C:\Users\Usuario\.ssh con el bloc de notas y
+copiar el contenido.
+
+En github entrar en "Account Settings" > "SSH Keys" > "Add new ssh key" y pegar el contenido en de id_rsa.pub
+en el campo de texto key. Pulsad el botón Add key.
+
+"Account Settings" > "Account Settings": copiad el codigo de la api.
+
+En la ventana de git bash:
+    git config --global user.name "Nombre Apellidos"
+    git config --global user.email "email"
+    git config --global github.user usuario
+    git config --global github.token tokencopiado
+    
+Ya está todo configurado. Para obtener la carpeta del proyecto haced click derecho donde querais la carpeta y dadle a "Git clone". En url poned git@github.com:olmo/ISIII.git y dadle a ok.
