@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.4">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Actor</type>
+    <coordinates>
+      <x>40</x>
+      <y>270</y>
+      <w>80</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Empresa</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
