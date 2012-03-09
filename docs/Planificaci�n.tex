@@ -42,12 +42,48 @@
 \pagebreak
 
 \section{Objetivo del proyecto}
-El objetivo del proyecto es realizar un programa para la gestión de una asociación de ayuda a colectivos desfavorecidos. La aplicación debe gestionar los socios de la asociación así como las aportaciones de los socios, colaboradores y empresas.
+El objetivo del proyecto es realizar un programa para la gestión de una asociación de ayuda a colectivos desfavorecidos. 
+La aplicación debe gestionar los socios de la asociación así como las aportaciones de los socios, colaboradores y empresas.
 
 También debe gestionar los beneficiarios de la asociación y las ayudas aportadas a estos, además de una bolsa de trabajo para los beneficiarios.
 
 Se realizará una segunda aplicación para una plataforma móvil que permitirá a los socios gestionar sus datos y consultar sus aportaciones a la asociación. 
 \section{Declaración del alcance}
+Se desea modelar un producto software para llevar la gestión de la ONG Diaketas, encargada de la atención a los colectivos más 
+desfavorecidos de nuestra sociedad. Realizan su labor gracias a las aportaciones de socios, colaboradores, empresas y/o anónimos.
+
+La ONG obtiene aportaciones de varios tipos de donantes:
+\begin{itemize}
+	\item Socio: Realiza aportaciones periódicas, eligiendo el plazo y con posibilidad de modificarlo en el futuro. 
+	En caso de no realizar un pago en el plazo elegido, esté quedará pendiente hasta que se dé de baja o lo haga.
+	\item Colaborador: Realiza aportaciones puntuales.
+	\item Empresa/Anónimo: Realiza aportaciones tanto puntuales como periódicas. En caso de ser anónimo no se guardará información sobre su identidad.
+\end{itemize}
+
+
+Los trabajadores de la ONG accederám a la aplicación de escritorio identificándose con su nombre de usuario y contraseña.
+
+A través de la aplicación de escritorio los trabajadores podrán realizar lo siguiente:
+
+\begin{itemize}
+	\item Administración de usuarios
+	\item Gestión de todos los tipos de información necesarios para trabajadores, donantes y beneficiarios mediante altas, bajas, modificaciones y consultas.
+	\item Gestión de todos los tipos de donaciones realizadas por los socios (monetaria, alimentos, materiales, voluntariado,etc...) mediante inserción, borrado, modificación
+	consulta y listados periódicos de las donaciones recibidas.
+	\item Gestión de las ayudas dadas a los beneficiarios para controlarlas de una forma fácil.
+	\item Gestión de la bolsa de empleo privada a través de ofertas de trabajo de empresas y demandas de empleo de los beneficiarios.
+\end{itemize}
+
+Todas las gestiones anteriormente citadas serán accesibles de forma intuitiva para usuarios con conocimientos limitados de informática.
+
+
+
+--Los datos almacenados para los beneficiarios son los solicitados en la ficha anexa. En caso de no disponer del certificado de empadronamiento, quedará registrado temporalmente a la espera de entregarlo, en caso de no entregarlo pasado un tiempo prudencial el trabajador decidirá si eliminarlo definitivamente.
+--Para los donantes se almacenará los datos personales (excepto donantes anónimos), forma de pago, en caso de ser socio la periodicidad y en caso de ser empresa certificado donaciones IPRF.
+--Para los trabajadores se almacenará la información y su usuario y contraseña.
+--Al pedir la baja, los datos quedan almacenados durante un año. En caso de que el usuario pida explícitamente el borrado de su información, se procederá a la eliminación completa de sus datos.
+
+
 \subsection{Objetivos}
 
 \subsection{Funciones}
