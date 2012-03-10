@@ -1,9 +1,15 @@
 
-Por cada iteración se creará una carpeta. Dentro de esta se creará una carpeta por grupo.
+1. Por cada iteración se creará una carpeta. Dentro de esta se creará una carpeta por grupo.
 
-El nombre de los documentos sera el siguiente:
-	[Iteracion]_[P|D|I]_[Nombre]_[Revisión]
+2. El nombre de los documentos sera el siguiente:
+	[Iteracion]_[P|D|I]_[NombreDocumento]_[Revisión]
 
-La plantilla para la documentación se encuentra en la carpeta "docs".
-Tambíen la podéis encontrar como un documento compartido en "google docs" para poder copiarla a vuestros documentos.
+3. La plantilla para la documentación se encuentra en la carpeta "docs". Tambíen la podéis encontrar como un documento compartido en "google docs" para poder copiarla a vuestros documentos.
 
+4. Se utilizara el repositorio para guardar TODA la información del proyecto.
+
+5. El responsable de cada grupo, es el encargado de subir a "SWAD>ISIII>Asignatura>Zonas comunes" toda la documentacion de su grupo.
+
+6. Se utilizará la lista de correo para discutir cualquier tema del proyecto.
+
+7. Olmo, como coordinador, se encargará de la comunicación con el profesor.
