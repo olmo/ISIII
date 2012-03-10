@@ -1,11 +1,9 @@
 
-Por cada iteración se creará una carpeta. Dentro de esta se crearán una carpeta por grupo.
+Por cada iteración se creará una carpeta. Dentro de esta se creará una carpeta por grupo.
 
 El nombre de los documentos sera el siguiente:
 	[Iteracion]_[P|D|I]_[Nombre]_[Revisión]
 
 La plantilla para la documentación se encuentra en la carpeta "docs".
 Tambíen la podéis encontrar como un documento compartido en "google docs" para poder copiarla a vuestros documentos.
-
-
 
