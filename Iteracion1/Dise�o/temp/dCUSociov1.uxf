@@ -156,30 +156,6 @@
     <additional_attributes>40;30;30;200</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>300</x>
-      <y>170</y>
-      <w>470</w>
-      <h>260</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;extends&gt;&gt;</panel_attributes>
-    <additional_attributes>30;30;450;240</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>360</x>
-      <y>230</y>
-      <w>220</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;extends&gt;&gt;</panel_attributes>
-    <additional_attributes>30;30;200;130</additional_attributes>
-  </element>
-  <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
       <x>700</x>
@@ -211,18 +187,6 @@
     </coordinates>
     <panel_attributes>Consultar Datos Movil</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>240</x>
-      <y>300</y>
-      <w>130</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;extends&gt;&gt;</panel_attributes>
-    <additional_attributes>110;30;30;70</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -260,8 +224,8 @@
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>650</x>
-      <y>30</y>
+      <x>660</x>
+      <y>40</y>
       <w>130</w>
       <h>130</h>
     </coordinates>
@@ -273,5 +237,63 @@ aplicación móvil
 es solo para 
 socios.</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>80</x>
+      <y>420</y>
+      <w>200</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>180;80;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>260</x>
+      <y>480</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Iniciar sesion movil</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>300</x>
+      <y>170</y>
+      <w>470</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>30;30;450;240</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>360</x>
+      <y>230</y>
+      <w>220</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>30;30;200;130</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>240</x>
+      <y>300</y>
+      <w>130</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>110;30;30;70</additional_attributes>
   </element>
 </diagram>
