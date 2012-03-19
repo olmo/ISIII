@@ -28,10 +28,15 @@
     <coordinates>
       <x>650</x>
       <y>440</y>
-      <w>100</w>
-      <h>30</h>
+      <w>170</w>
+      <h>110</h>
     </coordinates>
-    <panel_attributes>Empresa</panel_attributes>
+    <panel_attributes>Empresa
+--
+-cif: Long
+-nombreEmpresa: String
+-telefonoEmpresa: Long
+-direccionEmpresa: Long</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -44,7 +49,7 @@
     </coordinates>
     <panel_attributes>Socio
 --
--usuario:String
+-usuario: String
 -contrasena: String</panel_attributes>
     <additional_attributes/>
   </element>
@@ -63,34 +68,34 @@
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>550</x>
-      <y>350</y>
+      <y>340</y>
       <w>170</w>
-      <h>110</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>30;30;150;90</additional_attributes>
+    <additional_attributes>30;30;150;100</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>430</x>
-      <y>350</y>
+      <y>340</y>
       <w>170</w>
-      <h>100</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>150;30;30;80</additional_attributes>
+    <additional_attributes>150;30;30;90</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>550</x>
-      <y>350</y>
+      <y>340</y>
       <w>50</w>
-      <h>110</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>30;30;30;90</additional_attributes>
+    <additional_attributes>30;30;30;100</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
@@ -98,14 +103,11 @@
       <x>490</x>
       <y>320</y>
       <w>160</w>
-      <h>60</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>/Donante/
 --
--periodicidad: Integer
---
-+getDonaciones(): 
-  List&lt;Donacion&gt;</panel_attributes>
+-periodicidad: Long</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -122,19 +124,19 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>30</x>
+      <x>40</x>
       <y>190</y>
-      <w>290</w>
+      <w>280</w>
       <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>270;30;30;140</additional_attributes>
+    <additional_attributes>260;30;30;140</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>210</x>
-      <y>320</y>
+      <y>340</y>
       <w>150</w>
       <h>150</h>
     </coordinates>
@@ -153,15 +155,15 @@
       <x>230</x>
       <y>190</y>
       <w>110</w>
-      <h>150</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>90;30;30;130</additional_attributes>
+    <additional_attributes>90;30;30;150</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>10</x>
+      <x>20</x>
       <y>330</y>
       <w>140</w>
       <h>60</h>
@@ -205,8 +207,8 @@ m2=0..n
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>0</x>
-      <y>530</y>
+      <x>10</x>
+      <y>550</y>
       <w>140</w>
       <h>100</h>
     </coordinates>
@@ -221,30 +223,30 @@ m2=0..n
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>20</x>
+      <x>30</x>
       <y>360</y>
       <w>50</w>
-      <h>190</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=0..n
 </panel_attributes>
-    <additional_attributes>30;30;30;170</additional_attributes>
+    <additional_attributes>30;30;30;190</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>40</x>
-      <y>440</y>
-      <w>230</w>
+      <x>50</x>
+      <y>460</y>
+      <w>220</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
-m2=1
+m2=0..n
 </panel_attributes>
-    <additional_attributes>210;30;30;90</additional_attributes>
+    <additional_attributes>200;30;30;90</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
@@ -264,30 +266,45 @@ m2=1
       <x>300</x>
       <y>190</y>
       <w>60</w>
-      <h>150</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..n
 m2=0..n
 </panel_attributes>
-    <additional_attributes>30;130;40;30</additional_attributes>
+    <additional_attributes>30;150;40;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>310</x>
-      <y>250</y>
+      <y>270</y>
       <w>90</w>
-      <h>70</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;70;50</additional_attributes>
+    <additional_attributes>30;30;70;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>570</x>
-      <y>50</y>
+      <x>650</x>
+      <y>620</y>
+      <w>180</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>La clase donacion no
+pertenece a esta iteracion
+pero se incluye para que
+se entienda mejor el 
+diagrama.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>650</x>
+      <y>20</y>
       <w>180</w>
       <h>120</h>
     </coordinates>
@@ -297,6 +314,21 @@ representada en dias,
 e indica cada cuanto 
 tiene que hacer
 una donacion.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>490</x>
+      <y>30</y>
+      <w>150</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>La clase familia
+representa el 
+conjunto de miembros
+familiares de un 
+beneficiario.</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
