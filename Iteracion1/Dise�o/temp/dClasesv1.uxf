@@ -7,7 +7,7 @@
       <x>270</x>
       <y>0</y>
       <w>190</w>
-      <h>200</h>
+      <h>230</h>
     </coordinates>
     <panel_attributes>/Persona/
 --
@@ -20,7 +20,9 @@
 -telefono: Long
 -lugarNacimiento: String
 -domicilio: String
--cp: Integer</panel_attributes>
+-cp: Integer
+-estado: Boolean
+-fBaja: Date</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -114,23 +116,23 @@
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>380</x>
-      <y>170</y>
+      <y>200</y>
       <w>220</w>
-      <h>150</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>30;30;200;130</additional_attributes>
+    <additional_attributes>30;30;200;100</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>40</x>
-      <y>170</y>
+      <y>200</y>
       <w>280</w>
-      <h>160</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>260;30;30;140</additional_attributes>
+    <additional_attributes>260;30;30;110</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
@@ -156,12 +158,12 @@
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>170</x>
-      <y>170</y>
+      <y>200</y>
       <w>170</w>
-      <h>240</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>150;30;30;220</additional_attributes>
+    <additional_attributes>150;30;30;190</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
