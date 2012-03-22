@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.4">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>60</x>
+      <y>40</y>
+      <w>630</w>
+      <h>570</h>
+    </coordinates>
+    <panel_attributes>pkg GestionPersona</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>80</x>
+      <y>80</y>
+      <w>170</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Persona
+--
+-id: Long
+-dni: Long
+-nombre: String
+-apellido1: String
+-apellido2: String
+-fNacimiento: Date
+-telefono: Long
+-lugarNacimiento: String
+-domicilio: String
+-cp: Integer
+-estado: Boolean
+-fBaja: Date</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>330</x>
+      <y>80</y>
+      <w>340</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>GestorPersona
+--
+_+buscaPersonas(String,String): List&lt;Persona&gt;_
+_+existePersona(String): Boolean_
+_+getPersona(String): Persona_
++introducirDatos(Long,String,String,String,Date,
+    Long,String,String,Integer,Boolean)
++modificarDatos()
++borrarDatos()
++darBajaPersona()
++getDatosPersona()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>220</x>
+      <y>150</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes>
+    <additional_attributes>30;30;110;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>310</x>
+      <y>240</y>
+      <w>200</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>30;140;180;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>230</x>
+      <y>380</y>
+      <w>310</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IPersona
+--
+_+buscaPersonas(String,String): List&lt;Persona&gt;_
+_+existePersona(String): Boolean_
+_+getPersona(String): Persona_
++introducirDatos(Long,String,String,String,Date,
+    Long,String,String,Integer,Boolean)
++modificarDatos()
++borrarDatos()
++darBajaPersona()
++getDatosPersona()</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
