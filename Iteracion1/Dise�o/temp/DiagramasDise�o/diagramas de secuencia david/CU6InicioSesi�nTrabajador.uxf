@@ -4,7 +4,7 @@
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>110</x>
+      <x>70</x>
       <y>150</y>
       <w>20</w>
       <h>380</h>
@@ -15,7 +15,7 @@
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>440</x>
+      <x>400</x>
       <y>170</y>
       <w>20</w>
       <h>40</h>
@@ -26,19 +26,19 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>400</x>
+      <x>330</x>
       <y>90</y>
-      <w>100</w>
+      <w>160</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:Controlador_
+    <panel_attributes>_:ControladorPersonas_
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>70</x>
+      <x>30</x>
       <y>90</y>
       <w>100</w>
       <h>30</h>
@@ -50,7 +50,7 @@ bg=orange</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>420</x>
+      <x>380</x>
       <y>90</y>
       <w>50</w>
       <h>100</h>
@@ -61,7 +61,7 @@ bg=orange</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
+      <x>50</x>
       <y>90</y>
       <w>50</w>
       <h>80</h>
@@ -72,7 +72,7 @@ bg=orange</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>100</x>
+      <x>60</x>
       <y>120</y>
       <w>360</w>
       <h>70</h>
@@ -84,7 +84,7 @@ iniciarInicioSesionTrabajador()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>420</x>
+      <x>380</x>
       <y>180</y>
       <w>50</w>
       <h>90</h>
@@ -95,7 +95,7 @@ iniciarInicioSesionTrabajador()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>100</x>
+      <x>60</x>
       <y>170</y>
       <w>360</w>
       <h>50</h>
@@ -107,9 +107,9 @@ iniciarInicioSesionTrabajador()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>40</x>
+      <x>0</x>
       <y>40</y>
-      <w>830</w>
+      <w>950</w>
       <h>570</h>
     </coordinates>
     <panel_attributes>InicioSesionTrabajador
@@ -119,7 +119,7 @@ iniciarInicioSesionTrabajador()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>80</x>
+      <x>40</x>
       <y>200</y>
       <w>400</w>
       <h>70</h>
@@ -131,7 +131,7 @@ introduceDatosInicioSesion(usuario,password):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>100</x>
+      <x>60</x>
       <y>260</y>
       <w>360</w>
       <h>70</h>
@@ -144,7 +144,7 @@ introduceDatosInicioSesion(usuario,password):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>440</x>
+      <x>400</x>
       <y>250</y>
       <w>20</w>
       <h>70</h>
@@ -155,7 +155,7 @@ introduceDatosInicioSesion(usuario,password):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>420</x>
+      <x>380</x>
       <y>290</y>
       <w>50</w>
       <h>120</h>
@@ -166,7 +166,7 @@ introduceDatosInicioSesion(usuario,password):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>440</x>
+      <x>400</x>
       <y>390</y>
       <w>20</w>
       <h>40</h>
@@ -177,7 +177,7 @@ introduceDatosInicioSesion(usuario,password):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>100</x>
+      <x>60</x>
       <y>340</y>
       <w>360</w>
       <h>70</h>
@@ -190,7 +190,7 @@ finalizar()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>100</x>
+      <x>60</x>
       <y>370</y>
       <w>360</w>
       <h>70</h>
@@ -203,9 +203,9 @@ finalizar()
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>100</x>
+      <x>60</x>
       <y>330</y>
-      <w>710</w>
+      <w>400</w>
       <h>210</h>
     </coordinates>
     <panel_attributes>interaction frame
@@ -228,7 +228,7 @@ finalizar()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>420</x>
+      <x>380</x>
       <y>400</y>
       <w>50</w>
       <h>100</h>
@@ -239,7 +239,7 @@ finalizar()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
+      <x>50</x>
       <y>500</y>
       <w>50</w>
       <h>90</h>
@@ -250,7 +250,7 @@ finalizar()
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>440</x>
+      <x>400</x>
       <y>480</y>
       <w>20</w>
       <h>40</h>
@@ -261,7 +261,7 @@ finalizar()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>420</x>
+      <x>380</x>
       <y>490</y>
       <w>50</w>
       <h>100</h>
@@ -272,7 +272,7 @@ finalizar()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>100</x>
+      <x>60</x>
       <y>430</y>
       <w>360</w>
       <h>70</h>
@@ -285,7 +285,7 @@ finalizar()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>100</x>
+      <x>60</x>
       <y>460</y>
       <w>360</w>
       <h>70</h>
@@ -298,19 +298,19 @@ finalizar()
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>710</x>
+      <x>590</x>
       <y>90</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:Sesion_
+    <panel_attributes>_:PersonaBD_
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>730</x>
+      <x>610</x>
       <y>90</y>
       <w>50</w>
       <h>190</h>
@@ -321,7 +321,7 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>750</x>
+      <x>630</x>
       <y>260</y>
       <w>20</w>
       <h>60</h>
@@ -332,84 +332,47 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>430</x>
+      <x>390</x>
       <y>210</y>
-      <w>340</w>
+      <w>260</w>
       <h>94</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 introduceDatosInicioSesion(
 usuario,password):boolean</panel_attributes>
-    <additional_attributes>320;50;30;50</additional_attributes>
+    <additional_attributes>240;50;30;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>430</x>
+      <x>390</x>
       <y>250</y>
-      <w>340</w>
+      <w>260</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=.&lt;
 :existe_usuario,:pass_valido
 </panel_attributes>
-    <additional_attributes>30;50;320;50</additional_attributes>
+    <additional_attributes>30;50;240;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>730</x>
+      <x>610</x>
       <y>290</y>
       <w>50</w>
-      <h>130</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;110</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>430</x>
-      <y>350</y>
-      <w>340</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-finalizar()
-</panel_attributes>
-    <additional_attributes>320;50;30;50</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>430</x>
-      <y>450</y>
-      <w>340</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-finalizar()
-</panel_attributes>
-    <additional_attributes>320;50;30;50</additional_attributes>
+    <additional_attributes>30;30;30;100</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>750</x>
-      <y>400</y>
+      <x>850</x>
+      <y>260</y>
       <w>20</w>
-      <h>20</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>750</x>
-      <y>500</y>
-      <w>20</w>
-      <h>20</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
@@ -417,23 +380,60 @@ finalizar()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>730</x>
-      <y>390</y>
+      <x>830</x>
+      <y>90</y>
       <w>50</w>
-      <h>130</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;110</additional_attributes>
+    <additional_attributes>30;30;30;170</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>810</x>
+      <y>90</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:GestorJDBC_
+bg=red</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>730</x>
-      <y>490</y>
+      <x>620</x>
+      <y>220</y>
+      <w>250</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+RealizarConsulta(String SQL)</panel_attributes>
+    <additional_attributes>230;50;30;50</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>620</x>
+      <y>240</y>
+      <w>250</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+:ResultSet
+</panel_attributes>
+    <additional_attributes>30;50;230;50</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>830</x>
+      <y>270</y>
       <w>50</w>
-      <h>90</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;70</additional_attributes>
+    <additional_attributes>30;30;30;100</additional_attributes>
   </element>
 </diagram>

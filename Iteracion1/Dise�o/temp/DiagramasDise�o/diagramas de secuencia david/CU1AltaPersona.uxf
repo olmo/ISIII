@@ -4,8 +4,8 @@
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>100</x>
-      <y>100</y>
+      <x>50</x>
+      <y>110</y>
       <w>20</w>
       <h>400</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>390</x>
-      <y>120</y>
+      <x>340</x>
+      <y>130</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>320</x>
-      <y>40</y>
+      <x>270</x>
+      <y>50</y>
       <w>160</w>
       <h>30</h>
     </coordinates>
@@ -38,8 +38,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>60</x>
-      <y>40</y>
+      <x>10</x>
+      <y>50</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -50,8 +50,8 @@ bg=orange</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>40</y>
+      <x>320</x>
+      <y>50</y>
       <w>50</w>
       <h>100</h>
     </coordinates>
@@ -61,8 +61,8 @@ bg=orange</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>80</x>
-      <y>40</y>
+      <x>30</x>
+      <y>50</y>
       <w>50</w>
       <h>80</h>
     </coordinates>
@@ -72,8 +72,8 @@ bg=orange</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
-      <y>70</y>
+      <x>40</x>
+      <y>80</y>
       <w>320</w>
       <h>70</h>
     </coordinates>
@@ -84,8 +84,8 @@ iniciarAltaPersona()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>130</y>
+      <x>320</x>
+      <y>140</y>
       <w>50</w>
       <h>80</h>
     </coordinates>
@@ -95,8 +95,8 @@ iniciarAltaPersona()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
-      <y>390</y>
+      <x>40</x>
+      <y>400</y>
       <w>320</w>
       <h>50</h>
     </coordinates>
@@ -106,8 +106,8 @@ iniciarAltaPersona()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>220</y>
+      <x>320</x>
+      <y>230</y>
       <w>50</w>
       <h>120</h>
     </coordinates>
@@ -117,8 +117,8 @@ iniciarAltaPersona()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>80</x>
-      <y>710</y>
+      <x>30</x>
+      <y>720</y>
       <w>50</w>
       <h>90</h>
     </coordinates>
@@ -128,8 +128,8 @@ iniciarAltaPersona()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>390</x>
-      <y>190</y>
+      <x>340</x>
+      <y>200</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -139,20 +139,20 @@ iniciarAltaPersona()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
-      <y>140</y>
+      <x>40</x>
+      <y>150</y>
       <w>320</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-consultarPersona(dni):boolean</panel_attributes>
+consultarPersona(String dni):boolean</panel_attributes>
     <additional_attributes>300;50;30;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>380</x>
-      <y>350</y>
+      <x>330</x>
+      <y>360</y>
       <w>320</w>
       <h>70</h>
     </coordinates>
@@ -164,8 +164,8 @@ consultarPersona(dni):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>80</x>
-      <y>260</y>
+      <x>30</x>
+      <y>270</y>
       <w>350</w>
       <h>110</h>
     </coordinates>
@@ -178,8 +178,8 @@ consultarPersona(dni):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>390</x>
-      <y>320</y>
+      <x>340</x>
+      <y>330</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -189,8 +189,8 @@ consultarPersona(dni):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>330</y>
+      <x>320</x>
+      <y>340</y>
       <w>50</w>
       <h>80</h>
     </coordinates>
@@ -200,8 +200,8 @@ consultarPersona(dni):boolean</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
-      <y>270</y>
+      <x>40</x>
+      <y>280</y>
       <w>320</w>
       <h>70</h>
     </coordinates>
@@ -212,8 +212,8 @@ finalizar()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
-      <y>320</y>
+      <x>40</x>
+      <y>330</y>
       <w>320</w>
       <h>50</h>
     </coordinates>
@@ -225,8 +225,8 @@ finalizar()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>70</x>
-      <y>450</y>
+      <x>20</x>
+      <y>460</y>
       <w>720</w>
       <h>310</h>
     </coordinates>
@@ -259,8 +259,8 @@ finalizar()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>90</x>
-      <y>500</y>
+      <x>40</x>
+      <y>510</y>
       <w>660</w>
       <h>50</h>
     </coordinates>
@@ -273,8 +273,8 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>90</x>
-      <y>600</y>
+      <x>40</x>
+      <y>610</y>
       <w>660</w>
       <h>50</h>
     </coordinates>
@@ -287,8 +287,8 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>90</x>
-      <y>690</y>
+      <x>40</x>
+      <y>700</y>
       <w>660</w>
       <h>50</h>
     </coordinates>
@@ -301,8 +301,8 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>520</y>
+      <x>320</x>
+      <y>530</y>
       <w>50</w>
       <h>100</h>
     </coordinates>
@@ -312,8 +312,8 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>620</y>
+      <x>320</x>
+      <y>630</y>
       <w>50</w>
       <h>90</h>
     </coordinates>
@@ -323,8 +323,8 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>710</y>
+      <x>320</x>
+      <y>720</y>
       <w>50</w>
       <h>80</h>
     </coordinates>
@@ -334,8 +334,8 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>100</x>
-      <y>550</y>
+      <x>50</x>
+      <y>560</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
@@ -345,8 +345,8 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>100</x>
-      <y>650</y>
+      <x>50</x>
+      <y>660</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -356,20 +356,20 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>150</y>
-      <w>248</w>
+      <x>320</x>
+      <y>160</y>
+      <w>288</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-consultarPersona(dni):boolean</panel_attributes>
-    <additional_attributes>220;50;40;50</additional_attributes>
+consultarPersona(String dni):boolean</panel_attributes>
+    <additional_attributes>260;50;40;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>550</x>
-      <y>30</y>
+      <x>540</x>
+      <y>40</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -380,8 +380,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>570</x>
-      <y>40</y>
+      <x>560</x>
+      <y>50</y>
       <w>50</w>
       <h>170</h>
     </coordinates>
@@ -391,8 +391,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>590</x>
-      <y>190</y>
+      <x>580</x>
+      <y>200</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
@@ -402,19 +402,19 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>570</x>
-      <y>210</y>
+      <x>560</x>
+      <y>220</y>
       <w>50</w>
-      <h>80</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;60</additional_attributes>
+    <additional_attributes>30;30;30;70</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>390</x>
-      <y>390</y>
+      <x>340</x>
+      <y>400</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -424,8 +424,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>400</y>
+      <x>320</x>
+      <y>410</y>
       <w>50</w>
       <h>120</h>
     </coordinates>
@@ -435,8 +435,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
-      <y>340</y>
+      <x>40</x>
+      <y>350</y>
       <w>320</w>
       <h>70</h>
     </coordinates>
@@ -447,8 +447,8 @@ darAltaPersona()</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>680</x>
-      <y>380</y>
+      <x>630</x>
+      <y>390</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -459,8 +459,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>390</y>
+      <x>650</x>
+      <y>400</y>
       <w>50</w>
       <h>130</h>
     </coordinates>
@@ -470,8 +470,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>520</y>
+      <x>650</x>
+      <y>530</y>
       <w>50</w>
       <h>100</h>
     </coordinates>
@@ -481,8 +481,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>620</y>
+      <x>650</x>
+      <y>630</y>
       <w>50</w>
       <h>90</h>
     </coordinates>
@@ -492,8 +492,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>710</y>
+      <x>650</x>
+      <y>720</y>
       <w>50</w>
       <h>90</h>
     </coordinates>
@@ -503,8 +503,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>790</x>
-      <y>30</y>
+      <x>780</x>
+      <y>40</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -515,8 +515,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>810</x>
-      <y>40</y>
+      <x>800</x>
+      <y>50</y>
       <w>50</w>
       <h>170</h>
     </coordinates>
@@ -526,8 +526,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>830</x>
-      <y>190</y>
+      <x>820</x>
+      <y>200</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -537,8 +537,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>580</x>
-      <y>150</y>
+      <x>570</x>
+      <y>160</y>
       <w>270</w>
       <h>70</h>
     </coordinates>
@@ -549,10 +549,10 @@ RealizarConsulta(String SQL)</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>50</x>
+      <x>0</x>
       <y>0</y>
-      <w>880</w>
-      <h>760</h>
+      <w>940</w>
+      <h>800</h>
     </coordinates>
     <panel_attributes>AltaPersona
 </panel_attributes>
@@ -561,8 +561,8 @@ RealizarConsulta(String SQL)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>580</x>
-      <y>170</y>
+      <x>570</x>
+      <y>180</y>
       <w>270</w>
       <h>70</h>
     </coordinates>
@@ -574,21 +574,21 @@ RealizarConsulta(String SQL)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>380</x>
-      <y>180</y>
-      <w>230</w>
+      <x>330</x>
+      <y>190</y>
+      <w>270</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=.&lt;
 :existe
 </panel_attributes>
-    <additional_attributes>30;50;210;50</additional_attributes>
+    <additional_attributes>30;50;250;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>90</x>
-      <y>190</y>
+      <x>40</x>
+      <y>200</y>
       <w>320</w>
       <h>70</h>
     </coordinates>

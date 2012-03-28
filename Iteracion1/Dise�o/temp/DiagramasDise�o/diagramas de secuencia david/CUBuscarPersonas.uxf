@@ -27,7 +27,7 @@
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>340</x>
+      <x>400</x>
       <y>210</y>
       <w>20</w>
       <h>90</h>
@@ -38,8 +38,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>280</x>
-      <y>130</y>
+      <x>340</x>
+      <y>120</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -62,13 +62,13 @@ bg=orange</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
-      <y>130</y>
+      <x>380</x>
+      <y>120</y>
       <w>50</w>
-      <h>100</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;80</additional_attributes>
+    <additional_attributes>30;30;30;90</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -84,20 +84,20 @@ bg=orange</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>110</x>
+      <x>90</x>
       <y>160</y>
-      <w>250</w>
+      <w>350</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-iniciarBuscarPersona(persona)</panel_attributes>
-    <additional_attributes>230;50;30;50</additional_attributes>
+iniciarBuscarPersona(String persona,String rol)</panel_attributes>
+    <additional_attributes>310;50;50;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>770</x>
-      <y>250</y>
+      <x>840</x>
+      <y>240</y>
       <w>50</w>
       <h>100</h>
     </coordinates>
@@ -109,12 +109,12 @@ iniciarBuscarPersona(persona)</panel_attributes>
     <coordinates>
       <x>110</x>
       <y>240</y>
-      <w>250</w>
+      <w>310</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=.&lt;
 :listado_personas</panel_attributes>
-    <additional_attributes>30;50;230;50</additional_attributes>
+    <additional_attributes>30;50;290;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -130,8 +130,8 @@ iniciarBuscarPersona(persona)</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>540</x>
-      <y>130</y>
+      <x>610</x>
+      <y>120</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -142,30 +142,30 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>560</x>
-      <y>130</y>
+      <x>630</x>
+      <y>120</y>
       <w>50</w>
-      <h>110</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;90</additional_attributes>
+    <additional_attributes>30;30;30;100</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
+      <x>370</x>
       <y>170</y>
-      <w>270</w>
+      <w>314</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-buscaPersonas(persona)</panel_attributes>
-    <additional_attributes>250;50;30;50</additional_attributes>
+buscaPersonas(String persona,String rol)</panel_attributes>
+    <additional_attributes>280;50;50;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>580</x>
+      <x>650</x>
       <y>220</y>
       <w>20</w>
       <h>70</h>
@@ -176,7 +176,7 @@ buscaPersonas(persona)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
+      <x>380</x>
       <y>270</y>
       <w>50</w>
       <h>90</h>
@@ -187,20 +187,20 @@ buscaPersonas(persona)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
+      <x>390</x>
       <y>230</y>
-      <w>270</w>
+      <w>280</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=.&lt;
 :ResultSet</panel_attributes>
-    <additional_attributes>30;50;250;50</additional_attributes>
+    <additional_attributes>30;50;260;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>750</x>
-      <y>130</y>
+      <x>820</x>
+      <y>120</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -211,8 +211,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>770</x>
-      <y>130</y>
+      <x>840</x>
+      <y>120</y>
       <w>50</w>
       <h>120</h>
     </coordinates>
@@ -222,8 +222,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>790</x>
-      <y>230</y>
+      <x>860</x>
+      <y>220</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
@@ -233,8 +233,8 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>570</x>
-      <y>190</y>
+      <x>640</x>
+      <y>180</y>
       <w>240</w>
       <h>70</h>
     </coordinates>
@@ -245,8 +245,8 @@ RealizarConsulta(string SQL)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>570</x>
-      <y>220</y>
+      <x>640</x>
+      <y>210</y>
       <w>240</w>
       <h>70</h>
     </coordinates>
@@ -257,7 +257,7 @@ RealizarConsulta(string SQL)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>560</x>
+      <x>630</x>
       <y>260</y>
       <w>50</w>
       <h>100</h>
