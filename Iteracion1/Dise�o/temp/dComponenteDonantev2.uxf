@@ -176,7 +176,7 @@ IDonante
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 IPersona
 --
-_+buscaPersonas(String,Filtro): resultSet_
+_+buscaPersonas(String,Filtro): JTableModel_
 _+existePersona(dni): Boolean_
 _+getPersona(dni): Persona_
 +introducirDatos(dni,nombre,apellido1,apellido2,

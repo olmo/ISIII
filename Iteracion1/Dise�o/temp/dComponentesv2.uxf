@@ -4,8 +4,8 @@
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>30</x>
-      <y>290</y>
+      <x>20</x>
+      <y>120</y>
       <w>200</w>
       <h>100</h>
     </coordinates>
@@ -16,7 +16,7 @@
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>400</x>
+      <x>390</x>
       <y>60</y>
       <w>430</w>
       <h>460</h>
@@ -28,7 +28,7 @@
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>410</x>
+      <x>400</x>
       <y>130</y>
       <w>200</w>
       <h>100</h>
@@ -40,7 +40,7 @@
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>520</x>
+      <x>510</x>
       <y>360</y>
       <w>200</w>
       <h>100</h>
@@ -52,8 +52,8 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>200</x>
-      <y>290</y>
+      <x>190</x>
+      <y>120</y>
       <w>220</w>
       <h>50</h>
     </coordinates>
@@ -64,7 +64,7 @@ r2=IPersona</panel_attributes>
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>620</x>
+      <x>610</x>
       <y>130</y>
       <w>200</w>
       <h>100</h>
@@ -76,7 +76,7 @@ r2=IPersona</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>480</x>
+      <x>470</x>
       <y>200</y>
       <w>114</w>
       <h>180</h>
@@ -88,7 +88,7 @@ IPersona</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>620</x>
+      <x>610</x>
       <y>200</y>
       <w>114</w>
       <h>180</h>
@@ -100,7 +100,7 @@ IPersona</panel_attributes>
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>30</x>
+      <x>20</x>
       <y>410</y>
       <w>200</w>
       <h>100</h>
@@ -112,7 +112,7 @@ IPersona</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>200</x>
+      <x>190</x>
       <y>420</y>
       <w>220</w>
       <h>50</h>
@@ -120,5 +120,17 @@ IPersona</panel_attributes>
     <panel_attributes>lt=&lt;[]-(()-[]&gt;
 r2=IPersonaDB</panel_attributes>
     <additional_attributes>30;30;200;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>80</x>
+      <y>190</y>
+      <w>50</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;[]-(()-[]&gt;
+r2=IDB</panel_attributes>
+    <additional_attributes>30;30;30;220</additional_attributes>
   </element>
 </diagram>
