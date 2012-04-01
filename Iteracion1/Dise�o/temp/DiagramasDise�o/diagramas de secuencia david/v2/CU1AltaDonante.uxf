@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.4">
+  <zoom_level>9</zoom_level>
+  <element>
+    <type>com.umlet.element.custom.InteractionFrame</type>
+    <coordinates>
+      <x>225</x>
+      <y>0</y>
+      <w>1206</w>
+      <h>1008</h>
+    </coordinates>
+    <panel_attributes>AltaDonante
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>288</x>
+      <y>90</y>
+      <w>18</w>
+      <h>846</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>459</x>
+      <y>36</y>
+      <w>135</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>_:ControladorPersonas_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>252</x>
+      <y>36</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>_:trabajador_
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>504</x>
+      <y>36</y>
+      <w>44</w>
+      <h>71</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;54</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>270</x>
+      <y>36</y>
+      <w>44</w>
+      <h>71</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;54</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>279</x>
+      <y>162</y>
+      <w>264</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+introducirDatosSocio(dni,nombre,
+apellido1,apellido2,fNacimieno,telefono,
+lugarNacimiento,domicilio,CP,email,
+periodicidad)</panel_attributes>
+    <additional_attributes>243;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>279</x>
+      <y>252</y>
+      <w>260</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+</panel_attributes>
+    <additional_attributes>27;27;243;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>270</x>
+      <y>909</y>
+      <w>45</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;63</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>513</x>
+      <y>171</y>
+      <w>251</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+introducirDatos(dni,nombre,apellido1,
+apellido2,fNacimieno,telefono,
+lugarNacimiento,domicilio,CP,email,
+periodicidad,user,pass)</panel_attributes>
+    <additional_attributes>234;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>522</x>
+      <y>207</y>
+      <w>18</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>504</x>
+      <y>261</y>
+      <w>44</w>
+      <h>179</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;162;27;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1233</x>
+      <y>36</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>_:gestorJDBC_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1251</x>
+      <y>36</y>
+      <w>44</w>
+      <h>215</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;198</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>1269</x>
+      <y>234</y>
+      <w>18</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1251</x>
+      <y>234</y>
+      <w>44</w>
+      <h>233</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;216</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>738</x>
+      <y>207</y>
+      <w>548</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+:ResultSet
+</panel_attributes>
+    <additional_attributes>27;45;531;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>738</x>
+      <y>189</y>
+      <w>548</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+RealizarConsulta(String SQL)</panel_attributes>
+    <additional_attributes>531;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>711</x>
+      <y>36</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>_:SocioBD_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>729</x>
+      <y>36</y>
+      <w>44</w>
+      <h>197</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;180</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>729</x>
+      <y>252</y>
+      <w>44</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;81</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>747</x>
+      <y>216</y>
+      <w>18</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>279</x>
+      <y>45</y>
+      <w>260</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+iniciarAltaDonante(donante_t rol)</panel_attributes>
+    <additional_attributes>243;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>0</x>
+      <y>72</y>
+      <w>207</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>donante_t es un tipo enumerado:
+-socio
+-colaborador
+-empresa
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>522</x>
+      <y>90</y>
+      <w>18</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>279</x>
+      <y>90</y>
+      <w>260</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+</panel_attributes>
+    <additional_attributes>27;27;243;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>504</x>
+      <y>99</y>
+      <w>44</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.InteractionFrame</type>
+    <coordinates>
+      <x>261</x>
+      <y>153</y>
+      <w>1080</w>
+      <h>720</h>
+    </coordinates>
+    <panel_attributes>alt
+--
+[rol==socio]
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+-.
+[rol==colaborador]
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+-.
+[rol==empresa]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>513</x>
+      <y>243</y>
+      <w>251</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+</panel_attributes>
+    <additional_attributes>27;27;234;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>828</x>
+      <y>36</y>
+      <w>44</w>
+      <h>413</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;396</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>810</x>
+      <y>36</y>
+      <w>99</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>_:ColaboradorBD_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>837</x>
+      <y>405</y>
+      <w>449</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+RealizarConsulta(String SQL)</panel_attributes>
+    <additional_attributes>432;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>837</x>
+      <y>423</y>
+      <w>449</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+:ResultSet
+</panel_attributes>
+    <additional_attributes>27;45;432;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>846</x>
+      <y>432</y>
+      <w>18</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>828</x>
+      <y>468</y>
+      <w>44</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;81</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>1269</x>
+      <y>450</y>
+      <w>18</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>936</x>
+      <y>36</y>
+      <w>44</w>
+      <h>665</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;648</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>918</x>
+      <y>36</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>_:EmpresaBD_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>945</x>
+      <y>657</y>
+      <w>341</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+RealizarConsulta(String SQL)</panel_attributes>
+    <additional_attributes>324;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>945</x>
+      <y>675</y>
+      <w>341</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+:ResultSet
+</panel_attributes>
+    <additional_attributes>27;45;324;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>954</x>
+      <y>684</y>
+      <w>18</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>1269</x>
+      <y>702</y>
+      <w>18</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>936</x>
+      <y>720</y>
+      <w>44</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;117</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1251</x>
+      <y>450</y>
+      <w>44</w>
+      <h>269</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;252</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1251</x>
+      <y>702</y>
+      <w>44</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;117</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>279</x>
+      <y>378</y>
+      <w>266</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+introducirDatosColaborador(dni,nombre,
+apellido1,apellido2,fNacimieno,telefono,
+lugarNacimiento,domicilio,CP,email,
+periodicidad)</panel_attributes>
+    <additional_attributes>243;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>279</x>
+      <y>468</y>
+      <w>260</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+</panel_attributes>
+    <additional_attributes>27;27;243;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>522</x>
+      <y>423</y>
+      <w>18</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>513</x>
+      <y>396</y>
+      <w>350</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+introducirDatos(dni,nombre,apellido1,apellido2,
+fNacimiento,telefono,lugarNacimiento,domicilio,
+CP,email,periodicidad)</panel_attributes>
+    <additional_attributes>333;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>513</x>
+      <y>459</y>
+      <w>350</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+</panel_attributes>
+    <additional_attributes>27;27;333;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>504</x>
+      <y>477</y>
+      <w>44</w>
+      <h>215</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;198</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>279</x>
+      <y>630</y>
+      <w>264</w>
+      <h>129</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+introducirDatosEmpresa(dni,nombre,
+apellido1,apellido2,fNacimieno,telefono,
+lugarNacimiento,domicilio,CP,email,
+periodicidad,CIF,nombreEmpresa,
+telEmpresa,dirEmpresa,emailEmpresa)</panel_attributes>
+    <additional_attributes>243;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>279</x>
+      <y>720</y>
+      <w>260</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+</panel_attributes>
+    <additional_attributes>27;27;243;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>522</x>
+      <y>675</y>
+      <w>18</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>513</x>
+      <y>648</y>
+      <w>458</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+introducirDatos(dni,nombre,apellido1,apellido2,fNacimieno,telefono,
+lugarNacimiento,domicilio,CP,email,periodicidad,CIF,nombreEmpresa,
+telEmpresa,dirEmpresa,emailEmpresa)</panel_attributes>
+    <additional_attributes>441;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>513</x>
+      <y>711</y>
+      <w>458</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=.&lt;
+</panel_attributes>
+    <additional_attributes>27;27;441;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>504</x>
+      <y>729</y>
+      <w>44</w>
+      <h>233</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>27;27;27;216</additional_attributes>
+  </element>
+</diagram>
