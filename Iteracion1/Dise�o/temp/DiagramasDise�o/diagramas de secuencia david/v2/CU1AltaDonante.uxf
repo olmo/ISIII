@@ -75,14 +75,11 @@ bg=orange</panel_attributes>
     <coordinates>
       <x>279</x>
       <y>162</y>
-      <w>264</w>
-      <h>108</h>
+      <w>260</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatosSocio(dni,nombre,
-apellido1,apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,CP,email,
-periodicidad)</panel_attributes>
+introducirDatosSocio(id,periodicidad)</panel_attributes>
     <additional_attributes>243;45;27;45</additional_attributes>
   </element>
   <element>
@@ -102,8 +99,8 @@ periodicidad)</panel_attributes>
     <coordinates>
       <x>270</x>
       <y>909</y>
-      <w>45</w>
-      <h>81</h>
+      <w>44</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>27;27;27;63</additional_attributes>
@@ -114,13 +111,11 @@ periodicidad)</panel_attributes>
       <x>513</x>
       <y>171</y>
       <w>251</w>
-      <h>108</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatos(dni,nombre,apellido1,
-apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,CP,email,
-periodicidad,user,pass)</panel_attributes>
+introducirDatos(id,periodicidad,
+user,pass)</panel_attributes>
     <additional_attributes>234;45;27;45</additional_attributes>
   </element>
   <element>
@@ -565,17 +560,14 @@ RealizarConsulta(String SQL)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>279</x>
+      <x>270</x>
       <y>378</y>
-      <w>266</w>
-      <h>108</h>
+      <w>284</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatosColaborador(dni,nombre,
-apellido1,apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,CP,email,
-periodicidad)</panel_attributes>
-    <additional_attributes>243;45;27;45</additional_attributes>
+introducirDatosColaborador(id,periodicidad)</panel_attributes>
+    <additional_attributes>252;45;36;45</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -606,12 +598,10 @@ periodicidad)</panel_attributes>
       <x>513</x>
       <y>396</y>
       <w>350</w>
-      <h>96</h>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatos(dni,nombre,apellido1,apellido2,
-fNacimiento,telefono,lugarNacimiento,domicilio,
-CP,email,periodicidad)</panel_attributes>
+introducirDatos(id,periodicidad)</panel_attributes>
     <additional_attributes>333;45;27;45</additional_attributes>
   </element>
   <element>
@@ -643,14 +633,13 @@ CP,email,periodicidad)</panel_attributes>
       <x>279</x>
       <y>630</y>
       <w>264</w>
-      <h>129</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatosEmpresa(dni,nombre,
-apellido1,apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,CP,email,
-periodicidad,CIF,nombreEmpresa,
-telEmpresa,dirEmpresa,emailEmpresa)</panel_attributes>
+introducirDatosEmpresa(id,periodicidad,
+CIF,nombreEmpresa,
+telEmpresa,dirEmpresa,
+emailEmpresa)</panel_attributes>
     <additional_attributes>243;45;27;45</additional_attributes>
   </element>
   <element>
@@ -682,11 +671,10 @@ telEmpresa,dirEmpresa,emailEmpresa)</panel_attributes>
       <x>513</x>
       <y>648</y>
       <w>458</w>
-      <h>96</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatos(dni,nombre,apellido1,apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,CP,email,periodicidad,CIF,nombreEmpresa,
+introducirDatos(id,periodicidad,CIF,nombreEmpresa,
 telEmpresa,dirEmpresa,emailEmpresa)</panel_attributes>
     <additional_attributes>441;45;27;45</additional_attributes>
   </element>

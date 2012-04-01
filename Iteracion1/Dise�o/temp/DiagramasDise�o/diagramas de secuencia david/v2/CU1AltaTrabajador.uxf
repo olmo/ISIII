@@ -63,13 +63,11 @@ bg=orange</panel_attributes>
     <coordinates>
       <x>108</x>
       <y>135</y>
-      <w>264</w>
-      <h>96</h>
+      <w>260</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatosTrabajador(dni,nombre,
-apellido1,apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,CP,email)</panel_attributes>
+introducirDatosTrabajador(id)</panel_attributes>
     <additional_attributes>243;45;27;45</additional_attributes>
   </element>
   <element>
@@ -262,13 +260,10 @@ bg=red</panel_attributes>
       <x>342</x>
       <y>144</y>
       <w>269</w>
-      <h>108</h>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatos(dni,nombre,apellido1,
-apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,
-CP,email,user,pass)</panel_attributes>
+introducirDatos(user,pass)</panel_attributes>
     <additional_attributes>252;45;27;45</additional_attributes>
   </element>
 </diagram>

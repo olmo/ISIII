@@ -64,14 +64,11 @@ bg=orange</panel_attributes>
       <x>180</x>
       <y>216</y>
       <w>228</w>
-      <h>94</h>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatosBeneficiario(dni,nombre,
-apellido1,apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,CP,email,
-localidad,eCivil,nEstudios,nacionalidad,
-sEconomica,observacionesPersonales,
+introducirDatosBeneficiario(id,localidad,eCivil,nEstudios,
+nacionalidad,sEconomica,observacionesPersonales,
 observacionesVivienda,observacionesFamiliares)</panel_attributes>
     <additional_attributes>216;30;18;30</additional_attributes>
   </element>
@@ -172,14 +169,11 @@ bg=red</panel_attributes>
       <x>390</x>
       <y>222</y>
       <w>222</w>
-      <h>94</h>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatos(dni,nombre,
-apellido1,apellido2,fNacimieno,telefono,
-lugarNacimiento,domicilio,CP,email,
-localidad,eCivil,nEstudios,nacionalidad,
-sEconomica,observacionesPersonales,
+introducirDatos(id,localidad,eCivil,nEstudios,
+nacionalidad,sEconomica,observacionesPersonales,
 observacionesVivienda,observacionesFamiliares)</panel_attributes>
     <additional_attributes>210;30;18;30</additional_attributes>
   </element>
