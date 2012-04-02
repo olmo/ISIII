@@ -7,7 +7,7 @@
       <x>117</x>
       <y>171</y>
       <w>18</w>
-      <h>90</h>
+      <h>171</h>
     </coordinates>
     <panel_attributes>bg=yellow</panel_attributes>
     <additional_attributes/>
@@ -74,7 +74,7 @@ introducirDatosTrabajador(id)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>108</x>
-      <y>225</y>
+      <y>297</y>
       <w>260</w>
       <h>44</h>
     </coordinates>
@@ -86,7 +86,7 @@ introducirDatosTrabajador(id)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>333</x>
-      <y>234</y>
+      <y>306</y>
       <w>44</w>
       <h>80</h>
     </coordinates>
@@ -97,12 +97,12 @@ introducirDatosTrabajador(id)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>99</x>
-      <y>234</y>
+      <y>315</y>
       <w>44</w>
-      <h>71</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>27;27;27;54</additional_attributes>
+    <additional_attributes>27;27;27;63</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
@@ -110,7 +110,7 @@ introducirDatosTrabajador(id)</panel_attributes>
       <x>54</x>
       <y>72</y>
       <w>810</w>
-      <h>243</h>
+      <h>315</h>
     </coordinates>
     <panel_attributes>AltaTrabajador
 </panel_attributes>
@@ -122,7 +122,7 @@ introducirDatosTrabajador(id)</panel_attributes>
       <x>351</x>
       <y>180</y>
       <w>18</w>
-      <h>81</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
@@ -143,7 +143,7 @@ bg=red</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>585</x>
-      <y>180</y>
+      <y>252</y>
       <w>224</w>
       <h>63</h>
     </coordinates>
@@ -158,18 +158,18 @@ bg=red</panel_attributes>
       <x>774</x>
       <y>117</y>
       <w>44</w>
-      <h>98</h>
+      <h>179</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>27;27;27;81</additional_attributes>
+    <additional_attributes>27;27;27;162</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>792</x>
-      <y>198</y>
+      <y>279</y>
       <w>18</w>
-      <h>36</h>
+      <h>27</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
@@ -178,18 +178,18 @@ bg=red</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>774</x>
-      <y>207</y>
+      <y>279</y>
       <w>44</w>
-      <h>98</h>
+      <h>89</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>27;27;27;81</additional_attributes>
+    <additional_attributes>27;27;27;72</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>585</x>
-      <y>162</y>
+      <y>234</y>
       <w>224</w>
       <h>63</h>
     </coordinates>
@@ -201,7 +201,7 @@ RealizarConsulta(String SQL)</panel_attributes>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>594</x>
-      <y>189</y>
+      <y>261</y>
       <w>18</w>
       <h>63</h>
     </coordinates>
@@ -214,10 +214,10 @@ RealizarConsulta(String SQL)</panel_attributes>
       <x>576</x>
       <y>117</y>
       <w>44</w>
-      <h>89</h>
+      <h>161</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>27;27;27;72</additional_attributes>
+    <additional_attributes>27;27;27;144</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
@@ -235,7 +235,7 @@ bg=red</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>576</x>
-      <y>225</y>
+      <y>297</y>
       <w>44</w>
       <h>89</h>
     </coordinates>
@@ -246,7 +246,7 @@ bg=red</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>342</x>
-      <y>216</y>
+      <y>288</y>
       <w>269</w>
       <h>44</h>
     </coordinates>
@@ -258,12 +258,48 @@ bg=red</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>342</x>
-      <y>144</y>
+      <y>216</y>
       <w>269</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatos(user,pass)</panel_attributes>
+introducirDatos(Trabajador t)</panel_attributes>
     <additional_attributes>252;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>342</x>
+      <y>153</y>
+      <w>198</w>
+      <h>62</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+generaClave(user,pass)</panel_attributes>
+    <additional_attributes>27;45;117;45;117;36;27;36</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>342</x>
+      <y>180</y>
+      <w>197</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Trabajador(id,user,pass)</panel_attributes>
+    <additional_attributes>180;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>522</x>
+      <y>216</y>
+      <w>72</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>_t:Trabajador_
+bg=red</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

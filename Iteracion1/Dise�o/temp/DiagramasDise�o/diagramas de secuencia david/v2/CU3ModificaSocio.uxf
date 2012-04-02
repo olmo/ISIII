@@ -258,7 +258,7 @@ RealizarConsulta(String SQL)</panel_attributes>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=.&lt;
-:ResultSet
+:TableModel
 </panel_attributes>
     <additional_attributes>21;35;280;35</additional_attributes>
   </element>
@@ -398,7 +398,7 @@ RealizarConsulta(String SQL)</panel_attributes>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=.&lt;
-:ResultSet
+:TableModel
 </panel_attributes>
     <additional_attributes>21;35;168;35</additional_attributes>
   </element>

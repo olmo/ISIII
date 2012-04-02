@@ -418,16 +418,14 @@ RealizarConsulta(String SQL)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>344</x>
+      <x>352</x>
       <y>304</y>
-      <w>276</w>
-      <h>84</h>
+      <w>256</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatos(dni,nombre,apellido1,apellido2,
-fNacimieno,telefono,lugarNacimiento,
-domicilio,CP,email)</panel_attributes>
-    <additional_attributes>248;40;32;40</additional_attributes>
+introducirDatos(Persona p)</panel_attributes>
+    <additional_attributes>240;40;24;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>

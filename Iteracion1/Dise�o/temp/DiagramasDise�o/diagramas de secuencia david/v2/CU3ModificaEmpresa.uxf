@@ -259,7 +259,7 @@ RealizarConsulta(String SQL)</panel_attributes>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=.&lt;
-:ResultSet
+:TableModel
 </panel_attributes>
     <additional_attributes>21;35;287;35</additional_attributes>
   </element>
@@ -394,12 +394,12 @@ RealizarConsulta(String SQL)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>595</x>
-      <y>406</y>
+      <y>392</y>
       <w>181</w>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=.&lt;
-:ResultSet
+:TableModel
 </panel_attributes>
     <additional_attributes>21;35;168;35</additional_attributes>
   </element>
@@ -420,7 +420,7 @@ RealizarConsulta(String SQL)</panel_attributes>
       <x>763</x>
       <y>364</y>
       <w>14</w>
-      <h>84</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
@@ -477,11 +477,11 @@ telEmpresa,dirEmpresa,emailEmpresa):boolean</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>749</x>
-      <y>427</y>
+      <y>413</y>
       <w>34</w>
-      <h>69</h>
+      <h>62</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;56</additional_attributes>
+    <additional_attributes>21;21;21;49</additional_attributes>
   </element>
 </diagram>
