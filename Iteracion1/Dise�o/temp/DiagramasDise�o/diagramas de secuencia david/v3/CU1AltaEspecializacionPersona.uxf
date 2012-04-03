@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.4">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>296</x>
+      <y>64</y>
+      <w>128</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>_:ControladorPersonas_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>88</x>
+      <y>64</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>_:trabajador_
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>104</x>
+      <y>64</y>
+      <w>40</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>24;24;24;48</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>120</x>
+      <y>152</y>
+      <w>16</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.InteractionFrame</type>
+    <coordinates>
+      <x>80</x>
+      <y>24</y>
+      <w>616</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>AltaEspecializacionPersona
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>336</x>
+      <y>128</y>
+      <w>40</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>24;24;24;96</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.InteractionFrame</type>
+    <coordinates>
+      <x>96</x>
+      <y>112</y>
+      <w>576</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ref
+--
+id=altaPersona(dni,nombre,apellido1,apellido2,fNacimieno,telefono,lugarNacimiento,domicilio,CP,email)
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>336</x>
+      <y>64</y>
+      <w>40</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>24;24;24;48</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>336</x>
+      <y>392</y>
+      <w>40</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>24;24;24;64</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>336</x>
+      <y>240</y>
+      <w>40</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>24;24;24;64</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>336</x>
+      <y>320</y>
+      <w>40</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>24;24;24;56</additional_attributes>
+  </element>
+  <group>
+    <element>
+      <type>com.umlet.element.custom.InteractionFrame</type>
+      <coordinates>
+        <x>96</x>
+        <y>184</y>
+        <w>576</w>
+        <h>248</h>
+      </coordinates>
+      <panel_attributes>alt
+--
+[rolPersona==Trabajador]
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+-.
+[rolPersona==Donante]
+ 
+ 
+ 
+ 
+-.
+[rolPersona==Beneficiario]
+</panel_attributes>
+      <additional_attributes/>
+    </element>
+    <element>
+      <type>com.umlet.element.custom.InteractionFrame</type>
+      <coordinates>
+        <x>112</x>
+        <y>224</y>
+        <w>528</w>
+        <h>40</h>
+      </coordinates>
+      <panel_attributes>ref
+--
+altaTrabajador(id)
+bg=pink</panel_attributes>
+      <additional_attributes/>
+    </element>
+    <element>
+      <type>com.umlet.element.custom.InteractionFrame</type>
+      <coordinates>
+        <x>112</x>
+        <y>304</y>
+        <w>528</w>
+        <h>40</h>
+      </coordinates>
+      <panel_attributes>ref
+--
+altaDonante(id)
+bg=pink</panel_attributes>
+      <additional_attributes/>
+    </element>
+    <element>
+      <type>com.umlet.element.custom.InteractionFrame</type>
+      <coordinates>
+        <x>112</x>
+        <y>376</y>
+        <w>528</w>
+        <h>40</h>
+      </coordinates>
+      <panel_attributes>ref
+--
+altaBeneficiario(id)
+bg=pink</panel_attributes>
+      <additional_attributes/>
+    </element>
+    <element>
+      <type>com.umlet.element.custom.SeqObjectActive</type>
+      <coordinates>
+        <x>120</x>
+        <y>344</y>
+        <w>16</w>
+        <h>32</h>
+      </coordinates>
+      <panel_attributes>bg=yellow</panel_attributes>
+      <additional_attributes/>
+    </element>
+    <element>
+      <type>com.umlet.element.custom.SeqObjectActive</type>
+      <coordinates>
+        <x>120</x>
+        <y>264</y>
+        <w>16</w>
+        <h>40</h>
+      </coordinates>
+      <panel_attributes>bg=yellow</panel_attributes>
+      <additional_attributes/>
+    </element>
+    <element>
+      <type>com.umlet.element.Relation</type>
+      <coordinates>
+        <x>104</x>
+        <y>392</y>
+        <w>40</w>
+        <h>72</h>
+      </coordinates>
+      <panel_attributes>lt=.</panel_attributes>
+      <additional_attributes>24;24;24;56</additional_attributes>
+    </element>
+  </group>
+</diagram>
