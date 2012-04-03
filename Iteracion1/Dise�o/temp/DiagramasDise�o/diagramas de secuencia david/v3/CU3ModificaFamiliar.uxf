@@ -185,7 +185,7 @@ bg=red</panel_attributes>
       <w>777</w>
       <h>364</h>
     </coordinates>
-    <panel_attributes>ModificarTrabajador
+    <panel_attributes>ModificarFamiliar
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -232,7 +232,7 @@ bg=red</panel_attributes>
       <w>84</w>
       <h>21</h>
     </coordinates>
-    <panel_attributes>_:TrabajadorBD_
+    <panel_attributes>_:FamiliarBD_
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
