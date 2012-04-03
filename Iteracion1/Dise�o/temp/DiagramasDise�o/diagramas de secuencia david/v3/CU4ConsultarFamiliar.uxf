@@ -196,29 +196,6 @@ bg=red</panel_attributes>
     <additional_attributes>24;24;24;64</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>664</x>
-      <y>176</y>
-      <w>16</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>440</x>
-      <y>136</y>
-      <w>240</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaPersona)</panel_attributes>
-    <additional_attributes>224;40;24;40</additional_attributes>
-  </element>
-  <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>256</x>
@@ -246,36 +223,12 @@ getDatos(idFamiliar):Familiar</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>440</x>
-      <y>160</y>
-      <w>240</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=.&lt;
-:TableModel
-</panel_attributes>
-    <additional_attributes>24;40;224;40</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>648</x>
-      <y>184</y>
-      <w>40</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>24;24;24;64</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>440</x>
-      <y>208</y>
+      <y>136</y>
       <w>240</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaFamiliar)</panel_attributes>
+RealizarConsulta(String SQL)</panel_attributes>
     <additional_attributes>224;40;24;40</additional_attributes>
   </element>
   <element>
@@ -295,9 +248,9 @@ RealizarConsulta(String tablaFamiliar)</panel_attributes>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>664</x>
-      <y>248</y>
+      <y>176</y>
       <w>16</w>
-      <h>32</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>

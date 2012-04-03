@@ -178,23 +178,12 @@ borrarDatosFamiliar(id)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>686</x>
-      <y>175</y>
-      <w>34</w>
-      <h>69</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;56</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>686</x>
       <y>49</y>
       <w>34</w>
-      <h>139</h>
+      <h>146</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;126</additional_attributes>
+    <additional_attributes>21;21;21;133</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
@@ -206,17 +195,6 @@ borrarDatosFamiliar(id)</panel_attributes>
     </coordinates>
     <panel_attributes>_:GestorJDBC_
 bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>700</x>
-      <y>175</y>
-      <w>14</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -283,37 +261,12 @@ borrarDatos(id):boolean</panel_attributes>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>700</x>
-      <y>231</y>
+      <y>182</y>
       <w>14</w>
-      <h>21</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>469</x>
-      <y>140</y>
-      <w>244</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaPersona)</panel_attributes>
-    <additional_attributes>231;35;21;35</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>469</x>
-      <y>154</y>
-      <w>244</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=.&lt;
-:TableModel
-</panel_attributes>
-    <additional_attributes>21;35;231;35</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -341,12 +294,12 @@ RealizarConsulta(String tablaPersona)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>469</x>
-      <y>196</y>
+      <y>147</y>
       <w>244</w>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaFamiliar)</panel_attributes>
+RealizarConsulta(String SQL)</panel_attributes>
     <additional_attributes>231;35;21;35</additional_attributes>
   </element>
   <element>

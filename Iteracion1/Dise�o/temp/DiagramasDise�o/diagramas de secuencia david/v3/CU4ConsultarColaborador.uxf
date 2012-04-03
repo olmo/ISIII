@@ -140,17 +140,6 @@ bg=red</panel_attributes>
     <additional_attributes>21;21;21;49</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>686</x>
-      <y>98</y>
-      <w>34</w>
-      <h>104</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;91</additional_attributes>
-  </element>
-  <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>462</x>
@@ -183,31 +172,6 @@ bg=red</panel_attributes>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>483</x>
-      <y>154</y>
-      <w>230</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
-    <additional_attributes>217;35;21;35</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>483</x>
-      <y>182</y>
-      <w>230</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=.&lt;
-:TableModel
-</panel_attributes>
-    <additional_attributes>21;35;217;35</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -245,34 +209,23 @@ getDatos(id):Colaborador</panel_attributes>
     <additional_attributes>252;35;21;35</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>700</x>
-      <y>189</y>
-      <w>14</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>686</x>
-      <y>203</y>
+      <y>98</y>
       <w>34</w>
-      <h>62</h>
+      <h>118</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;49</additional_attributes>
+    <additional_attributes>21;21;21;105</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>700</x>
-      <y>252</y>
+      <y>203</y>
       <w>14</w>
-      <h>35</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
@@ -281,7 +234,7 @@ getDatos(id):Colaborador</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>483</x>
-      <y>217</y>
+      <y>168</y>
       <w>230</w>
       <h>49</h>
     </coordinates>

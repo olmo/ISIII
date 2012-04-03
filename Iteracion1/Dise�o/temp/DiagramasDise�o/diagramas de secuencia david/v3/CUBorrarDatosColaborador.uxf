@@ -175,17 +175,6 @@ borrarDatosColaborador(id)</panel_attributes>
     <additional_attributes>21;35;161;35</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>588</x>
-      <y>49</y>
-      <w>34</w>
-      <h>139</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;126</additional_attributes>
-  </element>
-  <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>574</x>
@@ -258,42 +247,6 @@ borrarDatos(id):boolean</panel_attributes>
     <additional_attributes>21;35;161;35</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>602</x>
-      <y>175</y>
-      <w>14</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>413</x>
-      <y>140</y>
-      <w>202</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaPersona)</panel_attributes>
-    <additional_attributes>189;35;21;35</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>413</x>
-      <y>154</y>
-      <w>202</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=.&lt;
-:TableModel
-</panel_attributes>
-    <additional_attributes>21;35;189;35</additional_attributes>
-  </element>
-  <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>588</x>
@@ -308,20 +261,20 @@ RealizarConsulta(String tablaPersona)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>588</x>
-      <y>175</y>
+      <y>49</y>
       <w>34</w>
-      <h>48</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;35</additional_attributes>
+    <additional_attributes>21;21;21;140</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>602</x>
-      <y>210</y>
+      <y>189</y>
       <w>14</w>
-      <h>21</h>
+      <h>42</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
@@ -330,12 +283,12 @@ RealizarConsulta(String tablaPersona)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>413</x>
-      <y>175</y>
-      <w>203</w>
+      <y>154</y>
+      <w>202</w>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaColaborador)</panel_attributes>
+RealizarConsulta(String SQL)</panel_attributes>
     <additional_attributes>189;35;21;35</additional_attributes>
   </element>
   <element>

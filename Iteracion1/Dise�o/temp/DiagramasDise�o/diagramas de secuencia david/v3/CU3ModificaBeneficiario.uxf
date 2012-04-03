@@ -197,10 +197,10 @@ bg=red</panel_attributes>
       <x>888</x>
       <y>48</y>
       <w>40</w>
-      <h>280</h>
+      <h>288</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>24;24;24;264</additional_attributes>
+    <additional_attributes>24;24;24;272</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -285,31 +285,6 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>664</x>
-      <y>272</y>
-      <w>256</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaPersona)</panel_attributes>
-    <additional_attributes>240;40;24;40</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>664</x>
-      <y>288</y>
-      <w>256</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=.&lt;
-:TableModel
-</panel_attributes>
-    <additional_attributes>24;40;240;40</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
       <x>320</x>
       <y>264</y>
       <w>368</w>
@@ -347,12 +322,12 @@ modificarDatos(Beneficiario b):boolean</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>888</x>
-      <y>344</y>
+      <y>336</y>
       <w>40</w>
-      <h>80</h>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>24;24;24;64</additional_attributes>
+    <additional_attributes>24;24;24;72</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -387,19 +362,19 @@ bg=red</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>664</x>
-      <y>304</y>
+      <y>280</y>
       <w>256</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaBeneficiario)</panel_attributes>
+RealizarConsulta(String SQL)</panel_attributes>
     <additional_attributes>240;40;24;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>664</x>
-      <y>320</y>
+      <y>312</y>
       <w>256</w>
       <h>56</h>
     </coordinates>
@@ -412,33 +387,11 @@ RealizarConsulta(String tablaBeneficiario)</panel_attributes>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>904</x>
-      <y>344</y>
+      <y>320</y>
       <w>16</w>
-      <h>24</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>904</x>
-      <y>312</y>
-      <w>16</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>888</x>
-      <y>312</y>
-      <w>40</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>24;24;24;32</additional_attributes>
   </element>
 </diagram>

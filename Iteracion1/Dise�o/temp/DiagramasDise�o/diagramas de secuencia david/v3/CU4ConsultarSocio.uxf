@@ -123,10 +123,10 @@ bg=red</panel_attributes>
       <x>600</x>
       <y>56</y>
       <w>40</w>
-      <h>96</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>24;24;24;80</additional_attributes>
+    <additional_attributes>24;24;24;88</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
@@ -172,31 +172,6 @@ bg=red</panel_attributes>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>24;88;24;24</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>400</x>
-      <y>96</y>
-      <w>232</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
-    <additional_attributes>216;40;24;40</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>400</x>
-      <y>120</y>
-      <w>232</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=.&lt;
-:TableModel
-</panel_attributes>
-    <additional_attributes>24;40;216;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -259,7 +234,7 @@ getDatos(id):Socio</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>400</x>
-      <y>144</y>
+      <y>104</y>
       <w>232</w>
       <h>56</h>
     </coordinates>
@@ -284,33 +259,11 @@ RealizarConsulta(String SQL)</panel_attributes>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>616</x>
-      <y>136</y>
-      <w>16</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>616</x>
-      <y>184</y>
-      <w>16</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>600</x>
       <y>144</y>
-      <w>40</w>
-      <h>56</h>
+      <w>16</w>
+      <h>72</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>24;40;24;24</additional_attributes>
+    <panel_attributes>bg=red</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

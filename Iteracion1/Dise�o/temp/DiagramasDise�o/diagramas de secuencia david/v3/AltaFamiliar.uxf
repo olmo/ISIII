@@ -156,15 +156,15 @@ iniciarAltaFamiliar(idBeneficiario)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>45</x>
+      <x>54</x>
       <y>189</y>
-      <w>311</w>
+      <w>287</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-introducirDatosFamiliar(idBeneficiario,idPersona,
+introducirDatosFamiliar(idPersona,
 parentesco,ocupacion)</panel_attributes>
-    <additional_attributes>279;45;36;45</additional_attributes>
+    <additional_attributes>270;45;27;45</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>

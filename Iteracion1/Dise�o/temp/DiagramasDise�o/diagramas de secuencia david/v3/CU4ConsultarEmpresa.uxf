@@ -97,12 +97,12 @@ consultarEmpresa(id)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>712</x>
-      <y>144</y>
+      <y>48</y>
       <w>40</w>
-      <h>64</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>24;24;24;48</additional_attributes>
+    <additional_attributes>24;24;24;88</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
@@ -200,42 +200,6 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>496</x>
-      <y>88</y>
-      <w>248</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaPersona)</panel_attributes>
-    <additional_attributes>232;40;24;40</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>496</x>
-      <y>120</y>
-      <w>248</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=.&lt;
-:TableModel
-</panel_attributes>
-    <additional_attributes>24;40;232;40</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>728</x>
-      <y>128</y>
-      <w>16</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
       <x>232</x>
       <y>240</y>
       <w>40</w>
@@ -259,9 +223,9 @@ RealizarConsulta(String tablaPersona)</panel_attributes>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>728</x>
-      <y>192</y>
+      <y>136</y>
       <w>16</w>
-      <h>40</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
@@ -270,12 +234,12 @@ RealizarConsulta(String tablaPersona)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>496</x>
-      <y>152</y>
+      <y>96</y>
       <w>248</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaEmpresa)</panel_attributes>
+RealizarConsulta(String SQL)</panel_attributes>
     <additional_attributes>232;40;24;40</additional_attributes>
   </element>
   <element>
@@ -301,16 +265,5 @@ RealizarConsulta(String tablaEmpresa)</panel_attributes>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>24;24;24;48</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>712</x>
-      <y>48</y>
-      <w>40</w>
-      <h>96</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>24;24;24;80</additional_attributes>
   </element>
 </diagram>

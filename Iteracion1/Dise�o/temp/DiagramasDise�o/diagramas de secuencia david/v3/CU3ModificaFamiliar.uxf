@@ -157,17 +157,6 @@ parentesco,ocupacion)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>749</x>
-      <y>70</y>
-      <w>34</w>
-      <h>181</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;168</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
       <x>294</x>
       <y>70</y>
       <w>34</w>
@@ -215,18 +204,6 @@ bg=red</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>574</x>
-      <y>203</y>
-      <w>202</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaPer)</panel_attributes>
-    <additional_attributes>189;35;21;35</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>574</x>
       <y>266</y>
       <w>202</w>
       <h>49</h>
@@ -263,7 +240,7 @@ bg=red</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>301</x>
-      <y>196</y>
+      <y>189</y>
       <w>293</w>
       <h>49</h>
     </coordinates>
@@ -326,24 +303,12 @@ parentesco,ocupacion)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>749</x>
-      <y>238</y>
+      <y>70</y>
       <w>34</w>
-      <h>62</h>
+      <h>195</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>21;21;21;49</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>574</x>
-      <y>252</y>
-      <w>202</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablafam)</panel_attributes>
-    <additional_attributes>189;35;21;35</additional_attributes>
+    <additional_attributes>21;21;21;182</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -353,29 +318,17 @@ RealizarConsulta(String tablafam)</panel_attributes>
       <w>202</w>
       <h>49</h>
     </coordinates>
-    <panel_attributes>lt=.&lt;
-:TableModel
-</panel_attributes>
-    <additional_attributes>21;35;189;35</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+RealizarConsulta(String SQL)</panel_attributes>
+    <additional_attributes>189;35;21;35</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>763</x>
-      <y>238</y>
+      <y>252</y>
       <w>14</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.custom.SeqObjectActive</type>
-    <coordinates>
-      <x>763</x>
-      <y>287</y>
-      <w>14</w>
-      <h>21</h>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
