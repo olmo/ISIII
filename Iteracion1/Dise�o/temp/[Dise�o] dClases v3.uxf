@@ -227,13 +227,10 @@ una donacion.</panel_attributes>
       <x>1216</x>
       <y>480</y>
       <w>128</w>
-      <h>88</h>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Familiar
 --
--nombre: String
--apellido1: String
--apellido2: String
 -parentesco: String
 -ocupacion: String
 </panel_attributes>
@@ -265,7 +262,7 @@ una donacion.</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>672</x>
-      <y>664</y>
+      <y>688</y>
       <w>304</w>
       <h>208</h>
     </coordinates>
@@ -273,15 +270,13 @@ una donacion.</panel_attributes>
 --
 --
 _+consultarPersona(dni): Boolean_
-introducirDatos(dni,nombre,apellido1,apellido2,
-fNacimieno,telefono,lugarNacimiento,domicilio,
-CP,email)
+introducirDatos(Persona p)
 +darBajaPersona(String dni): Boolean
 +modificarDatos(id,dni,nombre,apellido1,
 apellido2,fNacimieno,telefono,lugarNacimiento,
 domicilio,CP,email): Boolean
 +getDatos(id): JTableModel
-+iniciarBuscarPersona(String persona,String rol): JTableModel</panel_attributes>
++buscarPersona(String persona,String rol): JTableModel</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -290,7 +285,7 @@ domicilio,CP,email): Boolean
       <x>672</x>
       <y>0</y>
       <w>304</w>
-      <h>600</h>
+      <h>632</h>
     </coordinates>
     <panel_attributes>ControladorPersona
 --
@@ -298,6 +293,7 @@ p: Persona
 {instancia temporal de Persona}
 --
 _+consultarPersona(dni): Boolean_
++generaClave(user, pass)
 +introducirDatosBeneficiario(id,localidad,eCivil,nEstudios,
 nacionalidad,sEconomica,observacionesPersonales,
 observacionesVivienda,observacionesFamiliares)
@@ -335,7 +331,12 @@ fNacimieno,telefono,lugarNacimiento,domicilio,CP,email)
 +consultarSocio(id)
 +consultarTrabajador(id)
 +introduceDatosInicioSesion(usuario,password): Boolean
-+iniciarBuscarPersona(String persona,String rol): JTableModel</panel_attributes>
++iniciarBuscarPersona(String persona,String rol): JTableModel
++borrarDatosBeneficiario(id): Boolean
++borrarDatosSocio(id): Boolean
++borrarDatosTrabajador(id): Boolean
++borrarDatosEmpresa(id): Boolean
++borrarDatosColaborador(id): Boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -355,14 +356,14 @@ m2=1..n</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>896</x>
-      <y>576</y>
+      <y>608</y>
       <w>40</w>
-      <h>104</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>24;24;24;88</additional_attributes>
+    <additional_attributes>24;24;24;80</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
@@ -390,14 +391,10 @@ en los diagramas de secuencia.</panel_attributes>
     <panel_attributes>BeneficiarioDB
 --
 --
-+introducirDatos(id,localidad,eCivil,nEstudios,
-nacionalidad,sEconomica,observacionesPersonales,
-observacionesVivienda,observacionesFamiliares)
-+modificarDatos(id,localidad,eCivil,nEstudios,nacionalidad,
-sEconomica,observacionesPersonales,observacionesVivienda,
-observacionesFamiliares): Boolean
++introducirDatos(Beneficiario b)
++modificarDatos(Beneficiario b): Boolean
 +getDatos(id): JTableModel
-
++borrarDatos(id): Boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -412,9 +409,10 @@ observacionesFamiliares): Boolean
     <panel_attributes>SocioDB
 --
 --
-+introducirDatos(id,periodicidad,user,pass)
-+modificarDatos(id,periodicidad): Boolean
++introducirDatos(Socio s)
++modificarDatos(Socio s): Boolean
 +getDatos(id): JTableModel
++borrarDatos(id): Boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -429,10 +427,10 @@ observacionesFamiliares): Boolean
     <panel_attributes>ColaboradorDB
 --
 --
-+introducirDatos(id,periodicidad)
-+modificarDatos(id,periodicidad): Boolean
++introducirDatos(Colaborador c)
++modificarDatos(Colaborador c): Boolean
 +getDatos(id): JTableModel
-
++borrarDatos(id): Boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -447,12 +445,10 @@ observacionesFamiliares): Boolean
     <panel_attributes>EmpresaDB
 --
 --
-+introducirDatos(id,periodicidad,CIF,nombreEmpresa,
-telEmpresa,dirEmpresa,emailEmpresa)
-+modificarDatos(id,CIF,nombreEmpresa,
-telEmpresa,dirEmpresa,emailEmpresa): Boolean
++introducirDatos(Empresa e)
++modificarDatos(Empresa e): Boolean
 +getDatos(id): JTableModel
-
++borrarDatos(id): Boolean
 
 
 </panel_attributes>
@@ -464,16 +460,17 @@ telEmpresa,dirEmpresa,emailEmpresa): Boolean
       <x>352</x>
       <y>328</y>
       <w>208</w>
-      <h>88</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>TrabajadorDB
 --
 --
-+introducirDatos(id,user,pass)
-+modificarDatos(id,user,pass): Boolean
++introducirDatos(Trabajador t)
++modificarDatos(Trabajador t): Boolean
 +getDatos(id): JTableModel
 +introduceDatosInicioSesion(usuario,
-password): Boolean</panel_attributes>
+password): Boolean
++borrarDatos(id): Boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -547,12 +544,12 @@ m2=1</panel_attributes>
       <x>144</x>
       <y>672</y>
       <w>544</w>
-      <h>64</h>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>528;48;24;24</additional_attributes>
+    <additional_attributes>528;72;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
