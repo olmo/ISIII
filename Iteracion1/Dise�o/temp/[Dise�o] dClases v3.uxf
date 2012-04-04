@@ -255,14 +255,16 @@ una donacion.</panel_attributes>
       <w>40</w>
       <h>288</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
+    <panel_attributes>lt=.
+r1=1..n
+r2=0..n</panel_attributes>
     <additional_attributes>24;272;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>672</x>
-      <y>688</y>
+      <y>768</y>
       <w>304</w>
       <h>208</h>
     </coordinates>
@@ -275,7 +277,7 @@ introducirDatos(Persona p)
 +modificarDatos(id,dni,nombre,apellido1,
 apellido2,fNacimieno,telefono,lugarNacimiento,
 domicilio,CP,email): Boolean
-+getDatos(id): JTableModel
++getDatos(id): Persona
 +buscarPersona(String persona,String rol): JTableModel</panel_attributes>
     <additional_attributes/>
   </element>
@@ -285,7 +287,7 @@ domicilio,CP,email): Boolean
       <x>672</x>
       <y>0</y>
       <w>304</w>
-      <h>632</h>
+      <h>688</h>
     </coordinates>
     <panel_attributes>ControladorPersona
 --
@@ -331,12 +333,15 @@ fNacimieno,telefono,lugarNacimiento,domicilio,CP,email)
 +consultarSocio(id)
 +consultarTrabajador(id)
 +introduceDatosInicioSesion(usuario,password): Boolean
-+iniciarBuscarPersona(String persona,String rol): JTableModel
++iniciarBuscarPersona(String persona,String rol): Persona
 +borrarDatosBeneficiario(id): Boolean
 +borrarDatosSocio(id): Boolean
 +borrarDatosTrabajador(id): Boolean
 +borrarDatosEmpresa(id): Boolean
-+borrarDatosColaborador(id): Boolean</panel_attributes>
++borrarDatosColaborador(id): Boolean
++consultarFamiliar(idFamiliar): Familiar
++borrarDatosFamiliar(idFamiliar): Boolean
++listarFamiliares(idPersona): list&lt;Familiar&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -356,14 +361,14 @@ m2=1..n</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>896</x>
-      <y>608</y>
+      <y>664</y>
       <w>40</w>
-      <h>96</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>24;24;24;80</additional_attributes>
+    <additional_attributes>24;24;24;104</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
@@ -393,7 +398,7 @@ en los diagramas de secuencia.</panel_attributes>
 --
 +introducirDatos(Beneficiario b)
 +modificarDatos(Beneficiario b): Boolean
-+getDatos(id): JTableModel
++getDatos(id): Beneficiario
 +borrarDatos(id): Boolean
 </panel_attributes>
     <additional_attributes/>
@@ -411,7 +416,7 @@ en los diagramas de secuencia.</panel_attributes>
 --
 +introducirDatos(Socio s)
 +modificarDatos(Socio s): Boolean
-+getDatos(id): JTableModel
++getDatos(id): Socio
 +borrarDatos(id): Boolean
 </panel_attributes>
     <additional_attributes/>
@@ -419,8 +424,8 @@ en los diagramas de secuencia.</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>304</x>
-      <y>616</y>
+      <x>336</x>
+      <y>576</y>
       <w>224</w>
       <h>72</h>
     </coordinates>
@@ -429,7 +434,7 @@ en los diagramas de secuencia.</panel_attributes>
 --
 +introducirDatos(Colaborador c)
 +modificarDatos(Colaborador c): Boolean
-+getDatos(id): JTableModel
++getDatos(id): Colaborador
 +borrarDatos(id): Boolean
 </panel_attributes>
     <additional_attributes/>
@@ -447,7 +452,7 @@ en los diagramas de secuencia.</panel_attributes>
 --
 +introducirDatos(Empresa e)
 +modificarDatos(Empresa e): Boolean
-+getDatos(id): JTableModel
++getDatos(id): Empresa
 +borrarDatos(id): Boolean
 
 
@@ -467,7 +472,7 @@ en los diagramas de secuencia.</panel_attributes>
 --
 +introducirDatos(Trabajador t)
 +modificarDatos(Trabajador t): Boolean
-+getDatos(id): JTableModel
++getDatos(id): Trabajador
 +introduceDatosInicioSesion(usuario,
 password): Boolean
 +borrarDatos(id): Boolean</panel_attributes>
@@ -476,15 +481,15 @@ password): Boolean
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>504</x>
+      <x>536</x>
       <y>552</y>
-      <w>184</w>
-      <h>104</h>
+      <w>152</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>168;24;24;88</additional_attributes>
+    <additional_attributes>136;24;24;48</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -542,27 +547,27 @@ m2=1</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>144</x>
-      <y>672</y>
+      <y>728</y>
       <w>544</w>
-      <h>88</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>528;72;24;24</additional_attributes>
+    <additional_attributes>528;96;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>144</x>
-      <y>632</y>
-      <w>176</w>
-      <h>56</h>
+      <y>592</y>
+      <w>208</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>160;24;24;40</additional_attributes>
+    <additional_attributes>192;24;24;80</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -615,5 +620,48 @@ m2=1</panel_attributes>
 m1=1
 m2=1</panel_attributes>
     <additional_attributes>216;24;24;504</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>336</x>
+      <y>688</y>
+      <w>224</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>FamiliarDB
+--
+--
++getDatos(id): Familiar
++borrarDatos(id): Boolean
++listaFamiliares(idPersona): list&lt;Familiar&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>536</x>
+      <y>648</y>
+      <w>152</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>136;24;24;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>144</x>
+      <y>680</y>
+      <w>208</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>192;40;24;24</additional_attributes>
   </element>
 </diagram>
