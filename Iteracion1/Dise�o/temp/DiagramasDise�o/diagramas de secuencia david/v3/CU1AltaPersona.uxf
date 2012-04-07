@@ -90,7 +90,7 @@ bg=orange</panel_attributes>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-consultarPersona(String dni):boolean</panel_attributes>
+consultarPersona(String dni)</panel_attributes>
     <additional_attributes>240;40;24;40</additional_attributes>
   </element>
   <element>
@@ -116,7 +116,7 @@ consultarPersona(String dni):boolean</panel_attributes>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-consultarPersona(String dni):boolean</panel_attributes>
+consultarPersona(String dni)</panel_attributes>
     <additional_attributes>240;40;24;40</additional_attributes>
   </element>
   <element>
@@ -227,14 +227,14 @@ bg=red</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>504</x>
+      <x>512</x>
       <y>80</y>
-      <w>190</w>
+      <w>176</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
-    <additional_attributes>168;40;32;40</additional_attributes>
+consultar(String SQL)</panel_attributes>
+    <additional_attributes>160;40;24;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -302,14 +302,14 @@ RealizarConsulta(String SQL)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>504</x>
+      <x>512</x>
       <y>192</y>
-      <w>190</w>
+      <w>176</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
-    <additional_attributes>168;40;32;40</additional_attributes>
+modificar(String SQL)</panel_attributes>
+    <additional_attributes>160;40;24;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>

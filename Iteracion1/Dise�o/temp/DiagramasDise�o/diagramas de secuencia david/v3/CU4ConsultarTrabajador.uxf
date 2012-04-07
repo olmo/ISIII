@@ -228,7 +228,7 @@ getDatos(id):Trabajador</panel_attributes>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String tablaTrab)</panel_attributes>
+consultar(String tablaTrab)</panel_attributes>
     <additional_attributes>224;40;24;40</additional_attributes>
   </element>
   <element>

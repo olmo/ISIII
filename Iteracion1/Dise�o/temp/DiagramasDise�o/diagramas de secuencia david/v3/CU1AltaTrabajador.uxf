@@ -194,7 +194,7 @@ bg=red</panel_attributes>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
+modificar(String SQL)</panel_attributes>
     <additional_attributes>207;45;27;45</additional_attributes>
   </element>
   <element>

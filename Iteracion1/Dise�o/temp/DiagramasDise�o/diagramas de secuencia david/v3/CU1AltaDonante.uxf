@@ -206,7 +206,7 @@ bg=red</panel_attributes>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
+modificar(String SQL)</panel_attributes>
     <additional_attributes>336;35;21;35</additional_attributes>
   </element>
   <element>
@@ -404,7 +404,7 @@ bg=red</panel_attributes>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
+modificar(String SQL)</panel_attributes>
     <additional_attributes>259;35;21;35</additional_attributes>
   </element>
   <element>
@@ -485,7 +485,7 @@ bg=red</panel_attributes>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
+modificar(String SQL)</panel_attributes>
     <additional_attributes>175;35;21;35</additional_attributes>
   </element>
   <element>

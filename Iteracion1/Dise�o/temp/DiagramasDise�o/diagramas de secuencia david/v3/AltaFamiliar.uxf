@@ -335,11 +335,11 @@ bg=red</panel_attributes>
     <coordinates>
       <x>567</x>
       <y>261</y>
-      <w>210</w>
+      <w>206</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
+modificar(String SQL)</panel_attributes>
     <additional_attributes>189;45;27;45</additional_attributes>
   </element>
   <element>

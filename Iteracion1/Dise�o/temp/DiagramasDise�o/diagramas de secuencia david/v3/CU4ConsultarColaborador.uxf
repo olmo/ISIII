@@ -239,7 +239,7 @@ getDatos(id):Colaborador</panel_attributes>
       <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-RealizarConsulta(String SQL)</panel_attributes>
+consultar(String SQL)</panel_attributes>
     <additional_attributes>217;35;21;35</additional_attributes>
   </element>
   <element>
