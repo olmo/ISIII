@@ -287,7 +287,7 @@ domicilio,CP,email): Boolean
       <x>672</x>
       <y>0</y>
       <w>304</w>
-      <h>688</h>
+      <h>720</h>
     </coordinates>
     <panel_attributes>ControladorPersona
 --
@@ -305,6 +305,9 @@ observacionesVivienda,observacionesFamiliares)
 +introducirDatosEmpresa(id,periodicidad,CIF,
 nombreEmpresa,telEmpresa,dirEmpresa,
 emailEmpresa)
++iniciarAltaFamiliar(idBeneficiario)
++introducirDatosFamiliar(idPersona, parentesco, 
+ocupacion)
 +darAltaPersona(dni,nombre,apellido1,apellido2,
 fNacimieno,telefono,lugarNacimiento,domicilio,
 CP,email)
@@ -361,14 +364,14 @@ m2=1..n</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>896</x>
-      <y>664</y>
+      <y>696</y>
       <w>40</w>
-      <h>120</h>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>24;24;24;104</additional_attributes>
+    <additional_attributes>24;24;24;72</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
@@ -634,6 +637,7 @@ m2=1</panel_attributes>
 --
 +getDatos(id): Familiar
 +borrarDatos(id): Boolean
++introducirDatos(Familiar f)
 +listaFamiliares(idPersona): list&lt;Familiar&gt;
 </panel_attributes>
     <additional_attributes/>
