@@ -151,6 +151,7 @@ public class NuevoFamiliar extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				DatosUsuario du= new DatosUsuario(padre);
 				du.rellenar(padre.getcontrolador().consultarBeneficiario(id_beneficiario));
+				du.modobeneficiario();
 				padre.getContentPane().removeAll();
 				padre.getContentPane().validate();
 				padre .getContentPane().add(du);
