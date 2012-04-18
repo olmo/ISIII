@@ -203,7 +203,7 @@ public class NuevoFamiliar extends JPanel {
 					DatosFamiliar df=new DatosFamiliar(padre,id);
 					try{
 					
-					padre.getcontrolador().introducirDatosFamiliar(id,id_beneficiario,ocupacion.getText(),parentesco.getText());
+					padre.getcontrolador().introducirDatosFamiliar(id,id_beneficiario,parentesco.getText(),ocupacion.getText());
 					Familiar f=padre.getcontrolador().consultarFamiliar(id);
 					df.rellenar(f);		
 					correcto=true;
