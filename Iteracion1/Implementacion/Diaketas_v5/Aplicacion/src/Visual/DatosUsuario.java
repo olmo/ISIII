@@ -143,7 +143,7 @@ public DatosUsuario(VentanaPrincipal p) {
 				String aux=choice_busqueda.getSelectedItem();
 				if(aux.equals("todos")){
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),null));
-					b.setbusqueda(textField_busqueda.getText(),aux);
+					b.setbusqueda(textField_busqueda.getText(),null);
 				}else{
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),aux));
 					b.setbusqueda(textField_busqueda.getText(),aux);
