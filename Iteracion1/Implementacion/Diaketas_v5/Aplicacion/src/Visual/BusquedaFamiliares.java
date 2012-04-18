@@ -115,10 +115,13 @@ public class BusquedaFamiliares extends JPanel {
 				padre.getContentPane().removeAll();
 				BusquedaUsuarios b = new BusquedaUsuarios(padre);
 				String aux=choice_3.getSelectedItem();
-				if(aux.equals("todos"))
+				if(aux.equals("todos")){
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
-				else
+					b.setbusqueda(textField.getText(),null);
+				}else{
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					b.setbusqueda(textField.getText(),aux);
+				}
 				padre.getContentPane().add(b);
 			}
 		});

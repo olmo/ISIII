@@ -137,10 +137,13 @@ public class NuevoUsuario extends JPanel {
 					
 					BusquedaUsuarios b = new BusquedaUsuarios(padre);
 					String aux=choice_busqueda.getSelectedItem();
-					if(aux.equals("todos"))
+					if(aux.equals("todos")){
 						b.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),null));
-					else
+						b.setbusqueda(textField_busqueda.getText(),null);
+					}else{
 						b.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),aux));
+						b.setbusqueda(textField_busqueda.getText(),aux);
+					}
 					
 					
 					padre.getContentPane().removeAll();

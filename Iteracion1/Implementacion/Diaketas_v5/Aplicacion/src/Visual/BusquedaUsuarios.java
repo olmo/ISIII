@@ -137,16 +137,18 @@ public class BusquedaUsuarios extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				BusquedaUsuarios b = new BusquedaUsuarios(padre);
+				//BusquedaUsuarios b = new BusquedaUsuarios(padre);
 				String aux=choice_3.getSelectedItem();
-				if(aux.equals("todos"))
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
-				else
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-				
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(b);
+				if(aux.equals("todos")){
+					setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					setbusqueda(textField.getText(),null);
+				}else{
+					setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					setbusqueda(textField.getText(),aux);
+				}
+				//padre.getContentPane().removeAll();
+				//padre.getContentPane().validate();
+				//padre.getContentPane().add(b);
 				padre.getContentPane().repaint();
 			}
 		});
