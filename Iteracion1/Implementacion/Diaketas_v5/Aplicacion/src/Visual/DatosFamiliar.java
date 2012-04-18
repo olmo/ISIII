@@ -249,7 +249,8 @@ public class DatosFamiliar extends JPanel {
 			
 					try{
 						
-						padre.getcontrolador().borrarDatosFamiliar(getId());							
+						padre.getcontrolador().borrarDatosFamiliar(getId());
+						JOptionPane.showMessageDialog(null, "Se ha dado de baja el usuario\n");
 						
 					}catch(Exception e1){
 						JOptionPane.showMessageDialog(null, "Error al dar de baja\n"+e1.getMessage());
@@ -258,6 +259,8 @@ public class DatosFamiliar extends JPanel {
 					
 					
 				}
+				
+
 				padre.getContentPane().removeAll();
 				padre.getContentPane().validate();
 				padre.getContentPane().add(new Inicio(padre, padre.getusuario()));
