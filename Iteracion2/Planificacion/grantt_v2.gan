@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="IS3" company="MaximumCoding" webLink="http://" view-date="2012-04-18" view-index="0" gantt-divider-location="374" resource-divider-location="324" version="2.0">
+<project name="IS3" company="MaximumCoding" webLink="http://" view-date="2012-04-07" view-index="0" gantt-divider-location="374" resource-divider-location="324" version="2.0">
     <description><![CDATA[Iteración1]]></description>
     <view zooming-state="default:3" id="gantt-chart"/>
     <view id="resource-table">
-        <field id="0" name="Nombre" width="52" order="0"/>
-        <field id="1" name="Función" width="47" order="1"/>
+        <field id="0" name="Nombre" width="50" order="0"/>
+        <field id="1" name="Función" width="50" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -41,14 +41,14 @@
         <task id="28" name="Identificar clases" color="#ffffcc" meeting="false" start="2012-04-15" duration="1" complete="100" expand="true"/>
         <task id="30" name="Modelo Estático" color="#ffffcc" meeting="false" start="2012-04-15" duration="4" complete="100" expand="true"/>
         <task id="32" name="Modelo comportamiento Estático" color="#ffffcc" meeting="false" start="2012-04-15" duration="4" complete="100" expand="true"/>
-        <task id="10" name="Diseño" color="#ffffcc" meeting="false" start="2012-04-19" duration="3" complete="25" expand="true"/>
+        <task id="10" name="Diseño" color="#ffffcc" meeting="false" start="2012-04-19" duration="3" complete="100" expand="true"/>
         <task id="36" name="Objetivos Diseño" color="#ffffcc" meeting="false" start="2012-04-19" duration="1" complete="100" expand="true"/>
-        <task id="39" name="Descomposición Subsistemas" color="#ffffcc" meeting="false" start="2012-04-20" duration="1" complete="35" expand="true"/>
-        <task id="45" name="Identificar nuevas clases" color="#ffffcc" meeting="false" start="2012-04-21" duration="1" complete="0" expand="true"/>
-        <task id="11" name="Diseño base de datos" color="#ffffcc" meeting="false" start="2012-04-21" duration="1" complete="0" expand="true"/>
+        <task id="39" name="Descomposición Subsistemas" color="#ffffcc" meeting="false" start="2012-04-20" duration="1" complete="100" expand="true"/>
+        <task id="45" name="Identificar nuevas clases" color="#ffffcc" meeting="false" start="2012-04-21" duration="1" complete="100" expand="true"/>
+        <task id="11" name="Diseño base de datos" color="#ffffcc" meeting="false" start="2012-04-21" duration="1" complete="100" expand="true"/>
         <task id="13" name="Formación implementación" color="#ffffcc" meeting="false" start="2012-04-10" duration="8" complete="100" expand="true"/>
         <task id="49" name="Implementación de la Interfaz Gráfica" color="#ffffcc" meeting="false" start="2012-04-18" duration="8" complete="90" expand="true"/>
-        <task id="50" name="Implementación de la BD" color="#ffffcc" meeting="false" start="2012-04-22" duration="2" complete="0" expand="true"/>
+        <task id="50" name="Implementación de la BD" color="#ffffcc" meeting="false" start="2012-04-22" duration="2" complete="90" expand="true"/>
         <task id="15" name="Implementación estática" color="#ffffcc" meeting="false" start="2012-04-24" duration="13" complete="0" expand="true"/>
     </tasks>
     <resources>
