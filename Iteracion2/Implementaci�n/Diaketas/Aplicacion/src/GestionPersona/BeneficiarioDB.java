@@ -5,11 +5,10 @@ package GestionPersona;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
-
-
-
 
 import Basedatos.GestorJDBC;
 
@@ -96,6 +95,51 @@ public class BeneficiarioDB {
 	}
 
 
-	
+	public ArrayList<Beneficiario> getBeneficiarios(String filtro){
+		ArrayList<Beneficiario> lista = new ArrayList<Beneficiario>();
+		try{
+			gestor.conectar();
+			ResultSet rs;
+			if(Pattern.matches("^\\d{0,8}", filtro)){		//Se trata de un DNI, se filtra por DNI
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios WHERE Personas.id = Beneficiarios.id AND" +
+						"Personas.dni LIKE '"+filtro+"%'");
+				
+			}else{
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios WHERE Personas.id = Beneficiaros.id AND"+
+						"(Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
+			}
+				
+				while (rs.next()){
+					Beneficiario p = new Beneficiario();
+					p.setId((Integer)rs.getObject("id"));
+					p.setDni(rs.getObject("dni").toString());
+					p.setNombre(rs.getObject("nombre").toString());
+					p.setApellido1(rs.getObject("apellido1").toString());
+					p.setApellido2(rs.getObject("apellido2").toString());
+						p.setfNacimiento(rs.getObject("fnac").toString());
+						p.setTelefono((Integer)rs.getObject("telefono"));
+					p.setLugarNacimiento(rs.getObject("lugarnac").toString());
+					p.setDomicilio(rs.getObject("domicilio").toString());
+						p.setCp((Integer)rs.getObject("cp"));
+					p.setEstado((Boolean)rs.getObject("estado"));
+						p.setfBaja(rs.getObject("fbaja").toString());
+					p.setemail(rs.getObject("email").toString());
+					
+					p.setLocalidad(rs.getObject("localidad").toString());
+					p.seteCivil(rs.getObject("ecivil").toString());
+					p.setnEstudios(rs.getObject("nestudios").toString());
+					p.setNacionalidad(rs.getObject("nacionalidad").toString());
+					p.setsEconomica(rs.getObject("seconomica").toString());
+					p.setObservacionesPersonales(rs.getObject("obspersonales").toString());
+					p.setObservacionesFamiliares(rs.getObject("obsfamiliares").toString());
+					p.setObservacionesVivienda(rs.getObject("obsvivienda").toString());
+					
+					lista.add(p);
+				}
+		}catch (Exception e){
+			JOptionPane.showMessageDialog(null, "Error al listar los beneficiarios BeneficiarioDB: "+e.getMessage());
+		}
+		return lista;
+	}
 
 }
