@@ -100,7 +100,7 @@ public class BeneficiarioDB {
 		try{
 			gestor.conectar();
 			ResultSet rs;
-			if(Pattern.matches("^\\d{0,8}", filtro)){		//Se trata de un DNI, se filtra por DNI
+			if(Pattern.matches("^\\d{0,8}\\w?", filtro)){		//Se trata de un DNI, se filtra por DNI
 				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios WHERE Personas.id = Beneficiarios.id AND" +
 						"Personas.dni LIKE '"+filtro+"%'");
 				

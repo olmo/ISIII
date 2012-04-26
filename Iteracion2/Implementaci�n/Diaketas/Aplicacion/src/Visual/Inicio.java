@@ -1,22 +1,24 @@
 package Visual;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
 import java.awt.Choice;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Inicio extends JPanel {
+	
+
 	private JTextField textField;
 	private VentanaPrincipal padre;
 	private Choice choice_busqueda;
 
 	
 	public Inicio(VentanaPrincipal p,String usuario) {
-		setSize(1200, 700);
+		setSize(800, 450);
 		padre=p;
 		padre.setusuario(usuario);
 		setLayout(null);
@@ -67,23 +69,6 @@ public class Inicio extends JPanel {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JLabel lblNewLabel_4 = new JLabel("Bienvenido "+padre.getusuario());
-		lblNewLabel_4.setBounds(1022, 9, 110, 14);
-		add(lblNewLabel_4);
-		
-		JButton btnCerrar = new JButton("Cerrar Sesion");
-		btnCerrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Home h= new Home(padre);
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(h);
-				padre.getContentPane().repaint();
-			}
-		});
-		btnCerrar.setBounds(1010, 36, 119, 23);
-		add(btnCerrar);
 
 		
 		
@@ -105,5 +90,4 @@ public class Inicio extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 }

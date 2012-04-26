@@ -31,10 +31,10 @@ public class Home extends JPanel {
 		add(passwordField_1);
 		passwordField_1.setColumns(20);
 		
-		JLabel lblContraseña = new JLabel("Contraseña:");
-		lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblContraseña.setBounds(911, 61, 96, 23);
-		add(lblContraseña);
+		JLabel lblContrasenha = new JLabel("Contraseña:");
+		lblContrasenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblContrasenha.setBounds(911, 61, 96, 23);
+		add(lblContrasenha);
 		
 		JButton Aceptar = new JButton("Aceptar");
 		Aceptar.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -50,7 +50,7 @@ public class Home extends JPanel {
 					if(padre.getcontrolador().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
 						padre.getContentPane().removeAll();
 						padre.getContentPane().validate();
-						padre.getContentPane().add(new Inicio(padre,textField.getText()));
+						padre.getContentPane().add(new Pestanas(padre, textField.getText()));
 						padre.getContentPane().repaint();
 					
 					}else{
