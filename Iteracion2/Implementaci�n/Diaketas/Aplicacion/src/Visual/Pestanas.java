@@ -13,6 +13,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Pestanas extends JPanel {
 	private JTextField textField;
@@ -48,17 +50,48 @@ public class Pestanas extends JPanel {
 		button.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton button_1 = new JButton("A\u00F1adir Donaci\u00F3n");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AniadirDonacion aD =  new AniadirDonacion();
+				removeAll();
+				validate();
+				add(aD);
+				repaint();
+			}
+		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton button_2 = new JButton("A\u00F1adir Donante");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Aniade Donante");
+				
+				//Igual que gestión de usuario->nuevo usuario (donante)
+			}
+		});
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JScrollPane scrollPane = new JScrollPane((Component) null);
 		
 		JButton button_3 = new JButton("Cancelar Donaci\u00F3n");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Cancelar donación
+			}
+		});
 		button_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton button_4 = new JButton("Confirmar Donaci\u00F3n");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConfirmarDonacion cDon = new ConfirmarDonacion();
+				
+				cDon.setVisible(true);
+				cDon.setAlwaysOnTop(true);
+				if(cDon.getConfirmacionModificacion())
+					;//Hacer  algo ...
+			}
+		});
 		button_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
