@@ -148,10 +148,10 @@ public DatosUsuario(VentanaPrincipal p) {
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),aux));
 					b.setbusqueda(textField_busqueda.getText(),aux);
 				}
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(b);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(b);
+				padre.panelUsuarios.repaint();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -165,10 +165,10 @@ public DatosUsuario(VentanaPrincipal p) {
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Home h= new Home(padre);
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(h);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(h);
+				padre.panelUsuarios.repaint();
 			}
 		});
 		btnCerrar.setBounds(1032, 36, 119, 23);
@@ -180,10 +180,10 @@ public DatosUsuario(VentanaPrincipal p) {
 				BusquedaUsuarios b = new BusquedaUsuarios(padre);
 				b.setTabla(padre.getcontrolador().BuscarPersonas(busquedaanterior, rolanterior));
 				
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(b);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(b);
+				padre.panelUsuarios.repaint();
 				
 			}
 		});
@@ -340,10 +340,10 @@ public DatosUsuario(VentanaPrincipal p) {
 					
 				}
 				
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(new Inicio(padre, padre.getusuario()));
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(new Inicio(padre, padre.getusuario()));
+				padre.panelUsuarios.repaint();
 
 			}
 		});
@@ -586,10 +586,10 @@ public DatosUsuario(VentanaPrincipal p) {
 		button_anadirfamiliar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				NuevoFamiliar nf= new NuevoFamiliar(padre,id);
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(nf);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(nf);
+				padre.panelUsuarios.repaint();
 			}
 		});
 		button_anadirfamiliar.setBounds(752, 464, 156, 23);
@@ -601,10 +601,10 @@ public DatosUsuario(VentanaPrincipal p) {
 			public void actionPerformed(ActionEvent e) {
 			
 				BusquedaFamiliares bf = new BusquedaFamiliares(padre,id);
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(bf);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(bf);
+				padre.panelUsuarios.repaint();
 			}
 		});
 		button_listargfamiliares.setBounds(934, 464, 150, 23);

@@ -19,6 +19,7 @@ public class Pestanas extends JPanel {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private VentanaPrincipal padre;
+	
 	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel.
@@ -33,11 +34,11 @@ public class Pestanas extends JPanel {
 		tabbedPane.setBounds(10, 64, 1180, 636);
 		
 		
-		Inicio inicio = new Inicio(this, usuario);
+		padre.panelUsuarios = new Inicio(p, usuario);
 		
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		padre.panelDonaciones = new JPanel();
+		padre.panelDonaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		
 		textField = new JTextField();
@@ -60,7 +61,7 @@ public class Pestanas extends JPanel {
 		
 		JButton button_4 = new JButton("Confirmar Donaci\u00F3n");
 		button_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GroupLayout gl_panel = new GroupLayout(panel);
+		GroupLayout gl_panel = new GroupLayout(padre.panelDonaciones);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 1173, Short.MAX_VALUE)
@@ -112,10 +113,10 @@ public class Pestanas extends JPanel {
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 461, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(59, Short.MAX_VALUE))
 		);
-		panel.setLayout(gl_panel);
+		padre.panelDonaciones.setLayout(gl_panel);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new EmptyBorder(5, 5, 5, 5));
+		padre.panelAyudas = new JPanel();
+		padre.panelAyudas.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -134,7 +135,7 @@ public class Pestanas extends JPanel {
 		
 		JButton button_8 = new JButton("Conceder Ayuda");
 		button_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		GroupLayout gl_panel_1 = new GroupLayout(padre.panelAyudas);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 1173, Short.MAX_VALUE)
@@ -182,10 +183,10 @@ public class Pestanas extends JPanel {
 							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 460, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(60, Short.MAX_VALUE))
 		);
-		panel_1.setLayout(gl_panel_1);
+		padre.panelAyudas.setLayout(gl_panel_1);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new EmptyBorder(5, 5, 5, 5));
+		padre.panelActuaciones = new JPanel();
+		padre.panelActuaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -198,7 +199,7 @@ public class Pestanas extends JPanel {
 		
 		JButton button_10 = new JButton("Ir a donaci\u00F3n/ayuda");
 		button_10.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		GroupLayout gl_panel_2 = new GroupLayout(padre.panelActuaciones);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 1173, Short.MAX_VALUE)
@@ -237,7 +238,7 @@ public class Pestanas extends JPanel {
 							.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 453, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(67, Short.MAX_VALUE))
 		);
-		panel_2.setLayout(gl_panel_2);
+		padre.panelActuaciones.setLayout(gl_panel_2);
 		//setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inicio, panel, textField, button, button_1, button_2, scrollPane, button_3, button_4, panel_1, textField_1, button_5, button_6, scrollPane_1, button_7, button_8, panel_2, textField_2, button_9, scrollPane_2, button_10, btnCerrarSesion, label}));
 		
 		JButton btnCerrarSesion = new JButton("Cerrar Sesion");
@@ -248,17 +249,13 @@ public class Pestanas extends JPanel {
 		label.setBounds(1080, 11, 110, 14);
 		add(label);
 		
-		tabbedPane.addTab("Personas", null, inicio, null);
-		tabbedPane.addTab("Donaciones", null, panel, null);
+		tabbedPane.addTab("Personas", null, padre.panelUsuarios, null);
+		tabbedPane.addTab("Donaciones", null, padre.panelDonaciones, null);
 
-		tabbedPane.addTab("Ayudas", null, panel_1, null);
-		tabbedPane.addTab("Actuaciones", null, panel_2, null);
+		tabbedPane.addTab("Ayudas", null, padre.panelAyudas, null);
+		tabbedPane.addTab("Actuaciones", null, padre.panelActuaciones, null);
 		
 		add(tabbedPane);
 		
-	}
-	
-	public void setusuario(String usuario){
-		padre.setusuario(usuario);
 	}
 }

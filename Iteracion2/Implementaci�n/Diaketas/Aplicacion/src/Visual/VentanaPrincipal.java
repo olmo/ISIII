@@ -23,7 +23,10 @@ public class VentanaPrincipal extends JFrame {
 	 * 
 	 */
 	private	JPanel panelcontenido;
-
+	public JPanel panelUsuarios;
+	public JPanel panelDonaciones;
+	public JPanel panelAyudas;
+	public JPanel panelActuaciones;
 	private ControladorPersona cp = new ControladorPersona();
 	private String trabajador;
 	
@@ -41,7 +44,7 @@ public class VentanaPrincipal extends JFrame {
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 		setLocation(50, 0);
 		setSize(1200, 700);
-		setResizable(false);
+		setResizable(true);
 		setTitle("Gesti\u00F3n Asociaci\u00F3n Diaketas");
 
 		panelcontenido= new Home(this);

@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -14,12 +13,12 @@ public class Inicio extends JPanel {
 	
 
 	private JTextField textField;
-	private Pestanas padre;
+	private VentanaPrincipal padre;
 	private Choice choice_busqueda;
 
 	
-	public Inicio(Pestanas p,String usuario) {
-		setSize(800, 500);
+	public Inicio(VentanaPrincipal p,String usuario) {
+		setSize(1100, 500);
 		padre=p;
 		padre.setusuario(usuario);
 		setLayout(null);
@@ -63,10 +62,10 @@ public class Inicio extends JPanel {
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
 					b.setbusqueda(textField.getText(),aux);
 				}
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(b);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(b);
+				padre.panelUsuarios.repaint();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -79,10 +78,10 @@ public class Inicio extends JPanel {
 				
 				NuevoUsuario nu = new NuevoUsuario(padre);
 				nu.modotrabajador();
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(nu);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(nu);
+				padre.panelUsuarios.repaint();
 			}
 		});
 	}
