@@ -76,11 +76,12 @@ public class Inicio extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				NuevoUsuario nu = new NuevoUsuario(padre);
-				nu.modotrabajador();
 				padre.panelUsuarios.removeAll();
 				padre.panelUsuarios.validate();
-				padre.panelUsuarios.add(nu);
+				
+				padre.panelUsuarios = new NuevoUsuario(padre);
+				((NuevoUsuario) padre.panelUsuarios).modotrabajador();
+
 				padre.panelUsuarios.repaint();
 			}
 		});

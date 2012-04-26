@@ -53,11 +53,12 @@ public class Pestanas extends JPanel {
 		JButton button_1 = new JButton("A\u00F1adir Donaci\u00F3n");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AniadirDonacion aD =  new AniadirDonacion();
-				removeAll();
-				validate();
-				add(aD);
-				repaint();
+				padre.panelDonaciones.removeAll();
+				padre.panelDonaciones.validate();
+				
+				padre.panelDonaciones =  new AniadirDonacion(padre);
+
+				padre.panelDonaciones.repaint();
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
