@@ -117,7 +117,7 @@ public class DatosUsuario extends JPanel {
  */
 public DatosUsuario(VentanaPrincipal p) {
 
-		setSize(1200, 700);
+	setSize(800, 500);
 		padre=p;
 		setLayout(null);
 		

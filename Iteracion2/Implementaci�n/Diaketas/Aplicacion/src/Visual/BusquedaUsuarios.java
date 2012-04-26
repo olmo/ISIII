@@ -24,7 +24,7 @@ public class BusquedaUsuarios extends JPanel {
 	private JTable table;
 	private TableModel tabla_modelo;
 	private JTextField textField;
-	private VentanaPrincipal padre;
+	private Pestanas padre;
 	private Choice choice_3;
 	
 	private String busqueda;
@@ -45,7 +45,7 @@ public class BusquedaUsuarios extends JPanel {
 	 */
 	public BusquedaUsuarios(VentanaPrincipal p) {
 		padre=p;
-		setSize(1200, 700);
+		setSize(800, 500);
 		table = new JTable();
 		table.getTableHeader().setReorderingAllowed(false) ;
 		setLayout(null);

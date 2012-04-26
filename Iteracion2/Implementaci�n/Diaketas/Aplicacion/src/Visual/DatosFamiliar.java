@@ -57,7 +57,7 @@ public class DatosFamiliar extends JPanel {
 	public DatosFamiliar(VentanaPrincipal p,Integer id) {
 		this.id=id;
 		padre=p;
-		setSize(1200, 700);
+		setSize(800, 500);
 		setLayout(null);
 		textField = new JTextField();
 		textField.setBounds(10, 11, 295, 23);

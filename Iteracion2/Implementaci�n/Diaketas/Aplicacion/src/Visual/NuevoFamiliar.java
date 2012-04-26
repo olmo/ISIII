@@ -37,7 +37,7 @@ public class NuevoFamiliar extends JPanel {
 	public NuevoFamiliar(VentanaPrincipal p,int id_bene) {
 		this.id_beneficiario=id_bene;
 		padre=p;
-		setSize(1200, 700);
+		setSize(800, 500);
 		setLayout(null);
 		textField = new JTextField();
 		textField.setBounds(10, 11, 295, 23);

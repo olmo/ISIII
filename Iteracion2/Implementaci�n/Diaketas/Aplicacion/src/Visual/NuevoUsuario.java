@@ -111,7 +111,7 @@ public class NuevoUsuario extends JPanel {
 	 */
 	public NuevoUsuario(VentanaPrincipal p) {
 
-			setSize(1200, 700);
+			setSize(800, 500);
 			padre=p;
 			setLayout(null);
 			

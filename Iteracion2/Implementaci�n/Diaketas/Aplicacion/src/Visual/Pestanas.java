@@ -33,7 +33,7 @@ public class Pestanas extends JPanel {
 		tabbedPane.setBounds(10, 64, 1180, 636);
 		
 		
-		Inicio inicio = new Inicio(p, usuario);
+		Inicio inicio = new Inicio(this, usuario);
 		
 		
 		JPanel panel = new JPanel();
@@ -256,5 +256,9 @@ public class Pestanas extends JPanel {
 		
 		add(tabbedPane);
 		
+	}
+	
+	public void setusuario(String usuario){
+		padre.setusuario(usuario);
 	}
 }

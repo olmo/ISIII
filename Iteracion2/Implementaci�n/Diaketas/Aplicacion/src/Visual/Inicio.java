@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -13,12 +14,12 @@ public class Inicio extends JPanel {
 	
 
 	private JTextField textField;
-	private VentanaPrincipal padre;
+	private Pestanas padre;
 	private Choice choice_busqueda;
 
 	
-	public Inicio(VentanaPrincipal p,String usuario) {
-		setSize(800, 450);
+	public Inicio(Pestanas p,String usuario) {
+		setSize(800, 500);
 		padre=p;
 		padre.setusuario(usuario);
 		setLayout(null);

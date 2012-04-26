@@ -43,7 +43,7 @@ public class BusquedaFamiliares extends JPanel {
 	public BusquedaFamiliares(VentanaPrincipal p,Integer id) {
 		padre=p;
 		id_beneficiario=id;
-		setSize(1200, 700);
+		setSize(800, 500);
 		setLayout(null);
 		
 		table = new JTable();
