@@ -45,14 +45,14 @@ public class BusquedaUsuarios extends JPanel {
 	 */
 	public BusquedaUsuarios(VentanaPrincipal p) {
 		padre=p;
-		setSize(1100, 650);
+		//setSize(1100, 650);
 		table = new JTable();
 		table.getTableHeader().setReorderingAllowed(false) ;
-		setLayout(null);
+		//setLayout(null);
 		
 		choice_3 = new Choice();
 		choice_3.setBounds(416, 13, 166, 23);
-		add(choice_3);
+		padre.panelUsuarios.add(choice_3);
 		choice_3.add("todos");
 		choice_3.add("trabajador");
 		choice_3.add("beneficiario");
@@ -63,17 +63,17 @@ public class BusquedaUsuarios extends JPanel {
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(0, 86, 1200, 524);
-		add(scrollPane);
+		padre.panelUsuarios.add(scrollPane);
 		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVolver.setBounds(456, 638, 156, 28);
-		add(btnVolver);
+		padre.panelUsuarios.add(btnVolver);
 		
 		JButton btnVerDetalles = new JButton("Ver Detalles");
 		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerDetalles.setBounds(622, 638, 137, 28);
-		add(btnVerDetalles);
+		padre.panelUsuarios.add(btnVerDetalles);
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				DatosUsuario d=new DatosUsuario(padre);
@@ -127,13 +127,13 @@ public class BusquedaUsuarios extends JPanel {
 		
 		textField = new JTextField();
 		textField.setBounds(10, 11, 295, 23);
-		add(textField);
+		padre.panelUsuarios.add(textField);
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(15);
 		
 		JButton btnNewButton = new JButton("Buscar");
 		btnNewButton.setBounds(315, 10, 95, 25);
-		add(btnNewButton);
+		padre.panelUsuarios.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -156,7 +156,7 @@ public class BusquedaUsuarios extends JPanel {
 		
 		JLabel lblNewLabel_4 = new JLabel("Bienvenido "+padre.getusuario());
 		lblNewLabel_4.setBounds(1022, 9, 110, 14);
-		add(lblNewLabel_4);
+		padre.panelUsuarios.add(lblNewLabel_4);
 		
 		JButton btnCerrar = new JButton("Cerrar Sesion");
 		btnCerrar.addActionListener(new ActionListener() {
@@ -170,7 +170,7 @@ public class BusquedaUsuarios extends JPanel {
 			}
 		});
 		btnCerrar.setBounds(1032, 36, 119, 23);
-		add(btnCerrar);
+		padre.panelUsuarios.add(btnCerrar);
 		
 		
 	}

@@ -52,19 +52,19 @@ public class Inicio extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				BusquedaUsuarios b = new BusquedaUsuarios(padre);
-				String aux=choice_busqueda.getSelectedItem();
-				if(aux.equals("todos")){
-					b.setbusqueda(textField.getText(),null);
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
-				}else{
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-					b.setbusqueda(textField.getText(),aux);
-				}
 				padre.panelUsuarios.removeAll();
 				padre.panelUsuarios.validate();
-				padre.panelUsuarios.add(b);
+				
+				padre.panelUsuarios = new BusquedaUsuarios(padre);
+				String aux=choice_busqueda.getSelectedItem();
+				if(aux.equals("todos")){
+					((BusquedaUsuarios) padre.panelUsuarios).setbusqueda(textField.getText(),null);
+					((BusquedaUsuarios) padre.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+				}else{
+					((BusquedaUsuarios) padre.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					((BusquedaUsuarios) padre.panelUsuarios).setbusqueda(textField.getText(),aux);
+				}
+
 				padre.panelUsuarios.repaint();
 			}
 		});
