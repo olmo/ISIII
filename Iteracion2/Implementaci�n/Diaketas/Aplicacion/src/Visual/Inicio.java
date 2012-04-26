@@ -10,6 +10,8 @@ import java.awt.Choice;
 import java.awt.Font;
 
 public class Inicio extends JPanel {
+	
+
 	private JTextField textField;
 	private VentanaPrincipal padre;
 	private Choice choice_busqueda;

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Aplicacion/src"/>
+	<classpathentry kind="lib" path="Ejecutable/diaketas.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/asce/Documents/ETSIIT/ISIII/repositorio/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="output" path="Aplicacion/bin"/>
+</classpath>

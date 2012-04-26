@@ -31,10 +31,10 @@ public class Home extends JPanel {
 		add(passwordField_1);
 		passwordField_1.setColumns(20);
 		
-		JLabel lblContraseña = new JLabel("Contraseña:");
-		lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblContraseña.setBounds(911, 61, 96, 23);
-		add(lblContraseña);
+		JLabel lblContrasenha = new JLabel("ContraseÃ±a:");
+		lblContrasenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblContrasenha.setBounds(911, 61, 96, 23);
+		add(lblContrasenha);
 		
 		JButton Aceptar = new JButton("Aceptar");
 		Aceptar.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -44,7 +44,7 @@ public class Home extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(textField.getText().equals("") && passwordField_1.getText().equals(""))
-					Mensaje.setText("Usuario/Contraseña vacios");
+					Mensaje.setText("Usuario/Contraseï¿½a vacios");
 				else{
 					CodificacionPW c=new CodificacionPW(passwordField_1.getText());
 					if(padre.getcontrolador().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
@@ -54,7 +54,7 @@ public class Home extends JPanel {
 						padre.getContentPane().repaint();
 					
 					}else{
-						Mensaje.setText("Usuario/Contraseña incorrectos");
+						Mensaje.setText("Usuario/Contraseï¿½a incorrectos");
 					}
 				}
 			}
@@ -86,7 +86,7 @@ public class Home extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JTextField passwordField_1;
-	private final JLabel Mensaje = new JLabel("Entre con su usuario y contraseña");
+	private final JLabel Mensaje = new JLabel("Entre con su usuario y contraseï¿½a");
 	
 	
 	
