@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -18,7 +19,7 @@ public class Inicio extends JPanel {
 
 	
 	public Inicio(VentanaPrincipal p,String usuario) {
-		setSize(1100, 500);
+		setSize(1100,800);
 		padre=p;
 		padre.setusuario(usuario);
 		setLayout(null);
@@ -76,11 +77,18 @@ public class Inicio extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				padre.panelUsuarios.removeAll();
-				padre.panelUsuarios.validate();
 				
-				padre.panelUsuarios = new NuevoUsuario(padre);
-				((NuevoUsuario) padre.panelUsuarios).modotrabajador();
+//				padre.panelDonaciones.removeAll();
+//				//padre.panelDonaciones.validate();
+//				padre.panelDonaciones.add(new AniadirDonacion(padre));
+//				padre.panelDonaciones.validate();
+//				padre.panelDonaciones.repaint();
+				
+				padre.panelUsuarios.removeAll();
+				NuevoUsuario nU = new NuevoUsuario(padre);
+				nU.modotrabajador();
+				padre.panelUsuarios.add(nU);
+				padre.panelUsuarios.validate();
 
 				padre.panelUsuarios.repaint();
 			}

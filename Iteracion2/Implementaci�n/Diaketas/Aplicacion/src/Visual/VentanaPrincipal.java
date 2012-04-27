@@ -46,7 +46,6 @@ public class VentanaPrincipal extends JFrame {
 				}				
 			}
 		});
-		this.
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 		setLocation(50, 0);
 		setSize(1200, 700);
@@ -72,6 +71,8 @@ public class VentanaPrincipal extends JFrame {
 
 		panelcontenido= new Home(this);
 		getContentPane().add(panelcontenido);
+		setExtendedState(MAXIMIZED_BOTH);
+
 		
 		
 	}

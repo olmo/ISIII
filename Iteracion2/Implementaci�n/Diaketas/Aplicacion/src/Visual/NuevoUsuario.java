@@ -109,13 +109,11 @@ public class NuevoUsuario extends JPanel{
 	/**
 	 * Create the panel.
 	 */
+	@SuppressWarnings("deprecation")
 	public NuevoUsuario(VentanaPrincipal p) {
 
-		//padre.panelUsuarios.setSize(800, 500);
-			padre=p;
-			//padre.panelUsuarios.setLayout(null);
-			
-			
+			padre=p;			
+			setSize(padre.panelUsuarios.getSize());
 			
 			choice_busqueda=new Choice();
 			choice_busqueda.setBounds(416, 13, 166, 23);
@@ -146,41 +144,23 @@ public class NuevoUsuario extends JPanel{
 					}
 					
 					
-					padre.getContentPane().removeAll();
-					padre.getContentPane().validate();
-					padre.getContentPane().add(b);
-					padre.getContentPane().repaint();
+					padre.panelUsuarios.removeAll();
+					padre.panelUsuarios.validate();
+					padre.panelUsuarios.add(b);
+					padre.panelUsuarios.repaint();
 				}
 			});
 			btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			
 			
-			
-			JLabel lblNewLabel_4 = new JLabel("Bienvenido "+padre.getusuario());
-			lblNewLabel_4.setBounds(1022, 9, 110, 14);
-			padre.panelUsuarios.add(lblNewLabel_4);
-			
-			JButton btnCerrar = new JButton("Cerrar Sesion");
-			btnCerrar.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					Home h= new Home(padre);
-					padre.getContentPane().removeAll();
-					padre.getContentPane().validate();
-					padre.getContentPane().add(h);
-					padre.getContentPane().repaint();
-				}
-			});
-			btnCerrar.setBounds(1032, 36, 119, 23);
-			padre.panelUsuarios.add(btnCerrar);
-			
 			JButton button = new JButton("Volver");
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Inicio b = new Inicio(padre,padre.getusuario());
-					padre.getContentPane().removeAll();
-					padre.getContentPane().validate();
-					padre.getContentPane().add(b);
-					padre.getContentPane().repaint();
+					padre.panelUsuarios.removeAll();
+					padre.panelUsuarios.validate();
+					padre.panelUsuarios.add(b);
+					padre.panelUsuarios.repaint();
 					
 				}
 			});
@@ -340,10 +320,10 @@ public class NuevoUsuario extends JPanel{
 								d.modobeneficiario();
 							}
 							
-							padre.getContentPane().removeAll();
-							padre.getContentPane().validate();
-							padre.getContentPane().add(d);
-							padre.getContentPane().repaint();
+							padre.panelUsuarios.removeAll();
+							padre.panelUsuarios.validate();
+							padre.panelUsuarios.add(d);
+							padre.panelUsuarios.repaint();
 							JOptionPane.showMessageDialog(null, "Se ha introducido correctamente el "+choice_Rol.getSelectedItem());
 							
 						}
@@ -458,10 +438,6 @@ public class NuevoUsuario extends JPanel{
 			padre.panelUsuarios.add(textField_cp);
 			textField_cp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			textField_cp.setColumns(5);
-			
-			
-			
-			
 			
 			
 			JLabel label_3 = new JLabel("Direccion:");

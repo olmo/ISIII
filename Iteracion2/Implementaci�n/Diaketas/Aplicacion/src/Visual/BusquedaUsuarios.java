@@ -45,7 +45,8 @@ public class BusquedaUsuarios extends JPanel {
 	 */
 	public BusquedaUsuarios(VentanaPrincipal p) {
 		padre=p;
-		//setSize(1100, 650);
+		setSize(padre.panelUsuarios.getSize());
+		
 		table = new JTable();
 		table.getTableHeader().setReorderingAllowed(false) ;
 		//setLayout(null);
@@ -107,20 +108,28 @@ public class BusquedaUsuarios extends JPanel {
 						
 			 
 				d.setbusquedaanterior(busqueda, rolbusqueda);
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(d);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(d);
+				padre.panelUsuarios.validate();				
+				padre.panelUsuarios.repaint();
 				
 				
 			}
 		});
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(new Inicio(padre,padre.getusuario()));
-				padre.getContentPane().repaint();
+//				padre.panelUsuarios.removeAll();
+//				padre.panelUsuarios.validate();
+//				padre.panelUsuarios.add(new Inicio(padre,padre.getusuario()));
+//				padre.panelUsuarios.validate();
+//				padre.panelUsuarios.repaint();
+				
+				Inicio b = new Inicio(padre,padre.getusuario());
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.add(b);
+				padre.panelUsuarios.repaint();
 
 			}
 		});
@@ -136,41 +145,40 @@ public class BusquedaUsuarios extends JPanel {
 		padre.panelUsuarios.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				padre.panelUsuarios.removeAll();
+				padre.panelUsuarios.validate();
+				
+				padre.panelUsuarios.add(new BusquedaUsuarios(padre));
+				padre.panelUsuarios.repaint();
+//				String aux=choice_3.getSelectedItem();
+//				//String aux = "todos";
+//				if(aux.equals("todos")){
+//					((BusquedaUsuarios) padre.panelUsuarios).setbusqueda(textField.getText(),null);
+//					((BusquedaUsuarios) padre.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+//				}else{
+//					((BusquedaUsuarios) padre.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+//					((BusquedaUsuarios) padre.panelUsuarios).setbusqueda(textField.getText(),aux);
+//				}
 
-				//BusquedaUsuarios b = new BusquedaUsuarios(padre);
-				String aux=choice_3.getSelectedItem();
-				if(aux.equals("todos")){
-					setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
-					setbusqueda(textField.getText(),null);
-				}else{
-					setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-					setbusqueda(textField.getText(),aux);
-				}
-				//padre.getContentPane().removeAll();
-				//padre.getContentPane().validate();
-				//padre.getContentPane().add(b);
-				padre.getContentPane().repaint();
+				padre.panelUsuarios.repaint();
+//				//BusquedaUsuarios b = new BusquedaUsuarios(padre);
+//				String aux=choice_3.getSelectedItem();
+//				if(aux.equals("todos")){
+//					setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+//					setbusqueda(textField.getText(),null);
+//				}else{
+//					setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+//					setbusqueda(textField.getText(),aux);
+//				}
+//				padre.panelUsuarios.removeAll();
+//				padre.panelUsuarios.validate();
+//				padre.panelUsuarios.add(b);
+//				padre.panelUsuarios.repaint();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_4 = new JLabel("Bienvenido "+padre.getusuario());
-		lblNewLabel_4.setBounds(1022, 9, 110, 14);
-		padre.panelUsuarios.add(lblNewLabel_4);
-		
-		JButton btnCerrar = new JButton("Cerrar Sesion");
-		btnCerrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Home h= new Home(padre);
-
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(h);
-				padre.getContentPane().repaint();
-			}
-		});
-		btnCerrar.setBounds(1032, 36, 119, 23);
-		padre.panelUsuarios.add(btnCerrar);
 		
 		
 	}
