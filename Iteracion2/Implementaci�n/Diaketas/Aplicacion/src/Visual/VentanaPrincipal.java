@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import GestionAyudas.ControladorAyudas;
@@ -73,6 +74,11 @@ public class VentanaPrincipal extends JFrame {
 		panelcontenido= new Home(this);
 		getContentPane().add(panelcontenido);
 		
+		try{
+		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, "Excepcion: "+e.getMessage());
+		}
 		
 	}
 	
