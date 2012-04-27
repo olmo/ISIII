@@ -21,13 +21,14 @@ public class AniadirDonacion extends JPanel{
 	static private JTextField textField_1;
 	private VentanaPrincipal padre;
 	private static final long serialVersionUID = 1L;
-
+	PanelInicio ini;
 	/**
 	 * Create the panel.
 	 */
-	public AniadirDonacion(VentanaPrincipal p) {
+	public AniadirDonacion(VentanaPrincipal p,PanelInicio pIni) {
+		ini=pIni;
 		padre=p;
-		setSize(padre.panelDonaciones.getSize());
+		setSize(PanelInicio.tamanoPaneles);
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(15);
@@ -44,12 +45,12 @@ public class AniadirDonacion extends JPanel{
 		JButton button_1 = new JButton("Volver");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				padre.panelDonaciones.removeAll();
+				ini.panelDonaciones.removeAll();
 				
-				padre.panelDonaciones.add(new PanelDonaciones(padre, padre.getusuario()));
-				padre.panelDonaciones.validate();
+				ini.panelDonaciones.add(new PanelDonaciones(padre, ini));
+				ini.panelDonaciones.validate();
 				
-				padre.panelDonaciones.repaint();
+				ini.panelDonaciones.repaint();
 				
 			}
 		});
@@ -64,12 +65,12 @@ public class AniadirDonacion extends JPanel{
 				}else{
 					JOptionPane.showMessageDialog(null, "Donacion no realizada");
 				}
-				padre.panelDonaciones.removeAll();
-				padre.panelDonaciones.validate();
+				ini.panelDonaciones.removeAll();
+				ini.panelDonaciones.validate();
 				
 //				padre.panelDonaciones = new PanelDonaciones(padre);
 
-				padre.panelDonaciones.repaint();
+				ini.panelDonaciones.repaint();
 			}
 		});
 		

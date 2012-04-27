@@ -35,6 +35,8 @@ public class DatosFamiliar extends JPanel {
 	private JTextField dni;
 	private Integer id;
 
+	protected PanelInicio ini;
+
 	/**
 	 * Create the panel.
 	 */
@@ -54,10 +56,11 @@ public class DatosFamiliar extends JPanel {
 		return this.id;
 	}
 	
-	public DatosFamiliar(VentanaPrincipal p,Integer id) {
+	public DatosFamiliar(VentanaPrincipal p,Integer id,PanelInicio pIni) {
+		ini=pIni;
 		this.id=id;
 		padre=p;
-		setSize(800, 500);
+		setSize(PanelInicio.tamanoPaneles);
 		setLayout(null);
 		textField = new JTextField();
 		textField.setBounds(10, 11, 295, 23);
@@ -83,7 +86,7 @@ public class DatosFamiliar extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				BusquedaUsuarios b = new BusquedaUsuarios(padre);
+				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
@@ -174,7 +177,7 @@ public class DatosFamiliar extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Familiar f=new Familiar();
 				f=padre.getcontrolador().consultarFamiliar(getId());
-				BusquedaFamiliares bf = new BusquedaFamiliares(padre,f.getidBeneficiario());
+				BusquedaFamiliares bf = new BusquedaFamiliares(padre,f.getidBeneficiario(),ini);
 				padre.getContentPane().removeAll();
 				padre.getContentPane().validate();
 				padre.getContentPane().add(bf);
@@ -263,7 +266,7 @@ public class DatosFamiliar extends JPanel {
 
 				padre.getContentPane().removeAll();
 				padre.getContentPane().validate();
-				padre.getContentPane().add(new PanelPersonas(padre, padre.getusuario()));
+				padre.getContentPane().add(new PanelPersonas(padre, ini));
 				padre.getContentPane().repaint();
 				
 				

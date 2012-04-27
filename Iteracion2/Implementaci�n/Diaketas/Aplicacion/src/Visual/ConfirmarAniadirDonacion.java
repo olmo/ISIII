@@ -15,7 +15,7 @@ public class ConfirmarAniadirDonacion extends JDialog {
 	public ConfirmarAniadirDonacion() {
 		setTitle("Confirmaci\u00F3n de Seguridad");
 		setModal(true);
-		setSize(new Dimension(420, 150));
+		setSize(PanelInicio.tamanoPaneles);
 		setResizable(false);
 		setAlwaysOnTop(true);
 		getContentPane().setLayout(null);

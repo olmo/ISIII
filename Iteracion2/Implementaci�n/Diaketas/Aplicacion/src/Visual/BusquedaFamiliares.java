@@ -26,6 +26,7 @@ public class BusquedaFamiliares extends JPanel {
 	private JTextField textField;
 	private VentanaPrincipal padre;
 	private Choice choice_3;
+	PanelInicio ini;
 	
 	private int id_beneficiario;
 	/**
@@ -40,10 +41,11 @@ public class BusquedaFamiliares extends JPanel {
 		table.setModel(tabla_modelo);
 	}
 	
-	public BusquedaFamiliares(VentanaPrincipal p,Integer id) {
+	public BusquedaFamiliares(VentanaPrincipal p,Integer id,PanelInicio pIni) {
+		ini=pIni;
 		padre=p;
 		id_beneficiario=id;
-		setSize(800, 500);
+		setSize(PanelInicio.tamanoPaneles);
 		setLayout(null);
 		
 		table = new JTable();
@@ -77,7 +79,7 @@ public class BusquedaFamiliares extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Integer id=new Integer(table.getModel().getValueAt(table.getSelectedRow(), 0).toString());
 				Familiar f=padre.getcontrolador().consultarFamiliar(id);
-				DatosFamiliar df=new DatosFamiliar(padre,id);
+				DatosFamiliar df=new DatosFamiliar(padre,id,ini);
 				df.rellenar(f);
 				
 				
@@ -90,7 +92,7 @@ public class BusquedaFamiliares extends JPanel {
 		});
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DatosUsuario du = new DatosUsuario(padre);
+				DatosUsuario du = new DatosUsuario(padre,ini);
 				du.rellenar(padre.getcontrolador().consultarBeneficiario(id_beneficiario));
 				du.modobeneficiario();
 				padre.getContentPane().removeAll();
@@ -113,7 +115,7 @@ public class BusquedaFamiliares extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				padre.getContentPane().removeAll();
-				BusquedaUsuarios b = new BusquedaUsuarios(padre);
+				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));

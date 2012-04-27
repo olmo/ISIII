@@ -26,6 +26,7 @@ public class BusquedaUsuarios extends JPanel {
 	private JTextField textField;
 	private VentanaPrincipal padre;
 	private Choice choice_3;
+	private PanelInicio ini;
 	
 	private String busqueda;
 	private String rolbusqueda;
@@ -43,9 +44,10 @@ public class BusquedaUsuarios extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public BusquedaUsuarios(VentanaPrincipal p) {
+	public BusquedaUsuarios(VentanaPrincipal p, PanelInicio pIni) {
+		ini=pIni;
 		padre=p;
-		setSize(padre.panelUsuarios.getSize());
+		setSize(PanelInicio.tamanoPaneles);
 		
 		table = new JTable();
 		table.getTableHeader().setReorderingAllowed(false) ;
@@ -53,7 +55,7 @@ public class BusquedaUsuarios extends JPanel {
 		
 		choice_3 = new Choice();
 		choice_3.setBounds(416, 13, 166, 23);
-		padre.panelUsuarios.add(choice_3);
+		add(choice_3);
 		choice_3.add("todos");
 		choice_3.add("trabajador");
 		choice_3.add("beneficiario");
@@ -64,20 +66,20 @@ public class BusquedaUsuarios extends JPanel {
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(0, 86, 1000, 200);
-		padre.panelUsuarios.add(scrollPane);
+		add(scrollPane);
 		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVolver.setBounds(150, 300, 156, 28);
-		padre.panelUsuarios.add(btnVolver);
+		add(btnVolver);
 		
 		JButton btnVerDetalles = new JButton("Ver Detalles");
 		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerDetalles.setBounds(350, 300, 137, 28);
-		padre.panelUsuarios.add(btnVerDetalles);
+		add(btnVerDetalles);
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
-				DatosUsuario d=new DatosUsuario(padre);
+				DatosUsuario d=new DatosUsuario(padre,ini);
 
 				d.setbusquedaanterior(busqueda, rolbusqueda);
 			
@@ -108,60 +110,60 @@ public class BusquedaUsuarios extends JPanel {
 						
 			 
 				d.setbusquedaanterior(busqueda, rolbusqueda);
-				padre.panelUsuarios.removeAll();
-				padre.panelUsuarios.validate();
-				padre.panelUsuarios.add(d);
-				padre.panelUsuarios.validate();				
-				padre.panelUsuarios.repaint();
+				ini.panelUsuarios.removeAll();
+				ini.panelUsuarios.validate();
+				ini.panelUsuarios.add(d);
+				ini.panelUsuarios.validate();				
+				ini.panelUsuarios.repaint();
 				
 				
 			}
 		});
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				padre.panelUsuarios.removeAll();
-//				padre.panelUsuarios.validate();
-//				padre.panelUsuarios.add(new Inicio(padre,padre.getusuario()));
-//				padre.panelUsuarios.validate();
-//				padre.panelUsuarios.repaint();
+//				ini.panelUsuarios.removeAll();
+//				ini.panelUsuarios.validate();
+//				ini.panelUsuarios.add(new Inicio(padre,ini.getusuario()));
+//				ini.panelUsuarios.validate();
+//				ini.panelUsuarios.repaint();
 				
-				PanelPersonas b = new PanelPersonas(padre,padre.getusuario());
-				padre.panelUsuarios.removeAll();
-				padre.panelUsuarios.validate();
-				padre.panelUsuarios.add(b);
-				padre.panelUsuarios.repaint();
+				PanelPersonas b = new PanelPersonas(padre,ini);
+				ini.panelUsuarios.removeAll();
+				ini.panelUsuarios.validate();
+				ini.panelUsuarios.add(b);
+				ini.panelUsuarios.repaint();
 
 			}
 		});
 		
 		textField = new JTextField();
 		textField.setBounds(10, 11, 295, 23);
-		padre.panelUsuarios.add(textField);
+		ini.panelUsuarios.add(textField);
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(15);
 		
 		JButton btnNewButton = new JButton("Buscar");
 		btnNewButton.setBounds(315, 10, 95, 25);
-		padre.panelUsuarios.add(btnNewButton);
+		ini.panelUsuarios.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				padre.panelUsuarios.removeAll();
-				padre.panelUsuarios.validate();
+				ini.panelUsuarios.removeAll();
+				ini.panelUsuarios.validate();
 				
-				padre.panelUsuarios.add(new BusquedaUsuarios(padre));
-				padre.panelUsuarios.repaint();
+				ini.panelUsuarios.add(new BusquedaUsuarios(padre,ini));
+				ini.panelUsuarios.repaint();
 //				String aux=choice_3.getSelectedItem();
 //				//String aux = "todos";
 //				if(aux.equals("todos")){
-//					((BusquedaUsuarios) padre.panelUsuarios).setbusqueda(textField.getText(),null);
-//					((BusquedaUsuarios) padre.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+//					((BusquedaUsuarios) ini.panelUsuarios).setbusqueda(textField.getText(),null);
+//					((BusquedaUsuarios) ini.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
 //				}else{
-//					((BusquedaUsuarios) padre.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-//					((BusquedaUsuarios) padre.panelUsuarios).setbusqueda(textField.getText(),aux);
+//					((BusquedaUsuarios) ini.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+//					((BusquedaUsuarios) ini.panelUsuarios).setbusqueda(textField.getText(),aux);
 //				}
 
-				padre.panelUsuarios.repaint();
+				ini.panelUsuarios.repaint();
 //				//BusquedaUsuarios b = new BusquedaUsuarios(padre);
 //				String aux=choice_3.getSelectedItem();
 //				if(aux.equals("todos")){

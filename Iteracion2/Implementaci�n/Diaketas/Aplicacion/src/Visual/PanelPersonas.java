@@ -16,12 +16,15 @@ public class PanelPersonas extends JPanel {
 	private JTextField textField;
 	private VentanaPrincipal padre;
 	private Choice choice_busqueda;
+	private PanelInicio ini;
 
 	
-	public PanelPersonas(VentanaPrincipal p,String usuario) {
-		setSize(1100,800);
+	public PanelPersonas(VentanaPrincipal p,PanelInicio pIni) {
 		padre=p;
-		padre.setusuario(usuario);
+		ini=pIni;
+		
+		setSize(PanelInicio.tamanoPaneles);
+
 		setLayout(null);
 		
 		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
@@ -54,20 +57,20 @@ public class PanelPersonas extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				padre.panelUsuarios.removeAll();
-				padre.panelUsuarios.validate();
+				ini.panelUsuarios.removeAll();
+				ini.panelUsuarios.validate();
 				
-				padre.panelUsuarios = new BusquedaUsuarios(padre);
+				ini.panelUsuarios = new BusquedaUsuarios(padre,ini);
 				String aux=choice_busqueda.getSelectedItem();
 				if(aux.equals("todos")){
-					((BusquedaUsuarios) padre.panelUsuarios).setbusqueda(textField.getText(),null);
-					((BusquedaUsuarios) padre.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					((BusquedaUsuarios) ini.panelUsuarios).setbusqueda(textField.getText(),null);
+					((BusquedaUsuarios) ini.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
 				}else{
-					((BusquedaUsuarios) padre.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-					((BusquedaUsuarios) padre.panelUsuarios).setbusqueda(textField.getText(),aux);
+					((BusquedaUsuarios) ini.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					((BusquedaUsuarios) ini.panelUsuarios).setbusqueda(textField.getText(),aux);
 				}
 
-				padre.panelUsuarios.repaint();
+				ini.panelUsuarios.repaint();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -85,13 +88,13 @@ public class PanelPersonas extends JPanel {
 //				padre.panelDonaciones.validate();
 //				padre.panelDonaciones.repaint();
 				
-				padre.panelUsuarios.removeAll();
-				NuevoUsuario nU = new NuevoUsuario(padre);
+				ini.panelUsuarios.removeAll();
+				NuevoUsuario nU = new NuevoUsuario(padre,ini);
 				nU.modotrabajador();
-				padre.panelUsuarios.add(nU);
-				padre.panelUsuarios.validate();
+				ini.panelUsuarios.add(nU);
+				ini.panelUsuarios.validate();
 
-				padre.panelUsuarios.repaint();
+				ini.panelUsuarios.repaint();
 			}
 		});
 	}

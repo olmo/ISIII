@@ -31,13 +31,16 @@ public class NuevoFamiliar extends JPanel {
 	private JTextField parentesco;
 	private int id_beneficiario;
 	private JTextField dni;
+
+	private PanelInicio ini;
 	/**
 	 * Create the panel.
 	 */
-	public NuevoFamiliar(VentanaPrincipal p,int id_bene) {
+	public NuevoFamiliar(VentanaPrincipal p,int id_bene, PanelInicio pIni) {
+		ini=pIni;
 		this.id_beneficiario=id_bene;
 		padre=p;
-		setSize(800, 500);
+		setSize(PanelInicio.tamanoPaneles);
 		setLayout(null);
 		textField = new JTextField();
 		textField.setBounds(10, 11, 295, 23);
@@ -62,7 +65,7 @@ public class NuevoFamiliar extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				BusquedaUsuarios b = new BusquedaUsuarios(padre);
+				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
 					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
@@ -149,7 +152,7 @@ public class NuevoFamiliar extends JPanel {
 		JButton button = new JButton("Volver");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DatosUsuario du= new DatosUsuario(padre);
+				DatosUsuario du= new DatosUsuario(padre,ini);
 				du.rellenar(padre.getcontrolador().consultarBeneficiario(id_beneficiario));
 				du.modobeneficiario();
 				padre.getContentPane().removeAll();
@@ -201,7 +204,7 @@ public class NuevoFamiliar extends JPanel {
 				id=padre.getcontrolador().darAltaPersona(tdni,tnombre,tapellido1,tapellido2,fnac,telefono,lugarnac,domicilio,cp,email);
 				boolean correcto=false;
 				if(id!=-1){	
-					DatosFamiliar df=new DatosFamiliar(padre,id);
+					DatosFamiliar df=new DatosFamiliar(padre,id,ini);
 					try{
 					
 					padre.getcontrolador().introducirDatosFamiliar(id,id_beneficiario,parentesco.getText(),ocupacion.getText());

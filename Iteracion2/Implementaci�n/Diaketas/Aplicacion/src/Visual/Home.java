@@ -21,7 +21,7 @@ public class Home extends JPanel {
 
 	
 	public Home(VentanaPrincipal mipadre) {
-		setSize(1200, 700);
+		setSize(mipadre.getSize());
 		this.padre=mipadre;
 		setLayout(null);
 		
@@ -48,9 +48,10 @@ public class Home extends JPanel {
 				else{
 					CodificacionPW c=new CodificacionPW(passwordField_1.getText());
 					if(padre.getcontrolador().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
+						PanelInicio panIni= new PanelInicio(padre, textField.getText());
 						padre.getContentPane().removeAll();
 						padre.getContentPane().validate();
-						padre.getContentPane().add(new Pestanas(padre, textField.getText()));
+						padre.getContentPane().add(panIni);
 						padre.getContentPane().repaint();
 					
 					}else{

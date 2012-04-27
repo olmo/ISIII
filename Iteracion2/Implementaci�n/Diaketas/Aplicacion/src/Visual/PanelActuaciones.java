@@ -16,12 +16,13 @@ public class PanelActuaciones extends JPanel {
 
 	private JTextField textField_2;
 	VentanaPrincipal padre;
-
+	PanelInicio ini;
 	/**
 	 * Create the panel.
 	 */
-	public PanelActuaciones(VentanaPrincipal p, String usuario) {
-		setSize(1100, 500);
+	public PanelActuaciones(VentanaPrincipal p, PanelInicio pIni) {
+		ini=pIni;
+		setSize(PanelInicio.tamanoPaneles);
 
 		padre = p;
 		textField_2 = new JTextField();

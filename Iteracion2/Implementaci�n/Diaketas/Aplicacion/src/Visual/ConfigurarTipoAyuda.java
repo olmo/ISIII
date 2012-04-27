@@ -20,34 +20,35 @@ public class ConfigurarTipoAyuda extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private VentanaPrincipal padre;
 	private JTable table;
+	PanelInicio ini;
 	
-	public ConfigurarTipoAyuda(VentanaPrincipal p) {
-
+	public ConfigurarTipoAyuda(VentanaPrincipal p,PanelInicio pIni) {
+		ini=pIni;
 		this.padre = p;
-		setSize(padre.panelAyudas.getSize());
+		setSize(PanelInicio.tamanoPaneles);
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
 		btnAadirTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				padre.panelAyudas.add(new AnadirTipoAyuda(padre));
-				padre.panelAyudas.validate();
+				ini.panelAyudas.add(new AnadirTipoAyuda(padre,ini));
+				ini.panelAyudas.validate();
 				
-				padre.panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 			}
 		});
 		
 		JButton btnEditarTipoDe = new JButton("Editar Tipo de Ayuda");
 		btnEditarTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				padre.panelAyudas.add(new EditarTipoAyuda(padre));
-				padre.panelAyudas.validate();
+				ini.panelAyudas.add(new EditarTipoAyuda(padre,ini));
+				ini.panelAyudas.validate();
 				
-				padre.panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 			}
 		});
 		
@@ -66,12 +67,12 @@ public class ConfigurarTipoAyuda extends JPanel {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				padre.panelAyudas.add(new PanelAyudas(padre, padre.getusuario()));
-				padre.panelAyudas.validate();
+				ini.panelAyudas.add(new PanelAyudas(padre, ini));
+				ini.panelAyudas.validate();
 				
-				padre.panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(this);

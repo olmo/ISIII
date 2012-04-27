@@ -2,7 +2,6 @@ package Visual;
 
 
 
-import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -10,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 
 import GestionAyudas.ControladorAyudas;
 import GestionPersona.ControladorPersona;
@@ -23,10 +21,7 @@ public class VentanaPrincipal extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public JPanel panelUsuarios;
-	public JPanel panelDonaciones;
-	public JPanel panelAyudas;
-	public JPanel panelActuaciones;
+
 	private ControladorPersona cp = new ControladorPersona();
 	private ControladorAyudas ca = new ControladorAyudas();
 	//private ControladorDonacion cd = new ControladorDonacion();
@@ -48,23 +43,6 @@ public class VentanaPrincipal extends JFrame {
 		setSize(1200, 700);
 		setResizable(true);
 		setTitle("Gesti\u00F3n Asociaci\u00F3n Diaketas");
-		
-		Dimension tamanoPaneles = new Dimension(1100, 650);
-		panelUsuarios = new JPanel();
-		panelUsuarios.setBorder(new EmptyBorder(5, 5, 5, 5));
-		panelUsuarios.setSize(tamanoPaneles);
-		
-		panelDonaciones = new JPanel();
-		panelDonaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
-		panelDonaciones.setSize(tamanoPaneles);
-		
-		panelAyudas = new JPanel();
-		panelAyudas.setBorder(new EmptyBorder(5, 5, 5, 5));
-		panelAyudas.setSize(tamanoPaneles);
-		
-		panelActuaciones = new JPanel();
-		panelActuaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
-		panelActuaciones.setSize(tamanoPaneles);
 		
 		getContentPane().add(new Home(this));
 		setExtendedState(MAXIMIZED_BOTH);

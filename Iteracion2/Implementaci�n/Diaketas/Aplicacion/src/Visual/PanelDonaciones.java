@@ -16,14 +16,16 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class PanelDonaciones extends JPanel {
 	JTextField textField;
 	VentanaPrincipal padre;
+	PanelInicio ini;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelDonaciones(VentanaPrincipal p,String nombre) {
+	public PanelDonaciones(VentanaPrincipal p,PanelInicio pIni) {
 
+		ini=pIni;
 		padre=p;
-		setSize(padre.panelDonaciones.getSize());
+		setSize(PanelInicio.tamanoPaneles);
 		textField = new JTextField();
 		textField.setToolTipText("Búsqueda por fecha, tipo de donante, nombre de donante y estado de donación");
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -37,11 +39,11 @@ public class PanelDonaciones extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				padre.panelDonaciones.removeAll();
-				//padre.panelDonaciones.validate();
-				padre.panelDonaciones.add(new AniadirDonacion(padre));
-				padre.panelDonaciones.validate();
-				padre.panelDonaciones.repaint();
+				ini.panelDonaciones.removeAll();
+				//ini.validate();
+				ini.add(new AniadirDonacion(padre,ini));
+				ini.validate();
+				ini.repaint();
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -49,14 +51,14 @@ public class PanelDonaciones extends JPanel {
 		JButton button_2 = new JButton("A\u00F1adir Donante");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.panelUsuarios.removeAll();
+				ini.panelUsuarios.removeAll();
 				
 				
-				padre.panelUsuarios = new NuevoUsuario(padre);
-				((NuevoUsuario) padre.panelUsuarios).modotrabajador();
-				padre.panelUsuarios.validate();
-				padre.panelUsuarios.repaint();
-				Pestanas.verPestana(0);
+				ini.panelUsuarios = new NuevoUsuario(padre,ini);
+				((NuevoUsuario) ini.panelUsuarios).modotrabajador();
+				ini.validate();
+				ini.repaint();
+				PanelInicio.verPestana(0);
 			}
 		});
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
