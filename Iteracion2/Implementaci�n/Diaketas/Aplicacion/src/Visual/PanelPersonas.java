@@ -59,17 +59,17 @@ public class PanelPersonas extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				ini.panelUsuarios.removeAll();
 				ini.panelUsuarios.validate();
-				
-				ini.panelUsuarios = new BusquedaUsuarios(padre,ini);
+				BusquedaUsuarios busU = new BusquedaUsuarios(padre,ini);
 				String aux=choice_busqueda.getSelectedItem();
 				if(aux.equals("todos")){
-					((BusquedaUsuarios) ini.panelUsuarios).setbusqueda(textField.getText(),null);
-					((BusquedaUsuarios) ini.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					busU.setbusqueda(textField.getText(),null);
+					busU.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
 				}else{
-					((BusquedaUsuarios) ini.panelUsuarios).setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-					((BusquedaUsuarios) ini.panelUsuarios).setbusqueda(textField.getText(),aux);
+					busU.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					busU.setbusqueda(textField.getText(),aux);
 				}
-
+				
+				ini.panelUsuarios.add(busU);
 				ini.panelUsuarios.repaint();
 			}
 		});
@@ -93,7 +93,6 @@ public class PanelPersonas extends JPanel {
 				nU.modotrabajador();
 				ini.panelUsuarios.add(nU);
 				ini.panelUsuarios.validate();
-
 				ini.panelUsuarios.repaint();
 			}
 		});

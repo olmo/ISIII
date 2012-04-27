@@ -157,23 +157,6 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_4 = new JLabel("Bienvenido "+padre.getusuario());
-		lblNewLabel_4.setBounds(1022, 9, 110, 14);
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		add(lblNewLabel_4);
-		
-		JButton btnCerrar = new JButton("Cerrar Sesion");
-		btnCerrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Home h= new Home(padre);
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.add(h);
-				ini.panelUsuarios.repaint();
-			}
-		});
-		btnCerrar.setBounds(1032, 36, 119, 23);
-		add(btnCerrar);
 		
 		JButton button_volver = new JButton("Volver");
 		button_volver.addActionListener(new ActionListener() {

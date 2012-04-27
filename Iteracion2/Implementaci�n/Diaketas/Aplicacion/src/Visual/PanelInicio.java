@@ -31,19 +31,19 @@ public class PanelInicio extends JPanel {
 		//Inicialización paneles pestañas
 		tamanoPaneles = new Dimension(1100, 650);
 		panelUsuarios = new JPanel();
-		panelUsuarios.setBorder(new EmptyBorder(5, 5, 5, 5));
+		panelUsuarios.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelUsuarios.setSize(tamanoPaneles);
 		
 		panelDonaciones = new JPanel();
-		panelDonaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
+		panelDonaciones.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelDonaciones.setSize(tamanoPaneles);
 		
 		panelAyudas = new JPanel();
-		panelAyudas.setBorder(new EmptyBorder(5, 5, 5, 5));
+		panelAyudas.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelAyudas.setSize(tamanoPaneles);
 		
 		panelActuaciones = new JPanel();
-		panelActuaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
+		panelActuaciones.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelActuaciones.setSize(tamanoPaneles);
 		//Fin inicialización
 		

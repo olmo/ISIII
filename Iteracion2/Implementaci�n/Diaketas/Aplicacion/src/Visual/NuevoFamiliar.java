@@ -82,22 +82,6 @@ public class NuevoFamiliar extends JPanel {
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_4 = new JLabel("Bienvenido "+padre.getusuario());
-		lblNewLabel_4.setBounds(1022, 9, 110, 14);
-		add(lblNewLabel_4);
-		
-		JButton btnCerrar = new JButton("Cerrar Sesion");
-		btnCerrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Home h= new Home(padre);
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(h);
-				padre.getContentPane().repaint();
-			}
-		});
-		btnCerrar.setBounds(1032, 36, 119, 23);
-		add(btnCerrar);
 		
 		
 		nombre = new JTextField();

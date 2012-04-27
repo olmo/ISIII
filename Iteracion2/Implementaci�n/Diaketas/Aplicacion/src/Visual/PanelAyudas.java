@@ -41,10 +41,10 @@ public class PanelAyudas extends JPanel {
 		button_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				((PanelInicio)padre.getContentPane()).panelAyudas.removeAll();
-				((PanelInicio)padre.getContentPane()).panelAyudas.add(new ConfigurarTipoAyuda(padre,ini));
-				((PanelInicio)padre.getContentPane()).panelAyudas.validate();
-				((PanelInicio)padre.getContentPane()).panelAyudas.repaint();
+				ini.panelAyudas.removeAll();
+				ini.panelAyudas.add(new ConfigurarTipoAyuda(padre,ini));
+				ini.panelAyudas.validate();
+				ini.panelAyudas.repaint();
 				
 			}
 		});
@@ -53,12 +53,12 @@ public class PanelAyudas extends JPanel {
 		button_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				((PanelInicio)padre.getContentPane()).panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				((PanelInicio)padre.getContentPane()).panelAyudas.add(new EditarAyuda(padre));
-				((PanelInicio)padre.getContentPane()).panelAyudas.validate();
+				ini.panelAyudas.add(new EditarAyuda(padre));
+				ini.panelAyudas.validate();
 				
-				((PanelInicio)padre.getContentPane()).panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 				
 			}
 		});
@@ -67,12 +67,12 @@ public class PanelAyudas extends JPanel {
 		button_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				((PanelInicio)padre.getContentPane()).panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				((PanelInicio)padre.getContentPane()).panelAyudas.add(new ConcederAyuda(padre));
-				((PanelInicio)padre.getContentPane()).panelAyudas.validate();
+				ini.panelAyudas.add(new ConcederAyuda(padre));
+				ini.panelAyudas.validate();
 				
-				((PanelInicio)padre.getContentPane()).panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 				
 			}
 		});

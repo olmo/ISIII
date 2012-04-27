@@ -41,9 +41,9 @@ public class PanelDonaciones extends JPanel {
 				// TODO Auto-generated method stub
 				ini.panelDonaciones.removeAll();
 				//ini.validate();
-				ini.add(new AniadirDonacion(padre,ini));
-				ini.validate();
-				ini.repaint();
+				ini.panelDonaciones.add(new AniadirDonacion(padre,ini));
+				ini.panelDonaciones.validate();
+				ini.panelDonaciones.repaint();
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
