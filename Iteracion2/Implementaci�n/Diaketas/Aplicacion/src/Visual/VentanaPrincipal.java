@@ -5,6 +5,7 @@ package Visual;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import GestionPersona.ControladorPersona;
 import java.awt.event.WindowAdapter;
@@ -40,7 +41,7 @@ public class VentanaPrincipal extends JFrame {
 				}				
 			}
 		});
-		
+		this.
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 		setLocation(50, 0);
 		setSize(1200, 700);
@@ -50,6 +51,17 @@ public class VentanaPrincipal extends JFrame {
 		panelcontenido= new Home(this);
 		getContentPane().add(panelcontenido);
 		
+		panelUsuarios = new JPanel();
+		panelUsuarios.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		panelDonaciones = new JPanel();
+		panelDonaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		panelAyudas = new JPanel();
+		panelAyudas.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		panelActuaciones = new JPanel();
+		panelActuaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
 	}
 	
 	

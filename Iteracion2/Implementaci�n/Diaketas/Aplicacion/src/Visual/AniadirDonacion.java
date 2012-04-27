@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+@SuppressWarnings("serial")
 public class AniadirDonacion extends JPanel{
 	private JTextField textField;
 	private JTextField textField_1;
@@ -24,6 +25,7 @@ public class AniadirDonacion extends JPanel{
 	 */
 	public AniadirDonacion(VentanaPrincipal p) {
 		padre=p;
+		setBounds(10, 64, 1180, 636);
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(15);
@@ -53,7 +55,7 @@ public class AniadirDonacion extends JPanel{
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_1.setColumns(15);
-		GroupLayout gl_panel = new GroupLayout(p.panelDonaciones);
+		GroupLayout gl_panel = new GroupLayout(this);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
@@ -102,7 +104,6 @@ public class AniadirDonacion extends JPanel{
 						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(375, Short.MAX_VALUE))
 		);
-		p.panelDonaciones.setLayout(gl_panel);
-
+		setLayout(gl_panel);
 	}
 }
