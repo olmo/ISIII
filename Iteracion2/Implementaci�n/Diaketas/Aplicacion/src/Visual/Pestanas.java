@@ -9,6 +9,7 @@ import javax.swing.JTabbedPane;
 public class Pestanas extends JPanel {
 
 	private VentanaPrincipal padre;
+	private static JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 	
 	private static final long serialVersionUID = 1L;
 	/**
@@ -20,7 +21,7 @@ public class Pestanas extends JPanel {
 		padre.setusuario(usuario);
 		setLayout(null);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		//tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 64, 1180, 636);
 		
 		
@@ -51,5 +52,10 @@ public class Pestanas extends JPanel {
 		
 		add(tabbedPane);
 		
+	}
+	
+	public static void verPestana(Integer pestana){
+		tabbedPane.setSelectedIndex(pestana);
+			
 	}
 }
