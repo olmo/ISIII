@@ -62,7 +62,7 @@ public class BusquedaUsuarios extends JPanel {
 		
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(0, 86, 1200, 200);
+		scrollPane.setBounds(0, 86, 1000, 200);
 		padre.panelUsuarios.add(scrollPane);
 		
 		JButton btnVolver = new JButton("Volver");

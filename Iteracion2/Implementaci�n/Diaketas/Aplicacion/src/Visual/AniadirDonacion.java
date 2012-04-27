@@ -1,23 +1,25 @@
 package Visual;
 
-import javax.swing.JPanel;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import java.awt.Font;
 import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import java.awt.Component;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class AniadirDonacion extends JPanel{
 	private JTextField textField;
-	private JTextField textField_1;
+	static private JTextField textField_1;
 	private VentanaPrincipal padre;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Create the panel.
@@ -40,11 +42,35 @@ public class AniadirDonacion extends JPanel{
 		JButton button_1 = new JButton("Volver");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				padre.panelDonaciones.removeAll();
+				padre.panelDonaciones.validate();
+				
+//				padre.panelDonaciones = new PanelDonaciones(padre);
+
+				padre.panelDonaciones.repaint();
+				
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton button_3 = new JButton("Realizar Donación");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(JOptionPane.showConfirmDialog(null, "¿Confirma la Donacion?", "Confirmacion", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
+					//padre.getControladorDonacion().anadirDonacion(donante, AniadirDonacion.textField_1.getText()  , "pagada" );
+					JOptionPane.showMessageDialog(null, "Donacion realizada");
+				}else{
+					JOptionPane.showMessageDialog(null, "Donacion no realizada");
+				}
+				padre.panelDonaciones.removeAll();
+				padre.panelDonaciones.validate();
+				
+//				padre.panelDonaciones = new PanelDonaciones(padre);
+
+				padre.panelDonaciones.repaint();
+			}
+		});
+		
 		button_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblNewLabel = new JLabel("Cantidad ");

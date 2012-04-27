@@ -2,13 +2,15 @@ package Visual;
 
 
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import GestionAyudas.ControladorAyudas;
 import GestionPersona.ControladorPersona;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 
 
@@ -28,6 +30,8 @@ public class VentanaPrincipal extends JFrame {
 	public JPanel panelAyudas;
 	public JPanel panelActuaciones;
 	private ControladorPersona cp = new ControladorPersona();
+	private ControladorAyudas ca = new ControladorAyudas();
+	//private ControladorDonacion cd = new ControladorDonacion();
 	private String trabajador;
 	
 	public VentanaPrincipal() {
@@ -70,5 +74,12 @@ public class VentanaPrincipal extends JFrame {
 		return cp;
 	}
 	
+	public ControladorAyudas getControladorAyudas(){
+		return ca;
+	}
+	
+//	public ControladorDonacion getControladorDonacion(){
+//		return cd;
+//	}
 
 }
