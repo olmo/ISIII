@@ -1,13 +1,15 @@
 package Visual;
 
-import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -16,13 +18,15 @@ public class PanelAyudas extends JPanel {
 
 	private JTextField textField_1;
 	VentanaPrincipal padre;
+	private JTable table;
 	/**
 	 * Create the panel.
 	 */
 	public PanelAyudas(VentanaPrincipal p, String nombre) {
-		setSize(1100, 500);
+//		setSize(1100, 500);
 
 		padre = p;
+		setSize(padre.panelAyudas.getSize());
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_1.setColumns(15);
@@ -30,68 +34,99 @@ public class PanelAyudas extends JPanel {
 		JButton button_5 = new JButton("Buscar");
 		button_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
+		
 		JButton button_6 = new JButton("Configurar Tipos de Ayuda");
 		button_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JScrollPane scrollPane_1 = new JScrollPane((Component) null);
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				padre.panelAyudas.removeAll();
+				
+				padre.panelAyudas.add(new ConfigurarTipoAyuda(padre));
+				padre.panelAyudas.validate();
+				
+				padre.panelAyudas.repaint();
+				
+			}
+		});
 		
 		JButton button_7 = new JButton("Editar Ayuda");
 		button_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				padre.panelAyudas.removeAll();
+				
+				padre.panelAyudas.add(new EditarAyuda(padre));
+				padre.panelAyudas.validate();
+				
+				padre.panelAyudas.repaint();
+				
+			}
+		});
 		
 		JButton button_8 = new JButton("Conceder Ayuda");
 		button_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GroupLayout gl_panel_1 = new GroupLayout(this);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 1173, Short.MAX_VALUE)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 295, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-							.addGap(235)
-							.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(2)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 976, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-								.addComponent(button_7, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-								.addComponent(button_8, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))
+		button_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				padre.panelAyudas.removeAll();
+				
+				padre.panelAyudas.add(new ConcederAyuda(padre));
+				padre.panelAyudas.validate();
+				
+				padre.panelAyudas.repaint();
+				
+			}
+		});
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(190)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(5)
+							.addComponent(button_5)
+							.addGap(5)
+							.addComponent(button_6))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(14)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 886, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(button_7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(button_8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
 					.addContainerGap())
 		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 607, Short.MAX_VALUE)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addGap(2)
-									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addGap(1)
-									.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
-						.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(184)
-							.addComponent(button_8)
-							.addGap(18)
-							.addComponent(button_7))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(51)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 460, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(60, Short.MAX_VALUE))
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(6)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(5)
+							.addComponent(button_5))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(5)
+							.addComponent(button_6)))
+					.addGap(43)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(110)
+					.addComponent(button_8)
+					.addGap(51)
+					.addComponent(button_7)
+					.addContainerGap(289, Short.MAX_VALUE))
 		);
-		padre.panelAyudas.setLayout(gl_panel_1);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		setLayout(groupLayout);
 		
 
 
 	}
-
 }

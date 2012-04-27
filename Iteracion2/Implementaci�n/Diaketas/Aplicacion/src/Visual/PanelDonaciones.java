@@ -48,9 +48,14 @@ public class PanelDonaciones extends JPanel {
 		JButton button_2 = new JButton("A\u00F1adir Donante");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Aniade Donante");
+				padre.panelUsuarios.removeAll();
 				
-				//Igual que gestión de usuario->nuevo usuario (donante)
+				
+				padre.panelUsuarios = new NuevoUsuario(padre);
+				((NuevoUsuario) padre.panelUsuarios).modotrabajador();
+				padre.panelUsuarios.validate();
+				padre.panelUsuarios.repaint();
+				Pestanas.verPestana(0);
 			}
 		});
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
