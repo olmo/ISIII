@@ -24,9 +24,9 @@ public class Pestanas extends JPanel {
 		//tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 64, 1180, 636);
 		
-		
+
 		padre.panelUsuarios = new Inicio(p, usuario);
-		
+
 		padre.panelDonaciones = new PanelDonaciones(p, usuario);
 		
 		padre.panelActuaciones = new PanelActuaciones(p, usuario);

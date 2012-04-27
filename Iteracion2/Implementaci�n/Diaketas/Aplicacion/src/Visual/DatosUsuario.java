@@ -117,8 +117,8 @@ public class DatosUsuario extends JPanel {
  */
 public DatosUsuario(VentanaPrincipal p) {
 
-	setSize(800, 500);
 		padre=p;
+		setSize(padre.panelUsuarios.size());
 		setLayout(null);
 		
 		choice_busqueda=new Choice();
