@@ -22,11 +22,6 @@ public class VentanaPrincipal extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 
-	 */
-	private	JPanel panelcontenido;
 	public JPanel panelUsuarios;
 	public JPanel panelDonaciones;
 	public JPanel panelAyudas;
@@ -37,6 +32,7 @@ public class VentanaPrincipal extends JFrame {
 	private String trabajador;
 	
 	public VentanaPrincipal() {
+		
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -68,9 +64,8 @@ public class VentanaPrincipal extends JFrame {
 		panelActuaciones = new JPanel();
 		panelActuaciones.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panelActuaciones.setSize(tamanoPaneles);
-
-		panelcontenido= new Home(this);
-		getContentPane().add(panelcontenido);
+		
+		getContentPane().add(new Home(this));
 		setExtendedState(MAXIMIZED_BOTH);
 
 		
@@ -79,7 +74,7 @@ public class VentanaPrincipal extends JFrame {
 	
 	
 	public JPanel getpanelcontenido(){
-		return panelcontenido;
+		return (JPanel) getContentPane();
 	}
 	
 	

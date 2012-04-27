@@ -342,7 +342,7 @@ public DatosUsuario(VentanaPrincipal p) {
 				
 				padre.panelUsuarios.removeAll();
 				padre.panelUsuarios.validate();
-				padre.panelUsuarios.add(new Inicio(padre, padre.getusuario()));
+				padre.panelUsuarios.add(new PanelPersonas(padre, padre.getusuario()));
 				padre.panelUsuarios.repaint();
 
 			}

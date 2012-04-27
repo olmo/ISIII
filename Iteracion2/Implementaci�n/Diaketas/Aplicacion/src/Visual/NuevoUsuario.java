@@ -156,7 +156,7 @@ public class NuevoUsuario extends JPanel{
 			JButton button = new JButton("Volver");
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Inicio b = new Inicio(padre,padre.getusuario());
+					PanelPersonas b = new PanelPersonas(padre,padre.getusuario());
 					padre.panelUsuarios.removeAll();
 					padre.panelUsuarios.validate();
 					padre.panelUsuarios.add(b);

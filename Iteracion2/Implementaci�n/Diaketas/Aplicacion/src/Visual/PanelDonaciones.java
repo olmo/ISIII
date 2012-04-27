@@ -25,6 +25,7 @@ public class PanelDonaciones extends JPanel {
 		padre=p;
 		setSize(padre.panelDonaciones.getSize());
 		textField = new JTextField();
+		textField.setToolTipText("Búsqueda por fecha, tipo de donante, nombre de donante y estado de donación");
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(15);
 		

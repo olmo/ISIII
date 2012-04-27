@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Inicio extends JPanel {
+public class PanelPersonas extends JPanel {
 	
 
 	private JTextField textField;
@@ -18,7 +18,7 @@ public class Inicio extends JPanel {
 	private Choice choice_busqueda;
 
 	
-	public Inicio(VentanaPrincipal p,String usuario) {
+	public PanelPersonas(VentanaPrincipal p,String usuario) {
 		setSize(1100,800);
 		padre=p;
 		padre.setusuario(usuario);
@@ -30,6 +30,7 @@ public class Inicio extends JPanel {
 		add(btnNuevoUsuario);
 		
 		textField = new JTextField();
+		textField.setToolTipText("Búsqueda por nombre o identificador");
 		textField.setBounds(10, 11, 295, 23);
 		add(textField);
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));

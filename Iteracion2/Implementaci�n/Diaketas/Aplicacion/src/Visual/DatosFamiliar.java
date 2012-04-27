@@ -263,7 +263,7 @@ public class DatosFamiliar extends JPanel {
 
 				padre.getContentPane().removeAll();
 				padre.getContentPane().validate();
-				padre.getContentPane().add(new Inicio(padre, padre.getusuario()));
+				padre.getContentPane().add(new PanelPersonas(padre, padre.getusuario()));
 				padre.getContentPane().repaint();
 				
 				

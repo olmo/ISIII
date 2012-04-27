@@ -125,7 +125,7 @@ public class BusquedaUsuarios extends JPanel {
 //				padre.panelUsuarios.validate();
 //				padre.panelUsuarios.repaint();
 				
-				Inicio b = new Inicio(padre,padre.getusuario());
+				PanelPersonas b = new PanelPersonas(padre,padre.getusuario());
 				padre.panelUsuarios.removeAll();
 				padre.panelUsuarios.validate();
 				padre.panelUsuarios.add(b);
