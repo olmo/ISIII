@@ -62,17 +62,17 @@ public class BusquedaUsuarios extends JPanel {
 		
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(0, 86, 1200, 524);
+		scrollPane.setBounds(0, 86, 1200, 200);
 		padre.panelUsuarios.add(scrollPane);
 		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnVolver.setBounds(456, 638, 156, 28);
+		btnVolver.setBounds(150, 300, 156, 28);
 		padre.panelUsuarios.add(btnVolver);
 		
 		JButton btnVerDetalles = new JButton("Ver Detalles");
 		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnVerDetalles.setBounds(622, 638, 137, 28);
+		btnVerDetalles.setBounds(350, 300, 137, 28);
 		padre.panelUsuarios.add(btnVerDetalles);
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
