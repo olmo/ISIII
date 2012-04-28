@@ -1,11 +1,15 @@
 package Visual;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -21,10 +25,20 @@ public class EditarAyuda extends JPanel {
 	public EditarAyuda(VentanaPrincipal p) {
 
 		this.padre = p;
-		
+		setSize(padre.panelAyudas.getSize());
 		JComboBox comboBox = new JComboBox();
 		
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
+		btnAadirTipoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				padre.panelAyudas.removeAll();
+				
+				padre.panelAyudas.add(new AnadirTipoAyuda(padre));
+				padre.panelAyudas.validate();
+				
+				padre.panelAyudas.repaint();
+			}
+		});
 		
 		JLabel lblCantidadEconomica = new JLabel("Cantidad economica");
 		
@@ -38,8 +52,33 @@ public class EditarAyuda extends JPanel {
 		JEditorPane textArea = new JEditorPane();
 		
 		JButton button = new JButton("Cancelar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+					padre.panelAyudas.removeAll();
+					
+					padre.panelAyudas.add(new ConfigurarTipoAyuda(padre));
+					padre.panelAyudas.validate();
+					
+					padre.panelAyudas.repaint();
+				}
+				
+			}
+		});
 		
 		JButton button_1 = new JButton("Guardar");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+					padre.panelAyudas.removeAll();
+					
+					padre.panelAyudas.add(new ConfigurarTipoAyuda(padre));
+					padre.panelAyudas.validate();
+					//Codigo de modificacion del tipo de ayuda
+					padre.panelAyudas.repaint();
+				}
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

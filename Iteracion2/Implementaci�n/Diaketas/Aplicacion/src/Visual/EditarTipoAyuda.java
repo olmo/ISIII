@@ -21,11 +21,10 @@ public class EditarTipoAyuda extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private VentanaPrincipal padre;
 	private JTextField textField;
-	PanelInicio ini;
-	public EditarTipoAyuda( VentanaPrincipal p,PanelInicio pIni) {
-		ini=pIni;
+	public EditarTipoAyuda( VentanaPrincipal p) {
+		
 		this.padre = p;
-		setSize(PanelInicio.tamanoPaneles);
+		setSize(padre.panelAyudas.getSize());
 		JLabel lblNombre = new JLabel("Nombre");
 		
 		JLabel lblObservaciones = new JLabel("Observaciones");
@@ -39,12 +38,12 @@ public class EditarTipoAyuda extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
-					ini.panelAyudas.removeAll();
+					padre.panelAyudas.removeAll();
 					
-					ini.panelAyudas.add(new ConfigurarTipoAyuda(padre,ini));
-					ini.panelAyudas.validate();
+					padre.panelAyudas.add(new PanelAyudas(padre, padre.getusuario()));
+					padre.panelAyudas.validate();
 					
-					ini.panelAyudas.repaint();
+					padre.panelAyudas.repaint();
 				}
 				
 			}
@@ -54,12 +53,12 @@ public class EditarTipoAyuda extends JPanel {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
-					ini.panelAyudas.removeAll();
+					padre.panelAyudas.removeAll();
 					
-					ini.panelAyudas.add(new ConfigurarTipoAyuda(padre,ini));
-					ini.panelAyudas.validate();
+					padre.panelAyudas.add(new PanelAyudas(padre, padre.getusuario()));
+					padre.panelAyudas.validate();
 					//Codigo de modificacion del tipo de ayuda
-					ini.panelAyudas.repaint();
+					padre.panelAyudas.repaint();
 				}
 			}
 		});

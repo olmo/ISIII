@@ -1,10 +1,14 @@
 package Visual;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,21 +29,62 @@ public class ConcederAyuda extends JPanel {
 	
 	public ConcederAyuda(VentanaPrincipal p) {
 		this.padre = p;
-		
+		setSize(padre.panelAyudas.getSize());
 		textField = new JTextField();
 		textField.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+					//Codigo para rellenar la tabla con los tipos de ayuda
+				}
+			}
+		});
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+					padre.panelAyudas.removeAll();
+					
+					padre.panelAyudas.add(new PanelAyudas(padre, padre.getusuario()));
+					padre.panelAyudas.validate();
+					
+					padre.panelAyudas.repaint();
+				}
+			}
+		});
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+					padre.panelAyudas.removeAll();
+					
+					padre.panelAyudas.add(new PanelAyudas(padre, padre.getusuario()));
+					padre.panelAyudas.validate();
+					//Codigo de modificacion del tipo de ayuda
+					padre.panelAyudas.repaint();
+				}
+			}
+		});
 		
 		JComboBox comboBox = new JComboBox();
 		
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
+		btnAadirTipoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				padre.panelAyudas.removeAll();
+				
+				padre.panelAyudas.add(new AnadirTipoAyuda(padre));
+				padre.panelAyudas.validate();
+				
+				padre.panelAyudas.repaint();
+			}
+		});
 		
 		JLabel lblCantidadEconomica = new JLabel("Cantidad economica");
 		
