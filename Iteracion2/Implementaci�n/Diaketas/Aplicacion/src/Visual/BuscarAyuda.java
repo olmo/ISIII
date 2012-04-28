@@ -2,7 +2,6 @@ package Visual;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JList;
 import javax.swing.JTable;
 
 public class BuscarAyuda extends JPanel {

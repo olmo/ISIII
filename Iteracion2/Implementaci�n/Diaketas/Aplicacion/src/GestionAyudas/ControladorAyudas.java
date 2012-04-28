@@ -1,9 +1,5 @@
 package GestionAyudas;
 
-import java.util.ArrayList;
-
-import GestionPersona.Beneficiario;
-import GestionPersona.BeneficiarioDB;
 
 
 public class ControladorAyudas {

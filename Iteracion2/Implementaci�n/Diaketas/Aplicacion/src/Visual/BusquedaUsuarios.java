@@ -1,14 +1,13 @@
 package Visual;
 
-import javax.swing.JPanel;
 import java.awt.Choice;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.AbstractButton;
-import javax.swing.ButtonModel;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -19,12 +18,6 @@ import GestionPersona.Colaborador;
 import GestionPersona.Empresa;
 import GestionPersona.Socio;
 import GestionPersona.Trabajador;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class BusquedaUsuarios extends JPanel {
 	private static final long serialVersionUID = 1L;

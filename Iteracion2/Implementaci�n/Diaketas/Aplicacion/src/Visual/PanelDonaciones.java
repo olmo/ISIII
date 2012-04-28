@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -22,9 +23,10 @@ public class PanelDonaciones extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelDonaciones(VentanaPrincipal p,PanelInicio pIni) {
-
+		
 		ini=pIni;
 		padre=p;
+		
 		setSize(PanelInicio.tamanoPaneles);
 		textField = new JTextField();
 		textField.setToolTipText("Búsqueda por fecha, tipo de donante, nombre de donante y estado de donación");
@@ -68,7 +70,15 @@ public class PanelDonaciones extends JPanel {
 		JButton button_3 = new JButton("Cancelar Donaci\u00F3n");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Cancelar donación
+				if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere confirmar la donación?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
+					//Datos para confirmar donacion en la DB
+					ini.panelDonaciones.validate();
+					ini.panelDonaciones.repaint();
+				}else{
+					
+					ini.panelDonaciones.validate();
+					ini.panelDonaciones.repaint();
+				}
 			}
 		});
 		button_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -76,12 +86,18 @@ public class PanelDonaciones extends JPanel {
 		JButton button_4 = new JButton("Confirmar Donaci\u00F3n");
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				ConfirmarDonacion cDon = new ConfirmarDonacion();
-//				
-//				cDon.setVisible(true);
-//				cDon.setAlwaysOnTop(true);
-//				if(cDon.getConfirmacionModificacion())
-//					;//Hacer  algo ...
+				
+				if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere confirmar la donación?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
+					//Datos para confirmar donacion en la DB
+					ini.panelDonaciones.validate();
+					ini.panelDonaciones.repaint();
+				}else{
+					
+					ini.panelDonaciones.validate();
+					ini.panelDonaciones.repaint();
+				}
+				
+				
 			}
 		});
 		button_4.setFont(new Font("Tahoma", Font.PLAIN, 14));

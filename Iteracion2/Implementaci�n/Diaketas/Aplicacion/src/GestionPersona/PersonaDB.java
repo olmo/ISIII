@@ -9,11 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-
 import javax.swing.JOptionPane;
-
-
-
 
 import Basedatos.GestorJDBC;
 
