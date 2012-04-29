@@ -26,10 +26,12 @@ public class ConcederAyuda extends JPanel {
 	private JTextField textField;
 	private JTable table;
 	private JTextField textField_1;
+	PanelInicio ini;
 	
-	public ConcederAyuda(VentanaPrincipal p) {
+	public ConcederAyuda(VentanaPrincipal p, PanelInicio pIni) {
+		ini=pIni;
 		this.padre = p;
-		setSize(padre.panelAyudas.getSize());
+		setSize(PanelInicio.tamanoPaneles);
 		textField = new JTextField();
 		textField.setColumns(10);
 		
@@ -48,12 +50,12 @@ public class ConcederAyuda extends JPanel {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
-					padre.panelAyudas.removeAll();
+					ini.panelAyudas.removeAll();
 					
-					padre.panelAyudas.add(new PanelAyudas(padre, padre.getusuario()));
-					padre.panelAyudas.validate();
+					ini.panelAyudas.add(new PanelAyudas(padre, ini));
+					ini.panelAyudas.validate();
 					
-					padre.panelAyudas.repaint();
+					ini.panelAyudas.repaint();
 				}
 			}
 		});
@@ -62,12 +64,12 @@ public class ConcederAyuda extends JPanel {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
-					padre.panelAyudas.removeAll();
+					ini.panelAyudas.removeAll();
 					
-					padre.panelAyudas.add(new PanelAyudas(padre, padre.getusuario()));
-					padre.panelAyudas.validate();
+					ini.panelAyudas.add(new PanelAyudas(padre, ini));
+					ini.panelAyudas.validate();
 					//Codigo de modificacion del tipo de ayuda
-					padre.panelAyudas.repaint();
+					ini.panelAyudas.repaint();
 				}
 			}
 		});
@@ -77,12 +79,12 @@ public class ConcederAyuda extends JPanel {
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
 		btnAadirTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				padre.panelAyudas.add(new AnadirTipoAyuda(padre));
-				padre.panelAyudas.validate();
+				ini.panelAyudas.add(new AnadirTipoAyuda(padre,ini));
+				ini.panelAyudas.validate();
 				
-				padre.panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 			}
 		});
 		

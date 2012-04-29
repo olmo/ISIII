@@ -19,14 +19,15 @@ public class PanelAyudas extends JPanel {
 	private JTextField textField_1;
 	VentanaPrincipal padre;
 	private JTable table;
+	PanelInicio ini;
 	/**
 	 * Create the panel.
 	 */
-	public PanelAyudas(VentanaPrincipal p, String nombre) {
+	public PanelAyudas(VentanaPrincipal p, PanelInicio pIni) {
 //		setSize(1100, 500);
-
+		ini=pIni;
 		padre = p;
-		setSize(padre.panelAyudas.getSize());
+		setSize(PanelInicio.tamanoPaneles);
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_1.setColumns(15);
@@ -39,12 +40,12 @@ public class PanelAyudas extends JPanel {
 		button_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				padre.panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				padre.panelAyudas.add(new ConfigurarTipoAyuda(padre));
-				padre.panelAyudas.validate();
+				ini.panelAyudas.add(new ConfigurarTipoAyuda(padre,ini));
+				ini.panelAyudas.validate();
 				
-				padre.panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 				
 			}
 		});
@@ -53,12 +54,12 @@ public class PanelAyudas extends JPanel {
 		button_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				padre.panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				padre.panelAyudas.add(new EditarAyuda(padre));
-				padre.panelAyudas.validate();
+				ini.panelAyudas.add(new EditarAyuda(padre,ini));
+				ini.panelAyudas.validate();
 				
-				padre.panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 				
 			}
 		});
@@ -67,12 +68,12 @@ public class PanelAyudas extends JPanel {
 		button_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				padre.panelAyudas.removeAll();
+				ini.panelAyudas.removeAll();
 				
-				padre.panelAyudas.add(new ConcederAyuda(padre));
-				padre.panelAyudas.validate();
+				ini.panelAyudas.add(new ConcederAyuda(padre,ini));
+				ini.panelAyudas.validate();
 				
-				padre.panelAyudas.repaint();
+				ini.panelAyudas.repaint();
 				
 			}
 		});

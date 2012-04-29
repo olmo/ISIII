@@ -54,10 +54,9 @@ public class PanelDonaciones extends JPanel {
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ini.panelUsuarios.removeAll();
-				
-				
-				ini.panelUsuarios = new NuevoUsuario(padre,ini);
-				((NuevoUsuario) ini.panelUsuarios).modotrabajador();
+				NuevoUsuario nU=new NuevoUsuario(padre,ini);
+				nU.modotrabajador();
+				ini.panelUsuarios.add(nU);
 				ini.validate();
 				ini.repaint();
 				PanelInicio.verPestana(0);
