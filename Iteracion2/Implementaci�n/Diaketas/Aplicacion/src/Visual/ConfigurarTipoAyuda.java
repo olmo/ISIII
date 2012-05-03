@@ -30,24 +30,14 @@ public class ConfigurarTipoAyuda extends JPanel {
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
 		btnAadirTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.panelAyudas.removeAll();
-				
-				ini.panelAyudas.add(new AnadirTipoAyuda(padre,ini));
-				ini.panelAyudas.validate();
-				
-				ini.panelAyudas.repaint();
+				ini.setPanelOnTab(ini.anadir_tipo_ayuda, PanelInicio.AYUDAS);
 			}
 		});
 		
 		JButton btnEditarTipoDe = new JButton("Editar Tipo de Ayuda");
 		btnEditarTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.panelAyudas.removeAll();
-				
-				ini.panelAyudas.add(new EditarTipoAyuda(padre,ini));
-				ini.panelAyudas.validate();
-				
-				ini.panelAyudas.repaint();
+				ini.setPanelOnTab(ini.editar_tipo_ayuda, PanelInicio.AYUDAS);
 			}
 		});
 		
@@ -66,12 +56,8 @@ public class ConfigurarTipoAyuda extends JPanel {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.panelAyudas.removeAll();
-				
-				ini.panelAyudas.add(new PanelAyudas(padre, ini));
-				ini.panelAyudas.validate();
-				
-				ini.panelAyudas.repaint();
+				ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
+
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(this);
