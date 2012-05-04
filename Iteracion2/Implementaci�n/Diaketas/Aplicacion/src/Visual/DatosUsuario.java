@@ -137,19 +137,17 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
+				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_busqueda.getSelectedItem();
 				if(aux.equals("todos")){
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),null));
-					b.setbusqueda(textField_busqueda.getText(),null);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),null));
+					ini.busqueda_usuarios.setbusqueda(textField_busqueda.getText(),null);
 				}else{
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),aux));
-					b.setbusqueda(textField_busqueda.getText(),aux);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),aux));
+					ini.busqueda_usuarios.setbusqueda(textField_busqueda.getText(),aux);
 				}
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.add(b);
-				ini.panelUsuarios.repaint();
+				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);
+
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -158,13 +156,11 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 		JButton button_volver = new JButton("Volver");
 		button_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
-				b.setTabla(padre.getcontrolador().BuscarPersonas(busquedaanterior, rolanterior));
-				
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.add(b);
-				ini.panelUsuarios.repaint();
+				//BusquedaUsuarios b = ini.busqueda_usuarios;
+				//b.setTabla(padre.getcontrolador().BuscarPersonas(busquedaanterior, rolanterior));
+
+				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);
+
 				
 			}
 		});
@@ -320,11 +316,8 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 					
 					
 				}
-				
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.add(new PanelPersonas(padre, ini));
-				ini.panelUsuarios.repaint();
+				ini.setPanelOnTab(ini.panel_personas, PanelInicio.PERSONAS);
+
 
 			}
 		});
@@ -567,10 +560,8 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 		button_anadirfamiliar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				NuevoFamiliar nf= new NuevoFamiliar(padre,id,ini);
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.add(nf);
-				ini.panelUsuarios.repaint();
+				ini.setPanelOnTab(nf, PanelInicio.PERSONAS);
+
 			}
 		});
 		button_anadirfamiliar.setBounds(752, 464, 156, 23);
@@ -582,10 +573,8 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 			public void actionPerformed(ActionEvent e) {
 			
 				BusquedaFamiliares bf = new BusquedaFamiliares(padre,id,ini);
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.add(bf);
-				ini.panelUsuarios.repaint();
+				ini.setPanelOnTab(bf, PanelInicio.PERSONAS);
+
 			}
 		});
 		button_listargfamiliares.setBounds(934, 464, 150, 23);

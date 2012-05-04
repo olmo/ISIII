@@ -110,10 +110,11 @@ public class BusquedaUsuarios extends JPanel {
 							
 				 
 					d.setbusquedaanterior(busqueda, rolbusqueda);
-					ini.panelUsuarios.removeAll();
-					ini.panelUsuarios.validate();
-					ini.panelUsuarios.add(d);
-					ini.panelUsuarios.repaint();
+					ini.setPanelOnTab(d, PanelInicio.PERSONAS);
+//					ini.panelUsuarios.removeAll();
+//					ini.panelUsuarios.validate();
+//					ini.panelUsuarios.add(d);
+//					ini.panelUsuarios.repaint();
 					
 					
 				
@@ -121,10 +122,12 @@ public class BusquedaUsuarios extends JPanel {
 		});
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.add(new PanelPersonas(padre,ini));
-				ini.panelUsuarios.repaint();
+				
+				ini.setPanelOnTab(ini.panel_personas, PanelInicio.PERSONAS);
+//				ini.panelUsuarios.removeAll();
+//				ini.panelUsuarios.validate();
+//				ini.panelUsuarios.add(new PanelPersonas(padre,ini));
+//				ini.panelUsuarios.repaint();
 
 			}
 		});
@@ -141,36 +144,18 @@ public class BusquedaUsuarios extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-//				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
-//				String aux=choice_3.getSelectedItem();
-//				if(aux.equals("todos")){
-//					setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
-//					setbusqueda(textField.getText(),null);
-//				}else{
-//					setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-//					setbusqueda(textField.getText(),aux);
-//				}
-//				ini.panelUsuarios.removeAll();
-//				ini.panelUsuarios.validate();
-//				ini.panelUsuarios.add(b);
-//				//padre.getContentPane().removeAll();
-//				//padre.getContentPane().validate();
-//				//padre.getContentPane().add(b);
-//				ini.panelUsuarios.repaint();
-				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
+
+				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
-					b.setbusqueda(textField.getText(),null);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
 				}else{
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-					b.setbusqueda(textField.getText(),aux);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
 				
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.add(b);
-				ini.panelUsuarios.repaint();
+				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));

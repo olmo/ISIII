@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.plaf.PanelUI;
 
 public class PanelPersonas extends JPanel {
 	
@@ -56,20 +57,19 @@ public class PanelPersonas extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ini.panelUsuarios.removeAll();
-				ini.panelUsuarios.validate();
-				BusquedaUsuarios busU = new BusquedaUsuarios(padre,ini);
+
+				//BusquedaUsuarios busU = ini.busqueda_usuarios;
 				String aux=choice_busqueda.getSelectedItem();
 				if(aux.equals("todos")){
-					busU.setbusqueda(textField.getText(),null);
-					busU.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
 				}else{
-					busU.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-					busU.setbusqueda(textField.getText(),aux);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
 				
-				ini.panelUsuarios.add(busU);
-				ini.panelUsuarios.repaint();
+				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);
+
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -80,19 +80,22 @@ public class PanelPersonas extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
-//				padre.panelDonaciones.removeAll();
-//				//padre.panelDonaciones.validate();
-//				padre.panelDonaciones.add(new AniadirDonacion(padre));
-//				padre.panelDonaciones.validate();
-//				padre.panelDonaciones.repaint();
-				
-				ini.panelUsuarios.removeAll();
-				NuevoUsuario nU = new NuevoUsuario(padre,ini);
-				nU.modotrabajador();
-				ini.panelUsuarios.add(nU);
-				ini.panelUsuarios.validate();
-				ini.panelUsuarios.repaint();
+				NuevoUsuario nu = ini.nuevo_usuario;
+				nu.modotrabajador();
+				ini.setPanelOnTab(nu, PanelInicio.PERSONAS);
+				//addTab("ini.nuevo_usuario", null, ini.nuevo_usuario, "Gestión de personas");
+//
+//				ini.panelUsuarios = ini.nuevo_usuario;
+//				ini.panelUsuarios.validate();
+//				ini.panelUsuarios.repaint();
+//				ini.tabbedPane.repaint();
+//				ini.repaint();
+//				removeAll();
+//				NuevoUsuario nU = new NuevoUsuario(padre,ini);
+//				nU.modotrabajador();
+//				add(nU);
+//				validate();
+//				repaint();
 			}
 		});
 	}

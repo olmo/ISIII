@@ -41,11 +41,12 @@ public class PanelDonaciones extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				ini.panelDonaciones.removeAll();
-				//ini.validate();
-				ini.panelDonaciones.add(new AniadirDonacion(padre,ini));
-				ini.panelDonaciones.validate();
-				ini.panelDonaciones.repaint();
+				ini.setPanelOnTab(ini.aniadir_donacion,PanelInicio.DONACIONES);
+//				ini.panelDonaciones.removeAll();
+//				//ini.validate();
+//				ini.panelDonaciones.add(new AniadirDonacion(padre,ini));
+//				ini.panelDonaciones.validate();
+//				ini.panelDonaciones.repaint();
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -53,13 +54,16 @@ public class PanelDonaciones extends JPanel {
 		JButton button_2 = new JButton("A\u00F1adir Donante");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.panelUsuarios.removeAll();
-				NuevoUsuario nU=new NuevoUsuario(padre,ini);
-				nU.modotrabajador();
-				ini.panelUsuarios.add(nU);
-				ini.validate();
-				ini.repaint();
-				PanelInicio.verPestana(0);
+				NuevoUsuario nu = ini.nuevo_usuario;
+				nu.modotrabajador();
+				ini.setPanelOnTab(nu, PanelInicio.PERSONAS);
+//				ini.panelUsuarios.removeAll();
+//				NuevoUsuario nU=new NuevoUsuario(padre,ini);
+//				nU.modotrabajador();
+//				ini.panelUsuarios.add(nU);
+//				ini.validate();
+//				ini.repaint();
+				//PanelInicio.verPestana(0);
 			}
 		});
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 14));

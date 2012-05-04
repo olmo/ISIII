@@ -50,12 +50,13 @@ public class ConcederAyuda extends JPanel {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
-					ini.panelAyudas.removeAll();
-					
-					ini.panelAyudas.add(new PanelAyudas(padre, ini));
-					ini.panelAyudas.validate();
-					
-					ini.panelAyudas.repaint();
+					ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
+//					ini.panelAyudas.removeAll();
+//					
+//					ini.panelAyudas.add(new PanelAyudas(padre, ini));
+//					ini.panelAyudas.validate();
+//					
+//					ini.panelAyudas.repaint();
 				}
 			}
 		});
@@ -64,12 +65,13 @@ public class ConcederAyuda extends JPanel {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
-					ini.panelAyudas.removeAll();
-					
-					ini.panelAyudas.add(new PanelAyudas(padre, ini));
-					ini.panelAyudas.validate();
-					//Codigo de modificacion del tipo de ayuda
-					ini.panelAyudas.repaint();
+					ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
+//					ini.panelAyudas.removeAll();
+//					
+//					ini.panelAyudas.add(new PanelAyudas(padre, ini));
+//					ini.panelAyudas.validate();
+//					//Codigo de modificacion del tipo de ayuda
+//					ini.panelAyudas.repaint();
 				}
 			}
 		});
@@ -79,12 +81,13 @@ public class ConcederAyuda extends JPanel {
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
 		btnAadirTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.panelAyudas.removeAll();
-				
-				ini.panelAyudas.add(new AnadirTipoAyuda(padre,ini));
-				ini.panelAyudas.validate();
-				
-				ini.panelAyudas.repaint();
+				ini.setPanelOnTab(ini.anadir_tipo_ayuda, PanelInicio.AYUDAS);
+//				ini.panelAyudas.removeAll();
+//				
+//				ini.panelAyudas.add(new AnadirTipoAyuda(padre,ini));
+//				ini.panelAyudas.validate();
+//				
+//				ini.panelAyudas.repaint();
 			}
 		});
 		

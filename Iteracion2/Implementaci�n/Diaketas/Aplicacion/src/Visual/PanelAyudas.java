@@ -40,13 +40,8 @@ public class PanelAyudas extends JPanel {
 		button_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.panelAyudas.removeAll();
-				
-				ini.panelAyudas.add(new ConfigurarTipoAyuda(padre,ini));
-				ini.panelAyudas.validate();
-				
-				ini.panelAyudas.repaint();
-				
+				ini.setPanelOnTab(ini.configurar_tipo_ayuda, PanelInicio.AYUDAS);
+	
 			}
 		});
 		
@@ -54,12 +49,7 @@ public class PanelAyudas extends JPanel {
 		button_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.panelAyudas.removeAll();
-				
-				ini.panelAyudas.add(new EditarAyuda(padre,ini));
-				ini.panelAyudas.validate();
-				
-				ini.panelAyudas.repaint();
+				ini.setPanelOnTab(ini.editar_ayuda, PanelInicio.AYUDAS);
 				
 			}
 		});
@@ -68,12 +58,7 @@ public class PanelAyudas extends JPanel {
 		button_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.panelAyudas.removeAll();
-				
-				ini.panelAyudas.add(new ConcederAyuda(padre,ini));
-				ini.panelAyudas.validate();
-				
-				ini.panelAyudas.repaint();
+				ini.setPanelOnTab(ini.conceder_ayuda, PanelInicio.AYUDAS);
 				
 			}
 		});
@@ -83,16 +68,15 @@ public class PanelAyudas extends JPanel {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(14)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(190)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
 							.addGap(5)
 							.addComponent(button_5)
 							.addGap(5)
 							.addComponent(button_6))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(14)
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 886, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
@@ -105,22 +89,22 @@ public class PanelAyudas extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(6)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(5)
 							.addComponent(button_5))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(5)
-							.addComponent(button_6)))
+							.addComponent(button_6))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(6)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(43)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(110)
 					.addComponent(button_8)
 					.addGap(51)
 					.addComponent(button_7)
-					.addContainerGap(289, Short.MAX_VALUE))
+					.addContainerGap(439, Short.MAX_VALUE))
 		);
 		
 		table = new JTable();

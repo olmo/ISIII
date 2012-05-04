@@ -86,19 +86,17 @@ public class DatosFamiliar extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
+				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
-					b.setbusqueda(textField.getText(),null);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
 				}else{
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-					b.setbusqueda(textField.getText(),aux);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(b);
-				padre.getContentPane().repaint();
+
+				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -247,13 +245,8 @@ public class DatosFamiliar extends JPanel {
 					
 				}
 				
-
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(new PanelPersonas(padre, ini));
-				padre.getContentPane().repaint();
-				
-				
+				ini.setPanelOnTab(ini.panel_personas, PanelInicio.PERSONAS);
+								
 			}
 		});
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));

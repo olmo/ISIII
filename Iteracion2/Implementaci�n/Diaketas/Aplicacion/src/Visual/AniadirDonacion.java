@@ -14,8 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Color;
+import javax.swing.UIManager;
 
-@SuppressWarnings("serial")
 public class AniadirDonacion extends JPanel{
 	private JTextField textField;
 	static private JTextField textField_1;
@@ -26,9 +27,10 @@ public class AniadirDonacion extends JPanel{
 	 * Create the panel.
 	 */
 	public AniadirDonacion(VentanaPrincipal p,PanelInicio pIni) {
+		setBackground(UIManager.getColor("Button.background"));
 		ini=pIni;
 		padre=p;
-		setSize(PanelInicio.tamanoPaneles);
+		setSize(1100,650);
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(15);
@@ -45,12 +47,14 @@ public class AniadirDonacion extends JPanel{
 		JButton button_1 = new JButton("Volver");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.panelDonaciones.removeAll();
-				
-				ini.panelDonaciones.add(new PanelDonaciones(padre, ini));
-				ini.panelDonaciones.validate();
-				
-				ini.panelDonaciones.repaint();
+				ini.setPanelOnTab(ini.panel_donaciones,PanelInicio.DONACIONES);
+				//ini.tabbedPane.addTab("Donaciones", null, ini.panel_donaciones, "Gestión de donaciones");
+				//ini.tabbedPane.addTab("Donaciones", null, ini.panel_donaciones, "Gestión de donaciones");
+
+//				ini.panelDonaciones.removeAll();
+//				ini.panelDonaciones.add(new PanelDonaciones(padre, ini));
+//				ini.panelDonaciones.validate();
+//				ini.panelDonaciones.repaint();
 				
 			}
 		});
@@ -62,10 +66,11 @@ public class AniadirDonacion extends JPanel{
 				if(JOptionPane.showConfirmDialog(null, "¿Confirma la Donacion?", "Confirmacion", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
 					//padre.getControladorDonacion().anadirDonacion(donante, AniadirDonacion.textField_1.getText()  , "pagada" );
 					
-					ini.panelDonaciones.removeAll();
-					ini.panelDonaciones.add(new PanelDonaciones(padre, ini));
-					ini.panelDonaciones.validate();					
-					ini.panelDonaciones.repaint();
+//					ini.panelDonaciones.removeAll();
+//					ini.panelDonaciones.add(new PanelDonaciones(padre, ini));
+//					ini.panelDonaciones.validate();					
+//					ini.panelDonaciones.repaint();
+					ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);
 				}else{
 					
 					ini.panelDonaciones.validate();					

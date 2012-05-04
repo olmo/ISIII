@@ -81,22 +81,23 @@ public class BusquedaFamiliares extends JPanel {
 				df.rellenar(f);
 				
 				
-
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre.getContentPane().add(df);
-				padre.getContentPane().repaint();
+				ini.setPanelOnTab(df, PanelInicio.PERSONAS);
+//				padre.getContentPane().removeAll();
+//				padre.getContentPane().validate();
+//				padre.getContentPane().add(df);
+//				padre.getContentPane().repaint();
 			}
 		});
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DatosUsuario du = new DatosUsuario(padre,ini);
+				DatosUsuario du = ini.datos_usuario;
 				du.rellenar(padre.getcontrolador().consultarBeneficiario(id_beneficiario));
 				du.modobeneficiario();
-				padre.getContentPane().removeAll();
-				padre.getContentPane().validate();
-				padre .getContentPane().add(du);
-				padre.getContentPane().repaint();
+				ini.setPanelOnTab(du, PanelInicio.PERSONAS);
+//				padre.getContentPane().removeAll();
+//				padre.getContentPane().validate();
+//				padre .getContentPane().add(du);
+//				padre.getContentPane().repaint();
 				
 			}
 		});
@@ -112,17 +113,17 @@ public class BusquedaFamiliares extends JPanel {
 		add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.getContentPane().removeAll();
-				BusquedaUsuarios b = new BusquedaUsuarios(padre,ini);
+				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
-					b.setbusqueda(textField.getText(),null);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
 				}else{
-					b.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
-					b.setbusqueda(textField.getText(),aux);
+					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
-				padre.getContentPane().add(b);
+				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);
+				//padre.getContentPane().add(b);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
