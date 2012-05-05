@@ -17,6 +17,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import GestionPersona.PersonaDB;
+
 @SuppressWarnings("serial")
 public class PanelDonaciones extends JPanel {
 	JTextField textField;
@@ -25,6 +27,7 @@ public class PanelDonaciones extends JPanel {
 	TableModel tabla_modelo;
 	JTable tablaDonaciones = new JTable();
 	JScrollPane scrollPane;
+	PersonaDB pbd = new PersonaDB();
 	
 	public void fillTable(ArrayList<Integer> lista_donaciones){//Integer->Donaciones
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -68,7 +71,6 @@ public class PanelDonaciones extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Obtenemos lista de donaciones
-				System.out.println("Buscar Donaciones");
 				ArrayList<Integer> listaBuscar = new ArrayList<Integer>();
 				listaBuscar.add(3);
 				//
@@ -76,16 +78,16 @@ public class PanelDonaciones extends JPanel {
 				ini.panel_donaciones.fillTable(listaBuscar);
 				ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);
 
-				System.out.println(ini.panel_donaciones.tablaDonaciones.getRowCount());
 			}
 		});
 		button.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
+
 		JButton button_1 = new JButton("A\u00F1adir Donaci\u00F3n");
 		button_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
+				ini.aniadir_donacion.fillTable(pbd.buscaPersonas("", "trabajador"));
 				ini.setPanelOnTab(ini.aniadir_donacion,PanelInicio.DONACIONES);
 
 			}

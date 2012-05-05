@@ -12,10 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Color;
+import java.util.ArrayList;
+
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+
+import GestionPersona.Donante;
+import GestionPersona.Persona;
 
 public class AniadirDonacion extends JPanel{
 	private JTextField textField;
@@ -23,6 +30,28 @@ public class AniadirDonacion extends JPanel{
 	private VentanaPrincipal padre;
 	private static final long serialVersionUID = 1L;
 	PanelInicio ini;
+	private JTable tablaDonantes = new JTable();
+	private DefaultTableModel tabla_modelo;
+	JScrollPane scrollPane;
+	
+	public void fillTable(ArrayList<Persona> lista_donantes){//Integer->Donaciones
+		DefaultTableModel modelo = new DefaultTableModel();
+		Object [] tupla = new Object[3];
+		//Relleneamos la cabecera de la tabla.
+		modelo.addColumn("id");
+		modelo.addColumn("DNI");
+		modelo.addColumn("Nombre");
+		for(int i=0;i<lista_donantes.size();i++){
+			tupla[0]=lista_donantes.get(i).getId();
+			tupla[1]=lista_donantes.get(i).getDni();
+			tupla[2]=lista_donantes.get(i).getNombre()+" "
+					+lista_donantes.get(i).getApellido1()+" "
+					+lista_donantes.get(i).getApellido2();
+			modelo.addRow(tupla);
+		}
+		tabla_modelo = modelo;
+		this.tablaDonantes.setModel(tabla_modelo);
+	}
 	/**
 	 * Create the panel.
 	 */
@@ -38,11 +67,12 @@ public class AniadirDonacion extends JPanel{
 		JButton button = new JButton("Buscar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 		button.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JScrollPane scrollPane = new JScrollPane((Component) null);
+		scrollPane = new JScrollPane(tablaDonantes);
 		
 		JButton button_1 = new JButton("Volver");
 		button_1.addActionListener(new ActionListener() {

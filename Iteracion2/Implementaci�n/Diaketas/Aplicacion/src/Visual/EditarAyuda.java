@@ -53,7 +53,7 @@ public class EditarAyuda extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
-					ini.setPanelOnTab(ini.configurar_tipo_ayuda, PanelInicio.AYUDAS);
+					ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
 
 				}
 				
