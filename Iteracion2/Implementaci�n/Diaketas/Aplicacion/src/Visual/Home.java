@@ -2,6 +2,7 @@ package Visual;
 
 
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import GestionPersona.CodificacionPW;
+import javax.swing.SwingConstants;
 
 
 
@@ -23,24 +25,24 @@ public class Home extends JPanel {
 
 	
 	public Home(VentanaPrincipal mipadre) {
-		setSize(mipadre.getSize());
+		setSize(679,400);
 		this.padre=mipadre;
 		setLayout(null);
 		
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		passwordField_1.setBounds(1007, 61, 146, 23);
+		passwordField_1.setBounds(523, 88, 146, 23);
 		add(passwordField_1);
 		passwordField_1.setColumns(20);
 		
 		JLabel lblContrasenha = new JLabel("Contraseña:");
 		lblContrasenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblContrasenha.setBounds(911, 61, 96, 23);
+		lblContrasenha.setBounds(427, 88, 96, 23);
 		add(lblContrasenha);
 		
 		JButton Aceptar = new JButton("Aceptar");
 		Aceptar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		Aceptar.setLocation(1007, 95);
+		Aceptar.setLocation(523, 122);
 		add(Aceptar);
 		Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -51,9 +53,11 @@ public class Home extends JPanel {
 					CodificacionPW c=new CodificacionPW(passwordField_1.getText());
 					if(padre.getcontrolador().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
 						PanelInicio panIni= new PanelInicio(padre, textField.getText());
+						
 						padre.getContentPane().removeAll();
 						padre.getContentPane().validate();
 						padre.getContentPane().add(panIni);
+						padre.setExtendedState(Frame.MAXIMIZED_BOTH);
 						padre.getContentPane().repaint();
 					
 					}else{
@@ -66,19 +70,21 @@ public class Home extends JPanel {
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario.setBounds(936, 32, 71, 14);
+		lblUsuario.setBounds(452, 59, 71, 14);
 		add(lblUsuario);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textField.setBounds(1007, 27, 146, 23);
+		textField.setBounds(523, 54, 146, 23);
 		add(textField);
 		textField.setColumns(20);
-		Mensaje.setBounds(414, 61, 361, 23);
+		Mensaje.setHorizontalAlignment(SwingConstants.CENTER);
+		Mensaje.setBounds(141, 351, 361, 23);
 		add(Mensaje);
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon((this.getClass().getResource("/img/imagen.jpg"))));
-		label.setBounds(205, 115, 625, 464);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setIcon(new ImageIcon((this.getClass().getResource("/img/diaketas.JPG"))));
+		label.setBounds(24, 11, 558, 378);
 		add(label);
 		
 		}

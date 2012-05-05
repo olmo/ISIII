@@ -39,14 +39,15 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		setResizable(false);
 		setLocation(50, 0);
-		setSize(1200, 700);
-		setResizable(true);
+		setSize(700,420);
+
+		//setSize(1200, 700);
+		setResizable(false);
 		setTitle("Gesti\u00F3n Asociaci\u00F3n Diaketas");
 		
 		getContentPane().add(new Home(this));
-		setExtendedState(MAXIMIZED_BOTH);
-
 		
 		try{
 		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");

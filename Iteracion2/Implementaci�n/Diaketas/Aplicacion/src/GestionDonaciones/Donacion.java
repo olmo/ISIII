@@ -1,11 +1,6 @@
 package GestionDonaciones;
 
-import java.sql.Date;
-
-
 import GestionPersona.Donante;
-import GestionPersona.DonanteDB;
-import GestionPersona.Persona;
 import GestionActuacion.ObjetoMonitorizable;;
 enum Estado {Pagado, Pendiente, Cancelado};
 

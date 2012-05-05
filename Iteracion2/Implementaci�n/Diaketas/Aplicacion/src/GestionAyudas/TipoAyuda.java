@@ -1,8 +1,5 @@
 package GestionAyudas;
 
-
-import GestionPersona.Donante;
-
 public class TipoAyuda {
 	
 	private String observaciones;
