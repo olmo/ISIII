@@ -2,9 +2,10 @@ package GestionAyudas;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
 import Basedatos.GestorJDBC;
-import GestionActuacion.Actuacion;
 
 
 public class TipoAyudaDB {

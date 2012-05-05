@@ -3,6 +3,6 @@ package GestionActuacion;
 import java.sql.Date;
 
 public abstract class ObjetoMonitorizable {
-	int id;
+	public int id;
 	Date fecha;
 }

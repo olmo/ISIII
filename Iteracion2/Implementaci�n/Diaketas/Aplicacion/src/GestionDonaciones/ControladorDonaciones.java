@@ -1,12 +1,11 @@
 package GestionDonaciones;
 
 import java.util.ArrayList;
+
 import GestionPersona.Donante;
 import GestionPersona.DonanteDB;
-import GestionDonaciones.Donacion;
-import GestionDonaciones.DonacionDB;
 
-enum Estado {Pagado, Pendiente, Cancelado};
+
 
 
 public class ControladorDonaciones {

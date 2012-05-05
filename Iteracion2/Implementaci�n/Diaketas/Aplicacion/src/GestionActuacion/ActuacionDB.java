@@ -4,7 +4,9 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
+
 import javax.swing.JOptionPane;
+
 import Basedatos.GestorJDBC;
 
 
