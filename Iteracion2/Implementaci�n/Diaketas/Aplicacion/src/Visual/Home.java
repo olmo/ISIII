@@ -51,7 +51,7 @@ public class Home extends JPanel {
 					Mensaje.setText("Usuario/Contraseña vacios");
 				else{
 					CodificacionPW c=new CodificacionPW(passwordField_1.getText());
-					if(padre.getcontrolador().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
+					if(padre.getControladorPersonas().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
 						PanelInicio panIni= new PanelInicio(padre, textField.getText());
 						
 						padre.getContentPane().removeAll();

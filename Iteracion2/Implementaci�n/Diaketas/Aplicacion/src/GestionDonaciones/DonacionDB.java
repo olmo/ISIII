@@ -16,7 +16,6 @@ import GestionPersona.DonanteDB;
 public class DonacionDB {
 	private GestorJDBC gestor=GestorJDBC.getInstance();
 	
-	
 	Boolean add(Donacion donacion){
 		gestor.conectar();
 		Boolean correcto = gestor.Modificar("INSERT INTO Donacion (id_objetomonitorizable,id_donante,cantidad,estado) VALUES ('"+donacion.getIdObjMon()+"','"+donacion.getIdDonante()+"','"+donacion.getCantidad()+"','"+donacion.getEstado()+"')");

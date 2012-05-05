@@ -62,9 +62,9 @@ public class PanelPersonas extends JPanel {
 				String aux=choice_busqueda.getSelectedItem();
 				if(aux.equals("todos")){
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),null));
 				}else{
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),aux));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
 				

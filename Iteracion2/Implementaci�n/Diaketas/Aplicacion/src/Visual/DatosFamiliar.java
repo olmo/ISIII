@@ -89,10 +89,10 @@ public class DatosFamiliar extends JPanel {
 				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),null));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
 				}else{
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),aux));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
 
@@ -158,7 +158,7 @@ public class DatosFamiliar extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Familiar f=new Familiar();
-				f=padre.getcontrolador().consultarFamiliar(getId());
+				f=padre.getControladorPersonas().consultarFamiliar(getId());
 				BusquedaFamiliares bf = new BusquedaFamiliares(padre,f.getidBeneficiario(),ini);
 				padre.getContentPane().removeAll();
 				padre.getContentPane().validate();
@@ -195,9 +195,9 @@ public class DatosFamiliar extends JPanel {
 					
 					try{
 						Familiar f;
-						f=padre.getcontrolador().consultarFamiliar(getId());
+						f=padre.getControladorPersonas().consultarFamiliar(getId());
 						
-						padre.getcontrolador().modificarDatosFamiliar(f.getId(), dni.getText(), nombre.getText(), apellido1.getText(), apellido2.getText(), f.getfNacimiento(), f.getTelefono(), f.getLugarNacimiento(), f.getDomicilio(), f.getCp(), f.getemail(),f.getidBeneficiario(),parentesco.getText(),ocupacion.getText());
+						padre.getControladorPersonas().modificarDatosFamiliar(f.getId(), dni.getText(), nombre.getText(), apellido1.getText(), apellido2.getText(), f.getfNacimiento(), f.getTelefono(), f.getLugarNacimiento(), f.getDomicilio(), f.getCp(), f.getemail(),f.getidBeneficiario(),parentesco.getText(),ocupacion.getText());
 						correcto=true;
 								
 					}catch(Exception e1){
@@ -234,7 +234,7 @@ public class DatosFamiliar extends JPanel {
 			
 					try{
 						
-						padre.getcontrolador().borrarDatosFamiliar(getId());
+						padre.getControladorPersonas().borrarDatosFamiliar(getId());
 						JOptionPane.showMessageDialog(null, "Se ha dado de baja el usuario\n");
 						
 					}catch(Exception e1){

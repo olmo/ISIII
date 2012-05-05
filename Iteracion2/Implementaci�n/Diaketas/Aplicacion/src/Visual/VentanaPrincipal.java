@@ -10,7 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import GestionActuacion.ControladorActuaciones;
 import GestionAyudas.ControladorAyudas;
+import GestionDonaciones.ControladorDonaciones;
 import GestionPersona.ControladorPersona;
 
 
@@ -22,9 +24,10 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private ControladorPersona cp = new ControladorPersona();
-	private ControladorAyudas ca = new ControladorAyudas();
-	//private ControladorDonacion cd = new ControladorDonacion();
+	private ControladorPersona controlador_personas = new ControladorPersona();
+	private ControladorAyudas controlador_ayudas = new ControladorAyudas();
+	private ControladorDonaciones controlador_donaciones = new ControladorDonaciones();
+	private ControladorActuaciones controlador_actuaciones = new ControladorActuaciones();
 	private String trabajador;
 	
 	public VentanaPrincipal() {
@@ -71,16 +74,17 @@ public class VentanaPrincipal extends JFrame {
 		return trabajador;
 	}
 	
-	public ControladorPersona getcontrolador(){
-		return cp;
+	public ControladorPersona getControladorPersonas(){
+		return controlador_personas;
 	}
-	
 	public ControladorAyudas getControladorAyudas(){
-		return ca;
+		return controlador_ayudas;
 	}
-	
-//	public ControladorDonacion getControladorDonacion(){
-//		return cd;
-//	}
+	public ControladorActuaciones getControladorActuaciones(){
+		return controlador_actuaciones;
+	}
+	public ControladorDonaciones getControladorDonaciones(){
+		return controlador_donaciones;
+	}
 
 }
