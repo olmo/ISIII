@@ -2,14 +2,19 @@ package Visual;
 
 import java.awt.Component;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class PanelActuaciones extends JPanel {
@@ -17,6 +22,27 @@ public class PanelActuaciones extends JPanel {
 	private JTextField textField_2;
 	VentanaPrincipal padre;
 	PanelInicio ini;
+	private DefaultTableModel tabla_modelo;
+	JScrollPane scrollPane_2;
+	private JTable tablaActuaciones = new JTable();
+	
+	public void fillTable(ArrayList<Integer> lista_actuaciones){//Integer->Donaciones
+		scrollPane_2.setVisible(true);
+		DefaultTableModel modelo = new DefaultTableModel();
+		Object [] tupla = new Object[3];
+		//Relleneamos la cabecera de la tabla.
+		modelo.addColumn("Fecha");
+		modelo.addColumn("Tipo de Actuación");
+		modelo.addColumn("Trabajador");
+		for(int i=0;i<lista_actuaciones.size();i++){
+			tupla[0]=lista_actuaciones.get(i).intValue();//.get(i).getfecha
+			tupla[1]=lista_actuaciones.get(i).intValue();//.get(i).getTipoActuacion
+			tupla[2]=lista_actuaciones.get(i).intValue();//.get(i).getTrabajador
+			modelo.addRow(tupla);
+		}
+		tabla_modelo = modelo;
+		this.tablaActuaciones.setModel(tabla_modelo);
+	}
 	/**
 	 * Create the panel.
 	 */
@@ -30,10 +56,21 @@ public class PanelActuaciones extends JPanel {
 		textField_2.setColumns(15);
 		
 		JButton button_9 = new JButton("Buscar");
+		button_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Obtenemos lista de actuaciones
+				ArrayList<Integer> listaBuscar = new ArrayList<Integer>();
+				listaBuscar.add(3);
+				//
+
+				ini.panel_actuaciones.fillTable(listaBuscar);
+				ini.setPanelOnTab(ini.panel_actuaciones, PanelInicio.ACTUACIONES);
+			}
+		});
 		button_9.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JScrollPane scrollPane_2 = new JScrollPane((Component) null);
-		
+		scrollPane_2 = new JScrollPane(tablaActuaciones);
+		scrollPane_2.setVisible(false);
 		JButton button_10 = new JButton("Ir a donaci\u00F3n/ayuda");
 		button_10.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel_2 = new GroupLayout(this);

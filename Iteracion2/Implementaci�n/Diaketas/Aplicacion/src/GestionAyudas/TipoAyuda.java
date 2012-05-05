@@ -23,5 +23,13 @@ public class TipoAyuda {
 		return this.idTipo;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
 
 }

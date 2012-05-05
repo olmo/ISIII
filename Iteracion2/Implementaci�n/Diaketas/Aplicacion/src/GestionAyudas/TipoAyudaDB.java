@@ -10,6 +10,7 @@ import Basedatos.GestorJDBC;
 
 public class TipoAyudaDB {
 	private GestorJDBC gestor=GestorJDBC.getInstance();
+
 	
 	
 	Boolean add(TipoAyuda tipoAyuda){
@@ -30,10 +31,7 @@ public class TipoAyudaDB {
 			gestor.desconectar();
 			
 			while(rs.next()){
-				TipoAyuda tipo = new TipoAyuda();
-				
-				tipo.setNombre(rs.getObject("nombre").toString());
-				tipo.setObservaciones(rs.getObject("observaciones").toString());
+				TipoAyuda tipo = new TipoAyuda(rs.getObject("observaciones").toString(),rs.getObject("nombre").toString());
 				lista.add(tipo);
 			}
 			

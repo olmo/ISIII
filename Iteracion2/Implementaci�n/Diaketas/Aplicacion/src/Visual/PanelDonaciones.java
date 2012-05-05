@@ -3,6 +3,7 @@ package Visual;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -10,14 +11,42 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import GestionPersona.PersonaDB;
 
 @SuppressWarnings("serial")
 public class PanelDonaciones extends JPanel {
 	JTextField textField;
 	VentanaPrincipal padre;
 	PanelInicio ini;
+	TableModel tabla_modelo;
+	JTable tablaDonaciones = new JTable();
+	JScrollPane scrollPane;
+	PersonaDB pbd = new PersonaDB();
+	
+	public void fillTable(ArrayList<Integer> lista_donaciones){//Integer->Donaciones
+		DefaultTableModel modelo = new DefaultTableModel();
+		Object [] tupla = new Object[4];
+		//Relleneamos la cabecera de la tabla.
+		modelo.addColumn("Fecha");
+		modelo.addColumn("Cantidad");
+		modelo.addColumn("Donante");
+		modelo.addColumn("Estado");
+		for(int i=0;i<lista_donaciones.size();i++){
+			tupla[0]=lista_donaciones.get(i).intValue();//.get(i).getfecha
+			tupla[1]=lista_donaciones.get(i).intValue();//.get(i).getcantidad
+			tupla[2]=lista_donaciones.get(i).intValue();//.get(i).getDonante
+			tupla[3]=lista_donaciones.get(i).intValue();//.get(i).getEstado
+			modelo.addRow(tupla);
+		}
+		tabla_modelo = modelo;
+		this.tablaDonaciones.setModel(tabla_modelo);
+	}
 
 	/**
 	 * Create the panel.
@@ -26,27 +55,41 @@ public class PanelDonaciones extends JPanel {
 		
 		ini=pIni;
 		padre=p;
-		
+		tablaDonaciones.getTableHeader().setReorderingAllowed(false);
+		tablaDonaciones.setColumnSelectionAllowed(false);
+		tablaDonaciones.setRowSelectionAllowed(true);
 		setSize(PanelInicio.tamanoPaneles);
 		textField = new JTextField();
 		textField.setToolTipText("Búsqueda por fecha, tipo de donante, nombre de donante y estado de donación");
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(15);
 		
-		JButton button = new JButton("Buscar");
-		button.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
+		scrollPane = new JScrollPane(tablaDonaciones);
+		
+		JButton button = new JButton("Buscar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Obtenemos lista de donaciones
+				ArrayList<Integer> listaBuscar = new ArrayList<Integer>();
+				listaBuscar.add(3);
+				//
+
+				ini.panel_donaciones.fillTable(listaBuscar);
+				ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);
+
+			}
+		});
+		button.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
 		JButton button_1 = new JButton("A\u00F1adir Donaci\u00F3n");
 		button_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
+				ini.aniadir_donacion.fillTable(pbd.buscaPersonas("", "trabajador"));
 				ini.setPanelOnTab(ini.aniadir_donacion,PanelInicio.DONACIONES);
-//				ini.panelDonaciones.removeAll();
-//				//ini.validate();
-//				ini.panelDonaciones.add(new AniadirDonacion(padre,ini));
-//				ini.panelDonaciones.validate();
-//				ini.panelDonaciones.repaint();
+
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -57,18 +100,12 @@ public class PanelDonaciones extends JPanel {
 				NuevoUsuario nu = ini.nuevo_usuario;
 				nu.modotrabajador();
 				ini.setPanelOnTab(nu, PanelInicio.PERSONAS);
-//				ini.panelUsuarios.removeAll();
-//				NuevoUsuario nU=new NuevoUsuario(padre,ini);
-//				nU.modotrabajador();
-//				ini.panelUsuarios.add(nU);
-//				ini.validate();
-//				ini.repaint();
-				//PanelInicio.verPestana(0);
+
 			}
 		});
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JScrollPane scrollPane = new JScrollPane();
+
+		scrollPane = new JScrollPane(tablaDonaciones);
 		
 		JButton button_3 = new JButton("Cancelar Donaci\u00F3n");
 		button_3.addActionListener(new ActionListener() {

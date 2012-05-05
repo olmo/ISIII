@@ -51,6 +51,26 @@ public class Ayuda extends ObjetoMonitorizable{
 	public void setCantidadMonetaria(float cantidadMonetaria){
 		this.cantidadMonetaria = cantidadMonetaria;
 	}
+
+	public int getIdObjMon() {
+		return this.id;
+	}
+
+	public String getObservaciones() {
+		return this.observaciones;
+	}
+
+	public float getCantidadMonetaria() {
+		return this.cantidadMonetaria;
+	}
+
+	public int getIdBeneficiario() {
+		return this.idBeneficario;
+	}
+
+	public int getIdTipoAyuda() {
+		return idTipo;
+	}
 	
 	
 	

@@ -40,7 +40,7 @@ public class ControladorAyudas {
 	}
 
 	ArrayList<Ayuda> listarAyudasConcedidas(String filtro){
-		ayudaDB.getListAyudas(filtro);
+		return ayudaDB.getList(filtro);
 	}
 	
 	ArrayList<Ayuda> listarAyudasBeneficiario(Beneficiario beneficiario, String filtro){
