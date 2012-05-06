@@ -11,6 +11,7 @@ public class Donacion extends ObjetoMonitorizable{
 
 
 	public Donacion(){
+		this.setIdObjMon(0);
 			
 		}
 
@@ -20,15 +21,7 @@ public class Donacion extends ObjetoMonitorizable{
 		this.idDonante = donante.getId();
 	}
 	
-	public void setIdObjMon(int id){
-		this.id = id;
-	}
-	
-	
-	public int getIdObjMon(){
-		return this.id;
-	}
-	
+		
 	public void setEstado(Estado estado){
 		
 		this.estado = estado;

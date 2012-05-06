@@ -32,6 +32,7 @@ public class PanelDonaciones extends JPanel {
 	JScrollPane scrollPane;
 	PersonaDB pbd = new PersonaDB();
 	DonanteDB ddb = new DonanteDB();
+	ArrayList<Donacion> listaBuscar;
 	
 	public void fillTable(ArrayList<Donacion> lista_donaciones){//Integer->Donaciones
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -43,7 +44,7 @@ public class PanelDonaciones extends JPanel {
 		modelo.addColumn("Estado");
 		Persona p;
 		for(int i=0;i<lista_donaciones.size();i++){
-			tupla[0]="fecha";//.get(i).getfecha
+			tupla[0]=lista_donaciones.get(i).getDate();
 			tupla[1]=lista_donaciones.get(i).getCantidad();//.get(i).getcantidad
 			p=PersonaDB.getDatos(lista_donaciones.get(i).getIdDonante());
 			tupla[2]=p.getNombre()+" "+p.getApellido1()+" "+p.getApellido2();//.get(i).getDonante
@@ -77,7 +78,7 @@ public class PanelDonaciones extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Obtenemos lista de donaciones
-				ArrayList<Donacion> listaBuscar;
+				
 				//listaBuscar.add(3);
 				listaBuscar=padre.getControladorDonaciones().listarDonaciones(textField.getText());
 				//
@@ -119,7 +120,12 @@ public class PanelDonaciones extends JPanel {
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere confirmar la donación?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
-					//Datos para confirmar donacion en la DB
+					padre.getControladorDonaciones().cancelarDonacion(listaBuscar.get(tablaDonaciones.getSelectedRow()));
+					listaBuscar=padre.getControladorDonaciones().listarDonaciones(textField.getText());
+					//
+
+					ini.panel_donaciones.fillTable(listaBuscar);
+					ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);
 					ini.panelDonaciones.validate();
 					ini.panelDonaciones.repaint();
 				}else{
@@ -136,7 +142,14 @@ public class PanelDonaciones extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere confirmar la donación?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
-					//Datos para confirmar donacion en la DB
+					
+					
+					padre.getControladorDonaciones().confirmarDonacion(listaBuscar.get(tablaDonaciones.getSelectedRow()));
+					listaBuscar=padre.getControladorDonaciones().listarDonaciones(textField.getText());
+					//
+
+					ini.panel_donaciones.fillTable(listaBuscar);
+					ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);
 					ini.panelDonaciones.validate();
 					ini.panelDonaciones.repaint();
 				}else{

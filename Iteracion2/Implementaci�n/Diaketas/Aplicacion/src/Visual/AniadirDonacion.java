@@ -96,7 +96,7 @@ public class AniadirDonacion extends JPanel{
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(JOptionPane.showConfirmDialog(null, "¿Confirma la Donacion?", "Confirmacion", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
-					padre.getControladorDonaciones().aniadirDonacion(lista_donantes.get(tablaDonantes.getSelectedRow()), Float.valueOf(AniadirDonacion.textField_1.getText().trim()).floatValue(), estado.Pagado );
+					padre.getControladorDonaciones().aniadirDonacion(lista_donantes.get(tablaDonantes.getSelectedRow()), Float.valueOf(AniadirDonacion.textField_1.getText().trim()).floatValue(), estado.Pendiente );
 					
 //					ini.panelDonaciones.removeAll();
 //					ini.panelDonaciones.add(new PanelDonaciones(padre, ini));

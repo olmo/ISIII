@@ -1,5 +1,6 @@
 package GestionDonaciones;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -16,7 +17,8 @@ public class ControladorDonaciones {
 	
 	public Boolean aniadirDonacion(Donante donante, float cantidad, Estado estado){
 		Donacion donacion = new Donacion(donante, cantidad, estado);
-		return donacionDB.add(donacion);
+			return donacionDB.add(donacion);
+	
 	}
 	
 	

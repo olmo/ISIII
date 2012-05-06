@@ -1,5 +1,5 @@
 package GestionDonaciones;
 
 public enum Estado {
-	Pagado, Pendiente, Cancelado
+	Pagado,Pendiente,Cancelado
 }

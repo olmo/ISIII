@@ -30,9 +30,6 @@ public class Ayuda extends ObjetoMonitorizable{
 		this.idTipo = tipoAyuda.getId();
 	}
 	
-	public void setIdObjMon(int id){
-		this.id = id;
-	}
 	
 	public void setIdTipoAyuda(int idTipo){
 		this.idTipo = idTipo;
@@ -51,9 +48,7 @@ public class Ayuda extends ObjetoMonitorizable{
 		this.cantidadMonetaria = cantidadMonetaria;
 	}
 
-	public int getIdObjMon() {
-		return this.id;
-	}
+	
 
 	public String getObservaciones() {
 		return this.observaciones;
