@@ -2,7 +2,7 @@ package GestionDonaciones;
 
 import GestionActuacion.ObjetoMonitorizable;
 import GestionPersona.Donante;
-enum Estado {Pagado, Pendiente, Cancelado};
+//enum Estado {Pagado, Pendiente, Cancelado};
 
 public class Donacion extends ObjetoMonitorizable{
 	private float cantidad;
