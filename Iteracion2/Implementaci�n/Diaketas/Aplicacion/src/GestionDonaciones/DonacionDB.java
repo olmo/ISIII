@@ -41,8 +41,8 @@ public class DonacionDB {
 						"WHERE (Donaciones.id_objetomonitorizable=ObjetosMonitorizables.id) AND " +
 						"(ObjetosMonitorizables.fecha>='"+fechaIni.toString()+"' AND ObjetosMonitorizables.fecha<='"+fechaFin.toString()+"')");
 			}else if(Pattern.matches("^\\d{0,8}", filtro)){		// Si el filtrado es por el DNI del donante
-				rs = gestor.RealizarConsulta("SELECT * from Personas, Donantes, Donaciones" +
-						"WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante AND" +
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Donantes, Donaciones " +
+						"WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante AND " +
 						"Personas.dni LIKE '"+filtro+"%'");
 			}else if(filtro==null){
 				rs = gestor.RealizarConsulta("SELECT * from Personas, Donantes, Donaciones WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante");				
