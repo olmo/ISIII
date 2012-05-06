@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import GestionDonaciones.Donacion;
+import GestionPersona.DonanteDB;
 import GestionPersona.Persona;
 import GestionPersona.PersonaDB;
 
@@ -30,6 +31,7 @@ public class PanelDonaciones extends JPanel {
 	JTable tablaDonaciones = new JTable();
 	JScrollPane scrollPane;
 	PersonaDB pbd = new PersonaDB();
+	DonanteDB ddb = new DonanteDB();
 	
 	public void fillTable(ArrayList<Donacion> lista_donaciones){//Integer->Donaciones
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -92,7 +94,8 @@ public class PanelDonaciones extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				ini.aniadir_donacion.fillTable(pbd.buscaPersonas("", "trabajador"));
+				
+				ini.aniadir_donacion.fillTable(ddb.getDonantes(""));
 				ini.setPanelOnTab(ini.aniadir_donacion,PanelInicio.DONACIONES);
 
 			}

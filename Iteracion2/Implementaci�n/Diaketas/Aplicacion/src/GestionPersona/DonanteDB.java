@@ -20,26 +20,35 @@ public class DonanteDB {
 			gestor.conectar();
 			ResultSet rsE, rsS, rsC;
 			if(Pattern.matches("^\\d{0,8}", filtro)){		//Se trata de un DNI, se filtra por DNI
-				rsS = gestor.RealizarConsulta("SELECT * from Personas, Socios WHERE Personas.id = Socios.id AND" +
-						"Personas.dni LIKE '"+filtro+"%'");
+				rsS = gestor.RealizarConsulta("SELECT * from Personas, Socios, Donantes WHERE Personas.id = Socios.id_persona AND" +
+						" Personas.id = Donantes.id_persona AND Personas.dni LIKE '"+filtro+"%'");
 				
-				rsE = gestor.RealizarConsulta("SELECT * from Personas, Empresas WHERE Personas.id = Empresas.id AND" +
-						"Personas.dni LIKE '"+filtro+"%'");
+				rsE = gestor.RealizarConsulta("SELECT * from Personas, Empresas, Donantes WHERE Personas.id = Empresas.id_persona AND" +
+						" Personas.id = Donantes.id_persona AND  Personas.dni LIKE '"+filtro+"%'");
 				
-				rsC = gestor.RealizarConsulta("SELECT * from Personas, Colaboradores WHERE Personas.id = Colaboradores.id AND" +
-						"Personas.dni LIKE '"+filtro+"%'");
+				rsC = gestor.RealizarConsulta("SELECT * from Personas, Colaboradores, Donantes WHERE Personas.id = Colaboradores.id_persona AND" +
+						" Personas.id = Donantes.id_persona AND  Personas.dni LIKE '"+filtro+"%'");
 				
+			}else if (filtro == null){
+				rsS = gestor.RealizarConsulta("SELECT * from Personas, Socios, Donantes WHERE Personas.id = Socios.id_persona AND Personas.id = Donantes.id_persona");
+				
+				rsE = gestor.RealizarConsulta("SELECT * from Personas, Empresas, Donantes WHERE Personas.id = Empresas.id_persona AND Personas.id = Donantes.id_persona");
+				
+				rsC = gestor.RealizarConsulta("SELECT * from Personas, Colaboradores, Donantes WHERE Personas.id = Colaboradores.id_persona AND Personas.id = Donantes.id_persona");
+			
+			
 			}else{
-				rsS = gestor.RealizarConsulta("SELECT * from Personas, Socios WHERE Personas.id = Socios.id AND"+
-						"(Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
+				rsS = gestor.RealizarConsulta("SELECT * from Personas, Socios, Donantes WHERE Personas.id = Socios.id_persona AND"+
+						" Personas.id = Donantes.id_persona AND (Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
 				
-				rsE = gestor.RealizarConsulta("SELECT * from Personas, Empresas WHERE Personas.id = Empresas.id AND"+
-						"(Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
+				rsE = gestor.RealizarConsulta("SELECT * from Personas, Empresas, Donantes WHERE Personas.id = Empresas.id_persona AND"+
+						" Personas.id = Donantes.id_persona AND (Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
 				
-				rsC = gestor.RealizarConsulta("SELECT * from Personas, Colaboradores WHERE Personas.id = Colaboradores.id AND"+
-						"(Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
+				rsC = gestor.RealizarConsulta("SELECT * from Personas, Colaboradores, Donantes WHERE Personas.id = Colaboradores.id_persona AND"+
+						"Personas.id = Donantes.id_persona AND  (Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
 			}
 				
+
 				while (rsS.next()){
 					
 					Socio p = new Socio();
@@ -57,8 +66,7 @@ public class DonanteDB {
 					p.setEstado((Boolean)rsS.getObject("estado"));
 						p.setfBaja(rsS.getObject("fbaja").toString());
 					p.setemail(rsS.getObject("email").toString());
-					
-					p.setPeriocidad((Integer)rsS.getObject("periodicidad"));
+					p.setPeriocidad((Integer)rsS.getObject("periocidad"));
 					p.setUsuario(rsS.getObject("usuario").toString());
 					lista.add(p);
 				}
@@ -81,7 +89,7 @@ public class DonanteDB {
 						p.setfBaja(rsE.getObject("fbaja").toString());
 					p.setemail(rsE.getObject("email").toString());
 					
-					p.setPeriocidad((Integer)rsE.getObject("periodicidad"));
+					p.setPeriocidad((Integer)rsE.getObject("periocidad"));
 					p.setCif((Integer)rsE.getObject("cif"));
 					p.setDireccionEmpresa(rsE.getObject("direccionempresa").toString());
 					p.setemailEmpresa(rsE.getObject("emailempresa").toString());
@@ -108,11 +116,11 @@ public class DonanteDB {
 					p.setfBaja(rsC.getObject("fbaja").toString());
 				p.setemail(rsC.getObject("email").toString());
 				
-				p.setPeriocidad((Integer)rsC.getObject("periodicidad"));
+				p.setPeriocidad((Integer)rsC.getObject("periocidad"));
 				lista.add(p);
 			}
 		}catch (Exception e){
-			JOptionPane.showMessageDialog(null, "Error al listar los beneficiarios BeneficiarioDB: "+e.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al listar los Donantes donanteDB: "+e.getMessage());
 			return null;
 		}
 		return lista;

@@ -1,7 +1,6 @@
 package GestionAyudas;
 
 import GestionActuacion.ObjetoMonitorizable;
-import GestionAyudas.TipoAyuda;
 import GestionPersona.Beneficiario;
 enum Estado {Pagado, Pendiente, Cancelado};
 

@@ -2,6 +2,7 @@ package GestionDonaciones;
 
 import java.util.ArrayList;
 
+
 import GestionPersona.Donante;
 import GestionPersona.DonanteDB;
 
@@ -39,4 +40,7 @@ public class ControladorDonaciones {
 	public ArrayList<Donante> buscarDonantes(String filtro){
 		return donanteDB.getDonantes(filtro);
 	}
+
+
+	
 }

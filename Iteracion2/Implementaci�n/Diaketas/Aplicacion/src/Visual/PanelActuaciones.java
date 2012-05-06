@@ -1,7 +1,9 @@
 package Visual;
 
-import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
@@ -15,10 +17,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
 import GestionActuacion.Actuacion;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
 
 @SuppressWarnings("serial")
 public class PanelActuaciones extends JPanel {

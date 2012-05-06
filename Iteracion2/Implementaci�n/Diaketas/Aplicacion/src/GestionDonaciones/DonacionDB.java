@@ -44,9 +44,11 @@ public class DonacionDB {
 				rs = gestor.RealizarConsulta("SELECT * from Personas, Donantes, Donaciones" +
 						"WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante AND" +
 						"Personas.dni LIKE '"+filtro+"%'");
+			}else if(filtro==null){
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Donantes, Donaciones WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante");				
 			}else{
 				// CONSULTA SEGUN NOMBRE Y APELLIDOS DEL DONANTE
-				rs = gestor.RealizarConsulta("SELECT * from Personas,Donantes, Donaciones" +
+				rs = gestor.RealizarConsulta("SELECT * from Personas,Donantes, Donaciones " +
 						"WHERE (Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante AND Personas.nombre LIKE '"+filtro+"%' OR Personas.apellido1 LIKE '"+filtro+"%' OR Personas.apellido2 LIKE '"+filtro+"%'");
 			}
 			gestor.desconectar();
