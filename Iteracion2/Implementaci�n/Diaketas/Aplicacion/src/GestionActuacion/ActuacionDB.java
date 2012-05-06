@@ -63,12 +63,12 @@ public class ActuacionDB {
 			}else if(Pattern.matches("^[Cc]onfirmar donacion", filtro)){	// Si el filtrado es por el tipo de actuacion 'confirmar_donacion'
 				rs = gestor.RealizarConsulta("SELECT * from Actuaciones WHERE id_tipoactuacion='4'");
 			}else if(Pattern.matches("^\\d{0,8}", filtro)){		// Si el filtrado es por el DNI del trabajador
-				rs = gestor.RealizarConsulta("SELECT * from Personas, Trabajadores, Actuaciones" +
-						"WHERE Personas.id=Trabajadores.id_persona AND Personas.id=Actuaciones.id_trabajador AND" +
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Trabajadores, Actuaciones " +
+						"WHERE Personas.id=Trabajadores.id_persona AND Personas.id=Actuaciones.id_trabajador AND " +
 						"Personas.dni LIKE '"+filtro+"%'");
 			}else{		// Si el filtrado es por nombre o apellidos del trabajador
-				rs = gestor.RealizarConsulta("SELECT * from Personas, Trabajadores, Actuaciones" +
-						"WHERE Personas.id=Trabajadores.id_persona AND Personas.id=Actuaciones.id_trabajador AND" +
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Trabajadores, Actuaciones " +
+						"WHERE Personas.id=Trabajadores.id_persona AND Personas.id=Actuaciones.id_trabajador AND " +
 						"(Personas.nombre LIKE '"+filtro+"%' OR Personas.apellido1 LIKE '"+filtro+"%' OR Personas.apellido2 LIKE '"+filtro+"%')");
 			}
 			gestor.desconectar();
