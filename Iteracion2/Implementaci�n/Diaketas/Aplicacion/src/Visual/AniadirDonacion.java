@@ -18,9 +18,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
+import GestionDonaciones.Estado;
 import GestionPersona.Donante;
-import GestionDonaciones.Donacion;
-import GestionDonaciones.DonacionDB;
 
 
 public class AniadirDonacion extends JPanel{
@@ -33,7 +32,7 @@ public class AniadirDonacion extends JPanel{
 	private DefaultTableModel tabla_modelo;
 	JScrollPane scrollPane;
 	ArrayList<Donante> lista_donantes;
-	enum Estado {Pagado, Pendiente, Cancelado};
+	private Estado estado;
 	
 	
 	public void fillTable(ArrayList<Donante> lista_donantes){//Integer->Donaciones
@@ -97,7 +96,7 @@ public class AniadirDonacion extends JPanel{
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(JOptionPane.showConfirmDialog(null, "¿Confirma la Donacion?", "Confirmacion", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
-					padre.getControladorDonaciones().aniadirDonacion(lista_donantes.get(tablaDonantes.getSelectedRow()), Float.valueOf(AniadirDonacion.textField_1.getText().trim()).floatValue(), Estado.Pagado );
+					padre.getControladorDonaciones().aniadirDonacion(lista_donantes.get(tablaDonantes.getSelectedRow()), Float.valueOf(AniadirDonacion.textField_1.getText().trim()).floatValue(), estado.Pagado );
 					
 //					ini.panelDonaciones.removeAll();
 //					ini.panelDonaciones.add(new PanelDonaciones(padre, ini));
