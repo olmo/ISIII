@@ -4,11 +4,10 @@ package Visual;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 
 import GestionPersona.Beneficiario;
 import GestionPersona.Colaborador;
@@ -141,10 +139,10 @@ public class NuevoUsuario extends JPanel {
 					//BusquedaUsuarios b = ini.busqueda_usuarios;
 					String aux=choice_busqueda.getSelectedItem();
 					if(aux.equals("todos")){
-						ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),null));
+						ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField_busqueda.getText(),null));
 						ini.busqueda_usuarios.setbusqueda(textField_busqueda.getText(),null);
 					}else{
-						ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),aux));
+						ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField_busqueda.getText(),aux));
 						ini.busqueda_usuarios.setbusqueda(textField_busqueda.getText(),aux);
 					}
 					
@@ -269,23 +267,23 @@ public class NuevoUsuario extends JPanel {
 							cp=new Integer(textField_cp.getText());
 							email=textField_email.getText();
 				
-						id=padre.getcontrolador().darAltaPersona(dni,nombre,apellido1,apellido2,fnac,telefono,lugarnac,domicilio,cp,email);
+						id=padre.getControladorPersonas().darAltaPersona(dni,nombre,apellido1,apellido2,fnac,telefono,lugarnac,domicilio,cp,email);
 							
 						if(id!=-1){	
 							
 							DatosUsuario d=ini.datos_usuario;
 							
 							if(choice_Rol.getSelectedItem().equals("trabajador")){
-								padre.getcontrolador().introducirDatosTrabajador(id,usuario.getText(),passwordField_1.getText());
-								Trabajador t=padre.getcontrolador().consultarTrabajador(id);
+								padre.getControladorPersonas().introducirDatosTrabajador(id,usuario.getText(),passwordField_1.getText());
+								Trabajador t=padre.getControladorPersonas().consultarTrabajador(id);
 								d.rellenar(t);
 								d.modotrabajador();
 								
 							}else if(choice_Rol.getSelectedItem().equals("donante-Socio")){
 								try{
 									
-									padre.getcontrolador().introducirDatosSocio(id,new Integer(text_Periocidad.getText()),usuario.getText(),passwordField_1.getText());
-									Socio s=padre.getcontrolador().consultarSocio(id);
+									padre.getControladorPersonas().introducirDatosSocio(id,new Integer(text_Periocidad.getText()),usuario.getText(),passwordField_1.getText());
+									Socio s=padre.getControladorPersonas().consultarSocio(id);
 									d.rellenar(s);
 									d.modosocio();
 								}catch (Exception e) {
@@ -294,8 +292,8 @@ public class NuevoUsuario extends JPanel {
 							}else if(choice_Rol.getSelectedItem().equals("donante-Colaborador")){
 								try{
 									
-									padre.getcontrolador().introducirDatosColaborador(id,new Integer(text_Periocidad.getText()));
-									Colaborador c=padre.getcontrolador().consultarColaborador(id);
+									padre.getControladorPersonas().introducirDatosColaborador(id,new Integer(text_Periocidad.getText()));
+									Colaborador c=padre.getControladorPersonas().consultarColaborador(id);
 									d.rellenar(c);
 									d.modocolaborador();
 								}catch (Exception e) {
@@ -307,16 +305,16 @@ public class NuevoUsuario extends JPanel {
 									if(textTelEmp.getText().equals(""))
 										textTelEmp.setText("0");
 									String dirEmp=""+textDirEmp.getText(), emaEmp=""+textEmail_Emp.getText();
-									padre.getcontrolador().introducirDatosEmpresa(id,new Integer(text_Periocidad.getText()), new Integer(textCIF.getText()), textN_Empresa.getText(), new Integer(textTelEmp.getText()), dirEmp, emaEmp);
-									Empresa emp=padre.getcontrolador().consultarEmpresa(id);
+									padre.getControladorPersonas().introducirDatosEmpresa(id,new Integer(text_Periocidad.getText()), new Integer(textCIF.getText()), textN_Empresa.getText(), new Integer(textTelEmp.getText()), dirEmp, emaEmp);
+									Empresa emp=padre.getControladorPersonas().consultarEmpresa(id);
 									d.rellenar(emp);
 									d.modoempresa();
 								}catch (Exception e) {
 									JOptionPane.showMessageDialog(null, "Error al introducir la empresa a la base de datos\n"+e.getMessage());
 								}							
 							}else if(choice_Rol.getSelectedItem().equals("beneficiario")){
-								padre.getcontrolador().introducirDatosBeneficiario(id, textField_localidad.getText(), textField_ecivil.getText(), textField_estudios.getText(), textField_nacionalidad.getText(),textField_seconomica.getText(), textField_opersonales.getText(), textField_ovivienda.getText(), textField_ofamiliares.getText());
-								Beneficiario t=padre.getcontrolador().consultarBeneficiario(id);
+								padre.getControladorPersonas().introducirDatosBeneficiario(id, textField_localidad.getText(), textField_ecivil.getText(), textField_estudios.getText(), textField_nacionalidad.getText(),textField_seconomica.getText(), textField_opersonales.getText(), textField_ovivienda.getText(), textField_ofamiliares.getText());
+								Beneficiario t=padre.getControladorPersonas().consultarBeneficiario(id);
 								d.rellenar(t);
 								d.modobeneficiario();
 							}

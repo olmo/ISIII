@@ -140,10 +140,10 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_busqueda.getSelectedItem();
 				if(aux.equals("todos")){
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),null));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField_busqueda.getText(),null));
 					ini.busqueda_usuarios.setbusqueda(textField_busqueda.getText(),null);
 				}else{
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField_busqueda.getText(),aux));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField_busqueda.getText(),aux));
 					ini.busqueda_usuarios.setbusqueda(textField_busqueda.getText(),aux);
 				}
 				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);
@@ -246,21 +246,21 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 								if(!textField_fnacdia.getText().equals("") && !textField_fnacmes.getText().equals("") && !textField_fnacano.getText().equals(""))
 									fnac=textField_fnacano.getText()+"-"+textField_fnacmes.getText()+"-"+textField_fnacdia.getText();
 								if(rol.equals("trabajador")){
-										padre.getcontrolador().modificarDatosTrabajador(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText());
+										padre.getControladorPersonas().modificarDatosTrabajador(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText());
 										correcto=true;
 								}else if(rol.equals("beneficiario")){
-										padre.getcontrolador().modificarDatosBeneficiario(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText(),textField_localidad.getText(),textField_ecivil.getText(),textField_estudios.getText(),textField_nacionalidad.getText(),textField_seconomica.getText(),textField_opersonales.getText(),textField_ovivienda.getText(),textField_ofamiliares.getText());
+										padre.getControladorPersonas().modificarDatosBeneficiario(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText(),textField_localidad.getText(),textField_ecivil.getText(),textField_estudios.getText(),textField_nacionalidad.getText(),textField_seconomica.getText(),textField_opersonales.getText(),textField_ovivienda.getText(),textField_ofamiliares.getText());
 										correcto=true;
 								}else if(rol.equals("donante-Socio")) {
 									CodificacionPW c=new CodificacionPW(passwordField_1.getText());
-									padre.getcontrolador().modificarDatosSocio(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText(),new Integer(text_Periocidad.getText()),usuario.getText(),c.getPassword());	
+									padre.getControladorPersonas().modificarDatosSocio(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText(),new Integer(text_Periocidad.getText()),usuario.getText(),c.getPassword());	
 								}else if(rol.equals("donante-Empresa")) {
 									if(textTelEmp.getText().equals(""))
 										textTelEmp.setText("0");
-									padre.getcontrolador().modificarDatosEmpresa(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText(),new Integer(text_Periocidad.getText()),new Integer(textCIF.getText()),textN_Empresa.getText(),new Integer(textTelEmp.getText()),textDirEmp.getText(),textEmail_Emp.getText());	
+									padre.getControladorPersonas().modificarDatosEmpresa(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText(),new Integer(text_Periocidad.getText()),new Integer(textCIF.getText()),textN_Empresa.getText(),new Integer(textTelEmp.getText()),textDirEmp.getText(),textEmail_Emp.getText());	
 									correcto=true;
 								}else if(rol.equals("donante-Colaborador")) {
-									padre.getcontrolador().modificarDatosColaborador(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText(),new Integer(text_Periocidad.getText()));	
+									padre.getControladorPersonas().modificarDatosColaborador(id, textField_dni.getText(), textField_nombre.getText(), textField_apellido1.getText(), textField_apellido2.getText(), fnac, telefono, textField_lugarnac.getText(), textField_domicilio.getText(), cp, textField_email.getText(),new Integer(text_Periocidad.getText()));	
 									correcto=true;
 								}
 					}catch(Exception e1){
@@ -296,19 +296,19 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 					try{
 						if(cbu.getConfirmacionBorrado()){
 							if(rol.equals("trabajador"))
-								padre.getcontrolador().borrarDatosTrabajador(id);
+								padre.getControladorPersonas().borrarDatosTrabajador(id);
 							else if(rol.equals("beneficiario"))
-								padre.getcontrolador().borrarDatosBeneficiario(id);
+								padre.getControladorPersonas().borrarDatosBeneficiario(id);
 							else if(rol.equals("donante-Socio")) {
-								padre.getcontrolador().borrarDatosSocio(id);	
+								padre.getControladorPersonas().borrarDatosSocio(id);	
 							}else if(rol.equals("donante-Empresa")) {
 								if(textTelEmp.getText().equals(""))
 									textTelEmp.setText("0");
-								padre.getcontrolador().borrarDatosEmpresa(id);	
+								padre.getControladorPersonas().borrarDatosEmpresa(id);	
 							}else if(rol.equals("donante-Colaborador"))
-								padre.getcontrolador().borrarDatosColaborador(id);								
+								padre.getControladorPersonas().borrarDatosColaborador(id);								
 						}else
-							padre.getcontrolador().darBaja(id);
+							padre.getControladorPersonas().darBaja(id);
 					}catch(Exception e1){
 						JOptionPane.showMessageDialog(null, "Error al dar de baja\n"+e1.getMessage());
 					}
@@ -724,15 +724,15 @@ public DatosUsuario(VentanaPrincipal p, PanelInicio pIni) {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
 					if(rol.equals("trabajador"))
-						padre.getcontrolador().darAlta(id);
+						padre.getControladorPersonas().darAlta(id);
 					else if(rol.equals("beneficiario"))
-						padre.getcontrolador().darAlta(id);
+						padre.getControladorPersonas().darAlta(id);
 					else if(rol.equals("donante-Socio"))
-						padre.getcontrolador().darAlta(id);
+						padre.getControladorPersonas().darAlta(id);
 					else if(rol.equals("donante-Empresa"))
-						padre.getcontrolador().darAlta(id);
+						padre.getControladorPersonas().darAlta(id);
 					else if(rol.equals("donante-Colaborador"))
-						padre.getcontrolador().darAlta(id);
+						padre.getControladorPersonas().darAlta(id);
 				
 				}catch(Exception e1){
 					JOptionPane.showMessageDialog(null, "Error al dar de baja\n"+e1.getMessage());

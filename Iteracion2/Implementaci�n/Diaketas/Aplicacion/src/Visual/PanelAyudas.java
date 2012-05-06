@@ -15,12 +15,13 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
+import GestionAyudas.Ayuda;
+
 @SuppressWarnings("serial")
 public class PanelAyudas extends JPanel {
 
 	private JTextField textField_1;
 	VentanaPrincipal padre;
-	private JTable table;
 	PanelInicio ini;
 	JScrollPane scrollPane;
 	private JTable tablaAyudas = new JTable();
@@ -28,7 +29,7 @@ public class PanelAyudas extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public void fillTable(ArrayList<Integer> lista_ayudas){//Integer->Donaciones
+	public void fillTable(ArrayList<Ayuda> lista_ayudas){//Integer->Donaciones
 		scrollPane.setVisible(true);
 		
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -41,11 +42,11 @@ public class PanelAyudas extends JPanel {
 		modelo.addColumn("Observaciones");
 
 		for(int i=0;i<lista_ayudas.size();i++){
-			tupla[0]=lista_ayudas.get(i).intValue();//.get(i).getfecha
-			tupla[1]=lista_ayudas.get(i).intValue();//.get(i).getcantidad
-			tupla[2]=lista_ayudas.get(i).intValue();//.get(i).getDonante
-			tupla[3]=lista_ayudas.get(i).intValue();//.get(i).getEstado
-			tupla[4]=lista_ayudas.get(i).intValue();//.get(i).getEstado
+			tupla[0]="fecha";//.get(i).getfecha
+			tupla[1]=lista_ayudas.get(i).getIdTipoAyuda();//.get(i).getcantidad
+			tupla[2]=lista_ayudas.get(i).getIdBeneficiario();//.get(i).getDonante
+			tupla[3]=lista_ayudas.get(i).getCantidadMonetaria();//.get(i).getEstado
+			tupla[4]=lista_ayudas.get(i).getObservaciones();//.get(i).getEstado
 
 			modelo.addRow(tupla);
 		}
@@ -67,11 +68,10 @@ public class PanelAyudas extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Buscar Ayudas");
 				//Obtenemos lista de ayudas
-				ArrayList<Integer> listaBuscar = new ArrayList<Integer>();
-				listaBuscar.add(3);
+				ArrayList<Ayuda> listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas("");//textField_1.getText());
 				//
 
-				ini.panel_ayudas.fillTable(listaBuscar);
+				ini.panel_ayudas.fillTable(listaAyudas);
 				ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
 			}
 		});

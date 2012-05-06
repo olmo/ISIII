@@ -13,41 +13,42 @@ public class ControladorAyudas {
 	private AyudaDB ayudaDB = new AyudaDB();
 	private BeneficiarioDB beneficiarioDB = new BeneficiarioDB();
 	
-	boolean anadirTipoAyuda(String nombre, String observaciones){
+	
+	public boolean anadirTipoAyuda(String nombre, String observaciones){
 		TipoAyuda ta = new TipoAyuda(nombre, observaciones);
 		return tipoAyudaDB.add(ta);
 	}
 	
-	ArrayList<TipoAyuda> listarTiposAyuda(){
+	public ArrayList<TipoAyuda> listarTiposAyuda(){
 		return tipoAyudaDB.getList();
 	}
 	
-	void modificarTipoAyuda(TipoAyuda tipoAyuda){
+	public void modificarTipoAyuda(TipoAyuda tipoAyuda){
 		tipoAyudaDB.set(tipoAyuda);
 	}
 	
-	void borrarTipoAyuda(TipoAyuda tipoAyuda){
+	public void borrarTipoAyuda(TipoAyuda tipoAyuda){
 		tipoAyudaDB.del(tipoAyuda);
 	}
 	
-	void concederAyuda(Beneficiario beneficiario, String observacionesAyuda, TipoAyuda tipoAyuda, float cantidad){
+	public void concederAyuda(Beneficiario beneficiario, String observacionesAyuda, TipoAyuda tipoAyuda, float cantidad){
 		Ayuda ayuda = new Ayuda(beneficiario, observacionesAyuda, tipoAyuda, cantidad);
 		ayudaDB.add(ayuda);
 	}
 	
-	void modificarAyuda(Ayuda ayuda){
+	public void modificarAyuda(Ayuda ayuda){
 		ayudaDB.set(ayuda);
 	}
 
-	ArrayList<Ayuda> listarAyudasConcedidas(String filtro){
+	public ArrayList<Ayuda> listarAyudasConcedidas(String filtro){
 		return ayudaDB.getList(filtro);
 	}
 	
-	ArrayList<Ayuda> listarAyudasBeneficiario(Beneficiario beneficiario, String filtro){
+	public ArrayList<Ayuda> listarAyudasBeneficiario(Beneficiario beneficiario, String filtro){
 		return ayudaDB.getAyudasBeneficiario(beneficiario, filtro);
 	}
 	
-	ArrayList<Beneficiario> buscarBeneficiarios(String filtro){
+	public ArrayList<Beneficiario> buscarBeneficiarios(String filtro){
 		return beneficiarioDB.getBeneficiarios(filtro);
 	}
 }

@@ -47,7 +47,7 @@ public class BusquedaFamiliares extends JPanel {
 		setLayout(null);
 		
 		table = new JTable();
-		setTabla(padre.getcontrolador().listarFamiliares(id));
+		setTabla(padre.getControladorPersonas().listarFamiliares(id));
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(0, 86, 1200, 524);
 		add(scrollPane);
@@ -76,7 +76,7 @@ public class BusquedaFamiliares extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				Integer id=new Integer(table.getModel().getValueAt(table.getSelectedRow(), 0).toString());
-				Familiar f=padre.getcontrolador().consultarFamiliar(id);
+				Familiar f=padre.getControladorPersonas().consultarFamiliar(id);
 				DatosFamiliar df=new DatosFamiliar(padre,id,ini);
 				df.rellenar(f);
 				
@@ -91,7 +91,7 @@ public class BusquedaFamiliares extends JPanel {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DatosUsuario du = ini.datos_usuario;
-				du.rellenar(padre.getcontrolador().consultarBeneficiario(id_beneficiario));
+				du.rellenar(padre.getControladorPersonas().consultarBeneficiario(id_beneficiario));
 				du.modobeneficiario();
 				ini.setPanelOnTab(du, PanelInicio.PERSONAS);
 //				padre.getContentPane().removeAll();
@@ -116,10 +116,10 @@ public class BusquedaFamiliares extends JPanel {
 				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),null));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
 				}else{
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),aux));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
 				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);

@@ -1,9 +1,9 @@
 package Visual;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -15,14 +15,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.Color;
-import java.util.ArrayList;
-
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import GestionPersona.Donante;
-import GestionPersona.Persona;
+import GestionDonaciones.Donacion;
+import GestionDonaciones.DonacionDB;
+
 
 public class AniadirDonacion extends JPanel{
 	private JTextField textField;
@@ -33,8 +32,11 @@ public class AniadirDonacion extends JPanel{
 	private JTable tablaDonantes = new JTable();
 	private DefaultTableModel tabla_modelo;
 	JScrollPane scrollPane;
+	ArrayList<Donante> lista_donantes;
+	enum Estado {Pagado, Pendiente, Cancelado};
 	
-	public void fillTable(ArrayList<Persona> lista_donantes){//Integer->Donaciones
+	
+	public void fillTable(ArrayList<Donante> lista_donantes){//Integer->Donaciones
 		DefaultTableModel modelo = new DefaultTableModel();
 		Object [] tupla = new Object[3];
 		//Relleneamos la cabecera de la tabla.
@@ -50,6 +52,7 @@ public class AniadirDonacion extends JPanel{
 			modelo.addRow(tupla);
 		}
 		tabla_modelo = modelo;
+		this.lista_donantes = lista_donantes;
 		this.tablaDonantes.setModel(tabla_modelo);
 	}
 	/**
@@ -94,7 +97,7 @@ public class AniadirDonacion extends JPanel{
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(JOptionPane.showConfirmDialog(null, "¿Confirma la Donacion?", "Confirmacion", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
-					//padre.getControladorDonacion().anadirDonacion(donante, AniadirDonacion.textField_1.getText()  , "pagada" );
+					padre.getControladorDonaciones().aniadirDonacion(lista_donantes.get(tablaDonantes.getSelectedRow()), Float.valueOf(AniadirDonacion.textField_1.getText().trim()).floatValue(), Estado.Pagado );
 					
 //					ini.panelDonaciones.removeAll();
 //					ini.panelDonaciones.add(new PanelDonaciones(padre, ini));

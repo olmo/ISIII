@@ -19,7 +19,7 @@ import Basedatos.GestorJDBC;
  */
 public class PersonaDB {
 	
-	private GestorJDBC gestor=GestorJDBC.getInstance();
+	private static GestorJDBC gestor=GestorJDBC.getInstance();
 
 	
 	
@@ -73,7 +73,7 @@ public class PersonaDB {
 		return id;
 	}
 		
-	public Persona getDatos(int id){
+	static public Persona getDatos(int id){
 		gestor.conectar();
 		ResultSet rs = gestor.RealizarConsulta("select * from Personas where id='"+id+"'");
 		Persona p = new Persona();

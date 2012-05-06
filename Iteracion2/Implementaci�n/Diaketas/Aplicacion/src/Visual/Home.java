@@ -12,9 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import GestionPersona.CodificacionPW;
-import javax.swing.SwingConstants;
 
 
 
@@ -51,7 +51,7 @@ public class Home extends JPanel {
 					Mensaje.setText("Usuario/Contraseña vacios");
 				else{
 					CodificacionPW c=new CodificacionPW(passwordField_1.getText());
-					if(padre.getcontrolador().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
+					if(padre.getControladorPersonas().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
 						PanelInicio panIni= new PanelInicio(padre, textField.getText());
 						
 						padre.getContentPane().removeAll();
@@ -83,7 +83,7 @@ public class Home extends JPanel {
 		add(Mensaje);
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setIcon(new ImageIcon((this.getClass().getResource("/img/diaketas.JPG"))));
+		label.setIcon(new ImageIcon((this.getClass().getResource("/img/imagen.JPG"))));
 		label.setBounds(24, 11, 558, 378);
 		add(label);
 		

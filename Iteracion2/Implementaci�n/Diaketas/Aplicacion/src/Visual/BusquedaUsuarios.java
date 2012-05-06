@@ -87,23 +87,23 @@ public class BusquedaUsuarios extends JPanel {
 					String tipo=table.getModel().getValueAt(table.getSelectedRow(), 5).toString();
 					
 					if(tipo.equals("trabajador")){
-						Trabajador t=padre.getcontrolador().consultarTrabajador(id);
+						Trabajador t=padre.getControladorPersonas().consultarTrabajador(id);
 						d.rellenar(t);
 						d.modotrabajador();
 					}else if(tipo.equals("beneficiario")){
-						Beneficiario t=padre.getcontrolador().consultarBeneficiario(id);
+						Beneficiario t=padre.getControladorPersonas().consultarBeneficiario(id);
 						d.rellenar(t);
 						d.modobeneficiario();
 					}else if(tipo.equals("donante-Socio")){
-						Socio s=padre.getcontrolador().consultarSocio(id);
+						Socio s=padre.getControladorPersonas().consultarSocio(id);
 							d.rellenar(s);
 							d.modosocio();
 					}else if(tipo.equals("donante-Empresa")){
-						Empresa s=padre.getcontrolador().consultarEmpresa(id);
+						Empresa s=padre.getControladorPersonas().consultarEmpresa(id);
 						d.rellenar(s);
 						d.modoempresa();
 					}else if(tipo.equals("donante-Colaborador")){
-						Colaborador s=padre.getcontrolador().consultarColaborador(id);
+						Colaborador s=padre.getControladorPersonas().consultarColaborador(id);
 						d.rellenar(s);
 						d.modocolaborador();
 					}
@@ -148,10 +148,10 @@ public class BusquedaUsuarios extends JPanel {
 				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),null));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
 				}else{
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),aux));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
 				

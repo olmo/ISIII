@@ -68,10 +68,10 @@ public class NuevoFamiliar extends JPanel {
 				//BusquedaUsuarios b = ini.busqueda_usuarios;
 				String aux=choice_3.getSelectedItem();
 				if(aux.equals("todos")){
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),null));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),null));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),null);
 				}else{
-					ini.busqueda_usuarios.setTabla(padre.getcontrolador().BuscarPersonas(textField.getText(),aux));
+					ini.busqueda_usuarios.setTabla(padre.getControladorPersonas().BuscarPersonas(textField.getText(),aux));
 					ini.busqueda_usuarios.setbusqueda(textField.getText(),aux);
 				}
 				ini.setPanelOnTab(ini.busqueda_usuarios, PanelInicio.PERSONAS);
@@ -135,7 +135,7 @@ public class NuevoFamiliar extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DatosUsuario du= ini.datos_usuario;
-				du.rellenar(padre.getcontrolador().consultarBeneficiario(id_beneficiario));
+				du.rellenar(padre.getControladorPersonas().consultarBeneficiario(id_beneficiario));
 				du.modobeneficiario();
 				ini.setPanelOnTab(du, PanelInicio.PERSONAS);
 
@@ -181,14 +181,14 @@ public class NuevoFamiliar extends JPanel {
 				tnombre=nombre.getText();
 				tapellido1=apellido1.getText();
 				tapellido2=apellido2.getText();
-				id=padre.getcontrolador().darAltaPersona(tdni,tnombre,tapellido1,tapellido2,fnac,telefono,lugarnac,domicilio,cp,email);
+				id=padre.getControladorPersonas().darAltaPersona(tdni,tnombre,tapellido1,tapellido2,fnac,telefono,lugarnac,domicilio,cp,email);
 				boolean correcto=false;
 				if(id!=-1){	
 					DatosFamiliar df=new DatosFamiliar(padre,id,ini);
 					try{
 					
-					padre.getcontrolador().introducirDatosFamiliar(id,id_beneficiario,parentesco.getText(),ocupacion.getText());
-					Familiar f=padre.getcontrolador().consultarFamiliar(id);
+					padre.getControladorPersonas().introducirDatosFamiliar(id,id_beneficiario,parentesco.getText(),ocupacion.getText());
+					Familiar f=padre.getControladorPersonas().consultarFamiliar(id);
 					df.rellenar(f);		
 					correcto=true;
 					}catch(Exception e1){

@@ -1,13 +1,14 @@
 package GestionDonaciones;
 
+import GestionActuacion.ObjetoMonitorizable;
 import GestionPersona.Donante;
-import GestionActuacion.ObjetoMonitorizable;;
 enum Estado {Pagado, Pendiente, Cancelado};
 
 public class Donacion extends ObjetoMonitorizable{
 	private float cantidad;
 	private Estado estado;
 	private int idDonante;
+
 
 	public Donacion(){
 			

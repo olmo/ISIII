@@ -17,6 +17,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import GestionDonaciones.Donacion;
+import GestionPersona.DonanteDB;
+import GestionPersona.Persona;
 import GestionPersona.PersonaDB;
 
 @SuppressWarnings("serial")
@@ -28,8 +31,9 @@ public class PanelDonaciones extends JPanel {
 	JTable tablaDonaciones = new JTable();
 	JScrollPane scrollPane;
 	PersonaDB pbd = new PersonaDB();
+	DonanteDB ddb = new DonanteDB();
 	
-	public void fillTable(ArrayList<Integer> lista_donaciones){//Integer->Donaciones
+	public void fillTable(ArrayList<Donacion> lista_donaciones){//Integer->Donaciones
 		DefaultTableModel modelo = new DefaultTableModel();
 		Object [] tupla = new Object[4];
 		//Relleneamos la cabecera de la tabla.
@@ -37,11 +41,13 @@ public class PanelDonaciones extends JPanel {
 		modelo.addColumn("Cantidad");
 		modelo.addColumn("Donante");
 		modelo.addColumn("Estado");
+		Persona p;
 		for(int i=0;i<lista_donaciones.size();i++){
-			tupla[0]=lista_donaciones.get(i).intValue();//.get(i).getfecha
-			tupla[1]=lista_donaciones.get(i).intValue();//.get(i).getcantidad
-			tupla[2]=lista_donaciones.get(i).intValue();//.get(i).getDonante
-			tupla[3]=lista_donaciones.get(i).intValue();//.get(i).getEstado
+			tupla[0]="fecha";//.get(i).getfecha
+			tupla[1]=lista_donaciones.get(i).getCantidad();//.get(i).getcantidad
+			p=PersonaDB.getDatos(lista_donaciones.get(i).getIdDonante());
+			tupla[2]=p.getNombre()+" "+p.getApellido1()+" "+p.getApellido2();//.get(i).getDonante
+			tupla[3]=lista_donaciones.get(i).getEstado();//.get(i).getEstado
 			modelo.addRow(tupla);
 		}
 		tabla_modelo = modelo;
@@ -71,8 +77,9 @@ public class PanelDonaciones extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Obtenemos lista de donaciones
-				ArrayList<Integer> listaBuscar = new ArrayList<Integer>();
-				listaBuscar.add(3);
+				ArrayList<Donacion> listaBuscar;
+				//listaBuscar.add(3);
+				listaBuscar=padre.getControladorDonaciones().listarDonaciones(textField.getText());
 				//
 
 				ini.panel_donaciones.fillTable(listaBuscar);
@@ -87,7 +94,8 @@ public class PanelDonaciones extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				ini.aniadir_donacion.fillTable(pbd.buscaPersonas("", "trabajador"));
+				
+				ini.aniadir_donacion.fillTable(ddb.getDonantes(""));
 				ini.setPanelOnTab(ini.aniadir_donacion,PanelInicio.DONACIONES);
 
 			}

@@ -10,7 +10,7 @@ public class ControladorActuaciones {
 	private ActuacionDB actuacionDB = new ActuacionDB();
 	
 	
-	ArrayList<Actuacion> listarTodasActuaciones(String filtro){
+	public ArrayList<Actuacion> listarTodasActuaciones(String filtro){
 		return actuacionDB.getList(filtro);
 	}
 	

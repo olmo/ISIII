@@ -1,7 +1,9 @@
 package Visual;
 
-import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
@@ -13,8 +15,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import GestionActuacion.Actuacion;
 
 @SuppressWarnings("serial")
 public class PanelActuaciones extends JPanel {
@@ -26,7 +28,7 @@ public class PanelActuaciones extends JPanel {
 	JScrollPane scrollPane_2;
 	private JTable tablaActuaciones = new JTable();
 	
-	public void fillTable(ArrayList<Integer> lista_actuaciones){//Integer->Donaciones
+	public void fillTable(ArrayList<Actuacion> lista_actuaciones){//Integer->Donaciones
 		scrollPane_2.setVisible(true);
 		DefaultTableModel modelo = new DefaultTableModel();
 		Object [] tupla = new Object[3];
@@ -35,9 +37,9 @@ public class PanelActuaciones extends JPanel {
 		modelo.addColumn("Tipo de Actuación");
 		modelo.addColumn("Trabajador");
 		for(int i=0;i<lista_actuaciones.size();i++){
-			tupla[0]=lista_actuaciones.get(i).intValue();//.get(i).getfecha
-			tupla[1]=lista_actuaciones.get(i).intValue();//.get(i).getTipoActuacion
-			tupla[2]=lista_actuaciones.get(i).intValue();//.get(i).getTrabajador
+			tupla[0]=lista_actuaciones.get(i).getFecha();//.get(i).getfecha
+			tupla[1]=lista_actuaciones.get(i).getTipoActuacion();//.get(i).getTipoActuacion
+			tupla[2]=lista_actuaciones.get(i).getIdTrabajador();//.get(i).getTrabajador
 			modelo.addRow(tupla);
 		}
 		tabla_modelo = modelo;
@@ -59,9 +61,14 @@ public class PanelActuaciones extends JPanel {
 		button_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Obtenemos lista de actuaciones
-				ArrayList<Integer> listaBuscar = new ArrayList<Integer>();
-				listaBuscar.add(3);
+				ArrayList<Actuacion> listaBuscar = padre.getControladorActuaciones().listarTodasActuaciones(textField_2.getText());
 				//
+				try {
+					System.in.read();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				ini.panel_actuaciones.fillTable(listaBuscar);
 				ini.setPanelOnTab(ini.panel_actuaciones, PanelInicio.ACTUACIONES);
