@@ -147,6 +147,7 @@ public class DonacionDB {
 	
 	
 	Boolean set(Donacion donacion){
+		//PAra actualizar una donacion
 		gestor.conectar();
 		Boolean correcto = gestor.Modificar("UPDATE Donaciones SET cantidad='"+donacion.getCantidad()+"',estado='"+donacion.getEstado()+"' WHERE id_objetomonitorizable='"+donacion.getIdObjMon()+"'");
 		gestor.desconectar();

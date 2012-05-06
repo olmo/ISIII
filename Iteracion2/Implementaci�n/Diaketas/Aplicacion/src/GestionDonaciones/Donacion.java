@@ -14,7 +14,7 @@ public class Donacion extends ObjetoMonitorizable{
 		this.setIdObjMon(0);
 			
 		}
-
+	//Donacion
 	public Donacion(Donante donante, float cantidad, Estado estado){
 		this.cantidad = cantidad;
 		this.estado = estado;
