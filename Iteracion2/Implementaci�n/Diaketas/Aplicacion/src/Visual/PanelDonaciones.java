@@ -17,10 +17,13 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import GestionActuacion.TipoActuacion;
 import GestionDonaciones.Donacion;
+import GestionPersona.Donante;
 import GestionPersona.DonanteDB;
 import GestionPersona.Persona;
 import GestionPersona.PersonaDB;
+import GestionPersona.TrabajadorDB;
 
 @SuppressWarnings("serial")
 public class PanelDonaciones extends JPanel {
@@ -32,6 +35,7 @@ public class PanelDonaciones extends JPanel {
 	JScrollPane scrollPane;
 	PersonaDB pbd = new PersonaDB();
 	DonanteDB ddb = new DonanteDB();
+	TrabajadorDB tdb = new TrabajadorDB();
 	ArrayList<Donacion> listaBuscar;
 	
 	public void fillTable(ArrayList<Donacion> lista_donaciones){//Integer->Donaciones
@@ -98,7 +102,8 @@ public class PanelDonaciones extends JPanel {
 				
 				ini.aniadir_donacion.fillTable(ddb.getDonantes(""));
 				ini.setPanelOnTab(ini.aniadir_donacion,PanelInicio.DONACIONES);
-
+				
+//				padre.getControladorActuaciones().anotarActuacion(tdb.getTrabajador(padre.getusuario()), TipoActuacion.anadir_donacion);
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -120,9 +125,12 @@ public class PanelDonaciones extends JPanel {
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere confirmar la donación?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
-					padre.getControladorDonaciones().cancelarDonacion(listaBuscar.get(tablaDonaciones.getSelectedRow()));
+					
+					Donacion d = listaBuscar.get(tablaDonaciones.getSelectedRow());
+					padre.getControladorDonaciones().cancelarDonacion(d);
 					listaBuscar=padre.getControladorDonaciones().listarDonaciones(textField.getText());
-					//
+					
+					padre.getControladorActuaciones().anotarActuacion(d.getIdObjMon(), tdb.getTrabajador(padre.getusuario()), TipoActuacion.cancelar_donacion);
 
 					ini.panel_donaciones.fillTable(listaBuscar);
 					ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);
@@ -143,10 +151,10 @@ public class PanelDonaciones extends JPanel {
 				
 				if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere confirmar la donación?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
 					
-					
-					padre.getControladorDonaciones().confirmarDonacion(listaBuscar.get(tablaDonaciones.getSelectedRow()));
+					Donacion d = listaBuscar.get(tablaDonaciones.getSelectedRow());
+					padre.getControladorDonaciones().confirmarDonacion(d);
 					listaBuscar=padre.getControladorDonaciones().listarDonaciones(textField.getText());
-					//
+					padre.getControladorActuaciones().anotarActuacion(d.getIdObjMon(), tdb.getTrabajador(padre.getusuario()), TipoActuacion.cancelar_donacion);
 
 					ini.panel_donaciones.fillTable(listaBuscar);
 					ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);
@@ -215,7 +223,9 @@ public class PanelDonaciones extends JPanel {
 					.addContainerGap(59, Short.MAX_VALUE))
 		);
 		setLayout(gl_panel);
-
+		
+//		if(textField.getText().isEmpty())
+//			this.fillTable(padre.getControladorDonaciones().listarDonaciones(""));
 
 	}
 

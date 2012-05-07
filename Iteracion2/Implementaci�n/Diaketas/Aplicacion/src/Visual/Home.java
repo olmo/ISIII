@@ -1,6 +1,7 @@
 package Visual;
 
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;

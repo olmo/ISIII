@@ -15,7 +15,7 @@ public class AyudaDB {
 	private GestorJDBC gestor=GestorJDBC.getInstance();
 	
 	
-	Boolean add(Ayuda ayuda){
+	public Boolean add(Ayuda ayuda){
 		gestor.conectar();
 		Boolean correcto = gestor.Modificar("INSERT INTO Ayudas (id_objetomonitorizable,id_tipoayuda,id_beneficiario,observaciones,cantidadMonetaria) VALUES ('"+ayuda.getIdObjMon()+"','"+ayuda.getIdTipoAyuda()+"','"+ayuda.getIdBeneficiario()+"','"+ayuda.getObservaciones()+"','"+ayuda.getCantidadMonetaria()+"')");
 		gestor.desconectar();
@@ -23,7 +23,7 @@ public class AyudaDB {
 	}
 	
 	
-	ArrayList<Ayuda> getList(String filtro){
+	public ArrayList<Ayuda> getList(String filtro){
 		ArrayList<Ayuda> lista = new ArrayList<Ayuda>();
 		
 		try{
@@ -40,16 +40,16 @@ public class AyudaDB {
 						"WHERE (Ayudas.id_objetomonitorizable=ObjetosMonitorizables.id) AND " +
 						"(ObjetosMonitorizables.fecha>='"+fechaIni.toString()+"' AND ObjetosMonitorizables.fecha<='"+fechaFin.toString()+"')");
 			}else if(Pattern.matches("^\\d{0,8}", filtro)){		// Si el filtrado es por el DNI del beneficiario
-				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios, Ayudas" +
-						"WHERE Personas.id=Beneficiarios.id_persona AND Personas.id=Ayudas.id_beneficiario AND" +
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios, Ayudas " +
+						"WHERE Personas.id=Beneficiarios.id_persona AND Personas.id=Ayudas.id_beneficiario AND " +
 						"Personas.dni LIKE '"+filtro+"%'");
 			}else{
 				// CONSULTA SEGUN NOMBRE Y APELLIDOS DEL BENEFICIARIO Y POR TIPO DE AYUDAS... :S
-				rs = gestor.RealizarConsulta("SELECT * from Personas,Beneficiario,Ayudas" +
-						"WHERE (Personas.id=Beneficiarios.id_persona AND Personas.id=Ayudas.id_beneficiario AND Personas.nombre LIKE '"+filtro+"%' OR Personas.apellido1 LIKE '"+filtro+"%' OR Personas.apellido2 LIKE '"+filtro+"%') OR" +
+				rs = gestor.RealizarConsulta("SELECT * from Personas,Beneficiario,Ayudas " +
+						"WHERE (Personas.id=Beneficiarios.id_persona AND Personas.id=Ayudas.id_beneficiario AND Personas.nombre LIKE '"+filtro+"%' OR Personas.apellido1 LIKE '"+filtro+"%' OR Personas.apellido2 LIKE '"+filtro+"%') OR " +
 						"(Ayudas.id_tipoayuda=TiposAyuda.id AND TiposAyuda.nombre LIKE '%"+filtro+"%')");
 			}
-			gestor.desconectar();
+			
 			
 			while(rs.next()){
 				Ayuda ayuda = new Ayuda();
@@ -61,7 +61,7 @@ public class AyudaDB {
 				ayuda.setCantidadMonetaria((Float)rs.getObject("cantidadMonetaria"));
 				lista.add(ayuda);
 			}
-			
+			gestor.desconectar();
 		}catch (Exception e){
 			JOptionPane.showMessageDialog(null, "Error al listar las ayudas AyudaDB: "+e.getMessage());
 			return null;
@@ -70,7 +70,7 @@ public class AyudaDB {
 	}
 	
 	
-	ArrayList<Ayuda> getAyudasBeneficiario(Beneficiario beneficiario, String filtro){
+	public ArrayList<Ayuda> getAyudasBeneficiario(Beneficiario beneficiario, String filtro){
 		ArrayList<Ayuda> lista = new ArrayList<Ayuda>();
 		
 		try{
@@ -87,10 +87,10 @@ public class AyudaDB {
 						"WHERE (Ayudas.id_objetomonitorizable=ObjetosMonitorizables.id AND Ayudas.id_beneficiario='"+beneficiario.getId()+"') AND " +
 						"(ObjetosMonitorizables.fecha>='"+fechaIni.toString()+"' AND ObjetosMonitorizables.fecha<='"+fechaFin.toString()+"')");
 			}else{	// Si el filtrado es por tipo de ayuda
-				rs = gestor.RealizarConsulta("SELECT * from Ayudas, TiposAyuda WHERE Ayudas.id_beneficiario='"+beneficiario.getId()+"' AND" +
+				rs = gestor.RealizarConsulta("SELECT * from Ayudas, TiposAyuda WHERE Ayudas.id_beneficiario='"+beneficiario.getId()+"' AND " +
 						"(Ayudas.id_tipoayuda=TiposAyuda.id AND TiposAyuda.nombre LIKE '%"+filtro+"%')");
 			}
-			gestor.desconectar();
+			
 			
 			while(rs.next()){
 				Ayuda ayuda = new Ayuda();
@@ -102,7 +102,7 @@ public class AyudaDB {
 				ayuda.setCantidadMonetaria((Float)rs.getObject("cantidadMonetaria"));
 				lista.add(ayuda);
 			}
-			
+			gestor.desconectar();
 		}catch (Exception e){
 			JOptionPane.showMessageDialog(null, "Error al listar las ayudas de un beneficiario AyudaDB: "+e.getMessage());
 			return null;
@@ -111,7 +111,7 @@ public class AyudaDB {
 	}
 	
 	
-	Boolean set(Ayuda ayuda){
+	public Boolean set(Ayuda ayuda){
 		gestor.conectar();
 		Boolean correcto = gestor.Modificar("UPDATE Ayudas SET id_tipoayuda='"+ayuda.getIdTipoAyuda()+"',id_beneficiario='"+ayuda.getIdBeneficiario()+"',observaciones='"+ayuda.getObservaciones()+"',cantidadMonetaria='"+ayuda.getCantidadMonetaria()+"' WHERE id='"+ayuda.getIdObjMon()+"'");
 		gestor.desconectar();

@@ -45,7 +45,7 @@ public class DonanteDB {
 						" Personas.id = Donantes.id_persona AND (Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
 				
 				rsC = gestor.RealizarConsulta("SELECT * from Personas, Colaboradores, Donantes WHERE Personas.id = Colaboradores.id_persona AND"+
-						"Personas.id = Donantes.id_persona AND  (Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
+						" Personas.id = Donantes.id_persona AND  (Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
 			}
 				
 

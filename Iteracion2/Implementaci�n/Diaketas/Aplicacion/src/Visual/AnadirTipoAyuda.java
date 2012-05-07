@@ -13,6 +13,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import GestionAyudas.TipoAyudaDB;
+
 public class AnadirTipoAyuda extends JPanel {
 
 	/**
@@ -21,6 +23,9 @@ public class AnadirTipoAyuda extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private VentanaPrincipal padre;
 	private JTextField textField;
+	private JTextArea textArea;
+	TipoAyudaDB tabd = new TipoAyudaDB();
+	
 	PanelInicio ini;
 	public AnadirTipoAyuda( VentanaPrincipal p, PanelInicio pIni) {
 		ini=pIni;
@@ -34,7 +39,7 @@ public class AnadirTipoAyuda extends JPanel {
 		textField = new JTextField();
 		textField.setColumns(10);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		
 		JButton button = new JButton("Cancelar");
 		button.addActionListener(new ActionListener() {
@@ -51,6 +56,8 @@ public class AnadirTipoAyuda extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
 
+					padre.getControladorAyudas().anadirTipoAyuda(textArea.getText(), textField.getText(), 0);
+					ini.configurar_tipo_ayuda.fillTable(tabd.getList());
 					ini.setPanelOnTab(ini.configurar_tipo_ayuda, PanelInicio.AYUDAS);
 
 				}

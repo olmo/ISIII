@@ -101,11 +101,11 @@ public class BeneficiarioDB {
 			gestor.conectar();
 			ResultSet rs;
 			if(Pattern.matches("^\\d{0,8}\\w?", filtro)){		//Se trata de un DNI, se filtra por DNI
-				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios WHERE Personas.id = Beneficiarios.id AND" +
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios WHERE Personas.id = Beneficiarios.id_persona AND " +
 						"Personas.dni LIKE '"+filtro+"%'");
 				
 			}else{
-				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios WHERE Personas.id = Beneficiaros.id AND"+
+				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios WHERE Personas.id = Beneficiaros.id_persona AND "+
 						"(Personas.nombre LIKE '"+filtro+"%' OR apellido1 LIKE '"+filtro+"%' OR apellido2 LIKE '"+filtro+"%')");
 			}
 				

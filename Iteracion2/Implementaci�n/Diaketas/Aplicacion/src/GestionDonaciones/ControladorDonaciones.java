@@ -15,7 +15,7 @@ public class ControladorDonaciones {
 	private DonacionDB donacionDB = new DonacionDB();
 	
 	
-	public Boolean aniadirDonacion(Donante donante, float cantidad, Estado estado){
+	public int aniadirDonacion(Donante donante, float cantidad, Estado estado){
 		Donacion donacion = new Donacion(donante, cantidad, estado);
 			return donacionDB.add(donacion);
 	

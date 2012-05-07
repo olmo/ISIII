@@ -13,7 +13,7 @@ public class TipoAyudaDB {
 
 	
 	
-	Boolean add(TipoAyuda tipoAyuda){
+	public Boolean add(TipoAyuda tipoAyuda){
 		gestor.conectar();
 		Boolean correcto = gestor.Modificar("INSERT INTO TiposAyuda (nombre,observaciones) VALUES ('"+tipoAyuda.getNombre()+"','"+tipoAyuda.getObservaciones()+"')");
 		gestor.desconectar();
@@ -21,19 +21,20 @@ public class TipoAyudaDB {
 	}
 	
 	
-	ArrayList<TipoAyuda> getList(){
+	public ArrayList<TipoAyuda> getList(){
 		ArrayList<TipoAyuda> lista = new ArrayList<TipoAyuda>();
 		
 		try{
 			ResultSet rs;
 			gestor.conectar();
 			rs = gestor.RealizarConsulta("SELECT * from TiposAyuda");
-			gestor.desconectar();
+			
 			
 			while(rs.next()){
-				TipoAyuda tipo = new TipoAyuda(rs.getObject("observaciones").toString(),rs.getObject("nombre").toString());
+				TipoAyuda tipo = new TipoAyuda(rs.getObject("observaciones").toString(),rs.getObject("nombre").toString(), Integer.parseInt(rs.getObject("id").toString()));
 				lista.add(tipo);
 			}
+			gestor.desconectar();
 			
 		}catch (Exception e){
 			JOptionPane.showMessageDialog(null, "Error al listar los tipos de ayudas TipoAyudaDB: "+e.getMessage());
@@ -43,7 +44,7 @@ public class TipoAyudaDB {
 	}
 	
 	
-	Boolean set(TipoAyuda tipoAyuda){
+	public Boolean set(TipoAyuda tipoAyuda){
 		gestor.conectar();
 		Boolean correcto = gestor.Modificar("UPDATE TiposAyuda SET nombre='"+tipoAyuda.getNombre()+"',observaciones='"+tipoAyuda.getObservaciones()+"' WHERE id='"+tipoAyuda.getId()+"'");
 		gestor.desconectar();
@@ -51,9 +52,9 @@ public class TipoAyudaDB {
 	}
 	
 	
-	Boolean del(TipoAyuda tipoAyuda){
+	public Boolean del(TipoAyuda tipoAyuda){
 		gestor.conectar();
-		Boolean correcto = gestor.Modificar("DELETE * FORM TiposAyuda WHERE id='"+tipoAyuda.getId()+"'");
+		Boolean correcto = gestor.Modificar("DELETE FROM TiposAyuda WHERE id='"+tipoAyuda.getId()+"'");
 		gestor.desconectar();
 		return correcto;
 	}

@@ -18,7 +18,7 @@ import java.util.Iterator;
 public class DonacionDB {
 	private GestorJDBC gestor=GestorJDBC.getInstance();
 	
-	Boolean add(Donacion donacion){
+	int add(Donacion donacion){
 		ResultSet rs;
 		Boolean correcto = true;
 		gestor.conectar();
@@ -49,11 +49,11 @@ public class DonacionDB {
 		donacion.setIdObjMon(id);
 		
 		correcto = gestor.Modificar("INSERT INTO Donaciones (id_objetomonitorizable,id_donante,cantidad,estado) VALUES ('"+donacion.getIdObjMon()+"','"+donacion.getIdDonante()+"','"+donacion.getCantidad()+"','"+donacion.getEstado().toString()+"')");
-			
-				
+		
+		
 			
 		gestor.desconectar();
-		return correcto;
+		return id;
 	}
 	
 	

@@ -14,8 +14,8 @@ public class ControladorAyudas {
 	private BeneficiarioDB beneficiarioDB = new BeneficiarioDB();
 	
 	
-	public boolean anadirTipoAyuda(String nombre, String observaciones){
-		TipoAyuda ta = new TipoAyuda(nombre, observaciones);
+	public boolean anadirTipoAyuda(String nombre, String observaciones, int id){
+		TipoAyuda ta = new TipoAyuda(nombre, observaciones, id);
 		return tipoAyudaDB.add(ta);
 	}
 	
@@ -27,8 +27,8 @@ public class ControladorAyudas {
 		tipoAyudaDB.set(tipoAyuda);
 	}
 	
-	public void borrarTipoAyuda(TipoAyuda tipoAyuda){
-		tipoAyudaDB.del(tipoAyuda);
+	public boolean borrarTipoAyuda(TipoAyuda tipoAyuda){
+		return tipoAyudaDB.del(tipoAyuda);
 	}
 	
 	public void concederAyuda(Beneficiario beneficiario, String observacionesAyuda, TipoAyuda tipoAyuda, float cantidad){

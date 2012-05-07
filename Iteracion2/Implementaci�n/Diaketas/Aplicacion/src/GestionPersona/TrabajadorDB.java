@@ -100,4 +100,33 @@ public class TrabajadorDB {
 		return true;
 	}
 	
+	public Trabajador getTrabajador(String nombre){
+		Trabajador p = new Trabajador();
+		ResultSet rs=null;
+		try{
+			gestor.conectar();
+			rs = gestor.RealizarConsulta("select * from Trabajadores, Personas where Personas.nombre='"+nombre+"' AND Personas.id = Trabajadores.id_persona");
+			rs.next();
+			p.setId((Integer)rs.getObject("id"));
+			p.setDni(rs.getObject("dni").toString());
+			p.setNombre(rs.getObject("nombre").toString());
+			p.setApellido1(rs.getObject("apellido1").toString());
+			p.setApellido2(rs.getObject("apellido2").toString());
+				p.setfNacimiento(rs.getObject("fnac").toString());
+				p.setTelefono((Integer)rs.getObject("telefono"));
+			p.setLugarNacimiento(rs.getObject("lugarnac").toString());
+			p.setDomicilio(rs.getObject("domicilio").toString());
+				p.setCp((Integer)rs.getObject("cp"));
+			p.setEstado((Boolean)rs.getObject("estado"));
+				p.setfBaja(rs.getObject("fbaja").toString());
+			p.setemail(rs.getObject("email").toString());
+			p.setUsuario((String)rs.getObject("usuario"));
+			p.setContrasena(rs.getObject("contrasena").toString());
+		}catch (Exception e){
+			JOptionPane.showMessageDialog(null, "Error al obtener los datos del trabajador "+nombre);
+			JOptionPane.showMessageDialog(null, "Error al obtener los datos del trabajador:\n"+e.getMessage());
+			return null;
+		}
+		return p;
+	}
 }

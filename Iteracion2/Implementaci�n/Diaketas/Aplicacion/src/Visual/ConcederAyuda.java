@@ -2,6 +2,7 @@ package Visual;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -15,6 +16,12 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.table.DefaultTableModel;
+
+import GestionAyudas.TipoAyuda;
+import GestionAyudas.TipoAyudaDB;
+import GestionPersona.Beneficiario;
+import GestionPersona.BeneficiarioDB;
 
 public class ConcederAyuda extends JPanel {
 
@@ -24,9 +31,32 @@ public class ConcederAyuda extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private VentanaPrincipal padre;
 	private JTextField textField;
-	private JTable table;
 	private JTextField textField_1;
 	PanelInicio ini;
+	private JScrollPane scrollPane;
+	private JTable tablaAyudas = new JTable();
+	private DefaultTableModel tabla_modelo;
+	BeneficiarioDB bdb = new BeneficiarioDB();
+	TipoAyudaDB tabd = new TipoAyudaDB();
+	
+	public void fillTable(ArrayList<Beneficiario> lista_beneficiarios){//Integer->Donaciones
+		scrollPane.setVisible(true);
+		
+		DefaultTableModel modelo = new DefaultTableModel();
+		Object [] tupla = new Object[2];
+		//Relleneamos la cabecera de la tabla.
+		modelo.addColumn("DNI");
+		modelo.addColumn("Nombre");
+
+		for(int i=0;i<lista_beneficiarios.size();i++){
+			tupla[0]=lista_beneficiarios.get(i).getDni();
+			tupla[1]=lista_beneficiarios.get(i).getNombre();
+
+			modelo.addRow(tupla);
+		}
+		tabla_modelo = modelo;
+		this.tablaAyudas.setModel(tabla_modelo);
+	}
 	
 	public ConcederAyuda(VentanaPrincipal p, PanelInicio pIni) {
 		ini=pIni;
@@ -38,18 +68,17 @@ public class ConcederAyuda extends JPanel {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
-					//Codigo para rellenar la tabla con los tipos de ayuda
-				}
+				ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(textField.getText()));
+				ini.setPanelOnTab(ini.conceder_ayuda, PanelInicio.AYUDAS);
 			}
 		});
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane(tablaAyudas);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la modificacion?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+				if(JOptionPane.showConfirmDialog(null, "¿Desea cancelar la ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
 					ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
 //					ini.panelAyudas.removeAll();
 //					
@@ -64,7 +93,7 @@ public class ConcederAyuda extends JPanel {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+				if(JOptionPane.showConfirmDialog(null, "¿Desea conceder la ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
 					ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
 //					ini.panelAyudas.removeAll();
 //					
@@ -77,6 +106,12 @@ public class ConcederAyuda extends JPanel {
 		});
 		
 		JComboBox comboBox = new JComboBox();
+		
+		ArrayList<TipoAyuda> tiposAyudas = tabd.getList();
+		
+		for(int i=0; i<tiposAyudas.size(); i++){
+			comboBox.addItem((Object)tiposAyudas.get(i));
+		}
 		
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
 		btnAadirTipoDe.addActionListener(new ActionListener() {
@@ -169,8 +204,8 @@ public class ConcederAyuda extends JPanel {
 					.addContainerGap(17, Short.MAX_VALUE))
 		);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+//		table = new JTable();
+//		scrollPane.setViewportView(table);
 		setLayout(groupLayout);
 		
 

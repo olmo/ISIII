@@ -18,8 +18,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
+import GestionActuacion.TipoActuacion;
 import GestionDonaciones.Estado;
 import GestionPersona.Donante;
+import GestionPersona.DonanteDB;
+import GestionPersona.TrabajadorDB;
 
 
 public class AniadirDonacion extends JPanel{
@@ -33,6 +36,9 @@ public class AniadirDonacion extends JPanel{
 	JScrollPane scrollPane;
 	ArrayList<Donante> lista_donantes;
 	private Estado estado;
+	private DonanteDB ddb = new DonanteDB();
+
+	TrabajadorDB tdb = new TrabajadorDB();
 	
 	
 	public void fillTable(ArrayList<Donante> lista_donantes){//Integer->Donaciones
@@ -69,7 +75,8 @@ public class AniadirDonacion extends JPanel{
 		JButton button = new JButton("Buscar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				ini.aniadir_donacion.fillTable(ddb.getDonantes(textField.getText()));
+				ini.setPanelOnTab(ini.aniadir_donacion,PanelInicio.DONACIONES);
 			}
 		});
 		button.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -96,13 +103,15 @@ public class AniadirDonacion extends JPanel{
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(JOptionPane.showConfirmDialog(null, "¿Confirma la Donacion?", "Confirmacion", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
-					padre.getControladorDonaciones().aniadirDonacion(lista_donantes.get(tablaDonantes.getSelectedRow()), Float.valueOf(AniadirDonacion.textField_1.getText().trim()).floatValue(), estado.Pendiente );
+					int id_obj_mnt = padre.getControladorDonaciones().aniadirDonacion(lista_donantes.get(tablaDonantes.getSelectedRow()), Float.valueOf(AniadirDonacion.textField_1.getText().trim()).floatValue(), estado.Pendiente );
 					
 //					ini.panelDonaciones.removeAll();
 //					ini.panelDonaciones.add(new PanelDonaciones(padre, ini));
 //					ini.panelDonaciones.validate();					
 //					ini.panelDonaciones.repaint();
 					ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);
+					padre.getControladorActuaciones().anotarActuacion(id_obj_mnt, 
+							tdb.getTrabajador(padre.getusuario()), TipoActuacion.anadir_donacion);
 				}else{
 					
 					ini.panelDonaciones.validate();					

@@ -5,7 +5,7 @@ import java.sql.Date;
 import GestionPersona.Trabajador;
 
 
-enum TipoActuacion {conceder_ayuda, editar_ayuda, anadir_donacion, cancelar_donacion, confirmar_donacion};
+
 
 public class Actuacion {
 	private Date fecha;

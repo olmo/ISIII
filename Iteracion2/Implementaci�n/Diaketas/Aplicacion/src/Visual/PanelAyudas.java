@@ -16,6 +16,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
 import GestionAyudas.Ayuda;
+import GestionAyudas.AyudaDB;
+import GestionAyudas.TipoAyudaDB;
+import GestionPersona.BeneficiarioDB;
 
 @SuppressWarnings("serial")
 public class PanelAyudas extends JPanel {
@@ -26,6 +29,9 @@ public class PanelAyudas extends JPanel {
 	JScrollPane scrollPane;
 	private JTable tablaAyudas = new JTable();
 	private DefaultTableModel tabla_modelo;
+	AyudaDB adb = new AyudaDB();
+	BeneficiarioDB bdb = new BeneficiarioDB();
+	TipoAyudaDB tabd = new TipoAyudaDB();
 	/**
 	 * Create the panel.
 	 */
@@ -68,7 +74,7 @@ public class PanelAyudas extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Buscar Ayudas");
 				//Obtenemos lista de ayudas
-				ArrayList<Ayuda> listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas("");//textField_1.getText());
+				ArrayList<Ayuda> listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas(textField_1.getText());//textField_1.getText());
 				//
 
 				ini.panel_ayudas.fillTable(listaAyudas);
@@ -82,6 +88,7 @@ public class PanelAyudas extends JPanel {
 		button_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ini.configurar_tipo_ayuda.fillTable(tabd.getList());
 				ini.setPanelOnTab(ini.configurar_tipo_ayuda, PanelInicio.AYUDAS);
 	
 			}
@@ -100,6 +107,9 @@ public class PanelAyudas extends JPanel {
 		button_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(""));
 				ini.setPanelOnTab(ini.conceder_ayuda, PanelInicio.AYUDAS);
 				
 			}

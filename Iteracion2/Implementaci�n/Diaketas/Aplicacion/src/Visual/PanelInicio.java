@@ -60,15 +60,23 @@ public class PanelInicio extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelInicio(VentanaPrincipal p, String usuario) {
+
+		BarraProgreso bProgreso;
+		new Thread (  bProgreso = new BarraProgreso()).start();
+		//bProgreso.run();
 		
 		//Inicialización paneles pestañas
 		panelUsuarios = new JPanel();
 		panelUsuarios.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelUsuarios.setSize(tamanoPaneles);
 		
+		bProgreso.setProgreso(10);
+		
 		panelDonaciones = new JPanel();
 		panelDonaciones.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelDonaciones.setSize(tamanoPaneles);
+		
+		bProgreso.setProgreso(20);
 		
 		panelAyudas = new JPanel();
 		panelAyudas.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -88,7 +96,7 @@ public class PanelInicio extends JPanel {
 		//datos_familiar = new DatosFamiliar(p, id, this);
 		datos_usuario = new DatosUsuario(p, this);
 		editar_ayuda = new EditarAyuda(p, this);
-		editar_tipo_ayuda = new EditarTipoAyuda(p, this);
+		editar_tipo_ayuda = new EditarTipoAyuda(p, this, null);
 		//nuevo_familiar = new NuevoFamiliar(p, id_bene, this);
 		nuevo_usuario = new NuevoUsuario(p, this);
 		
@@ -146,6 +154,8 @@ public class PanelInicio extends JPanel {
 		tabbedPane.addTab("Ayudas", null, panelAyudas, "Gestión de ayudas");
 		tabbedPane.addTab("Actuaciones", null, panelActuaciones, "Gestión de actuaciones");
 		add(tabbedPane);
+		
+		bProgreso.setProgreso(100);
 		
 	}
 	

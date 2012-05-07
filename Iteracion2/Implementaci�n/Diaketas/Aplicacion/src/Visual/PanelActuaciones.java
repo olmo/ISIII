@@ -3,7 +3,6 @@ package Visual;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
@@ -17,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
 import GestionActuacion.Actuacion;
+import GestionPersona.TrabajadorDB;
 
 @SuppressWarnings("serial")
 public class PanelActuaciones extends JPanel {
@@ -27,6 +27,7 @@ public class PanelActuaciones extends JPanel {
 	private DefaultTableModel tabla_modelo;
 	JScrollPane scrollPane_2;
 	private JTable tablaActuaciones = new JTable();
+	TrabajadorDB tdb = new TrabajadorDB();
 	
 	public void fillTable(ArrayList<Actuacion> lista_actuaciones){//Integer->Donaciones
 		scrollPane_2.setVisible(true);
@@ -39,7 +40,7 @@ public class PanelActuaciones extends JPanel {
 		for(int i=0;i<lista_actuaciones.size();i++){
 			tupla[0]=lista_actuaciones.get(i).getFecha();//.get(i).getfecha
 			tupla[1]=lista_actuaciones.get(i).getTipoActuacion();//.get(i).getTipoActuacion
-			tupla[2]=lista_actuaciones.get(i).getIdTrabajador();//.get(i).getTrabajador
+			tupla[2]=tdb.getDatos(lista_actuaciones.get(i).getIdTrabajador()).getNombre();//.get(i).getTrabajador
 			modelo.addRow(tupla);
 		}
 		tabla_modelo = modelo;
@@ -57,18 +58,15 @@ public class PanelActuaciones extends JPanel {
 		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_2.setColumns(15);
 		
+		
+		
 		JButton button_9 = new JButton("Buscar");
 		button_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Obtenemos lista de actuaciones
 				ArrayList<Actuacion> listaBuscar = padre.getControladorActuaciones().listarTodasActuaciones(textField_2.getText());
 				//
-				try {
-					System.in.read();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 
 				ini.panel_actuaciones.fillTable(listaBuscar);
 				ini.setPanelOnTab(ini.panel_actuaciones, PanelInicio.ACTUACIONES);
@@ -79,6 +77,15 @@ public class PanelActuaciones extends JPanel {
 		scrollPane_2 = new JScrollPane(tablaActuaciones);
 		scrollPane_2.setVisible(false);
 		JButton button_10 = new JButton("Ir a donaci\u00F3n/ayuda");
+		button_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ArrayList<Actuacion> listaBuscar = padre.getControladorActuaciones().listarTodasActuaciones(textField_2.getText());
+				
+
+				ini.panel_actuaciones.fillTable(listaBuscar);
+				ini.setPanelOnTab(ini.panel_actuaciones, PanelInicio.ACTUACIONES);
+			}
+		});
 		button_10.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel_2 = new GroupLayout(this);
 		gl_panel_2.setHorizontalGroup(
@@ -117,6 +124,8 @@ public class PanelActuaciones extends JPanel {
 		);
 		setLayout(gl_panel_2);
 
+		if(textField_2.getText().isEmpty())
+			this.fillTable(padre.getControladorActuaciones().listarTodasActuaciones(""));
 	}
 
 }

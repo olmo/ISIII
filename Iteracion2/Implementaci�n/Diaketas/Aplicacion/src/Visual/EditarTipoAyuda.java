@@ -13,6 +13,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import GestionAyudas.AyudaDB;
+import GestionAyudas.TipoAyuda;
+import GestionAyudas.TipoAyudaDB;
+
 public class EditarTipoAyuda extends JPanel {
 
 	/**
@@ -21,8 +25,19 @@ public class EditarTipoAyuda extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private VentanaPrincipal padre;
 	private JTextField textField;
+	private TipoAyuda tipoAyuda;
+	private JTextArea textArea;
 	PanelInicio ini;
-	public EditarTipoAyuda( VentanaPrincipal p,PanelInicio pIni) {
+	TipoAyudaDB tabd = new TipoAyudaDB();
+	AyudaDB abd = new AyudaDB();
+	
+	public void setParametros(TipoAyuda ta){
+		textField.setText(ta.getNombre());
+		textArea.setText(ta.getObservaciones());
+		tipoAyuda = new TipoAyuda(ta.getObservaciones(), ta.getNombre(), ta.getId());
+	}
+	
+	public EditarTipoAyuda( VentanaPrincipal p,PanelInicio pIni, TipoAyuda ta) {
 		ini=pIni;
 		
 		this.padre = p;
@@ -34,7 +49,7 @@ public class EditarTipoAyuda extends JPanel {
 		textField = new JTextField();
 		textField.setColumns(10);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		
 		JButton button = new JButton("Cancelar");
 		button.addActionListener(new ActionListener() {
@@ -51,6 +66,10 @@ public class EditarTipoAyuda extends JPanel {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+					tipoAyuda.set(textArea.getText(), textField.getText());
+					padre.getControladorAyudas().modificarTipoAyuda(tipoAyuda);
+					ini.panel_ayudas.fillTable(abd.getList(""));
+					
 					ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
 
 				}

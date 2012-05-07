@@ -6,9 +6,10 @@ public class TipoAyuda {
 	private String nombre;
 	int idTipo;
 	
-	public TipoAyuda(String observaciones, String nombre){
+	public TipoAyuda(String observaciones, String nombre, int id){
 		this.observaciones = observaciones;
 		this.nombre = nombre;
+		this.idTipo = id;
 	}
 	
 	public void set(String observaciones, String nombre){
