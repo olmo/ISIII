@@ -2,6 +2,8 @@ package Visual;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -14,6 +16,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import GestionActuacion.TipoActuacion;
+import GestionAyudas.Ayuda;
+import GestionAyudas.TipoAyuda;
+import GestionAyudas.TipoAyudaDB;
+import GestionPersona.Beneficiario;
+import GestionPersona.TrabajadorDB;
+
 public class EditarAyuda extends JPanel {
 
 	/**
@@ -23,12 +32,31 @@ public class EditarAyuda extends JPanel {
 	private VentanaPrincipal padre;
 	private JTextField textField;
 	PanelInicio ini;
+	private JEditorPane textArea;
+	Beneficiario beneficiario;
+	Ayuda ayuda;
+	JComboBox comboBox;
+	ArrayList<TipoAyuda> tiposAyuda;
+	Hashtable<Integer, TipoAyuda> tiposAyudaHash = new Hashtable<Integer, TipoAyuda>();
+	TipoAyudaDB tabd = new TipoAyudaDB();
+	TrabajadorDB tdb = new TrabajadorDB();
+	
+	void setParametros(Ayuda a, Beneficiario b){
+		ayuda = a;
+		beneficiario = b;
+		tiposAyuda = tabd.getList();
+		
+		for(int i=0; i<tiposAyuda.size(); i++){
+			tiposAyudaHash.put(tiposAyuda.get(i).getId(), tiposAyuda.get(i));
+		}
+	}
+	
 	public EditarAyuda(VentanaPrincipal p,PanelInicio pIni) {
 		ini=pIni;
 
 		this.padre = p;
 		setSize(PanelInicio.tamanoPaneles);
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
 		btnAadirTipoDe.addActionListener(new ActionListener() {
@@ -37,6 +65,18 @@ public class EditarAyuda extends JPanel {
 
 			}
 		});
+		
+		tiposAyuda = tabd.getList();
+		
+		for(int i=0; i<tiposAyuda.size(); i++){
+			tiposAyudaHash.put(tiposAyuda.get(i).getId(), tiposAyuda.get(i));
+		}
+		
+		for(int i=0; i<tiposAyuda.size(); i++){
+			comboBox.addItem((Object)tiposAyuda.get(i).getNombre());
+		}
+		
+		
 		
 		JLabel lblCantidadEconomica = new JLabel("Cantidad economica");
 		
@@ -47,7 +87,7 @@ public class EditarAyuda extends JPanel {
 		
 		JLabel label = new JLabel("\u20AC");
 		
-		JEditorPane textArea = new JEditorPane();
+		textArea = new JEditorPane();
 		
 		JButton button = new JButton("Cancelar");
 		button.addActionListener(new ActionListener() {
@@ -63,7 +103,16 @@ public class EditarAyuda extends JPanel {
 		JButton button_1 = new JButton("Guardar");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar el tipo de ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+				if(JOptionPane.showConfirmDialog(null, "¿Desea modificar la ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+					
+					ayuda.set(beneficiario, textArea.getText(), tiposAyudaHash.get(ayuda.getIdTipoAyuda()), Float.parseFloat(textField.getText()));
+					if(padre.getControladorAyudas().modificarAyuda(ayuda)){
+						JOptionPane.showMessageDialog(null, "Ayuda modificada");
+						padre.getControladorActuaciones().anotarActuacion(ayuda.getIdObjMon(), tdb.getTrabajador(padre.getusuario()), TipoActuacion.editar_ayuda);
+					}else{
+						JOptionPane.showMessageDialog(null, "No se pudo modificar la ayuda");
+					}
+					ini.configurar_tipo_ayuda.fillTable(tabd.getList());
 					ini.setPanelOnTab(ini.configurar_tipo_ayuda, PanelInicio.AYUDAS);
 
 				}

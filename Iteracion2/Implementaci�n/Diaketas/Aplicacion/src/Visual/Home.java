@@ -14,8 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 import GestionPersona.CodificacionPW;
+import javax.swing.JProgressBar;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 
 
@@ -29,6 +33,7 @@ public class Home extends JPanel {
 		setSize(679,400);
 		this.padre=mipadre;
 		setLayout(null);
+		
 		
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -53,6 +58,7 @@ public class Home extends JPanel {
 				else{
 					CodificacionPW c=new CodificacionPW(passwordField_1.getText());
 					if(padre.getControladorPersonas().introduceDatosInicioSesion(textField.getText(),c.getPassword())){
+						
 						PanelInicio panIni= new PanelInicio(padre, textField.getText());
 						
 						padre.getContentPane().removeAll();
@@ -60,6 +66,7 @@ public class Home extends JPanel {
 						padre.getContentPane().add(panIni);
 						padre.setExtendedState(Frame.MAXIMIZED_BOTH);
 						padre.getContentPane().repaint();
+						
 					
 					}else{
 						Mensaje.setText("Usuario/Contraseña incorrectos");

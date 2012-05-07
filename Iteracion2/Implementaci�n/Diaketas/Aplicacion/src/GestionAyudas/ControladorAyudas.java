@@ -31,13 +31,15 @@ public class ControladorAyudas {
 		return tipoAyudaDB.del(tipoAyuda);
 	}
 	
-	public void concederAyuda(Beneficiario beneficiario, String observacionesAyuda, TipoAyuda tipoAyuda, float cantidad){
+	public int concederAyuda(Beneficiario beneficiario, String observacionesAyuda, TipoAyuda tipoAyuda, float cantidad){
 		Ayuda ayuda = new Ayuda(beneficiario, observacionesAyuda, tipoAyuda, cantidad);
-		ayudaDB.add(ayuda);
+		if (ayudaDB.add(ayuda))
+			return ayuda.getIdObjMon();
+		else return -1;
 	}
 	
-	public void modificarAyuda(Ayuda ayuda){
-		ayudaDB.set(ayuda);
+	public boolean modificarAyuda(Ayuda ayuda){
+		return ayudaDB.set(ayuda);
 	}
 
 	public ArrayList<Ayuda> listarAyudasConcedidas(String filtro){

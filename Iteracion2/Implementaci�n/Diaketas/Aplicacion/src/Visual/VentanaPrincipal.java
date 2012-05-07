@@ -29,6 +29,8 @@ public class VentanaPrincipal extends JFrame {
 	private ControladorDonaciones controlador_donaciones = new ControladorDonaciones();
 	private ControladorActuaciones controlador_actuaciones = new ControladorActuaciones();
 	private String trabajador;
+	private Home home;
+	private BarraProgreso bProgreso;
 	
 	public VentanaPrincipal() {
 		
@@ -41,6 +43,8 @@ public class VentanaPrincipal extends JFrame {
 				}				
 			}
 		});
+		
+		new Thread(bProgreso = new BarraProgreso()).start();
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 		setResizable(false);
 		setLocation(50, 0);
@@ -50,10 +54,11 @@ public class VentanaPrincipal extends JFrame {
 		setResizable(false);
 		setTitle("Gesti\u00F3n Asociaci\u00F3n Diaketas");
 		
-		getContentPane().add(new Home(this));
+		home = new Home(this);
+		getContentPane().add(home);
 		
 		try{
-		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "Excepcion: "+e.getMessage());
 		}
@@ -85,6 +90,10 @@ public class VentanaPrincipal extends JFrame {
 	}
 	public ControladorDonaciones getControladorDonaciones(){
 		return controlador_donaciones;
+	}
+	
+	public void actualizaProgreso(String progreso){
+		bProgreso.actualizaProgreso(progreso);
 	}
 
 }

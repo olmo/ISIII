@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 
@@ -24,6 +25,7 @@ public class PanelInicio extends JPanel {
 	PanelActuaciones panel_actuaciones;
 	
 	PanelAyudas panel_ayudas;
+	
 	
 	public AnadirTipoAyuda anadir_tipo_ayuda;
 	public AniadirDonacion aniadir_donacion;
@@ -60,38 +62,47 @@ public class PanelInicio extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelInicio(VentanaPrincipal p, String usuario) {
-
-		BarraProgreso bProgreso;
-		new Thread (  bProgreso = new BarraProgreso()).start();
-		//bProgreso.run();
 		
+		
+		
+		padre = p;
 		//Inicialización paneles pestañas
 		panelUsuarios = new JPanel();
 		panelUsuarios.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelUsuarios.setSize(tamanoPaneles);
 		
-		bProgreso.setProgreso(10);
+		padre.actualizaProgreso("Creado Panel Usuarios\n");
 		
 		panelDonaciones = new JPanel();
 		panelDonaciones.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelDonaciones.setSize(tamanoPaneles);
 		
-		bProgreso.setProgreso(20);
+		padre.actualizaProgreso("Creado Panel Donaciones\n");
 		
 		panelAyudas = new JPanel();
 		panelAyudas.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelAyudas.setSize(tamanoPaneles);
 		
+		padre.actualizaProgreso("Creado Panel Ayudas\n");
+		
 		panelActuaciones = new JPanel();
 		panelActuaciones.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelActuaciones.setSize(tamanoPaneles);
 		
+		padre.actualizaProgreso("Creado Panel Actuaciones\n");
+		
+		padre.actualizaProgreso("Rellenando tablas de la interfaz\n");
 		
 		anadir_tipo_ayuda = new AnadirTipoAyuda(p, this);
+		
+		padre.actualizaProgreso("Descargando Tipos de Ayuda\n");
 		aniadir_donacion = new AniadirDonacion(p, this);
+		padre.actualizaProgreso("Descargando Donaciones\n");
 		//busqueda_familiares = new BusquedaFamiliares(p, id, pIni);
 		busqueda_usuarios = new BusquedaUsuarios(p, this);
+		padre.actualizaProgreso("Descargando Usuarios\n");
 		conceder_ayuda = new ConcederAyuda(p, this);
+		padre.actualizaProgreso("Descargando Ayudas\n");
 		configurar_tipo_ayuda = new ConfigurarTipoAyuda(p, this);
 		//datos_familiar = new DatosFamiliar(p, id, this);
 		datos_usuario = new DatosUsuario(p, this);
@@ -102,9 +113,11 @@ public class PanelInicio extends JPanel {
 		
 		panel_personas = new PanelPersonas(p, this);
 		panel_actuaciones = new PanelActuaciones(p, this);
+		padre.actualizaProgreso("Descargando Actuaciones\n");
 		panel_donaciones = new PanelDonaciones(p, this);
 		panel_ayudas = new PanelAyudas(p, this);
 		
+		padre.actualizaProgreso("Tablas rellenas\n");
 		
 		
 		//Fin inicialización
@@ -118,7 +131,8 @@ public class PanelInicio extends JPanel {
 		//tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 64, 1180, 636);
 		
-
+		padre.actualizaProgreso("Creando Ventana Principal\n");
+		
 		panelUsuarios = panel_personas;
 
 		panelDonaciones = panel_donaciones;
@@ -155,7 +169,8 @@ public class PanelInicio extends JPanel {
 		tabbedPane.addTab("Actuaciones", null, panelActuaciones, "Gestión de actuaciones");
 		add(tabbedPane);
 		
-		bProgreso.setProgreso(100);
+		padre.actualizaProgreso("Terminado\n");
+		//bProgreso.terminado();
 		
 	}
 	

@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -17,7 +18,9 @@ import javax.swing.table.DefaultTableModel;
 
 import GestionAyudas.Ayuda;
 import GestionAyudas.AyudaDB;
+import GestionAyudas.TipoAyuda;
 import GestionAyudas.TipoAyudaDB;
+import GestionPersona.Beneficiario;
 import GestionPersona.BeneficiarioDB;
 
 @SuppressWarnings("serial")
@@ -32,12 +35,17 @@ public class PanelAyudas extends JPanel {
 	AyudaDB adb = new AyudaDB();
 	BeneficiarioDB bdb = new BeneficiarioDB();
 	TipoAyudaDB tabd = new TipoAyudaDB();
+	ArrayList<Ayuda> listaAyudas = new ArrayList<Ayuda>();
 	/**
 	 * Create the panel.
 	 */
+	
+	Hashtable<Integer, TipoAyuda> tiposAyudas = new Hashtable<Integer, TipoAyuda>();
+	Hashtable<Integer, Beneficiario> beneficiarios = new Hashtable<Integer, Beneficiario>();
+	
 	public void fillTable(ArrayList<Ayuda> lista_ayudas){//Integer->Donaciones
 		scrollPane.setVisible(true);
-		
+		listaAyudas = lista_ayudas;
 		DefaultTableModel modelo = new DefaultTableModel();
 		Object [] tupla = new Object[5];
 		//Relleneamos la cabecera de la tabla.
@@ -46,13 +54,30 @@ public class PanelAyudas extends JPanel {
 		modelo.addColumn("Beneficiario");
 		modelo.addColumn("Cantidad económica");
 		modelo.addColumn("Observaciones");
-
+		
+		tiposAyudas.clear();
+		beneficiarios.clear();
+		
+		ArrayList<TipoAyuda> tiposAyudas2 = tabd.getList();
+		ArrayList<Beneficiario> beneficiarios2 = bdb.getBeneficiarios("");
+		
+		
+		
+		//ordenamos los tipos de ayudas por su id para poder hacer la operacion de tupla[1]
+		for (int i=0; i<tiposAyudas2.size(); i++){
+			tiposAyudas.put(tiposAyudas2.get(i).getId(), tiposAyudas2.get(i));
+		}
+		//Ordenamos los beneficiarios por su id para tupla[2]
+		for (int i=0; i<beneficiarios2.size(); i++){
+			beneficiarios.put(beneficiarios2.get(i).getId(), beneficiarios2.get(i));
+		}
+		
 		for(int i=0;i<lista_ayudas.size();i++){
-			tupla[0]="fecha";//.get(i).getfecha
-			tupla[1]=lista_ayudas.get(i).getIdTipoAyuda();//.get(i).getcantidad
-			tupla[2]=lista_ayudas.get(i).getIdBeneficiario();//.get(i).getDonante
-			tupla[3]=lista_ayudas.get(i).getCantidadMonetaria();//.get(i).getEstado
-			tupla[4]=lista_ayudas.get(i).getObservaciones();//.get(i).getEstado
+			tupla[0]= lista_ayudas.get(i).getDate().toString();//.get(i).getfecha
+			tupla[1]= ((TipoAyuda) tiposAyudas.get(lista_ayudas.get(i).getIdTipoAyuda())).getNombre();//.get(i).getcantidad
+			tupla[2]= ((Beneficiario) beneficiarios.get(lista_ayudas.get(i).getIdBeneficiario())).getNombre();//.get(i).getDonante
+			tupla[3]= lista_ayudas.get(i).getCantidadMonetaria();//.get(i).getEstado
+			tupla[4]= lista_ayudas.get(i).getObservaciones();//.get(i).getEstado
 
 			modelo.addRow(tupla);
 		}
@@ -72,9 +97,9 @@ public class PanelAyudas extends JPanel {
 		JButton button_5 = new JButton("Buscar");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Buscar Ayudas");
+				
 				//Obtenemos lista de ayudas
-				ArrayList<Ayuda> listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas(textField_1.getText());//textField_1.getText());
+				listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas(textField_1.getText());//textField_1.getText());
 				//
 
 				ini.panel_ayudas.fillTable(listaAyudas);
@@ -98,6 +123,9 @@ public class PanelAyudas extends JPanel {
 		button_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				ini.editar_ayuda.setParametros(listaAyudas.get(tablaAyudas.getSelectedRow()), beneficiarios.get(listaAyudas.get(tablaAyudas.getSelectedRow()).getIdBeneficiario()));
 				ini.setPanelOnTab(ini.editar_ayuda, PanelInicio.AYUDAS);
 				
 			}
@@ -160,8 +188,9 @@ public class PanelAyudas extends JPanel {
 					.addContainerGap(439, Short.MAX_VALUE))
 		);
 		
-		//table = new JTable();
-		//scrollPane.setViewportView(table);
+		if(textField_1.getText().isEmpty())
+			this.fillTable(padre.getControladorAyudas().listarAyudasConcedidas(""));
+		
 		setLayout(groupLayout);
 		
 

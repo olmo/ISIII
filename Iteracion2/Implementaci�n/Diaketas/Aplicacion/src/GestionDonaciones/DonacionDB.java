@@ -18,7 +18,7 @@ import java.util.Iterator;
 public class DonacionDB {
 	private GestorJDBC gestor=GestorJDBC.getInstance();
 	
-	int add(Donacion donacion){
+	public boolean add(Donacion donacion){
 		ResultSet rs;
 		Boolean correcto = true;
 		gestor.conectar();
@@ -53,7 +53,7 @@ public class DonacionDB {
 		
 			
 		gestor.desconectar();
-		return id;
+		return valido;
 	}
 	
 	

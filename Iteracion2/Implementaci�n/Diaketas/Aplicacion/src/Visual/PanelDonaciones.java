@@ -154,7 +154,7 @@ public class PanelDonaciones extends JPanel {
 					Donacion d = listaBuscar.get(tablaDonaciones.getSelectedRow());
 					padre.getControladorDonaciones().confirmarDonacion(d);
 					listaBuscar=padre.getControladorDonaciones().listarDonaciones(textField.getText());
-					padre.getControladorActuaciones().anotarActuacion(d.getIdObjMon(), tdb.getTrabajador(padre.getusuario()), TipoActuacion.cancelar_donacion);
+					padre.getControladorActuaciones().anotarActuacion(d.getIdObjMon(), tdb.getTrabajador(padre.getusuario()), TipoActuacion.confirmar_donacion);
 
 					ini.panel_donaciones.fillTable(listaBuscar);
 					ini.setPanelOnTab(ini.panel_donaciones, PanelInicio.DONACIONES);

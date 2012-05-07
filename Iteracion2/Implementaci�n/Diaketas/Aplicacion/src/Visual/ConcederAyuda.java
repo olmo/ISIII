@@ -18,10 +18,13 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
+import GestionActuacion.TipoActuacion;
+import GestionAyudas.Ayuda;
 import GestionAyudas.TipoAyuda;
 import GestionAyudas.TipoAyudaDB;
 import GestionPersona.Beneficiario;
 import GestionPersona.BeneficiarioDB;
+import GestionPersona.TrabajadorDB;
 
 public class ConcederAyuda extends JPanel {
 
@@ -38,11 +41,17 @@ public class ConcederAyuda extends JPanel {
 	private DefaultTableModel tabla_modelo;
 	BeneficiarioDB bdb = new BeneficiarioDB();
 	TipoAyudaDB tabd = new TipoAyudaDB();
+	ArrayList<Beneficiario> listaBeneficiarios;
+	ArrayList<TipoAyuda> tiposAyudas;
+	JTextArea textArea;
+	JComboBox comboBox;
+	TrabajadorDB tbd = new TrabajadorDB();
 	
 	public void fillTable(ArrayList<Beneficiario> lista_beneficiarios){//Integer->Donaciones
 		scrollPane.setVisible(true);
 		
 		DefaultTableModel modelo = new DefaultTableModel();
+		listaBeneficiarios = lista_beneficiarios;
 		Object [] tupla = new Object[2];
 		//Relleneamos la cabecera de la tabla.
 		modelo.addColumn("DNI");
@@ -56,6 +65,7 @@ public class ConcederAyuda extends JPanel {
 		}
 		tabla_modelo = modelo;
 		this.tablaAyudas.setModel(tabla_modelo);
+		tiposAyudas = tabd.getList();
 	}
 	
 	public ConcederAyuda(VentanaPrincipal p, PanelInicio pIni) {
@@ -65,6 +75,7 @@ public class ConcederAyuda extends JPanel {
 		textField = new JTextField();
 		textField.setColumns(10);
 		
+		tiposAyudas = tabd.getList();
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -90,10 +101,33 @@ public class ConcederAyuda extends JPanel {
 			}
 		});
 		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		textArea = new JTextArea();
+		
+		comboBox = new JComboBox();
+		
+		for(int i=0; i<tiposAyudas.size(); i++){
+			comboBox.addItem((Object)tiposAyudas.get(i).getNombre());
+		}
+		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "¿Desea conceder la ayuda?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION){
+					
+					int id_obj = padre.getControladorAyudas().concederAyuda(listaBeneficiarios.get(tablaAyudas.getSelectedRow()), textArea.getText(), tiposAyudas.get(comboBox.getSelectedIndex()), Float.valueOf(textField_1.getText()));
+					
+					ArrayList<Ayuda> listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas("");
+					
+					if(id_obj != -1){
+						padre.getControladorActuaciones().anotarActuacion(id_obj, tbd.getTrabajador(padre.getusuario()), TipoActuacion.conceder_ayuda);
+					}else{
+						JOptionPane.showMessageDialog(null, "No se pudo conceder la ayuda" );
+					}
+					ini.panel_ayudas.fillTable(listaAyudas);
+					
 					ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
 //					ini.panelAyudas.removeAll();
 //					
@@ -105,13 +139,10 @@ public class ConcederAyuda extends JPanel {
 			}
 		});
 		
-		JComboBox comboBox = new JComboBox();
 		
-		ArrayList<TipoAyuda> tiposAyudas = tabd.getList();
+	
 		
-		for(int i=0; i<tiposAyudas.size(); i++){
-			comboBox.addItem((Object)tiposAyudas.get(i));
-		}
+		
 		
 		JButton btnAadirTipoDe = new JButton("A\u00F1adir Tipo de Ayuda");
 		btnAadirTipoDe.addActionListener(new ActionListener() {
@@ -128,14 +159,13 @@ public class ConcederAyuda extends JPanel {
 		
 		JLabel lblCantidadEconomica = new JLabel("Cantidad economica");
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		
 		
 		JLabel label = new JLabel("\u20AC");
 		
 		JLabel lblObservaciones = new JLabel("Observaciones");
 		
-		JTextArea textArea = new JTextArea();
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

@@ -17,7 +17,9 @@ public class ControladorDonaciones {
 	
 	public int aniadirDonacion(Donante donante, float cantidad, Estado estado){
 		Donacion donacion = new Donacion(donante, cantidad, estado);
-			return donacionDB.add(donacion);
+		if(donacionDB.add(donacion))
+			return donacion.getIdObjMon();
+		else return -1;
 	
 	}
 	
