@@ -9,6 +9,8 @@
 
 package Basedatos;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,10 +28,43 @@ final public class GestorJDBC {
 	private ResultSet rs;
 	private PreparedStatement st;
 
+	private static String DB;
+	private static String usuario;
+	private static String contrasena;
+	private static String direccionDB;
 	
 	private synchronized static void createInstance(){
 		if(instance==null){
-			instance= new GestorJDBC();
+			
+			
+			/*Cargar Configuracion de la base de datos*/
+			FileReader entrada=null;
+	        StringBuffer str=new StringBuffer();
+	        try  {
+	           entrada=new FileReader("src\\Basedatos\\conf.java");
+	           int c;
+	           while((c=entrada.read())!=-1){
+	               str.append((char)c);
+	           }
+	           
+	      }catch (IOException ex) {
+	           
+	      }finally{
+	    	  //cerrar los flujos de datos
+	           if(entrada!=null){
+	               try{
+	                   entrada.close();
+	               }catch(IOException ex){}
+	           }
+	           
+	      }
+	        String fichero = str.toString();
+	        String[] datos = fichero.split(";");
+	        DB = datos[1].split(":\\s")[1];
+	        usuario = datos[2].split(":\\s")[1];
+	        contrasena = datos[3].split(":\\s")[1];
+	        direccionDB = datos[4].split(":\\s")[1];
+	        instance= new GestorJDBC();
 		}
 	}
 	
@@ -50,7 +85,7 @@ final public class GestorJDBC {
 		try{ 
 			   Class.forName("com.mysql.jdbc.Driver");
 //			   conexion = DriverManager.getConnection("jdbc:mysql://1984.dyndns.org:3306/isiii", "isiii", "qwerty");
-			   conexion = DriverManager.getConnection("jdbc:mysql://localhost/isiii", "root", "");
+			   conexion = DriverManager.getConnection("jdbc:mysql://"+direccionDB+"/"+DB, usuario, contrasena);
 			   return true;
 			   }
 			catch(Exception e){
