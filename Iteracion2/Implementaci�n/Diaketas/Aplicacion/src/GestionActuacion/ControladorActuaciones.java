@@ -3,6 +3,7 @@ package GestionActuacion;
 
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import GestionPersona.Trabajador;
@@ -20,7 +21,7 @@ public class ControladorActuaciones {
 	
 	public void anotarActuacion(int id_obj, Trabajador trabajador, TipoActuacion tipoAct){
 		
-		Date dt =new Date(System.currentTimeMillis());
+		Timestamp dt = new Timestamp(System.currentTimeMillis());
 		//La fecha de ahora mismo
 		
 		Actuacion act = new Actuacion(trabajador, tipoAct, id_obj, dt);

@@ -224,8 +224,8 @@ public class PanelDonaciones extends JPanel {
 		);
 		setLayout(gl_panel);
 		
-//		if(textField.getText().isEmpty())
-//			this.fillTable(padre.getControladorDonaciones().listarDonaciones(""));
+		if(textField.getText().isEmpty())
+			this.fillTable(padre.getControladorDonaciones().listarDonaciones(""));
 
 	}
 

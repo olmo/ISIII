@@ -1,13 +1,13 @@
 package GestionActuacion;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public abstract class ObjetoMonitorizable {
 	private int id;
-	private Date fecha;
+	private Timestamp fecha;
 	
 
-	public void ObjetoMonitorizable(){
+	public ObjetoMonitorizable(){
 		this.id = 0;
 	}
 	
@@ -15,11 +15,11 @@ public abstract class ObjetoMonitorizable {
 		this.id = id;
 	}
 	
-	public void setDate(Date fecha){
+	public void setDate(Timestamp fecha){
 		this.fecha = fecha;
 	}
 	
-	public Date getDate(){
+	public Timestamp getDate(){
 		return this.fecha;
 	}
 	

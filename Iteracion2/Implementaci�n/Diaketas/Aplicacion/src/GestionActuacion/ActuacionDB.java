@@ -2,6 +2,7 @@ package GestionActuacion;
 
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -77,7 +78,7 @@ public class ActuacionDB {
 			while(rs.next()){
 				Actuacion act = new Actuacion();
 				
-				act.setFecha((Date)rs.getObject("OM.fecha"));	
+				act.setFecha((Timestamp)rs.getObject("OM.fecha"));	
 				act.setIdObjMonitorizado((Integer)rs.getObject("id_objetomonitorizable"));
 				act.setIdTrabajador((Integer)rs.getObject("id_trabajador"));
 				act.setTipoActuacion(TipoActuacion.class.getEnumConstants()[(Integer)rs.getObject("id_tipoactuacion")]);

@@ -1,19 +1,17 @@
 package GestionDonaciones;
 
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
 import Basedatos.GestorJDBC;
-import GestionActuacion.ObjetoMonitorizable;
 import GestionPersona.Donante;
 import GestionPersona.DonanteDB;
-import java.util.Iterator; 
 
 public class DonacionDB {
 	private GestorJDBC gestor=GestorJDBC.getInstance();
@@ -23,12 +21,9 @@ public class DonacionDB {
 		Boolean correcto = true;
 		gestor.conectar();
 
-		java.util.Date dt = new java.util.Date();
-		java.text.SimpleDateFormat sdf = 
-		new java.text.SimpleDateFormat("yyyy-MM-dd");
-		String currentTime = sdf.format(dt);
 		
-			boolean valido=gestor.Modificar("INSERT INTO ObjetosMonitorizables (id,fecha) VALUES (0,'"+currentTime+"')");
+		
+			boolean valido=gestor.Modificar("INSERT INTO ObjetosMonitorizables (id) VALUES (0)");
 		
 			int id=1;
 			rs = gestor.RealizarConsulta("select id from ObjetosMonitorizables ORDER BY id DESC");
@@ -64,13 +59,13 @@ public class DonacionDB {
 		try{
 			ResultSet rs;
 			gestor.conectar();
-			if(Pattern.matches("^d{2}/d{2}/d{4} d{2}/d{2}/d{4}", filtro)){	// Si el filtrado es por intervalo de fechas
-				String [] fechas = filtro.split("\\ ");
+			if(Pattern.matches("^\\d{2}/\\d{2}/\\d{4}\\s\\d{2}/\\d{2}/\\d{4}", filtro)){	// Si el filtrado es por intervalo de fechas
+				String [] fechas = filtro.split("\\s");
 				java.text.DateFormat formato = new java.text.SimpleDateFormat("dd/MM/aaaa");
 				java.util.Date parsedUtilDate0 = formato.parse(fechas[0]);
 				java.util.Date parsedUtilDate1 = formato.parse(fechas[1]);
-				Date fechaIni = new Date(parsedUtilDate0.getTime());
-				Date fechaFin = new Date(parsedUtilDate1.getTime());
+				Timestamp fechaIni = new Timestamp(parsedUtilDate0.getTime());
+				Timestamp fechaFin = new Timestamp(parsedUtilDate1.getTime());
 				rs = gestor.RealizarConsulta("SELECT * from Donaciones,ObjetosMonitorizables " +
 						"WHERE (Donaciones.id_objetomonitorizable=ObjetosMonitorizables.id) AND " +
 						"(ObjetosMonitorizables.fecha>='"+fechaIni.toString()+"' AND ObjetosMonitorizables.fecha<='"+fechaFin.toString()+"')");
@@ -83,7 +78,7 @@ public class DonacionDB {
 			}else{
 				// CONSULTA SEGUN NOMBRE Y APELLIDOS DEL DONANTE
 				rs = gestor.RealizarConsulta("SELECT * from Personas, Donantes, Donaciones " +
-						"WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante AND Personas.nombre LIKE '"+filtro+"%' OR Personas.apellido1 LIKE '"+filtro+"%' OR Personas.apellido2 LIKE '"+filtro+"%'");
+						"WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante AND (Personas.nombre LIKE '"+filtro+"%' OR Personas.apellido1 LIKE '"+filtro+"%' OR Personas.apellido2 LIKE '"+filtro+"%')");
 			}
 			
 			Estado miestado = null;
@@ -116,7 +111,7 @@ public class DonacionDB {
 						miestado = Estado.Cancelado;
 	
 					lista.get(i).setEstado(miestado);	
-					lista.get(i).setDate(rs.getDate("fecha"));
+					lista.get(i).setDate(rs.getTimestamp("fecha"));
 					
 					
 					

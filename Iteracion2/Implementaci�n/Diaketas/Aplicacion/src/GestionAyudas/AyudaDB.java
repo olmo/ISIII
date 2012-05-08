@@ -3,6 +3,7 @@ package GestionAyudas;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -21,12 +22,8 @@ public class AyudaDB {
 		Boolean correcto = true;
 		gestor.conectar();
 
-		java.util.Date dt = new java.util.Date();
-		java.text.SimpleDateFormat sdf = 
-		new java.text.SimpleDateFormat("yyyy-MM-dd");
-		String currentTime = sdf.format(dt);
 		
-			boolean valido=gestor.Modificar("INSERT INTO ObjetosMonitorizables (id,fecha) VALUES (0,'"+currentTime+"')");
+			boolean valido=gestor.Modificar("INSERT INTO ObjetosMonitorizables (id) VALUES (0)");
 		
 			int id=1;
 			rs = gestor.RealizarConsulta("select id from ObjetosMonitorizables ORDER BY id DESC");
@@ -61,13 +58,13 @@ public class AyudaDB {
 		try{
 			ResultSet rs;
 			gestor.conectar();
-			if(Pattern.matches("^d{2}/d{2}/d{4} d{2}/d{2}/d{4}", filtro)){	// Si el filtrado es por intervalo de fechas
-				String [] fechas = filtro.split("\\ ");
-				java.text.DateFormat formato = new java.text.SimpleDateFormat("dd/MM/aaaa");
+			if(Pattern.matches("^\\d{2}/\\d{2}/\\d{4}\\s\\d{2}/\\d{2}/\\d{4}", filtro)){	// Si el filtrado es por intervalo de fechas
+				String [] fechas = filtro.split("\\s");
+				java.text.DateFormat formato = new java.text.SimpleDateFormat("aaaa-mm-dd hh:mm:ss");
 				java.util.Date parsedUtilDate0 = formato.parse(fechas[0]);
 				java.util.Date parsedUtilDate1 = formato.parse(fechas[1]);
-				Date fechaIni = new Date(parsedUtilDate0.getTime());
-				Date fechaFin = new Date(parsedUtilDate1.getTime());
+				Timestamp fechaIni = new Timestamp(parsedUtilDate0.getTime());
+				Timestamp fechaFin = new Timestamp(parsedUtilDate1.getTime());
 				rs = gestor.RealizarConsulta("SELECT * from Ayudas,ObjetosMonitorizables " +
 						"WHERE (Ayudas.id_objetomonitorizable=ObjetosMonitorizables.id) AND " +
 						"(ObjetosMonitorizables.fecha>='"+fechaIni.toString()+"' AND ObjetosMonitorizables.fecha<='"+fechaFin.toString()+"')");
@@ -77,9 +74,9 @@ public class AyudaDB {
 						"Personas.dni LIKE '"+filtro+"%'");
 			}else{
 				// CONSULTA SEGUN NOMBRE Y APELLIDOS DEL BENEFICIARIO Y POR TIPO DE AYUDAS... :S
-				rs = gestor.RealizarConsulta("SELECT * from Personas,Beneficiario,Ayudas, ObjetosMonitorizables " +
-						"WHERE (Personas.id=Beneficiarios.id_persona AND Personas.id=Ayudas.id_beneficiario AND Personas.nombre LIKE '"+filtro+"%' OR Personas.apellido1 LIKE '"+filtro+"%' OR Personas.apellido2 LIKE '"+filtro+"%') OR " +
-						"(Ayudas.id_tipoayuda=TiposAyuda.id AND ObjetosMonitorizables.id = Ayudas.id_objetomonitorizable AND TiposAyuda.nombre LIKE '%"+filtro+"%')");
+				rs = gestor.RealizarConsulta("SELECT * from Personas,Beneficiarios,Ayudas, ObjetosMonitorizables, TiposAyuda " +
+						"WHERE Personas.id=Beneficiarios.id_persona AND Beneficiarios.id_persona = Ayudas.id_beneficiario AND ObjetosMonitorizables.id = Ayudas.id_objetomonitorizable AND TiposAyuda.id = Ayudas.id_tipoayuda AND (Personas.nombre LIKE '"+filtro+"%' OR Personas.apellido1 LIKE '"+filtro+"%' OR Personas.apellido2 LIKE '"+filtro+"%' OR " +
+						"(Ayudas.id_tipoayuda=TiposAyuda.id AND ObjetosMonitorizables.id = Ayudas.id_objetomonitorizable AND TiposAyuda.nombre LIKE '%"+filtro+"%'))");
 			}
 			
 			
@@ -91,7 +88,7 @@ public class AyudaDB {
 				ayuda.setIdBeneficiario((Integer)rs.getObject("id_beneficiario"));
 				ayuda.setObservaciones(rs.getObject("observaciones").toString());
 				ayuda.setCantidadMonetaria((Float)rs.getObject("cantidadMonetaria"));
-				ayuda.setDate((Date)rs.getObject("fecha"));
+				ayuda.setDate(rs.getTimestamp("fecha"));
 				lista.add(ayuda);
 			}
 			gestor.desconectar();
@@ -133,6 +130,7 @@ public class AyudaDB {
 				ayuda.setIdBeneficiario((Integer)rs.getObject("id_beneficiario"));
 				ayuda.setObservaciones(rs.getObject("observaciones").toString());
 				ayuda.setCantidadMonetaria((Float)rs.getObject("cantidadMonetaria"));
+				ayuda.setDate(rs.getTimestamp("fecha"));
 				lista.add(ayuda);
 			}
 			gestor.desconectar();

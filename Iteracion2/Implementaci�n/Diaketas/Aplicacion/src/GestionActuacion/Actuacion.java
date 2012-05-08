@@ -1,6 +1,7 @@
 package GestionActuacion;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import GestionPersona.Trabajador;
 
@@ -8,7 +9,7 @@ import GestionPersona.Trabajador;
 
 
 public class Actuacion {
-	private Date fecha;
+	private Timestamp fecha;
 	private TipoActuacion tipoActuacion;
 	private int idObjMonitorizado;
 	private int idTrabajador;
@@ -19,7 +20,7 @@ public class Actuacion {
 	}
 	
 	
-	public Actuacion(Trabajador trabajador, TipoActuacion tipoAct, int idObjMon, Date fecha){
+	public Actuacion(Trabajador trabajador, TipoActuacion tipoAct, int idObjMon, Timestamp fecha){
 		this.fecha = fecha;
 		this.tipoActuacion = tipoAct;
 		this.idObjMonitorizado = idObjMon;
@@ -27,12 +28,12 @@ public class Actuacion {
 	}
 	
 	
-	public void setFecha(Date fecha){
+	public void setFecha(Timestamp fecha){
 		this.fecha = fecha;
 	}
 	
 	
-	public Date getFecha(){
+	public Timestamp getFecha(){
 		return this.fecha;
 	}
 	
