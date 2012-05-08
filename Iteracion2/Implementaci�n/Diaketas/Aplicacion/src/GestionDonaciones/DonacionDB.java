@@ -80,6 +80,12 @@ public class DonacionDB {
 				rs = gestor.RealizarConsulta("SELECT * from Donaciones,ObjetosMonitorizables " +
 						"WHERE (Donaciones.id_objetomonitorizable=ObjetosMonitorizables.id) AND " +
 						"(ObjetosMonitorizables.fecha BETWEEN '"+fechaIni+"' AND '"+fechaFin+"')");
+			}else if(Pattern.matches("^\\d{2}/\\d{2}/\\d{4}$", filtro)){	// Si el filtrado es por fecha
+				String fechaConsulta = new String();
+				fechaConsulta = fechaConsulta + filtro.substring(6) + "-" + filtro.substring(3, 5) + "-" + filtro.substring(0, 2);
+				
+				rs = gestor.RealizarConsulta("SELECT * from Donaciones, ObjetosMonitorizables OM WHERE OM.fecha='"+fechaConsulta+"' AND " +
+						"OM.id = Donaciones.id_objetomonitorizable");
 			}else if(Pattern.matches("^\\d{0,8}", filtro)){		// Si el filtrado es por el DNI del donante
 				rs = gestor.RealizarConsulta("SELECT * from Personas, Donantes, Donaciones " +
 						"WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante AND" +

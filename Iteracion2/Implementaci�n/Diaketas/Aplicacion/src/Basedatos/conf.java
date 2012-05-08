@@ -1,6 +1,6 @@
 package Basedatos;
 
-DB: isiii;
-user: root;
-pass: qwerty;
-DBA: 1984.dyndns.org;
+//DB: isiii;
+//user: root;
+//pass: qwerty;
+//DBA: localhost;

@@ -80,6 +80,12 @@ public class AyudaDB {
 				rs = gestor.RealizarConsulta("SELECT * from Ayudas,ObjetosMonitorizables " +
 						"WHERE (Ayudas.id_objetomonitorizable=ObjetosMonitorizables.id) AND " +
 						"(ObjetosMonitorizables.fecha BETWEEN '"+fechaIni+"' AND '"+fechaFin+"')");
+			}else if(Pattern.matches("^\\d{2}/\\d{2}/\\d{4}$", filtro)){	// Si el filtrado es por fecha
+				String fechaConsulta = new String();
+				fechaConsulta = fechaConsulta + filtro.substring(6) + "-" + filtro.substring(3, 5) + "-" + filtro.substring(0, 2);
+				
+				rs = gestor.RealizarConsulta("SELECT * from Ayudas, ObjetosMonitorizables OM WHERE OM.fecha='"+fechaConsulta+"' AND " +
+						"OM.id = Ayudas.id_objetomonitorizable");
 			}else if(Pattern.matches("^\\d{0,8}", filtro)){		// Si el filtrado es por el DNI del beneficiario
 				rs = gestor.RealizarConsulta("SELECT * from Personas, Beneficiarios, Ayudas, ObjetosMonitorizables " +
 						"WHERE Personas.id=Beneficiarios.id_persona AND Personas.id=Ayudas.id_beneficiario AND ObjetosMonitorizables.id = Ayudas.id_objetomonitorizable AND " +

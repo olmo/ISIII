@@ -48,11 +48,11 @@ public class ActuacionDB {
 		try{
 			ResultSet rs;
 			gestor.conectar();
-			if(Pattern.matches("^d{2}/d{2}/d{4}", filtro)){	// Si el filtrado es por fecha
-				java.text.DateFormat formato = new java.text.SimpleDateFormat("dd/MM/aaaa");
-				java.util.Date parsedUtilDate = formato.parse(filtro);
-				Date fecha= new Date(parsedUtilDate.getTime());
-				rs = gestor.RealizarConsulta("SELECT * from Actuaciones, ObjetosMonitorizables OM WHERE OM.fecha='"+fecha.toString()+"' AND " +
+			if(Pattern.matches("^\\d{2}/\\d{2}/\\d{4}", filtro)){	// Si el filtrado es por fecha
+				String fechaConsulta = new String();
+				fechaConsulta = fechaConsulta + filtro.substring(6) + "-" + filtro.substring(3, 5) + "-" + filtro.substring(0, 2);
+				
+				rs = gestor.RealizarConsulta("SELECT * from Actuaciones, ObjetosMonitorizables OM WHERE OM.fecha='"+fechaConsulta+"' AND " +
 						"OM.id = Actuaciones.id_objetomonitorizable");
 			}else if(Pattern.matches("^[Cc]onceder ayuda", filtro)){		// Si el filtrado es por el tipo de actuacion 'conceder_ayuda'
 				rs = gestor.RealizarConsulta("SELECT * from Actuaciones, ObjetosMonitorizables OM WHERE OM.id = Actuaciones.id_objetomonitorizable AND id_tipoactuacion='0'");
