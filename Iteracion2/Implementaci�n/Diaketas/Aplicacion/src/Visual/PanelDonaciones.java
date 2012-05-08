@@ -19,7 +19,6 @@ import javax.swing.table.TableModel;
 
 import GestionActuacion.TipoActuacion;
 import GestionDonaciones.Donacion;
-import GestionPersona.Donante;
 import GestionPersona.DonanteDB;
 import GestionPersona.Persona;
 import GestionPersona.PersonaDB;

@@ -1,7 +1,6 @@
 package Visual;
 
 
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -14,12 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 
 import GestionPersona.CodificacionPW;
-import javax.swing.JProgressBar;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
 
 
 
@@ -91,7 +86,7 @@ public class Home extends JPanel {
 		add(Mensaje);
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setIcon(new ImageIcon((this.getClass().getResource("/img/diaketas.JPG"))));
+		label.setIcon(new ImageIcon((this.getClass().getResource("/img/imagen.JPG"))));
 		label.setBounds(24, 11, 558, 378);
 		add(label);
 		

@@ -59,16 +59,11 @@ public class DonacionDB {
 		try{
 			ResultSet rs;
 			gestor.conectar();
-			if(Pattern.matches("^\\d{2}/\\d{2}/\\d{4}\\s\\d{2}/\\d{2}/\\d{4}", filtro)){	// Si el filtrado es por intervalo de fechas
+			if(Pattern.matches("^\\d{4}-\\d{2}-\\d{2}\\s\\d{4}-\\d{2}-\\d{2}", filtro)){	// Si el filtrado es por intervalo de fechas
 				String [] fechas = filtro.split("\\s");
-				java.text.DateFormat formato = new java.text.SimpleDateFormat("dd/MM/aaaa");
-				java.util.Date parsedUtilDate0 = formato.parse(fechas[0]);
-				java.util.Date parsedUtilDate1 = formato.parse(fechas[1]);
-				Timestamp fechaIni = new Timestamp(parsedUtilDate0.getTime());
-				Timestamp fechaFin = new Timestamp(parsedUtilDate1.getTime());
 				rs = gestor.RealizarConsulta("SELECT * from Donaciones,ObjetosMonitorizables " +
 						"WHERE (Donaciones.id_objetomonitorizable=ObjetosMonitorizables.id) AND " +
-						"(ObjetosMonitorizables.fecha>='"+fechaIni.toString()+"' AND ObjetosMonitorizables.fecha<='"+fechaFin.toString()+"')");
+						"(ObjetosMonitorizables.fecha BETWEEN '"+fechas[0]+"' AND '"+fechas[1]+"')");
 			}else if(Pattern.matches("^\\d{0,8}", filtro)){		// Si el filtrado es por el DNI del donante
 				rs = gestor.RealizarConsulta("SELECT * from Personas, Donantes, Donaciones " +
 						"WHERE Personas.id=Donantes.id_persona AND Donantes.id_persona=Donaciones.id_donante AND" +

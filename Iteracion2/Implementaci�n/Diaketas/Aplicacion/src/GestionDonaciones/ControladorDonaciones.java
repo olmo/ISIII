@@ -1,8 +1,6 @@
 package GestionDonaciones;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 
 import GestionPersona.Donante;
 import GestionPersona.DonanteDB;

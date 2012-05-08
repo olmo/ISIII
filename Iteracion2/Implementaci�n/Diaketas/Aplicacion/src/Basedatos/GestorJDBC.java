@@ -37,7 +37,7 @@ final public class GestorJDBC {
 		if(instance==null){
 			
 			
-			/*Cargar Configuracion de la base de datos*/
+			//Cargar Configuracion de la base de datos
 			FileReader entrada=null;
 	        StringBuffer str=new StringBuffer();
 	        try  {
@@ -59,11 +59,12 @@ final public class GestorJDBC {
 	           
 	      }
 	        String fichero = str.toString();
-	        String[] datos = fichero.split(";");
-	        DB = datos[1].split(":\\s")[1];
+	       String[] datos = fichero.split(";");
+	       DB = datos[1].split(":\\s")[1];
 	        usuario = datos[2].split(":\\s")[1];
 	        contrasena = datos[3].split(":\\s")[1];
 	        direccionDB = datos[4].split(":\\s")[1];
+
 	        instance= new GestorJDBC();
 		}
 	}
@@ -84,8 +85,8 @@ final public class GestorJDBC {
 	public boolean conectar(){
 		try{ 
 			   Class.forName("com.mysql.jdbc.Driver");
-//			   conexion = DriverManager.getConnection("jdbc:mysql://1984.dyndns.org:3306/isiii", "isiii", "qwerty");
-			   conexion = DriverManager.getConnection("jdbc:mysql://"+direccionDB+"/"+DB, usuario, contrasena);
+			   conexion = DriverManager.getConnection("jdbc:mysql://1984.dyndns.org:3306/isiii", "isiii", "qwerty");
+			   //conexion = DriverManager.getConnection("jdbc:mysql://"+direccionDB+"/"+DB, usuario, contrasena);
 			   return true;
 			   }
 			catch(Exception e){
