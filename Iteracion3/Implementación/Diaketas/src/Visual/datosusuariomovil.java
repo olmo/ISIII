@@ -1,4 +1,4 @@
-package visual;
+package Visual;
 
 
 import java.awt.BorderLayout;
@@ -26,21 +26,7 @@ public class datosusuariomovil extends JFrame {
 	private JTextField cpText;
 	private JTextField emailText;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					datosusuariomovil frame = new datosusuariomovil();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.

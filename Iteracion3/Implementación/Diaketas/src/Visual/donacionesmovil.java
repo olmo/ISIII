@@ -1,4 +1,4 @@
-package visual;
+package Visual;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -19,22 +19,6 @@ public class donacionesmovil extends JFrame {
 
 	private JPanel contentPane;
 	private JTable donacionesTable;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					donacionesmovil frame = new donacionesmovil();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.

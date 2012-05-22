@@ -85,8 +85,8 @@ final public class GestorJDBC {
 	public boolean conectar(){
 		try{ 
 			   Class.forName("com.mysql.jdbc.Driver");
-			   //conexion = DriverManager.getConnection("jdbc:mysql://1984.dyndns.org:3306/isiii", "isiii", "qwerty");
-			   conexion = DriverManager.getConnection("jdbc:mysql://"+direccionDB+"/"+DB, usuario, contrasena);
+			   conexion = DriverManager.getConnection("jdbc:mysql://1984.dyndns.org:3306/isiii", "isiii", "qwerty");
+			   //conexion = DriverManager.getConnection("jdbc:mysql://"+direccionDB+"/"+DB, usuario, contrasena);
 			   return true;
 			   }
 			catch(Exception e){
