@@ -1,81 +1,53 @@
 package Visual;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JLayeredPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.JPasswordField;
-import java.awt.Color;
 
-
-public class homemovil extends JFrame {
-
+public class HomeMovil extends JPanel {
+	private JTextField textField;
+	private JPasswordField passwordField;
+	PanelInicioMovil ini;
 	/**
-	 * 
+	 * Create the panel.
 	 */
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField usuarioText;
-	private JPasswordField passText;
-
-	/**
-	 * Create the frame.
-	 */
-	public homemovil() {
-		setTitle("Asociaci\u00F3n diaketas");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 459, 526);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+	public HomeMovil(VentanaPrincipalMovil mipadre) {
+		setLayout(null);
 		
-		JLabel logoDiaketas = new JLabel("");
-		logoDiaketas.setIcon(new ImageIcon(homemovil.class.getResource("/img/imagen.jpg")));
-		logoDiaketas.setBounds(118, 69, 191, 144);
-		contentPane.add(logoDiaketas);
+		JLabel logoLabel = new JLabel("");
+		logoLabel.setIcon(new ImageIcon(HomeMovil.class.getResource("/img/imagen.jpg")));
+		logoLabel.setBounds(100, 92, 184, 165);
+		add(logoLabel);
 		
 		JLabel usuarioLabel = new JLabel("Usuario:");
-		usuarioLabel.setBounds(60, 285, 46, 14);
-		contentPane.add(usuarioLabel);
+		usuarioLabel.setBounds(44, 306, 58, 14);
+		add(usuarioLabel);
 		
 		JLabel passLabel = new JLabel("Contrase\u00F1a:");
-		passLabel.setBounds(60, 328, 67, 14);
-		contentPane.add(passLabel);
+		passLabel.setBounds(44, 345, 69, 14);
+		add(passLabel);
 		
-		usuarioText = new JTextField();
-		usuarioText.setBounds(137, 282, 141, 20);
-		contentPane.add(usuarioText);
-		usuarioText.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(123, 303, 136, 20);
+		add(textField);
+		textField.setColumns(10);
 		
-		passText = new JPasswordField();
-		passText.setBounds(137, 325, 141, 20);
-		contentPane.add(passText);
-		passText.setColumns(10);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(123, 342, 136, 20);
+		add(passwordField);
 		
 		JButton entrarBoton = new JButton("Entrar");
-		entrarBoton.setBounds(137, 379, 141, 68);
-		contentPane.add(entrarBoton);
+		entrarBoton.setBounds(134, 391, 113, 66);
+		add(entrarBoton);
 		
-		JLabel lblNewLabel = new JLabel("Asociaci\u00F3n Diaketas");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(109, 21, 200, 37);
-		contentPane.add(lblNewLabel);
-		
-		JLabel incorrectaLabel = new JLabel("Nombre de usuario o contrase\u00F1a incorrecto");
-		incorrectaLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		incorrectaLabel.setForeground(Color.RED);
-		incorrectaLabel.setBounds(77, 242, 289, 14);
-		contentPane.add(incorrectaLabel);
+		JLabel lblAsociacinDiaketas = new JLabel("Asociaci\u00F3n Diaketas");
+		lblAsociacinDiaketas.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAsociacinDiaketas.setBounds(100, 48, 195, 33);
+		add(lblAsociacinDiaketas);
+
 	}
 }

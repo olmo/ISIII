@@ -126,7 +126,6 @@ public class PanelInicio extends JPanel {
 		
 		padre.actualizaProgreso("Tablas rellenas\n");
 		
-		
 		//Fin inicialización
 		
 		
