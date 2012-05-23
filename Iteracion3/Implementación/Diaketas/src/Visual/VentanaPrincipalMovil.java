@@ -24,11 +24,12 @@ public class VentanaPrincipalMovil extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private ControladorDonaciones controlador_donaciones = new ControladorDonaciones();
+	//private ControladorDonaciones controlador_donaciones = new ControladorDonaciones();
 	private String trabajador;
 	private HomeMovil homeMovil;
-	private DonacionesMovil donacionesmovil;
+	//private DonacionesMovil donacionesmovil;
 	private DatosUsuarioMovil datosusuariomovil;
+	private MenuMovil menuMovil;
 	
 	public VentanaPrincipalMovil() {
 		
@@ -45,7 +46,7 @@ public class VentanaPrincipalMovil extends JFrame {
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 		setResizable(false);
 		setLocation(50, 0);
-		setSize(362,565);
+		setSize(372,565);
 
 		//setSize(1200, 700);
 		setResizable(false);
@@ -74,10 +75,6 @@ public class VentanaPrincipalMovil extends JFrame {
 	
 	public String getusuario(){
 		return trabajador;
-	}
-	
-	public ControladorDonaciones getControladorDonaciones(){
-		return controlador_donaciones;
 	}
 	
 

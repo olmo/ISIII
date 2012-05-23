@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class DatosUsuarioMovil extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2268770203627124208L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -19,12 +23,15 @@ public class DatosUsuarioMovil extends JPanel {
 	private JTextField textField_6;
 	private JTextField textField_7;
 	private JTextField textField_8;
+	PanelInicioMovil ini;
+	VentanaPrincipalMovil padre;
 
 	/**
 	 * Create the panel.
 	 */
 	public DatosUsuarioMovil(VentanaPrincipalMovil mipadre) {
 		setLayout(null);
+		padre = mipadre;
 		
 		JLabel dniLabel = new JLabel("DNI:");
 		dniLabel.setBounds(40, 89, 46, 14);

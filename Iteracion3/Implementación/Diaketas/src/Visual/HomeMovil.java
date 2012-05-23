@@ -7,20 +7,30 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Frame;
 
 public class HomeMovil extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4832911424114165246L;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private MenuMovil menuMovil;
+	private VentanaPrincipalMovil padre;
 	PanelInicioMovil ini;
 	/**
 	 * Create the panel.
 	 */
-	public HomeMovil(VentanaPrincipalMovil mipadre) {
+	public HomeMovil(final VentanaPrincipalMovil mipadre) {
+		padre = mipadre;
 		setLayout(null);
 		
 		JLabel logoLabel = new JLabel("");
 		logoLabel.setIcon(new ImageIcon(HomeMovil.class.getResource("/img/imagen.jpg")));
-		logoLabel.setBounds(100, 92, 184, 165);
+		logoLabel.setBounds(92, 92, 184, 165);
 		add(logoLabel);
 		
 		JLabel usuarioLabel = new JLabel("Usuario:");
@@ -41,6 +51,20 @@ public class HomeMovil extends JPanel {
 		add(passwordField);
 		
 		JButton entrarBoton = new JButton("Entrar");
+		entrarBoton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PanelInicioMovil panIni = new PanelInicioMovil(padre,textField.getText());
+				//menuMovil = new MenuMovil(padre);
+				//menuMovil.setBounds(20, 159, 309, 243);
+				
+				
+				padre.getContentPane().removeAll();
+				padre.getContentPane().validate();
+				padre.getContentPane().add(panIni);
+				//padre.setExtendedState(Frame.MAXIMIZED_BOTH);
+				padre.getContentPane().repaint();
+			}
+		});
 		entrarBoton.setBounds(134, 391, 113, 66);
 		add(entrarBoton);
 		

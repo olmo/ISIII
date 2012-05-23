@@ -38,7 +38,7 @@ public class PanelInicio extends JPanel {
 	public EditarTipoAyuda editar_tipo_ayuda;
 	public NuevoFamiliar nuevo_familiar;
 	public NuevoUsuario nuevo_usuario;
-	public AnadirOferta anadir_oferta;
+	//public AnadirOferta anadir_oferta;
 	
 	final static int PERSONAS = 0;
 	final static int DONACIONES = 1;
@@ -121,8 +121,8 @@ public class PanelInicio extends JPanel {
 		panel_donaciones = new PanelDonaciones(p, this);
 		panel_ayudas = new PanelAyudas(p, this);
 		
-		panelOfertas = new PanelOfertas(p,this);
-		anadir_oferta = new AnadirOferta(p,this);
+		//panelOfertas = new PanelOfertas(p,this);
+		//anadir_oferta = new AnadirOferta(p,this);
 		
 		padre.actualizaProgreso("Tablas rellenas\n");
 		
