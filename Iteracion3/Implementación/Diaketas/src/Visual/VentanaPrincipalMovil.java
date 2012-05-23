@@ -51,8 +51,8 @@ public class VentanaPrincipalMovil extends JFrame {
 		setResizable(false);
 		setTitle("Asociaci\u00F3n Diaketas M\u00F3vil");
 		
-		datosusuariomovil = new DatosUsuarioMovil(this);
-		getContentPane().add(datosusuariomovil);
+		homeMovil = new HomeMovil(this);
+		getContentPane().add(homeMovil);
 		
 		try{
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
