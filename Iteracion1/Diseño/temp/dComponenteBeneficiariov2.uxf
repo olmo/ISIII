@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.4">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>690</w>
+      <h>570</h>
+    </coordinates>
+    <panel_attributes>pkg GestionBeneficiario</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>40</x>
+      <y>60</y>
+      <w>220</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Beneficiario
+--
+-localidad: String
+-eCivil: String
+-nEstudios: String
+-nacionalidad: String
+-sEconomica: String
+-observacionesPersonales: String
+-observacionesVivienda: String
+-observacionesFamiliares: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>530</x>
+      <y>90</y>
+      <w>160</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>GestorBeneficiario
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>230</x>
+      <y>130</y>
+      <w>320</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes>
+    <additional_attributes>30;30;300;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>580</x>
+      <y>190</y>
+      <w>50</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>30;170;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>330</x>
+      <y>360</y>
+      <w>310</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IPersona
+--
+_+buscaPersonas(String,Filtro): JTablemodel_
+_+existePersona(dni): Boolean_
+_+getPersona(dni): Persona_
++introducirDatos(dni,nombre,apellido1,apellido2,
+fNacimiento,telefono,domicilio,lNacimiento,cp)
++iniciarModificarPersona(dni)
++borrarDatosPersona(dni)
++darBajaPersona(dni)
++iniciarConsultarPersona(dni)
++introducirDatosInicioSesion(user, pw): Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
