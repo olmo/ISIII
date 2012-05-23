@@ -16,12 +16,8 @@ public class DonacionesMovil extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public DonacionesMovil() {
+	public DonacionesMovil(VentanaPrincipalMovil mipadre) {
 		setLayout(null);
-		
-		JButton logOutBoton = new JButton("Cerrar sesi\u00F3n");
-		logOutBoton.setBounds(301, 30, 118, 65);
-		add(logOutBoton);
 		
 		JButton volverBoton = new JButton("Volver");
 		volverBoton.addActionListener(new ActionListener() {
@@ -29,11 +25,11 @@ public class DonacionesMovil extends JPanel {
 				ini.setPanelOnTab(ini.home_Movil,PanelInicio.AYUDAS);
 			}
 		});
-		volverBoton.setBounds(170, 559, 118, 65);
+		volverBoton.setBounds(122, 468, 111, 48);
 		add(volverBoton);
 		
 		JScrollPane donacionesScrollPane = new JScrollPane((Component) null);
-		donacionesScrollPane.setBounds(24, 159, 398, 360);
+		donacionesScrollPane.setBounds(10, 87, 336, 370);
 		add(donacionesScrollPane);
 		
 		tablaDonaciones = new JTable();

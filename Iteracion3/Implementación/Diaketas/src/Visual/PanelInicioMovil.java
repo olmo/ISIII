@@ -53,9 +53,7 @@ public class PanelInicioMovil extends JPanel {
 		this.padre = p;
 		padre.setusuario(usuario);
 		setLayout(null);
-		
-		padre.actualizaProgreso("Creando Ventana Principal\n");
-		
+				
 
 		//panelDonaciones = panel_donaciones;
 		
@@ -86,7 +84,6 @@ public class PanelInicioMovil extends JPanel {
 		label.setBounds(150, 11, 136, 26);
 		add(label);
 		
-		padre.actualizaProgreso("Terminado\n");
 		//bProgreso.terminado();
 		add(panelMenuMovil);
 		

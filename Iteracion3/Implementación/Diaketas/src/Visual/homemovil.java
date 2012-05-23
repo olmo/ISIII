@@ -11,14 +11,12 @@ import java.awt.Font;
 public class HomeMovil extends JPanel {
 	private JTextField textField;
 	private JPasswordField passwordField;
-	private VentanaPrincipalMovil padre;
-	PanelInicio ini;
+	PanelInicioMovil ini;
 	/**
 	 * Create the panel.
 	 */
 	public HomeMovil(VentanaPrincipalMovil mipadre) {
 		setLayout(null);
-		this.padre = mipadre;
 		
 		JLabel logoLabel = new JLabel("");
 		logoLabel.setIcon(new ImageIcon(HomeMovil.class.getResource("/img/imagen.jpg")));

@@ -27,7 +27,8 @@ public class VentanaPrincipalMovil extends JFrame {
 	private ControladorDonaciones controlador_donaciones = new ControladorDonaciones();
 	private String trabajador;
 	private HomeMovil homeMovil;
-	private BarraProgreso bProgreso;
+	private DonacionesMovil donacionesmovil;
+	private DatosUsuarioMovil datosusuariomovil;
 	
 	public VentanaPrincipalMovil() {
 		
@@ -41,18 +42,17 @@ public class VentanaPrincipalMovil extends JFrame {
 			}
 		});
 		
-		new Thread(bProgreso = new BarraProgreso()).start();
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 		setResizable(false);
 		setLocation(50, 0);
-		setSize(450,572);
+		setSize(362,565);
 
 		//setSize(1200, 700);
 		setResizable(false);
 		setTitle("Asociaci\u00F3n Diaketas M\u00F3vil");
 		
-		homeMovil = new HomeMovil(this);
-		getContentPane().add(homeMovil);
+		datosusuariomovil = new DatosUsuarioMovil(this);
+		getContentPane().add(datosusuariomovil);
 		
 		try{
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -80,8 +80,5 @@ public class VentanaPrincipalMovil extends JFrame {
 		return controlador_donaciones;
 	}
 	
-	public void actualizaProgreso(String progreso){
-		bProgreso.actualizaProgreso(progreso);
-	}
 
 }
