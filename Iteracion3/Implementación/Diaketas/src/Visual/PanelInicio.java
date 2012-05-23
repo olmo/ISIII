@@ -38,6 +38,7 @@ public class PanelInicio extends JPanel {
 	public EditarTipoAyuda editar_tipo_ayuda;
 	public NuevoFamiliar nuevo_familiar;
 	public NuevoUsuario nuevo_usuario;
+	public HomeMovil home_Movil;
 	
 	final static int PERSONAS = 0;
 	final static int DONACIONES = 1;
@@ -117,7 +118,6 @@ public class PanelInicio extends JPanel {
 		panel_ayudas = new PanelAyudas(p, this);
 		
 		padre.actualizaProgreso("Tablas rellenas\n");
-		
 		
 		//Fin inicialización
 		

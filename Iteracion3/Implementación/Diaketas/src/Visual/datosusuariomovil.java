@@ -1,146 +1,135 @@
 package Visual;
 
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
-import java.awt.Font;
+import java.awt.Choice;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class datosusuariomovil extends JFrame {
-
-	private JPanel contentPane;
-	private JTextField dniText;
-	private JTextField nombreText;
-	private JTextField apellidosText;
-	private JTextField fechNacText;
-	private JTextField telefonoText;
-	private JTextField lugNaciText;
-	private JTextField direcText;
-	private JTextField cpText;
-	private JTextField emailText;
-
-	
+public class DatosUsuarioMovil extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
 
 	/**
-	 * Create the frame.
+	 * Create the panel.
 	 */
-	public datosusuariomovil() {
-		setTitle("Asociaci\u00F3n Diaketas");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 494, 616);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JButton logoutBoton = new JButton("Cerrar sesi\u00F3n");
-		logoutBoton.setBounds(333, 23, 127, 66);
-		contentPane.add(logoutBoton);
+	public DatosUsuarioMovil() {
+		setLayout(null);
 		
 		JLabel dniLabel = new JLabel("DNI:");
-		dniLabel.setBounds(46, 140, 46, 14);
-		contentPane.add(dniLabel);
+		dniLabel.setBounds(40, 130, 46, 14);
+		add(dniLabel);
 		
 		JLabel nombreLabel = new JLabel("Nombre:");
-		nombreLabel.setBounds(46, 180, 94, 14);
-		contentPane.add(nombreLabel);
+		nombreLabel.setBounds(40, 170, 46, 14);
+		add(nombreLabel);
 		
 		JLabel apellidosLabel = new JLabel("Apellidos:");
-		apellidosLabel.setBounds(46, 220, 94, 14);
-		contentPane.add(apellidosLabel);
+		apellidosLabel.setBounds(40, 210, 46, 14);
+		add(apellidosLabel);
 		
 		JLabel fechNaciLabel = new JLabel("Fecha nacimiento:");
-		fechNaciLabel.setBounds(46, 260, 116, 14);
-		contentPane.add(fechNaciLabel);
+		fechNaciLabel.setBounds(40, 250, 97, 14);
+		add(fechNaciLabel);
 		
-		JLabel telefonoLabel = new JLabel("Tel\u00E9fono:");
-		telefonoLabel.setBounds(46, 300, 80, 14);
-		contentPane.add(telefonoLabel);
+		JLabel teleLabel = new JLabel("Tel\u00E9fono:");
+		teleLabel.setBounds(40, 290, 46, 14);
+		add(teleLabel);
 		
 		JLabel lugNaciLabel = new JLabel("Lugar nacimiento:");
-		lugNaciLabel.setBounds(46, 340, 116, 14);
-		contentPane.add(lugNaciLabel);
+		lugNaciLabel.setBounds(40, 330, 97, 14);
+		add(lugNaciLabel);
 		
 		JLabel direLabel = new JLabel("Direcci\u00F3n:");
-		direLabel.setBounds(46, 380, 94, 14);
-		contentPane.add(direLabel);
+		direLabel.setBounds(40, 370, 97, 14);
+		add(direLabel);
 		
 		JLabel cpLabel = new JLabel("C\u00F3digo postal:");
-		cpLabel.setBounds(46, 420, 105, 14);
-		contentPane.add(cpLabel);
+		cpLabel.setBounds(40, 410, 97, 14);
+		add(cpLabel);
 		
 		JLabel emailLabel = new JLabel("Email:");
-		emailLabel.setBounds(46, 460, 46, 14);
-		contentPane.add(emailLabel);
+		emailLabel.setBounds(40, 450, 46, 14);
+		add(emailLabel);
 		
 		JLabel frecLabel = new JLabel("Frecuencia:");
-		frecLabel.setBounds(46, 500, 94, 14);
-		contentPane.add(frecLabel);
+		frecLabel.setBounds(40, 490, 82, 14);
+		add(frecLabel);
 		
-		dniText = new JTextField();
-		dniText.setBounds(187, 137, 149, 20);
-		contentPane.add(dniText);
-		dniText.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(147, 127, 163, 20);
+		add(textField);
+		textField.setColumns(10);
 		
-		nombreText = new JTextField();
-		nombreText.setColumns(10);
-		nombreText.setBounds(187, 177, 149, 20);
-		contentPane.add(nombreText);
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(147, 167, 163, 20);
+		add(textField_1);
 		
-		apellidosText = new JTextField();
-		apellidosText.setColumns(10);
-		apellidosText.setBounds(187, 217, 149, 20);
-		contentPane.add(apellidosText);
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(147, 207, 163, 20);
+		add(textField_2);
 		
-		fechNacText = new JTextField();
-		fechNacText.setColumns(10);
-		fechNacText.setBounds(187, 257, 149, 20);
-		contentPane.add(fechNacText);
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(147, 247, 163, 20);
+		add(textField_3);
 		
-		telefonoText = new JTextField();
-		telefonoText.setColumns(10);
-		telefonoText.setBounds(187, 297, 149, 20);
-		contentPane.add(telefonoText);
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(147, 287, 163, 20);
+		add(textField_4);
 		
-		lugNaciText = new JTextField();
-		lugNaciText.setColumns(10);
-		lugNaciText.setBounds(187, 337, 149, 20);
-		contentPane.add(lugNaciText);
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(147, 327, 163, 20);
+		add(textField_5);
 		
-		direcText = new JTextField();
-		direcText.setColumns(10);
-		direcText.setBounds(187, 377, 149, 20);
-		contentPane.add(direcText);
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(147, 367, 163, 20);
+		add(textField_6);
 		
-		cpText = new JTextField();
-		cpText.setColumns(10);
-		cpText.setBounds(187, 417, 149, 20);
-		contentPane.add(cpText);
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(147, 407, 163, 20);
+		add(textField_7);
 		
-		emailText = new JTextField();
-		emailText.setColumns(10);
-		emailText.setBounds(187, 457, 149, 20);
-		contentPane.add(emailText);
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		textField_8.setBounds(147, 447, 163, 20);
+		add(textField_8);
 		
-		JComboBox frecComBox = new JComboBox();
-		frecComBox.setBounds(187, 497, 105, 20);
-		contentPane.add(frecComBox);
+		Choice choice = new Choice();
+		choice.setBounds(147, 490, 82, 20);
+		add(choice);
 		
-		JLabel bienvenidaLabel = new JLabel("Bienvenid@");
-		bienvenidaLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bienvenidaLabel.setBounds(46, 33, 116, 40);
-		contentPane.add(bienvenidaLabel);
+		JButton logOutBoton = new JButton("Cerrar sesi\u00F3n");
+		logOutBoton.setBounds(292, 31, 118, 65);
+		add(logOutBoton);
 		
-		JLabel usuarioLabel = new JLabel("<<usuario>>");
-		usuarioLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		usuarioLabel.setBounds(154, 33, 116, 40);
-		contentPane.add(usuarioLabel);
+		JButton volverBoton = new JButton("Volver");
+		volverBoton.setBounds(84, 560, 118, 65);
+		add(volverBoton);
+		
+		JButton guardarBoton = new JButton("Guardar");
+		guardarBoton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		guardarBoton.setBounds(255, 560, 118, 65);
+		add(guardarBoton);
+
 	}
 }
