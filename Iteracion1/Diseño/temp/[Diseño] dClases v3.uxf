@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.4">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1032</x>
+      <y>152</y>
+      <w>424</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>/Persona/
+--
+-id: Long
+-dni: Long
+-nombre: String
+-apellido1: String
+-apellido2: String
+-fNacimiento: Date
+-telefono: Long
+-lugarNacimiento: String
+-domicilio: String
+-cp: Integer
+-estado: Boolean
+-fBaja: Date
+-email: String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1472</x>
+      <y>688</y>
+      <w>136</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Empresa
+--
+-cif: Long
+-nombreEmpresa: String
+-telefonoEmpresa: Long
+-direccionEmpresa: String
+-emailEmpresa: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1256</x>
+      <y>688</y>
+      <w>104</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Socio
+--
+-usuario: String
+-contrasena: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1376</x>
+      <y>688</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Colaborador</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1392</x>
+      <y>616</y>
+      <w>136</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;120;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1296</x>
+      <y>616</y>
+      <w>136</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>120;24;24;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1392</x>
+      <y>616</y>
+      <w>40</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1320</x>
+      <y>592</y>
+      <w>176</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>/Donante/
+--
+-periodicidad: Long
+--
++introducirDonacion(String,Float)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1360</x>
+      <y>336</y>
+      <w>40</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;256</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1016</x>
+      <y>336</y>
+      <w>96</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80;24;24;200</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1040</x>
+      <y>608</y>
+      <w>176</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Beneficiario
+--
+-localidad: String
+-eCivil: String
+-nEstudios: String
+-nacionalidad: String
+-sEconomica: String
+-observacionesPersonales: String
+-observacionesVivienda: String
+-observacionesFamiliares: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1104</x>
+      <y>336</y>
+      <w>40</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;272</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1000</x>
+      <y>536</y>
+      <w>112</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Trabajador
+--
+-usuario: String
+-contrasena: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>1512</x>
+      <y>176</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>La periodicidad
+de donante esta 
+representada en dias,
+e indica cada cuanto 
+tiene que hacer
+una donacion.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>624</y>
+      <w>168</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>gestorJDBC
+--
+-conexion: Connection
+-rs: ResultSet
+-st: Statement
+--
++conectar(): Boolean
++desconectar(): Boolean
++consulta(String): JTableModel
++estado(): Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1216</x>
+      <y>480</y>
+      <w>128</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Familiar
+--
+-parentesco: String
+-ocupacion: String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1144</x>
+      <y>496</y>
+      <w>88</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>24;24;72;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1144</x>
+      <y>336</y>
+      <w>40</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=.
+r1=1..n
+r2=0..n</panel_attributes>
+    <additional_attributes>24;272;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>672</x>
+      <y>768</y>
+      <w>304</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>PersonaDB
+--
+--
+_+consultarPersona(dni): Boolean_
+introducirDatos(Persona p)
++darBajaPersona(String dni): Boolean
++modificarDatos(id,dni,nombre,apellido1,
+apellido2,fNacimieno,telefono,lugarNacimiento,
+domicilio,CP,email): Boolean
++getDatos(id): Persona
++buscarPersona(String persona,String rol): JTableModel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>672</x>
+      <y>0</y>
+      <w>304</w>
+      <h>720</h>
+    </coordinates>
+    <panel_attributes>ControladorPersona
+--
+p: Persona
+{instancia temporal de Persona}
+--
+_+consultarPersona(dni): Boolean_
++generaClave(user, pass)
++introducirDatosBeneficiario(id,localidad,eCivil,nEstudios,
+nacionalidad,sEconomica,observacionesPersonales,
+observacionesVivienda,observacionesFamiliares)
++iniciarAltaDonante(donante_t rol)
++introducirDatosSocio(id,periodicidad)
++introducirDatosColaborador(id,periodicidad)
++introducirDatosEmpresa(id,periodicidad,CIF,
+nombreEmpresa,telEmpresa,dirEmpresa,
+emailEmpresa)
++iniciarAltaFamiliar(idBeneficiario)
++introducirDatosFamiliar(idPersona, parentesco, 
+ocupacion)
++darAltaPersona(dni,nombre,apellido1,apellido2,
+fNacimieno,telefono,lugarNacimiento,domicilio,
+CP,email)
++introducirDatosTrabajador(id)
++darBaja(String dni)
++modificarDatosBeneficiario(dni,nombre,apellido1,
+apellido2,fNacimieno,telefono,lugarNacimiento,domicilio,
+CP,email,localidad,eCivil,nEstudios,nacionalidad,
+sEconomica,observacionesPersonales,
+observacionesVivienda,observacionesFamiliares)
++modificarDatosColaborador(dni,nombre,apellido1,
+apellido2,fNacimieno,telefono,lugarNacimiento,domicilio,
+CP,email,periodicidad)
++modificarDatosEmpresa(dni,nombre,apellido1,apellido2,
+fNacimieno,telefono,lugarNacimiento,domicilio,CP,email,
+periodicidad,CIF,nombreEmpresa,telEmpresa,
+dirEmpresa,emailEmpresa)
++modificarDatosSocio(dni,nombre,apellido1,apellido2,
+fNacimieno,telefono,lugarNacimiento,domicilio,CP,email,
+periodicidad)
++modificarDatosTrabajador(dni,nombre,apellido1,apellido2,
+fNacimieno,telefono,lugarNacimiento,domicilio,CP,email)
++consultarBeneficiario(id)
++consultarColaborador(id)
++consultarEmpresa(id)
++consultarSocio(id)
++consultarTrabajador(id)
++introduceDatosInicioSesion(usuario,password): Boolean
++iniciarBuscarPersona(String persona,String rol): Persona
++borrarDatosBeneficiario(id): Boolean
++borrarDatosSocio(id): Boolean
++borrarDatosTrabajador(id): Boolean
++borrarDatosEmpresa(id): Boolean
++borrarDatosColaborador(id): Boolean
++consultarFamiliar(idFamiliar): Familiar
++borrarDatosFamiliar(idFamiliar): Boolean
++listarFamiliares(idPersona): list&lt;Familiar&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>952</x>
+      <y>96</y>
+      <w>96</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..n</panel_attributes>
+    <additional_attributes>24;24;80;184</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>896</x>
+      <y>696</y>
+      <w>40</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>24;24;24;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>984</x>
+      <y>784</y>
+      <w>176</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>No se especifican los tipos 
+de los parametros
+por problemas de espacio.
+Los tipos se pueden consultar
+en los diagramas de secuencia.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>240</x>
+      <y>32</y>
+      <w>320</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>BeneficiarioDB
+--
+--
++introducirDatos(Beneficiario b)
++modificarDatos(Beneficiario b): Boolean
++getDatos(id): Beneficiario
++borrarDatos(id): Boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>336</x>
+      <y>184</y>
+      <w>224</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>SocioDB
+--
+--
++introducirDatos(Socio s)
++modificarDatos(Socio s): Boolean
++getDatos(id): Socio
++borrarDatos(id): Boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>336</x>
+      <y>576</y>
+      <w>224</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>ColaboradorDB
+--
+--
++introducirDatos(Colaborador c)
++modificarDatos(Colaborador c): Boolean
++getDatos(id): Colaborador
++borrarDatos(id): Boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>288</x>
+      <y>472</y>
+      <w>272</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>EmpresaDB
+--
+--
++introducirDatos(Empresa e)
++modificarDatos(Empresa e): Boolean
++getDatos(id): Empresa
++borrarDatos(id): Boolean
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>352</x>
+      <y>328</y>
+      <w>208</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>TrabajadorDB
+--
+--
++introducirDatos(Trabajador t)
++modificarDatos(Trabajador t): Boolean
++getDatos(id): Trabajador
++introduceDatosInicioSesion(usuario,
+password): Boolean
++borrarDatos(id): Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>536</x>
+      <y>552</y>
+      <w>152</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>136;24;24;48</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>536</x>
+      <y>480</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>136;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>536</x>
+      <y>352</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>136;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>536</x>
+      <y>192</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>136;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>536</x>
+      <y>64</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>136;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>144</x>
+      <y>728</y>
+      <w>544</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>528;96;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>144</x>
+      <y>592</y>
+      <w>208</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>192;24;24;80</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>144</x>
+      <y>520</y>
+      <w>160</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>144;24;24;128</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>120</x>
+      <y>328</y>
+      <w>248</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>232;24;24;296</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>88</x>
+      <y>216</y>
+      <w>264</w>
+      <h>424</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>248;24;24;408</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>40</x>
+      <y>120</y>
+      <w>232</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>216;24;24;504</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>336</x>
+      <y>688</y>
+      <w>224</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>FamiliarDB
+--
+--
++getDatos(id): Familiar
++borrarDatos(id): Boolean
++introducirDatos(Familiar f)
++listaFamiliares(idPersona): list&lt;Familiar&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>536</x>
+      <y>648</y>
+      <w>152</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>136;24;24;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>144</x>
+      <y>680</y>
+      <w>208</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>192;40;24;24</additional_attributes>
+  </element>
+</diagram>
