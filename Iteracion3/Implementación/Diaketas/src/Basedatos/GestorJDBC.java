@@ -35,37 +35,35 @@ final public class GestorJDBC {
 	
 	private synchronized static void createInstance(){
 		if(instance==null){
-			
-			
 			//Cargar Configuracion de la base de datos
 			FileReader entrada=null;
-	        StringBuffer str=new StringBuffer();
-	        try  {
-	           entrada=new FileReader("src\\Basedatos\\conf.java");
-	           int c;
-	           while((c=entrada.read())!=-1){
-	               str.append((char)c);
-	           }
-	           
-	      }catch (IOException ex) {
-	           
-	      }finally{
-	    	  //cerrar los flujos de datos
-	           if(entrada!=null){
-	               try{
-	                   entrada.close();
-	               }catch(IOException ex){}
-	           }
-	           
-	      }
-	        String fichero = str.toString();
-	       String[] datos = fichero.split(";");
-	       DB = datos[1].split(":\\s")[1];
-	        usuario = datos[2].split(":\\s")[1];
-	        contrasena = datos[3].split(":\\s")[1];
-	        direccionDB = datos[4].split(":\\s")[1];
-
-	        instance= new GestorJDBC();
+			StringBuffer str=new StringBuffer();
+			try {
+				entrada=new FileReader("src\\Basedatos\\db.conf");
+				int c;
+				while((c=entrada.read())!=-1){
+					str.append((char)c);
+				}
+			       
+			}catch (IOException ex) {
+			       
+			}finally{
+				//cerrar los flujos de datos
+				if(entrada!=null){
+					try{
+						entrada.close();
+					}catch(IOException ex){}
+				}
+			}
+		    
+			String fichero = str.toString().trim();
+			String[] datos = fichero.split(";");
+			DB = datos[0].split(":")[1];
+			usuario = datos[1].split(":")[1];
+			contrasena = datos[2].split(":")[1];
+			direccionDB = datos[3].split(":")[1];
+	
+			instance= new GestorJDBC();
 		}
 	}
 	

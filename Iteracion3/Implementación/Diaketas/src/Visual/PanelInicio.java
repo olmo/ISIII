@@ -38,11 +38,13 @@ public class PanelInicio extends JPanel {
 	public EditarTipoAyuda editar_tipo_ayuda;
 	public NuevoFamiliar nuevo_familiar;
 	public NuevoUsuario nuevo_usuario;
+	public AnadirOferta anadir_oferta;
 	
 	final static int PERSONAS = 0;
 	final static int DONACIONES = 1;
 	final static int AYUDAS = 2;
 	final static int ACTUACIONES = 3;
+	final static int OFERTAS = 4;
 
 	//Usuarios
 	public JPanel panelUsuarios;
@@ -52,6 +54,9 @@ public class PanelInicio extends JPanel {
 	public JPanel panelAyudas;
 	//Actuaciones
 	public JPanel panelActuaciones;
+	//Ofertas
+	public JPanel panelOfertas;
+	
 	static Dimension tamanoPaneles = new Dimension(1100, 650);
 	
 	public static JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -116,6 +121,9 @@ public class PanelInicio extends JPanel {
 		panel_donaciones = new PanelDonaciones(p, this);
 		panel_ayudas = new PanelAyudas(p, this);
 		
+		panelOfertas = new PanelOfertas(p,this);
+		anadir_oferta = new AnadirOferta(p,this);
+		
 		padre.actualizaProgreso("Tablas rellenas\n");
 		
 		
@@ -166,6 +174,7 @@ public class PanelInicio extends JPanel {
 		tabbedPane.addTab("Donaciones", null, panelDonaciones, "Gestión de donaciones");
 		tabbedPane.addTab("Ayudas", null, panelAyudas, "Gestión de ayudas");
 		tabbedPane.addTab("Actuaciones", null, panelActuaciones, "Gestión de actuaciones");
+		tabbedPane.addTab("Ofertas", null, panelOfertas, "Gestión de ofertas");
 		add(tabbedPane);
 		
 		padre.actualizaProgreso("Terminado\n");
@@ -194,6 +203,10 @@ public class PanelInicio extends JPanel {
 		case ACTUACIONES:
 			panelActuaciones = panel;
 			tabbedPane.insertTab("Actuaciones", null, panelActuaciones, "Gestión de actuaciones",ACTUACIONES);
+			break;
+		case OFERTAS:
+			panelActuaciones = panel;
+			tabbedPane.insertTab("Ofertas", null, panelOfertas, "Gestión de ofertas",OFERTAS);
 			break;
 		}
 		tabbedPane.setSelectedIndex(index);
