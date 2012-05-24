@@ -25,6 +25,10 @@ public class PanelInicio extends JPanel {
 	
 	PanelAyudas panel_ayudas;
 	
+	PanelDemandas panel_demandas;
+	
+	PanelGestionBajas panel_GestionBajas;
+	
 	
 	public AnadirTipoAyuda anadir_tipo_ayuda;
 	public AniadirDonacion aniadir_donacion;
@@ -38,13 +42,15 @@ public class PanelInicio extends JPanel {
 	public EditarTipoAyuda editar_tipo_ayuda;
 	public NuevoFamiliar nuevo_familiar;
 	public NuevoUsuario nuevo_usuario;
-	//public AnadirOferta anadir_oferta;
+	public AnadirOferta anadir_oferta; /*cambiado por lin, xk sino peta en panelOfertas*/
 	
 	final static int PERSONAS = 0;
 	final static int DONACIONES = 1;
 	final static int AYUDAS = 2;
 	final static int ACTUACIONES = 3;
 	final static int OFERTAS = 4;
+	final static int DEMANDAS = 5;
+	final static int GESTIONBAJAS = 6;
 
 	//Usuarios
 	public JPanel panelUsuarios;
@@ -56,6 +62,10 @@ public class PanelInicio extends JPanel {
 	public JPanel panelActuaciones;
 	//Ofertas
 	public JPanel panelOfertas;
+	//Demandas
+	public JPanel panelDemandas;
+	//Gestion bajas
+	public JPanel panelGestionBajas;
 	
 	static Dimension tamanoPaneles = new Dimension(1100, 650);
 	
@@ -95,6 +105,16 @@ public class PanelInicio extends JPanel {
 		
 		padre.actualizaProgreso("Creado Panel Actuaciones\n");
 		
+		panelDemandas = new JPanel();
+		panelDemandas.setBorder(new EmptyBorder(0, 0, 0, 0));
+		panelDemandas.setSize(tamanoPaneles);
+		
+		panelGestionBajas = new JPanel();
+		panelGestionBajas.setBorder(new EmptyBorder(0, 0, 0, 0));
+		panelGestionBajas.setSize(tamanoPaneles);
+		
+		padre.actualizaProgreso("Creado Panel Demandas\n");
+		
 		padre.actualizaProgreso("Rellenando tablas de la interfaz\n");
 		
 		anadir_tipo_ayuda = new AnadirTipoAyuda(p, this);
@@ -120,6 +140,8 @@ public class PanelInicio extends JPanel {
 		padre.actualizaProgreso("Descargando Actuaciones\n");
 		panel_donaciones = new PanelDonaciones(p, this);
 		panel_ayudas = new PanelAyudas(p, this);
+		panel_demandas = new PanelDemandas(p, this);
+		panel_GestionBajas = new PanelGestionBajas(p, this);
 		
 		//panelOfertas = new PanelOfertas(p,this);
 		//anadir_oferta = new AnadirOferta(p,this);
@@ -146,6 +168,10 @@ public class PanelInicio extends JPanel {
 		panelActuaciones = panel_actuaciones;
 		
 		panelAyudas = panel_ayudas;
+		
+		panelDemandas = panel_demandas;
+		
+		panelGestionBajas = panel_GestionBajas;
 		
 				
 		//setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inicio, panel, textField, button, button_1, button_2, scrollPane, button_3, button_4, panel_1, textField_1, button_5, button_6, scrollPane_1, button_7, button_8, panel_2, textField_2, button_9, scrollPane_2, button_10, btnCerrarSesion, label}));
@@ -174,6 +200,8 @@ public class PanelInicio extends JPanel {
 		tabbedPane.addTab("Ayudas", null, panelAyudas, "Gestión de ayudas");
 		tabbedPane.addTab("Actuaciones", null, panelActuaciones, "Gestión de actuaciones");
 		tabbedPane.addTab("Ofertas", null, panelOfertas, "Gestión de ofertas");
+		tabbedPane.addTab("Demandas", null, panelDemandas, "Demandas");
+		tabbedPane.addTab("Gestion de Bajas", null, panelGestionBajas, "Gestion de Bajas");
 		add(tabbedPane);
 		
 		padre.actualizaProgreso("Terminado\n");
@@ -206,6 +234,14 @@ public class PanelInicio extends JPanel {
 		case OFERTAS:
 			panelActuaciones = panel;
 			tabbedPane.insertTab("Ofertas", null, panelOfertas, "Gestión de ofertas",OFERTAS);
+			break;
+		case DEMANDAS:
+			panelDemandas = panel;
+			tabbedPane.insertTab("Demandas", null, panelDemandas, "Demandas",DEMANDAS);
+			break;
+		case GESTIONBAJAS:
+			panelGestionBajas = panel;
+			tabbedPane.insertTab("Gestion de Bajas", null, panelGestionBajas, "Gestion de Bajas",GESTIONBAJAS);
 			break;
 		}
 		tabbedPane.setSelectedIndex(index);

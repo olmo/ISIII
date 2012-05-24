@@ -35,6 +35,7 @@ final public class GestorJDBC {
 	
 	private synchronized static void createInstance(){
 		if(instance==null){
+			/*
 			//Cargar Configuracion de la base de datos
 			FileReader entrada=null;
 			StringBuffer str=new StringBuffer();
@@ -62,6 +63,7 @@ final public class GestorJDBC {
 			usuario = datos[1].split(":")[1];
 			contrasena = datos[2].split(":")[1];
 			direccionDB = datos[3].split(":")[1];
+			*/
 	
 			instance= new GestorJDBC();
 		}
