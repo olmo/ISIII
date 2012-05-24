@@ -144,6 +144,7 @@ public class PanelInicio extends JPanel {
 		padre.actualizaProgreso("Descargando Actuaciones\n");
 		panel_donaciones = new PanelDonaciones(p, this);
 		panel_ayudas = new PanelAyudas(p, this);
+		panelOfertas = new PanelOfertas(p, this);
 		panel_demandas = new PanelDemandas(p, this);
 		panel_GestionBajas = new PanelGestionBajas(p, this);
 		
@@ -236,7 +237,7 @@ public class PanelInicio extends JPanel {
 			tabbedPane.insertTab("Actuaciones", null, panelActuaciones, "Gestión de actuaciones",ACTUACIONES);
 			break;
 		case OFERTAS:
-			panelActuaciones = panel;
+			panelOfertas = panel;
 			tabbedPane.insertTab("Ofertas", null, panelOfertas, "Gestión de ofertas",OFERTAS);
 			break;
 		case DEMANDAS:
