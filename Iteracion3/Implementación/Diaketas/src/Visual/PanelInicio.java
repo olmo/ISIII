@@ -24,6 +24,8 @@ public class PanelInicio extends JPanel {
 	PanelActuaciones panel_actuaciones;
 
 	PanelAyudas panel_ayudas;
+	
+	PanelOfertas panel_ofertas;
 
 	PanelDemandas panel_demandas;
 
@@ -48,6 +50,8 @@ public class PanelInicio extends JPanel {
 	public VerDetallesDemandas verDetallesDemandas;
 	public AniadirSolicitante aniadir_solicitante;
 	public EditarSolicitante editar_solicitante;
+	public GestionEmpresa gestion_empresa;
+	public AnadirEditarEmpresa anadirEditar_empresa;
 
 	final static int PERSONAS = 0;
 	final static int DONACIONES = 1;
@@ -157,7 +161,10 @@ public class PanelInicio extends JPanel {
 		panel_demandas = new PanelDemandas(p, this);
 		panel_GestionBajas = new PanelGestionBajas(p, this);
 		
-		panelOfertas = new PanelOfertas(p, this);
+		panel_ofertas = new PanelOfertas(p, this);
+		anadir_oferta = new AnadirOferta(p, this);
+		gestion_empresa = new GestionEmpresa(p, this);
+		anadirEditar_empresa = new AnadirEditarEmpresa(p, this);
 
 		//panelOfertas = new PanelOfertas(p,this);
 		//anadir_oferta = new AnadirOferta(p,this);
@@ -184,6 +191,8 @@ public class PanelInicio extends JPanel {
 		panelActuaciones = panel_actuaciones;
 
 		panelAyudas = panel_ayudas;
+		
+		panelOfertas = panel_ofertas;
 
 		panelDemandas = panel_demandas;
 

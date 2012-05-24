@@ -42,121 +42,121 @@ public class AnadirOferta extends JPanel{
 		add(btnBuscar);
 		
 		txtTitulo = new JTextField();
-		txtTitulo.setBounds(296, 140, 560, 20);
+		txtTitulo.setBounds(297, 81, 560, 20);
 		add(txtTitulo);
 		txtTitulo.setColumns(10);
 		
 		txtFecha = new JTextField();
-		txtFecha.setBounds(296, 198, 180, 20);
+		txtFecha.setBounds(297, 139, 180, 20);
 		add(txtFecha);
 		txtFecha.setColumns(10);
 		
 		JComboBox cbEmpresa = new JComboBox();
-		cbEmpresa.setBounds(296, 255, 180, 20);
+		cbEmpresa.setBounds(297, 196, 180, 20);
 		add(cbEmpresa);
 		
 		txtPuesto = new JTextField();
-		txtPuesto.setBounds(296, 309, 180, 20);
+		txtPuesto.setBounds(297, 250, 180, 20);
 		add(txtPuesto);
 		txtPuesto.setColumns(10);
 		
 		txtVacantes = new JTextField();
-		txtVacantes.setBounds(296, 367, 180, 20);
+		txtVacantes.setBounds(297, 308, 180, 20);
 		add(txtVacantes);
 		txtVacantes.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(296, 425, 180, 20);
+		txtEmail.setBounds(297, 366, 180, 20);
 		add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		JComboBox cbTipoContrato = new JComboBox();
-		cbTipoContrato.setBounds(676, 198, 180, 20);
+		cbTipoContrato.setBounds(677, 139, 180, 20);
 		add(cbTipoContrato);
 		
 		txtDireccion = new JTextField();
 		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(676, 251, 180, 20);
+		txtDireccion.setBounds(677, 192, 180, 20);
 		add(txtDireccion);
 		
 		txtLocalidad = new JTextField();
 		txtLocalidad.setColumns(10);
-		txtLocalidad.setBounds(676, 309, 180, 20);
+		txtLocalidad.setBounds(677, 250, 180, 20);
 		add(txtLocalidad);
 		
 		txtProvincia = new JTextField();
 		txtProvincia.setColumns(10);
-		txtProvincia.setBounds(676, 367, 180, 20);
+		txtProvincia.setBounds(677, 308, 180, 20);
 		add(txtProvincia);
 		
 		JComboBox cbHorario = new JComboBox();
-		cbHorario.setBounds(676, 425, 180, 20);
+		cbHorario.setBounds(677, 366, 180, 20);
 		add(cbHorario);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(296, 493, 560, 105);
+		textArea.setBounds(297, 434, 560, 105);
 		add(textArea);
 		
 		JLabel lblTtulo = new JLabel("T\u00EDtulo");
-		lblTtulo.setBounds(240, 143, 46, 14);
+		lblTtulo.setBounds(241, 84, 46, 14);
 		add(lblTtulo);
 		
 		JLabel lblFecha = new JLabel("Fecha");
-		lblFecha.setBounds(240, 201, 46, 14);
+		lblFecha.setBounds(241, 142, 46, 14);
 		add(lblFecha);
 		
 		JLabel lblEmpresa = new JLabel("Empresa");
-		lblEmpresa.setBounds(240, 258, 46, 14);
+		lblEmpresa.setBounds(241, 199, 46, 14);
 		add(lblEmpresa);
 		
 		JLabel lblPuesto = new JLabel("Puesto");
-		lblPuesto.setBounds(240, 312, 46, 14);
+		lblPuesto.setBounds(241, 253, 46, 14);
 		add(lblPuesto);
 		
 		JLabel lblVacante = new JLabel("Vacante");
-		lblVacante.setBounds(240, 370, 46, 14);
+		lblVacante.setBounds(241, 311, 46, 14);
 		add(lblVacante);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(240, 428, 46, 14);
+		lblEmail.setBounds(241, 369, 46, 14);
 		add(lblEmail);
 		
 		JLabel lblTipoDeContrato = new JLabel("Tipo de Contrato");
-		lblTipoDeContrato.setBounds(577, 201, 89, 14);
+		lblTipoDeContrato.setBounds(578, 142, 89, 14);
 		add(lblTipoDeContrato);
 		
 		JLabel lblNewLabel = new JLabel("Duraci\u00F3n");
-		lblNewLabel.setBounds(620, 258, 46, 14);
+		lblNewLabel.setBounds(621, 199, 46, 14);
 		add(lblNewLabel);
 		
 		JLabel lblLocalidad = new JLabel("Localidad");
-		lblLocalidad.setBounds(620, 312, 46, 14);
+		lblLocalidad.setBounds(621, 253, 46, 14);
 		add(lblLocalidad);
 		
 		JLabel lblProvincia = new JLabel("Provincia");
-		lblProvincia.setBounds(620, 370, 46, 14);
+		lblProvincia.setBounds(621, 311, 46, 14);
 		add(lblProvincia);
 		
 		JLabel lblHorario = new JLabel("Horario");
-		lblHorario.setBounds(620, 428, 46, 14);
+		lblHorario.setBounds(621, 369, 46, 14);
 		add(lblHorario);
 		
 		JLabel lblDescripcin = new JLabel("Descripci\u00F3n");
-		lblDescripcin.setBounds(225, 498, 61, 14);
+		lblDescripcin.setBounds(226, 439, 61, 14);
 		add(lblDescripcin);
 		
 		JButton btnVolver = new JButton("Volver");
-		btnVolver.setBounds(440, 616, 89, 23);
+		btnVolver.setBounds(441, 557, 89, 23);
 		add(btnVolver);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(577, 616, 89, 23);
+		btnGuardar.setBounds(578, 557, 89, 23);
 		add(btnGuardar);
 		
 		
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.setPanelOnTab(ini.panelOfertas, PanelInicio.OFERTAS);
+				ini.setPanelOnTab(ini.panel_ofertas, PanelInicio.OFERTAS);
 			}
 		});
 	}

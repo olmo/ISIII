@@ -132,6 +132,12 @@ public class PanelOfertas extends JPanel {
 		
 		JButton button_empresa = new JButton("Gesti\u00F3n empresa");
 		button_empresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_empresa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ini.setPanelOnTab(ini.gestion_empresa, PanelInicio.OFERTAS);
+			}
+		});
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
