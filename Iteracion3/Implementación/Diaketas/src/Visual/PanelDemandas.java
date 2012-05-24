@@ -84,9 +84,7 @@ public class PanelDemandas extends javax.swing.JPanel {
 		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				//ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
-				
+				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 			}
 		});
 		
