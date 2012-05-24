@@ -24,7 +24,7 @@ import GestionPersona.Beneficiario;
 import GestionPersona.BeneficiarioDB;
 
 @SuppressWarnings("serial")
-public class PanelDemandas extends JPanel {
+public class GestionSolicitante extends JPanel {
 
 	private JTextField textField_1;
 	VentanaPrincipal padre;
@@ -49,7 +49,7 @@ public class PanelDemandas extends JPanel {
 		DefaultTableModel modelo = new DefaultTableModel();
 		Object [] tupla = new Object[5];
 		//Relleneamos la cabecera de la tabla.
-		modelo.addColumn("Fecha");
+		modelo.addColumn("Fafdadfafadafafafadfafecha");
 		modelo.addColumn("Tipo de Ayuda");
 		modelo.addColumn("Beneficiario");
 		modelo.addColumn("Cantidad económica");
@@ -84,7 +84,7 @@ public class PanelDemandas extends JPanel {
 		tabla_modelo = modelo;
 		this.tablaAyudas.setModel(tabla_modelo);
 	}
-	public PanelDemandas(VentanaPrincipal p, PanelInicio pIni) {
+	public GestionSolicitante(VentanaPrincipal p, PanelInicio pIni) {
 
 //		setSize(1100, 500);
 		ini=pIni;
@@ -119,15 +119,14 @@ public class PanelDemandas extends JPanel {
 			}
 		});
 		
-		JButton btnGestinD = new JButton("Gesti\u00F3n Solicitante");
+		JButton btnGestinD = new JButton("Gesti\u00F3n Solicitanadfafafadfafdte");
 		btnGestinD.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnGestinD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				
-				
-				//ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(""));
-				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
+				ini.editar_ayuda.setParametros(listaAyudas.get(tablaAyudas.getSelectedRow()), beneficiarios.get(listaAyudas.get(tablaAyudas.getSelectedRow()).getIdBeneficiario()));
+				ini.setPanelOnTab(ini.editar_ayuda, PanelInicio.AYUDAS);
 				
 			}
 		});
@@ -138,13 +137,14 @@ public class PanelDemandas extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				
-				//ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(""));
-				//ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
+				ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(""));
+				ini.setPanelOnTab(ini.conceder_ayuda, PanelInicio.AYUDAS);
 				
 			}
 		});
 		
 		scrollPane = new JScrollPane(tablaAyudas);
+		scrollPane.setVisible(false);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

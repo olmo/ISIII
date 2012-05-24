@@ -35,6 +35,7 @@ public class PanelInicio extends JPanel {
 	public BusquedaFamiliares busqueda_familiares;
 	public BusquedaUsuarios busqueda_usuarios;
 	public ConcederAyuda conceder_ayuda;
+	public GestionSolicitante gestion_solicitante;
 	public ConfigurarTipoAyuda configurar_tipo_ayuda;
 	public DatosFamiliar datos_familiar;
 	public DatosUsuario datos_usuario;
@@ -134,6 +135,9 @@ public class PanelInicio extends JPanel {
 		editar_tipo_ayuda = new EditarTipoAyuda(p, this, null);
 		//nuevo_familiar = new NuevoFamiliar(p, id_bene, this);
 		nuevo_usuario = new NuevoUsuario(p, this);
+		
+		gestion_solicitante = new GestionSolicitante(p, this);
+		padre.actualizaProgreso("Descargando gestion solicitante\n");
 		
 		panel_personas = new PanelPersonas(p, this);
 		panel_actuaciones = new PanelActuaciones(p, this);
