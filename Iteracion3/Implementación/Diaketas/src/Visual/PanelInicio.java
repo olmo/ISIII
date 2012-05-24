@@ -46,6 +46,8 @@ public class PanelInicio extends JPanel {
 	public AnadirOferta anadir_oferta; /*cambiado por lin, xk sino peta en panelOfertas*/
 	public AniadirDemandas anadir_demandas;
 	public VerDetallesDemandas verDetallesDemandas;
+	public AniadirSolicitante aniadir_solicitante;
+	public EditarSolicitante editar_solicitante;
 
 	final static int PERSONAS = 0;
 	final static int DONACIONES = 1;
