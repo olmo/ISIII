@@ -9,6 +9,7 @@ import java.util.Hashtable;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -95,11 +96,10 @@ public class AniadirDemandas extends javax.swing.JPanel {
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				//ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(""));
-				//ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
-				
+				/*
+				 * Almacenar en la base de datos
+				 */
+				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 			}
 		});
 		

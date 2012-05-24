@@ -9,6 +9,7 @@ import java.util.Hashtable;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -74,9 +75,21 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 		btnDarBajaSolicitante.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDarBajaSolicitante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConfirmarModificacion cm= new ConfirmarModificacion();
-				cm.setVisible(true);
-				cm.setAlwaysOnTop(true);
+				EliminarSolicitante es= new EliminarSolicitante(padre);
+				es.setVisible(true);
+				es.setAlwaysOnTop(true);
+
+				if(es.getConfirmacionBorrado()==true){
+					try{
+						//padre.getControladorPersonas().borrarDatosFamiliar(getId());
+						JOptionPane.showMessageDialog(null, "Se ha borrado el solicitante\n");
+						
+					}catch(Exception e1){
+						JOptionPane.showMessageDialog(null, "Error al borrar solicitante\n"+e1.getMessage());
+					}
+				}
+				
+				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 			}
 		});
 		
@@ -99,16 +112,16 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 							.addGap(5)
 							.addComponent(buttonOfertas))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(331)
-							.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-							.addGap(78)
-							.addComponent(btnDarBajaSolicitante))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(22)
 							.addComponent(lblSolicitante))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(14)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 886, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 886, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(329)
+							.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+							.addGap(78)
+							.addComponent(btnDarBajaSolicitante)))
 					.addContainerGap(200, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -125,12 +138,12 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 					.addGap(19)
 					.addComponent(lblSolicitante)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 507, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVolver)
 						.addComponent(btnDarBajaSolicitante))
-					.addContainerGap(63, Short.MAX_VALUE))
+					.addContainerGap(163, Short.MAX_VALUE))
 		);
 		
 		tablaSolicitantes = new JTable();
