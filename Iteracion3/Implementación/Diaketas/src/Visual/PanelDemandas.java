@@ -16,73 +16,31 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
-import GestionAyudas.Ayuda;
-import GestionAyudas.AyudaDB;
-import GestionAyudas.TipoAyuda;
-import GestionAyudas.TipoAyudaDB;
-import GestionPersona.Beneficiario;
-import GestionPersona.BeneficiarioDB;
-
 @SuppressWarnings("serial")
-public class PanelDemandas extends JPanel {
+public class PanelDemandas extends javax.swing.JPanel {
 
 	private JTextField textField_1;
 	VentanaPrincipal padre;
 	PanelInicio ini;
 	JScrollPane scrollPane;
-	private JTable tablaAyudas = new JTable();
+	private JTable tablaDemandas = new JTable();
 	private DefaultTableModel tabla_modelo;
-	AyudaDB adb = new AyudaDB();
-	BeneficiarioDB bdb = new BeneficiarioDB();
-	TipoAyudaDB tabd = new TipoAyudaDB();
-	ArrayList<Ayuda> listaAyudas = new ArrayList<Ayuda>();
 	/**
 	 * Create the panel.
 	 */
-	
-	Hashtable<Integer, TipoAyuda> tiposAyudas = new Hashtable<Integer, TipoAyuda>();
-	Hashtable<Integer, Beneficiario> beneficiarios = new Hashtable<Integer, Beneficiario>();
-	
-	public void fillTable(ArrayList<Ayuda> lista_ayudas){//Integer->Donaciones
+	public void fillTable(/*ARRAY DE SOLICITANTES*/){ /////////////////////////////////////////////
 		scrollPane.setVisible(true);
-		listaAyudas = lista_ayudas;
 		DefaultTableModel modelo = new DefaultTableModel();
-		Object [] tupla = new Object[5];
+		Object [] tupla = new Object[3];
 		//Relleneamos la cabecera de la tabla.
-		modelo.addColumn("Fecha");
-		modelo.addColumn("Tipo de Ayuda");
-		modelo.addColumn("Beneficiario");
-		modelo.addColumn("Cantidad económica");
-		modelo.addColumn("Observaciones");
+		modelo.addColumn("Identificador");
+		modelo.addColumn("Oferta");
+		modelo.addColumn("Solicitante");
 		
-		tiposAyudas.clear();
-		beneficiarios.clear();
+		//RELLENAR lA TABLA
 		
-		ArrayList<TipoAyuda> tiposAyudas2 = tabd.getList();
-		ArrayList<Beneficiario> beneficiarios2 = bdb.getBeneficiarios("");
-		
-		
-		
-		//ordenamos los tipos de ayudas por su id para poder hacer la operacion de tupla[1]
-		for (int i=0; i<tiposAyudas2.size(); i++){
-			tiposAyudas.put(tiposAyudas2.get(i).getId(), tiposAyudas2.get(i));
-		}
-		//Ordenamos los beneficiarios por su id para tupla[2]
-		for (int i=0; i<beneficiarios2.size(); i++){
-			beneficiarios.put(beneficiarios2.get(i).getId(), beneficiarios2.get(i));
-		}
-		
-		for(int i=0;i<lista_ayudas.size();i++){
-			tupla[0]= lista_ayudas.get(i).getDate().toString();//.get(i).getfecha
-			tupla[1]= ((TipoAyuda) tiposAyudas.get(lista_ayudas.get(i).getIdTipoAyuda())).getNombre();//.get(i).getcantidad
-			tupla[2]= ((Beneficiario) beneficiarios.get(lista_ayudas.get(i).getIdBeneficiario())).getNombre();//.get(i).getDonante
-			tupla[3]= lista_ayudas.get(i).getCantidadMonetaria();//.get(i).getEstado
-			tupla[4]= lista_ayudas.get(i).getObservaciones();//.get(i).getEstado
-
-			modelo.addRow(tupla);
-		}
 		tabla_modelo = modelo;
-		this.tablaAyudas.setModel(tabla_modelo);
+		this.tablaDemandas.setModel(tabla_modelo);
 	}
 	public PanelDemandas(VentanaPrincipal p, PanelInicio pIni) {
 
@@ -97,13 +55,8 @@ public class PanelDemandas extends JPanel {
 		JButton button_5 = new JButton("Buscar");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				//Obtenemos lista de ayudas
-				listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas(textField_1.getText());//textField_1.getText());
-				//
-
-				ini.panel_ayudas.fillTable(listaAyudas);
-				ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);
+				ini.panel_demandas.fillTable();
+				ini.setPanelOnTab(ini.panel_demandas, PanelInicio.DEMANDAS);
 			}
 		});
 		button_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -113,8 +66,7 @@ public class PanelDemandas extends JPanel {
 		btnAadirDemanda.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAadirDemanda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.configurar_tipo_ayuda.fillTable(tabd.getList());
-				ini.setPanelOnTab(ini.configurar_tipo_ayuda, PanelInicio.AYUDAS);
+				ini.setPanelOnTab(ini.anadir_demandas, PanelInicio.DEMANDAS);
 	
 			}
 		});
@@ -123,10 +75,6 @@ public class PanelDemandas extends JPanel {
 		btnGestinD.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnGestinD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-				//ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(""));
 				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 				
 			}
@@ -137,14 +85,12 @@ public class PanelDemandas extends JPanel {
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
-				//ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(""));
 				//ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 				
 			}
 		});
 		
-		scrollPane = new JScrollPane(tablaAyudas);
+		scrollPane = new JScrollPane(tablaDemandas);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -187,7 +133,7 @@ public class PanelDemandas extends JPanel {
 		);
 		
 		if(textField_1.getText().isEmpty())
-			this.fillTable(padre.getControladorAyudas().listarAyudasConcedidas(""));
+			this.fillTable(/*********/); ///////////////////////////////////////////////////////////////
 		
 		setLayout(groupLayout);
 		
