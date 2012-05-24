@@ -123,6 +123,15 @@ public class DatosUsuarioMovil extends JPanel {
 		add(choice);
 		
 		JButton volverBoton = new JButton("Volver");
+		volverBoton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PanelInicioMovil panIni = new PanelInicioMovil(padre,padre.getusuario());
+				padre.getContentPane().removeAll();
+				padre.getContentPane().validate();
+				padre.getContentPane().add(panIni);
+				padre.getContentPane().repaint();
+			}
+		});
 		volverBoton.setBounds(40, 430, 118, 65);
 		add(volverBoton);
 		

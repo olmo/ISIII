@@ -10,23 +10,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BajaSocioMovil extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			BajaSocioMovil dialog = new BajaSocioMovil();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
@@ -39,6 +28,12 @@ public class BajaSocioMovil extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JButton aceptarBoton = new JButton("Aceptar");
+			aceptarBoton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				//BORRAR SOCIO
+					dispose();
+				}
+			});
 			aceptarBoton.setBounds(53, 164, 120, 36);
 			contentPanel.add(aceptarBoton);
 			aceptarBoton.setActionCommand("OK");
@@ -46,6 +41,12 @@ public class BajaSocioMovil extends JDialog {
 		}
 		{
 			JButton cancelarBoton = new JButton("Cancelar");
+			cancelarBoton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					//NOHACE NADA
+					dispose();
+				}
+			});
 			cancelarBoton.setBounds(261, 164, 120, 36);
 			contentPanel.add(cancelarBoton);
 			cancelarBoton.setActionCommand("Cancel");
