@@ -1,14 +1,14 @@
 package GestionOfertas;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import GestionDonaciones.Donacion;
 import GestionSolicitante.Solicitante;
 import GestionSolicitante.Solicitante.tipo_disp;
 import GestionSolicitante.Solicitante.tipo_permiso;
+import GestionSolicitante.SolicitanteDB;
 
 public class ControladorOfertas {
+	private SolicitanteDB solicitanteDB = new SolicitanteDB(); 
 
 	/** Solicitante **/
 	public Solicitante registrarSolicitante(String dni, String nombre,
@@ -23,7 +23,9 @@ public class ControladorOfertas {
 				telefono, lugarNac, domicilio, cp, estudios, experiencia,
 				curriculum, per_conducir, vehiculo, disponibilidad, incorpora);
 		
-		//ToDo
+		//ToDo *****************************************
+		if( !solicitanteDB.add(unSolicitante) )
+			System.out.println("Error al añadir solicitante");
 
 		return unSolicitante;
 	}

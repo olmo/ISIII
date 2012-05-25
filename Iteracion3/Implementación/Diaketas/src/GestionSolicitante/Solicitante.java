@@ -1,8 +1,5 @@
 package GestionSolicitante;
 
-import java.sql.Timestamp;
-
-import GestionPersona.Donante;
 import GestionPersona.Persona;
 
 public class Solicitante extends Persona {
@@ -21,6 +18,34 @@ public class Solicitante extends Persona {
 	private boolean vehiculo;
 	private tipo_disp disponibilidad;
 	private int incorpora;
+	
+	public String getEstudios(){
+		return estudios;
+	}
+	
+	public String getExperiencia(){
+		return experiencia;
+	}
+	
+	public String getCurriculum(){
+		return curriculum;
+	}
+	
+	public tipo_permiso getPer_conducir(){
+		return per_conducir;
+	}
+	
+	public boolean getVehiculo(){
+		return vehiculo;
+	}
+	
+	public tipo_disp getDisponibilidad(){
+		return disponibilidad;
+	}
+	
+	public int getIncorpora(){
+		return incorpora;
+	}
 
 	public boolean setDatos(String dni, String nombre, String apellido1,
 			String apellido2, String fnac, int telefono, String lugarNac,
