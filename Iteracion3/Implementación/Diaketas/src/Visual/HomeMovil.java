@@ -54,14 +54,9 @@ public class HomeMovil extends JPanel {
 		entrarBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PanelInicioMovil panIni = new PanelInicioMovil(padre,textField.getText());
-				//menuMovil = new MenuMovil(padre);
-				//menuMovil.setBounds(20, 159, 309, 243);
-				
-				
 				padre.getContentPane().removeAll();
 				padre.getContentPane().validate();
 				padre.getContentPane().add(panIni);
-				//padre.setExtendedState(Frame.MAXIMIZED_BOTH);
 				padre.getContentPane().repaint();
 			}
 		});
