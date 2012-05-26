@@ -9,35 +9,39 @@ import GestionSolicitante.Solicitante.tipo_permiso;
 import GestionSolicitante.SolicitanteDB;
 
 public class ControladorOfertas {
-	private SolicitanteDB solicitanteDB = new SolicitanteDB(); 
+	private SolicitanteDB solicitanteDB = new SolicitanteDB();
 
 	/** Solicitante **/
 	public Solicitante registrarSolicitante(String dni, String nombre,
-			String apellido1, String apellido2, String fnac, int telefono,
-			String lugarNac, String domicilio, int cp, String estudios,
-			String experiencia, String curriculum, tipo_permiso per_conducir,
-			boolean vehiculo, tipo_disp disponibilidad, int incorpora) {
+			String apellido1, String apellido2, String fNacimiento,
+			int telefono, String lugarNacimiento, String domicilio, int cp,
+			boolean estado, String email, String estudios, String experiencia,
+			String curriculum, tipo_permiso per_conducir, boolean vehiculo,
+			tipo_disp disponibilidad, int incorpora) {
 
 		Solicitante unSolicitante = new Solicitante();
 
-
+		unSolicitante.setDatos(dni, nombre, apellido1, apellido2, fNacimiento,
+				telefono, lugarNacimiento, domicilio, cp, estado, email,
+				estudios, experiencia, curriculum, per_conducir, vehiculo,
+				disponibilidad, incorpora);
+		
+		solicitanteDB.add(unSolicitante);
+		
 		return unSolicitante;
 	}
 
 	public boolean borrarSolicitante(Solicitante sol) {
-		// ToDo
-		return true;
+		return solicitanteDB.borrar(sol);
 	}
 
-	public Solicitante modificarSolicitante(Solicitante sol) {
-		Solicitante unSolicitante = new Solicitante();
-		// ToDo
-		return unSolicitante;
+	public void modificarSolicitante(Solicitante sol) {
+		solicitanteDB.modificar(sol);
 	}
 
 	public Solicitante consultarSolicitante(int id_solicitante) {
 		Solicitante unSolicitante = new Solicitante();
-		// ToDo
+		unSolicitante = solicitanteDB.consultarSolicitante(id_solicitante);
 		return unSolicitante;
 	}
 
@@ -52,7 +56,7 @@ public class ControladorOfertas {
 		return true;
 	}
 
-	public ArrayList<Oferta> listarOfertasDeSolicitante(int id_solicitante){
+	public ArrayList<Oferta> listarOfertasDeSolicitante(int id_solicitante) {
 		ArrayList<Oferta> lista = new ArrayList<Oferta>();
 		// ToDo
 		return lista;
@@ -63,16 +67,21 @@ public class ControladorOfertas {
 	}
 
 	public Solicitante modificarSolicitante(String dni, String nombre,
-			String apellido1, String apellido2, String fnac, int telefono,
-			String lugarNac, String domicilio, int cp, String estudios,
-			String experiencia, String curriculum, tipo_permiso per_conducir,
-			boolean vehiculo, tipo_disp disponibilidad, int incorpora) {
+			String apellido1, String apellido2, String fNacimiento,
+			int telefono, String lugarNacimiento, String domicilio, int cp,
+			boolean estado, String email, String estudios, String experiencia,
+			String curriculum, tipo_permiso per_conducir, boolean vehiculo,
+			tipo_disp disponibilidad, int incorpora) {
 
 		Solicitante unSolicitante = new Solicitante();
 
+		unSolicitante.setDatos(dni, nombre, apellido1, apellido2, fNacimiento,
+				telefono, lugarNacimiento, domicilio, cp, estado, email,
+				estudios, experiencia, curriculum, per_conducir, vehiculo,
+				disponibilidad, incorpora);
 		
-		//ToDo
-
+		solicitanteDB.modificar(unSolicitante);
+		
 		return unSolicitante;
 	}
 

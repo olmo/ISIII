@@ -1,9 +1,16 @@
 package GestionSolicitante;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import Basedatos.GestorJDBC;
 import GestionOfertas.Oferta;
+import GestionPersona.Socio;
+import GestionSolicitante.Solicitante.tipo_disp;
+import GestionSolicitante.Solicitante.tipo_permiso;
 
 /**
  * Hay que probar: add, borrar y modificar. El resto estan sin hacer.
@@ -72,7 +79,6 @@ public class SolicitanteDB {
 			return false;
 	}
 
-	// ToDo probarla
 	public boolean borrar(Solicitante sol) {
 		boolean deletePersonas = false;
 		boolean deleteSolicitante = false;
@@ -91,7 +97,6 @@ public class SolicitanteDB {
 			return false;
 	}
 
-	// ToDo probarla
 	public boolean modificar(Solicitante sol) {
 		boolean modificarPersonas = false;
 		boolean modificarSolicitante = false;
@@ -128,18 +133,52 @@ public class SolicitanteDB {
 			return false;
 	}
 
+	// probar
+	public Solicitante consultarSolicitante(int id_solicitante) {
+		Solicitante unSolicitante = new Solicitante();
+		
+		gestor.conectar();
+		ResultSet rs=null;
+		rs = gestor.RealizarConsulta("select * from Personas,Solicitantes where (Personas.id='"+id_solicitante+"' AND Solicitantes.id='"+id_solicitante+"')");
+		
+		try {
+			rs.next();
+
+			unSolicitante.setId((Integer)rs.getObject("id"));
+			unSolicitante.setDni(rs.getObject("dni").toString());
+			unSolicitante.setNombre(rs.getObject("nombre").toString());
+			unSolicitante.setApellido1(rs.getObject("apellido1").toString());
+			unSolicitante.setApellido2(rs.getObject("apellido2").toString());
+			unSolicitante.setfNacimiento(rs.getObject("fnac").toString());
+			unSolicitante.setTelefono((Integer)rs.getObject("telefono"));
+			unSolicitante.setLugarNacimiento(rs.getObject("lugarnac").toString());
+			unSolicitante.setDomicilio(rs.getObject("domicilio").toString());
+			unSolicitante.setCp((Integer)rs.getObject("cp"));
+			unSolicitante.setEstado((Boolean)rs.getObject("estado"));
+			unSolicitante.setemail(rs.getObject("email").toString());
+			unSolicitante.setEstudios (rs.getObject("estudios").toString());
+			unSolicitante.setExperiencia (rs.getObject("experiencia").toString());
+			unSolicitante.setCurriculum (rs.getObject("curriculum").toString());
+			unSolicitante.setPerConducir(unSolicitante.StringToTipoPermiso((String)rs.getObject("permiso_conducir")));
+			unSolicitante.setVehiculo((Boolean)rs.getObject("vehiculo_propio"));
+			unSolicitante.setDisponibilidad(unSolicitante.StringToDisponibilidad((String)rs.getObject("disponibilidad_horaria")));
+			unSolicitante.setIncorpora((Integer)rs.getObject("tiempo_incorporacion"));
+			
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error obtener los datos DEL SOLICITANTE\n"+e.getMessage());
+		}
+		
+
+		gestor.desconectar();
+		return unSolicitante;
+	}
+
 	public ArrayList<Solicitante> listarSolicitantes(Solicitante sol) {
 		ArrayList<Solicitante> lista = new ArrayList<Solicitante>();
 		// ToDo
 		return lista;
 	}
-
-	public Solicitante consultarSolicitante(int id_solicitante) {
-		Solicitante unSolicitante = new Solicitante();
-		// ToDo
-		return unSolicitante;
-	}
-
+	
 	public boolean registrarSolicitud(int id_oferta, int id_solicitante) {
 		// ToDo
 		return false;
