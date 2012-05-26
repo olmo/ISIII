@@ -2,6 +2,7 @@ package GestionOfertas;
 
 import java.util.ArrayList;
 
+import GestionEmpresaOfertadora.Empresa_Ofertadora;
 import GestionSolicitante.Solicitante;
 import GestionSolicitante.Solicitante.tipo_disp;
 import GestionSolicitante.Solicitante.tipo_permiso;
@@ -84,4 +85,30 @@ public class ControladorOfertas {
 	/** Empresas ofertadoras **/
 
 	/********************************************************************************************/
+
+	boolean AñadirEmpresaOfertadora(String nombre, String direccion, String email, int telefono, String localidad, String sector){
+		
+		return false;
+	}
+	
+	boolean BorrarEmpresaOfertadora(Empresa_Ofertadora o){
+		return false;
+	}
+	
+	boolean ModificarEmpresaOfertadora(String nombre, String direccion, String email, int telefono, String localidad, String sector){
+		
+		return false;
+	}
+	
+	Empresa_Ofertadora ConsultarEmpresaOfertadora(int id_empresaofertadora){
+		
+		return new Empresa_Ofertadora();
+	}
+	
+	ArrayList<Empresa_Ofertadora> ListarEmpresaOfertadora(String filtro){
+		ArrayList<Empresa_Ofertadora> lista = new ArrayList<Empresa_Ofertadora>();
+		
+		return lista;
+		
+	}
 }
