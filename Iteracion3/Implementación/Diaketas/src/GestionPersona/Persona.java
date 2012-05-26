@@ -27,8 +27,6 @@ public class Persona{
 	private String fBaja;
 	private String email;
 
-	
-	
 	public String getDni() {
 		return dni;
 	}
@@ -156,7 +154,7 @@ public class Persona{
 	}
 	
 	public Persona(){
-		
+		this.fBaja = "";
 	}
 
 	public Persona(String dni, String nombre, String apellido1, String apellido2, String fNacimiento, int telefono, String lugarNacimiento, String domicilio, int cp , String email) {
@@ -170,6 +168,7 @@ public class Persona{
 		this.domicilio=domicilio;
 		this.cp=cp;
 		this.email=email;
+		this.fBaja = "";
 	}
 
 

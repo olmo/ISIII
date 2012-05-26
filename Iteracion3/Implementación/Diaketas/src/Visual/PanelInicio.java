@@ -147,6 +147,9 @@ public class PanelInicio extends JPanel {
 		gestion_solicitante = new GestionSolicitante(p, this);
 		padre.actualizaProgreso("Descargando gestion solicitante\n");
 
+		aniadir_solicitante = new AniadirSolicitante(p, this);
+		padre.actualizaProgreso("Descargando añadir solicitante\n");
+		
 		anadir_demandas = new AniadirDemandas(p, this);
 		padre.actualizaProgreso("Descargando demandas\n");
 

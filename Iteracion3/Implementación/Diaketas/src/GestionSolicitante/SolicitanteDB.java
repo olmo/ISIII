@@ -14,15 +14,13 @@ import GestionOfertas.Oferta;
 public class SolicitanteDB {
 	private GestorJDBC gestor = GestorJDBC.getInstance();
 
-	// ToDo: Probarla
 	public boolean add(Solicitante sol) {
-		boolean insertPersonas = false;
-		boolean insertSolicitante = false;
-
+		int insertPersonas = -1;
+		int insertSolicitante = -1;
 		gestor.conectar();
 
 		insertPersonas = gestor
-				.Modificar("INSERT INTO Personas (dni, nombre, apellido1, apellido2, fnac, telefono, lugarnac, domicilio, cp, email, fbaja) "
+				.Insertar("INSERT INTO Personas (dni, nombre, apellido1, apellido2, fnac, telefono, lugarnac, domicilio, cp, estado, email) "
 						+ "VALUES('"
 						+ sol.getDni()
 						+ "','"
@@ -41,32 +39,34 @@ public class SolicitanteDB {
 						+ sol.getDomicilio()
 						+ "','"
 						+ sol.getCp()
-						+ "','"
-						+ sol.getEstado()
-						+ "','"
-						+ sol.getfBaja()
+						+ "','" + "1" // (sol.getEstado() ? "1" : "0")
 						+ "','" + sol.getemail() + "')");
 
-		insertSolicitante = gestor
-				.Modificar("INSERT INTO Solicitantes (id, estudios, experiencia, curriculum, permiso_conducir, vehiculo_propio, disponibilidad_horaria, tiempo_incorporacion) "
-						+ "VALUES('"
-						+ sol.getId()
-						+ "','"
-						+ sol.getEstudios()
-						+ "','"
-						+ sol.getExperiencia()
-						+ sol.getCurriculum()
-						+ "','"
-						+ sol.getPer_conducir()
-						+ "','"
-						+ sol.getVehiculo()
-						+ "','"
-						+ sol.getDisponibilidad()
-						+ "','" + sol.getIncorpora() + "')");
+		if (insertPersonas > -1) {
+			insertSolicitante = gestor
+					.Insertar("INSERT INTO Solicitantes (id, estudios, experiencia, curriculum, permiso_conducir, vehiculo_propio, disponibilidad_horaria, tiempo_incorporacion) "
+							+ "VALUES('"
+							+ insertPersonas
+							+ "','"
+							+ sol.getEstudios()
+							+ "','"
+							+ sol.getExperiencia()
+							+ "','"
+							+ sol.getCurriculum()
+							+ "','"
+							+ sol.tipoPermisoToString()
+							+ "','"
+							+ (sol.getVehiculo() ? "1" : "0")
+							+ "','"
+							+ sol.dispToString()
+							+ "','"
+							+ sol.getIncorpora()
+							+ "')");
+		}
 
 		gestor.desconectar();
 
-		if (insertPersonas && insertSolicitante)
+		if (insertPersonas>-1 && insertSolicitante>-1)
 			return true;
 		else
 			return false;
@@ -104,8 +104,9 @@ public class SolicitanteDB {
 				+ sol.getApellido2() + "',fnac='" + sol.getfNacimiento()
 				+ "', telefono=" + sol.getTelefono() + " ,lugarnac='"
 				+ sol.getLugarNacimiento() + "',domicilio='"
-				+ sol.getDomicilio() + "', cp=" + sol.getCp() + ",email='"
-				+ sol.getemail() + "' WHERE id=" + sol.getId());
+				+ sol.getDomicilio() + "', cp=" + sol.getCp() + ",estado="
+				+ (sol.getEstado() ? "1" : "0") + ",email='" + sol.getemail()
+				+ "' WHERE id=" + sol.getId());
 
 		if (modificarPersonas)
 			modificarSolicitante = gestor
@@ -113,9 +114,9 @@ public class SolicitanteDB {
 							+ sol.getEstudios() + "',experiencia='"
 							+ sol.getExperiencia() + "',curriculum='"
 							+ sol.getCurriculum() + "',permiso_conducir='"
-							+ sol.getPer_conducir() + "',vehiculo_propio='"
-							+ sol.getVehiculo() + "',disponibilidad_horaria='"
-							+ sol.getDisponibilidad()
+							+ sol.tipoPermisoToString() + "',vehiculo_propio='"
+							+ (sol.getVehiculo() ? "1" : "0")
+							+ "',disponibilidad_horaria='" + sol.dispToString()
 							+ "'tiempo_incorporacion,='" + sol.getIncorpora()
 							+ "' WHERE id =" + sol.getId());
 

@@ -19,13 +19,6 @@ public class ControladorOfertas {
 
 		Solicitante unSolicitante = new Solicitante();
 
-		unSolicitante.setDatos(dni, nombre, apellido1, apellido2, fnac,
-				telefono, lugarNac, domicilio, cp, estudios, experiencia,
-				curriculum, per_conducir, vehiculo, disponibilidad, incorpora);
-		
-		//ToDo *****************************************
-		if( !solicitanteDB.add(unSolicitante) )
-			System.out.println("Error al añadir solicitante");
 
 		return unSolicitante;
 	}
@@ -76,9 +69,6 @@ public class ControladorOfertas {
 
 		Solicitante unSolicitante = new Solicitante();
 
-		unSolicitante.setDatos(dni, nombre, apellido1, apellido2, fnac,
-				telefono, lugarNac, domicilio, cp, estudios, experiencia,
-				curriculum, per_conducir, vehiculo, disponibilidad, incorpora);
 		
 		//ToDo
 
