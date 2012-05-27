@@ -45,7 +45,7 @@ public class PanelInicio extends JPanel {
 	public EditarTipoAyuda editar_tipo_ayuda;
 	public NuevoFamiliar nuevo_familiar;
 	public NuevoUsuario nuevo_usuario;
-	public AnadirOferta anadir_oferta; /*cambiado por lin, xk sino peta en panelOfertas*/
+	public AnadirOferta anadir_oferta;
 	public AniadirDemandas anadir_demandas;
 	public VerDetallesDemandas verDetallesDemandas;
 	public AniadirSolicitante aniadir_solicitante;
@@ -149,6 +149,9 @@ public class PanelInicio extends JPanel {
 
 		aniadir_solicitante = new AniadirSolicitante(p, this);
 		padre.actualizaProgreso("Descargando añadir solicitante\n");
+		
+		editar_solicitante = new EditarSolicitante(p, this);
+		padre.actualizaProgreso("Descargando editar solicitante\n");
 		
 		anadir_demandas = new AniadirDemandas(p, this);
 		padre.actualizaProgreso("Descargando demandas\n");

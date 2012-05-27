@@ -16,6 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import GestionAyudas.Ayuda;
+import GestionOfertas.ControladorOfertas;
+import GestionSolicitante.Solicitante;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
@@ -25,8 +28,10 @@ public class GestionSolicitante extends JPanel {
 	VentanaPrincipal padre;
 	PanelInicio ini;
 	JScrollPane scrollPane;
-	private JTable tablaAyudas = new JTable();
+	private JTable tablaSolicitantes = new JTable();
 	private DefaultTableModel tabla_modelo;
+	
+	private ControladorOfertas controladorOfertas = new ControladorOfertas();
 
 	/**
 	 * Create the panel.
@@ -43,7 +48,7 @@ public class GestionSolicitante extends JPanel {
 		modelo.addColumn("Estudios");
 
 		tabla_modelo = modelo;
-		this.tablaAyudas.setModel(tabla_modelo);
+		this.tablaSolicitantes.setModel(tabla_modelo);
 	}
 
 	public GestionSolicitante(VentanaPrincipal p, PanelInicio pIni) {
@@ -93,7 +98,10 @@ public class GestionSolicitante extends JPanel {
 
 				if(es.getConfirmacionBorrado()==true){
 					try{
-						//padre.getControladorPersonas().borrarDatosFamiliar(getId());
+						int idmagica = tablaSolicitantes.getSelectedRow(); //num fila
+						Solicitante unSolicitante = new Solicitante();
+						unSolicitante.setId(101);
+						controladorOfertas.borrarSolicitante(unSolicitante);
 						JOptionPane.showMessageDialog(null, "Se ha borrado el solicitante\n");
 						
 					}catch(Exception e1){
@@ -113,7 +121,7 @@ public class GestionSolicitante extends JPanel {
 			}
 		});
 
-		scrollPane = new JScrollPane(tablaAyudas);
+		scrollPane = new JScrollPane(tablaSolicitantes);
 		scrollPane.setVisible(false);
 		
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));

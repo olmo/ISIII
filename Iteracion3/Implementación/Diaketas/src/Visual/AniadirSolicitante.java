@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import GestionOfertas.ControladorOfertas;
 import GestionSolicitante.Solicitante;
 import GestionSolicitante.SolicitanteDB;
 import GestionSolicitante.Solicitante.tipo_permiso;
@@ -45,6 +46,8 @@ public class AniadirSolicitante extends JPanel {
 	private Choice txtDisponibilidad;
 	private Choice txtrol;
 
+	private ControladorOfertas controladorOfertas = new ControladorOfertas();
+
 	public AniadirSolicitante(VentanaPrincipal p, PanelInicio pIni) {
 		this.ini = pIni;
 		padre = p;
@@ -74,7 +77,7 @@ public class AniadirSolicitante extends JPanel {
 
 		textpermisoconduc = new Choice();
 		textpermisoconduc.setBounds(296, 370, 180, 20);
-		for(int i = 0; i < tipo_permiso.values().length; i++)
+		for (int i = 0; i < tipo_permiso.values().length; i++)
 			textpermisoconduc.add(tipo_permiso.values()[i].toString());
 		add(textpermisoconduc);
 
@@ -233,7 +236,7 @@ public class AniadirSolicitante extends JPanel {
 
 		txtDisponibilidad = new Choice();
 		txtDisponibilidad.setBounds(690, 290, 180, 20);
-		for(int i = 0; i < tipo_disp.values().length; i++)
+		for (int i = 0; i < tipo_disp.values().length; i++)
 			txtDisponibilidad.add(tipo_disp.values()[i].toString());
 		add(txtDisponibilidad);
 
@@ -251,9 +254,7 @@ public class AniadirSolicitante extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 
-				Solicitante unSolicitante = new Solicitante();
-
-				unSolicitante.setDatos(
+				controladorOfertas.registrarSolicitante(
 						txtDNI.getText(),
 						txtnombre.getText(),
 						txtapellidos.getText(),
@@ -268,14 +269,11 @@ public class AniadirSolicitante extends JPanel {
 						txtestudios.getText(),
 						txtexperiencia.getText(),
 						txtcurriculum.getText(),
-						tipo_permiso.values()[textpermisoconduc.getSelectedIndex()],
+						tipo_permiso.values()[textpermisoconduc
+								.getSelectedIndex()],
 						checkVehiculo.isSelected(),
 						tipo_disp.values()[txtDisponibilidad.getSelectedIndex()],
 						Integer.parseInt(txttiempoincor.getText()));
-
-				SolicitanteDB solicitanteDB = new SolicitanteDB();
-				
-				solicitanteDB.add(unSolicitante);
 
 			}
 		});

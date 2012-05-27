@@ -9,9 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+import GestionOfertas.ControladorOfertas;
+
 public class EliminarSolicitante extends JDialog {
 
 	private Boolean confirmacionBorrado=false;
+	private ControladorOfertas controladorOfertas = new ControladorOfertas();
+	
 	public EliminarSolicitante(VentanaPrincipal p) {
 		setTitle("Confirmaci\u00F3n de Seguridad");
 
