@@ -11,20 +11,24 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import GestionEmpresaOfertadora.Empresa_Ofertadora;
+
 public class AnadirEditarEmpresa extends JPanel {
 	VentanaPrincipal padre;
 	PanelInicio ini;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField txtNombre;
+	private JTextField txtDireccion;
+	private JTextField txtLocalidad;
+	private JTextField txtEmail;
+	private JTextField txtSector;
+	private JTextField txtTelefono;
+	Empresa_Ofertadora empresa;
 	
-	public AnadirEditarEmpresa(VentanaPrincipal p, PanelInicio pIni) {
+	public AnadirEditarEmpresa(VentanaPrincipal p, PanelInicio pIni, Empresa_Ofertadora e) {
 		ini = pIni;
 		padre = p;
+		this.empresa = e;
 		setSize(PanelInicio.tamanoPaneles);
 		
 		textField = new JTextField();
@@ -32,35 +36,44 @@ public class AnadirEditarEmpresa extends JPanel {
 		
 		JButton btnBuscar = new JButton("Buscar");
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		
 		JLabel lblDireccin = new JLabel("Direcci\u00F3n:");
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		txtDireccion = new JTextField();
+		txtDireccion.setColumns(10);
 		
 		JLabel lblLocalidad = new JLabel("Localidad:");
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		txtLocalidad = new JTextField();
+		txtLocalidad.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
 		
 		JLabel lblSector = new JLabel("Sector:");
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
+		txtSector = new JTextField();
+		txtSector.setColumns(10);
 		
 		JLabel lblTelfono = new JLabel("Tel\u00E9fono:");
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
+		txtTelefono = new JTextField();
+		txtTelefono.setColumns(10);
+		
+		if(empresa!=null){
+			txtNombre.setText(empresa.getNombre());
+			txtDireccion.setText(empresa.getDireccion());
+			txtLocalidad.setText(empresa.getLocalidad());
+			txtEmail.setText(empresa.getEmail());
+			txtSector.setText(empresa.getSector());
+			txtTelefono.setText(Integer.toString(empresa.getTelefono()));
+		}
 		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
@@ -72,6 +85,17 @@ public class AnadirEditarEmpresa extends JPanel {
 		JButton btnBaja = new JButton("Dar Baja");
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(empresa==null)
+					padre.getControladorOfertas().AñadirEmpresaOfertadora(txtNombre.getText(), txtDireccion.getText(), txtEmail.getText(), Integer.valueOf(txtTelefono.getText()), txtLocalidad.getText(), txtSector.getText());
+				else
+					padre.getControladorOfertas().ModificarEmpresaOfertadora(empresa.getId(), txtNombre.getText(), txtDireccion.getText(), txtEmail.getText(), Integer.valueOf(txtTelefono.getText()), txtLocalidad.getText(), txtSector.getText());
+				
+				ini.setPanelOnTab(new GestionEmpresa(padre,ini), PanelInicio.OFERTAS);
+			}
+		});
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -88,15 +112,15 @@ public class AnadirEditarEmpresa extends JPanel {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblDireccin, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
+									.addComponent(txtDireccion, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
+									.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblLocalidad, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
+									.addComponent(txtLocalidad, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
 								.addComponent(btnVolver))
 							.addGap(18)
 							.addComponent(btnBaja)))
@@ -107,16 +131,16 @@ public class AnadirEditarEmpresa extends JPanel {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblEmail, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 									.addGap(4)
-									.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
+									.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblSector, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 									.addGap(4)
-									.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
+									.addComponent(txtSector, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblTelfono)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(txtTelefono, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(18)
 							.addComponent(btnGuardar)))
@@ -136,27 +160,27 @@ public class AnadirEditarEmpresa extends JPanel {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(3)
 									.addComponent(lblEmail))
-								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(22)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(3)
 									.addComponent(lblSector))
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(txtSector, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(3)
 									.addComponent(lblTelfono))
-								.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(txtTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblNombre))
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(22)
-									.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addComponent(txtDireccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(25)
 									.addComponent(lblDireccin)))
@@ -165,7 +189,7 @@ public class AnadirEditarEmpresa extends JPanel {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(3)
 									.addComponent(lblLocalidad))
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(txtLocalidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addGap(115)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVolver)

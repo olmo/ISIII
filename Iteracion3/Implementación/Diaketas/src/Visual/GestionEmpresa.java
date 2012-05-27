@@ -16,31 +16,44 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import GestionAyudas.Ayuda;
+import GestionAyudas.TipoAyuda;
+import GestionEmpresaOfertadora.Empresa_Ofertadora;
+import GestionPersona.Beneficiario;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
 public class GestionEmpresa extends JPanel {
 
-	private JTextField textField_1;
+	private JTextField txtBuscar;
 	VentanaPrincipal padre;
 	PanelInicio ini;
 	JScrollPane scrollPane;
 	private JTable tablaEmpresas = new JTable();
 	private DefaultTableModel tabla_modelo;
-
-	/**
-	 * Create the panel.
-	 */
-	public void fillTable(ArrayList<Ayuda> lista_ayudas) {// Integer->Donaciones
+	
+	ArrayList<Empresa_Ofertadora> lista_empresas = new ArrayList<Empresa_Ofertadora>();
+	
+	public void fillTable(ArrayList<Empresa_Ofertadora> lista) {// Integer->Donaciones
 		scrollPane.setVisible(true);
+		lista_empresas = lista;
 
 		DefaultTableModel modelo = new DefaultTableModel();
-		Object[] tupla = new Object[5];
+		Object[] tupla = new Object[4];
 		// Relleneamos la cabecera de la tabla.
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Sector");
 		modelo.addColumn("Localidad");
 		modelo.addColumn("Teléfono");
+		
+		for(int i=0;i<lista_empresas.size();i++){
+			tupla[0]= lista_empresas.get(i).getNombre();
+			tupla[1]= lista_empresas.get(i).getSector();
+			tupla[2]= lista_empresas.get(i).getLocalidad();
+			tupla[3]= lista_empresas.get(i).getTelefono();
+
+			modelo.addRow(tupla);
+		}
 
 		tabla_modelo = modelo;
 		this.tablaEmpresas.setModel(tabla_modelo);
@@ -52,26 +65,26 @@ public class GestionEmpresa extends JPanel {
 		ini = pIni;
 		padre = p;
 		setSize(PanelInicio.tamanoPaneles);
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField_1.setColumns(15);
+		txtBuscar = new JTextField();
+		txtBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtBuscar.setColumns(15);
 
-		JButton button_5 = new JButton("Buscar");
-		button_5.addActionListener(new ActionListener() {
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				//ini.panel_ayudas.fillTable(listaAyudas);
-				ini.setPanelOnTab(ini.panel_ofertas, PanelInicio.OFERTAS);
+				lista_empresas = padre.getControladorOfertas().ListarEmpresaOfertadora(txtBuscar.getText());
+				fillTable(lista_empresas);
+				ini.setPanelOnTab(ini.gestion_empresa, PanelInicio.OFERTAS);
 			}
 		});
-		button_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		
 		JButton btnAddEmpresa = new JButton("A\u00F1adir Empresa");
 		btnAddEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAddEmpresa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.setPanelOnTab(ini.anadirEditar_empresa, PanelInicio.OFERTAS);
+				ini.setPanelOnTab(new AnadirEditarEmpresa(padre, ini, null), PanelInicio.OFERTAS);
 			}
 		});
 
@@ -79,7 +92,7 @@ public class GestionEmpresa extends JPanel {
 		btnEditarEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEditarEmpresa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.setPanelOnTab(ini.anadirEditar_empresa, PanelInicio.OFERTAS);
+				ini.setPanelOnTab(new AnadirEditarEmpresa(padre, ini, lista_empresas.get(tablaEmpresas.getSelectedRow())), PanelInicio.OFERTAS);
 			}
 		});
 
@@ -87,7 +100,10 @@ public class GestionEmpresa extends JPanel {
 		btnEliminarEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEliminarEmpresa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere borrar la empresa?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
+					padre.getControladorOfertas().BorrarEmpresaOfertadora(lista_empresas.get(tablaEmpresas.getSelectedRow()));
+					fillTable(padre.getControladorOfertas().ListarEmpresaOfertadora(""));
+				}
 			}
 		});
 		
@@ -110,9 +126,9 @@ public class GestionEmpresa extends JPanel {
 					.addGap(14)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
+							.addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
 							.addGap(5)
-							.addComponent(button_5))
+							.addComponent(btnBuscar))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 886, GroupLayout.PREFERRED_SIZE)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -134,10 +150,10 @@ public class GestionEmpresa extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(5)
-							.addComponent(button_5))
+							.addComponent(btnBuscar))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(6)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(43)
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
@@ -152,9 +168,8 @@ public class GestionEmpresa extends JPanel {
 					.addContainerGap(294, Short.MAX_VALUE))
 		);
 
-		if (textField_1.getText().isEmpty())
-			this.fillTable(padre.getControladorAyudas().listarAyudasConcedidas(
-					""));
+		if (txtBuscar.getText().isEmpty())
+			this.fillTable(padre.getControladorOfertas().ListarEmpresaOfertadora(""));
 
 		setLayout(groupLayout);
 

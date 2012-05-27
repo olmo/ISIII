@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 import GestionActuacion.ControladorActuaciones;
 import GestionAyudas.ControladorAyudas;
 import GestionDonaciones.ControladorDonaciones;
+import GestionOfertas.ControladorOfertas;
 import GestionPersona.ControladorPersona;
 
 
@@ -28,6 +29,7 @@ public class VentanaPrincipal extends JFrame {
 	private ControladorAyudas controlador_ayudas = new ControladorAyudas();
 	private ControladorDonaciones controlador_donaciones = new ControladorDonaciones();
 	private ControladorActuaciones controlador_actuaciones = new ControladorActuaciones();
+	private ControladorOfertas controlador_ofertas = new ControladorOfertas();
 	private String trabajador;
 	private Home home;
 	private BarraProgreso bProgreso;
@@ -90,6 +92,10 @@ public class VentanaPrincipal extends JFrame {
 	}
 	public ControladorDonaciones getControladorDonaciones(){
 		return controlador_donaciones;
+	}
+	
+	public ControladorOfertas getControladorOfertas(){
+		return controlador_ofertas;
 	}
 	
 	public void actualizaProgreso(String progreso){

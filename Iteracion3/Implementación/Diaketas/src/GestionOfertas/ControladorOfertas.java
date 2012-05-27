@@ -3,6 +3,7 @@ package GestionOfertas;
 import java.util.ArrayList;
 
 import GestionEmpresaOfertadora.Empresa_Ofertadora;
+import GestionEmpresaOfertadora.Empresa_OfertadoraDB;
 import GestionSolicitante.Solicitante;
 import GestionSolicitante.Solicitante.tipo_disp;
 import GestionSolicitante.Solicitante.tipo_permiso;
@@ -86,29 +87,39 @@ public class ControladorOfertas {
 
 	/********************************************************************************************/
 
-	boolean AñadirEmpresaOfertadora(String nombre, String direccion, String email, int telefono, String localidad, String sector){
+	public boolean AñadirEmpresaOfertadora(String nombre, String direccion, String email, int telefono, String localidad, String sector){
+		Empresa_OfertadoraDB eodb = new Empresa_OfertadoraDB();
 		
-		return false;
+		Empresa_Ofertadora empresa = new Empresa_Ofertadora();
+		empresa.ModificarEmpresaOfertadora(nombre, direccion, email, telefono, localidad, sector);
+		
+		return eodb.AnadirEmpresaOfertadora(empresa);
 	}
 	
-	boolean BorrarEmpresaOfertadora(Empresa_Ofertadora o){
-		return false;
+	public boolean BorrarEmpresaOfertadora(Empresa_Ofertadora o){
+		Empresa_OfertadoraDB eodb = new Empresa_OfertadoraDB();
+		
+		return eodb.BorrarEmpresaOfertadora(o);
 	}
 	
-	boolean ModificarEmpresaOfertadora(String nombre, String direccion, String email, int telefono, String localidad, String sector){
+	public boolean ModificarEmpresaOfertadora(int id, String nombre, String direccion, String email, int telefono, String localidad, String sector){
+		Empresa_OfertadoraDB eodb = new Empresa_OfertadoraDB();
+		Empresa_Ofertadora empresa = new Empresa_Ofertadora();
+		empresa.setId(id);
+		empresa.ModificarEmpresaOfertadora(nombre, direccion, email, telefono, localidad, sector);
 		
-		return false;
+		return eodb.ModificarEmpresaOfertadora(empresa);
 	}
 	
-	Empresa_Ofertadora ConsultarEmpresaOfertadora(int id_empresaofertadora){
+	public Empresa_Ofertadora ConsultarEmpresaOfertadora(int id_empresaofertadora){
+		Empresa_OfertadoraDB eodb = new Empresa_OfertadoraDB();
 		
-		return new Empresa_Ofertadora();
+		return eodb.getEmpresaOfertadora(id_empresaofertadora);
 	}
 	
-	ArrayList<Empresa_Ofertadora> ListarEmpresaOfertadora(String filtro){
-		ArrayList<Empresa_Ofertadora> lista = new ArrayList<Empresa_Ofertadora>();
+	public ArrayList<Empresa_Ofertadora> ListarEmpresaOfertadora(String filtro){
+		Empresa_OfertadoraDB eodb = new Empresa_OfertadoraDB();
 		
-		return lista;
-		
+		return eodb.getListEmpresaOfertadora(filtro);
 	}
 }
