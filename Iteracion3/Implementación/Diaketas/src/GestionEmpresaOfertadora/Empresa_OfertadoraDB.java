@@ -79,9 +79,13 @@ public class Empresa_OfertadoraDB {
 	
 	public ArrayList<Empresa_Ofertadora> getListEmpresaOfertadora(String filtro){
 		ArrayList<Empresa_Ofertadora> lista = new ArrayList<Empresa_Ofertadora>();
-		
+		ResultSet rs = null;
 		gestor.conectar();
-		ResultSet rs = gestor.RealizarConsulta("SELECT id, nombre, direccion, email, telefono, localidad, sector FROM Empresas_ofertadoras");
+		
+		if(filtro==null || filtro.equals(""))
+			rs = gestor.RealizarConsulta("SELECT id, nombre, direccion, email, telefono, localidad, sector FROM Empresas_ofertadoras");
+		else
+			rs = gestor.RealizarConsulta("SELECT id, nombre, direccion, email, telefono, localidad, sector FROM Empresas_ofertadoras WHERE nombre LIKE '%"+filtro+"%' OR sector LIKE '%"+filtro+"%' OR localidad LIKE '%"+filtro+"%'");
 		
 		try {
 			while(rs.next()){
