@@ -5,21 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import GestionOfertas.ControladorOfertas;
 import GestionSolicitante.Solicitante;
-import GestionSolicitante.SolicitanteDB;
 import GestionSolicitante.Solicitante.tipo_permiso;
 import GestionSolicitante.Solicitante.tipo_disp;
 import javax.swing.JCheckBox;
-import javax.swing.SwingConstants;
-import javax.swing.JMenuItem;
 
 public class EditarSolicitante extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -46,18 +40,13 @@ public class EditarSolicitante extends JPanel {
 	private Choice txtDisponibilidad;
 	private Choice txtrol;
 
-	private ControladorOfertas controladorOfertas = new ControladorOfertas();
+	private Solicitante unSolicitante = new Solicitante();
 
 	public EditarSolicitante(VentanaPrincipal p, PanelInicio pIni) {
 		this.ini = pIni;
 		padre = p;
 		setSize(PanelInicio.tamanoPaneles);
 		setLayout(null);
-		
-		//Obtener informacion de la bd
-		Solicitante unSolicitante = new Solicitante();
-		unSolicitante = controladorOfertas.consultarSolicitante(101);
-		
 
 		txtBuscar = new JTextField();
 		txtBuscar
@@ -74,38 +63,32 @@ public class EditarSolicitante extends JPanel {
 		txtDNI.setBounds(296, 82, 180, 20);
 		add(txtDNI);
 		txtDNI.setColumns(10);
-		txtDNI.setText(unSolicitante.getDni());
 
 		txtnombre = new JTextField();
 		txtnombre.setBounds(296, 113, 180, 20);
 		add(txtnombre);
 		txtnombre.setColumns(10);
-		txtnombre.setText(unSolicitante.getNombre());
 
 		textpermisoconduc = new Choice();
 		textpermisoconduc.setBounds(296, 370, 180, 20);
 		for (int i = 0; i < tipo_permiso.values().length; i++)
 			textpermisoconduc.add(tipo_permiso.values()[i].toString());
 		add(textpermisoconduc);
-		textpermisoconduc.select(unSolicitante.getPer_conducir().ordinal());
 
 		txtfechanac = new JTextField();
 		txtfechanac.setBounds(296, 144, 180, 20);
 		add(txtfechanac);
 		txtfechanac.setColumns(10);
-		txtfechanac.setText(unSolicitante.getfNacimiento());
 
 		txtcodpostal = new JTextField();
 		txtcodpostal.setBounds(296, 216, 180, 20);
 		add(txtcodpostal);
 		txtcodpostal.setColumns(10);
-		txtcodpostal.setText(unSolicitante.getCp().toString());
 
 		txtemail = new JTextField();
 		txtemail.setBounds(296, 251, 180, 20);
 		add(txtemail);
 		txtemail.setColumns(10);
-		txtemail.setText(unSolicitante.getemail());
 
 		txtrol = new Choice();
 		txtrol.setBounds(690, 82, 180, 20);
@@ -115,30 +98,26 @@ public class EditarSolicitante extends JPanel {
 		txtrol.add("donante-Colaborador");
 		txtrol.add("donante-Empresa");
 		add(txtrol);
-		//txtrol.select(unSolicitante..ordinal());
+		// txtrol.select(unSolicitante..ordinal());
 
 		txtapellidos = new JTextField();
 		txtapellidos.setColumns(10);
 		txtapellidos.setBounds(690, 113, 180, 20);
 		add(txtapellidos);
-		txtapellidos.setText(unSolicitante.getApellido1());
 
 		txtlugarnac = new JTextField();
 		txtlugarnac.setColumns(10);
 		txtlugarnac.setBounds(690, 179, 180, 20);
 		add(txtlugarnac);
-		txtlugarnac.setText(unSolicitante.getLugarNacimiento());
 
 		txtdireccion = new JTextField();
 		txtdireccion.setColumns(10);
 		txtdireccion.setBounds(690, 216, 180, 20);
 		add(txtdireccion);
-		txtdireccion.setText(unSolicitante.getDomicilio());
 
 		txtcurriculum = new JTextArea();
 		txtcurriculum.setBounds(689, 352, 372, 105);
 		add(txtcurriculum);
-		txtcurriculum.setText(unSolicitante.getCurriculum());
 
 		JLabel lblDNI = new JLabel("DNI");
 		lblDNI.setBounds(181, 85, 46, 14);
@@ -200,7 +179,6 @@ public class EditarSolicitante extends JPanel {
 		txttelefono.setColumns(10);
 		txttelefono.setBounds(296, 175, 180, 20);
 		add(txttelefono);
-		txttelefono.setText(unSolicitante.getTelefono().toString());
 
 		JLabel lblpermisocond = new JLabel("Permiso Conducir");
 		lblpermisocond.setBounds(181, 373, 89, 14);
@@ -218,13 +196,11 @@ public class EditarSolicitante extends JPanel {
 		txtestudios.setColumns(10);
 		txtestudios.setBounds(296, 290, 180, 20);
 		add(txtestudios);
-		txtestudios.setText(unSolicitante.getEstudios());
 
 		txtexperiencia = new JTextField();
 		txtexperiencia.setColumns(10);
 		txtexperiencia.setBounds(296, 321, 180, 20);
 		add(txtexperiencia);
-		txtexperiencia.setText(unSolicitante.getExperiencia());
 
 		JLabel lblestado = new JLabel("Estado");
 		lblestado.setBounds(577, 254, 75, 14);
@@ -238,13 +214,11 @@ public class EditarSolicitante extends JPanel {
 		txtestado.setColumns(10);
 		txtestado.setBounds(690, 251, 180, 20);
 		add(txtestado);
-		txtestado.setText(unSolicitante.getEstado().toString());
 
 		txttiempoincor = new JTextField();
 		txttiempoincor.setColumns(10);
 		txttiempoincor.setBounds(690, 321, 180, 20);
 		add(txttiempoincor);
-		txttiempoincor.setText(unSolicitante.getIncorpora().toString());
 
 		JLabel lblapellidos2 = new JLabel("Apellido 2");
 		lblapellidos2.setBounds(577, 147, 46, 14);
@@ -254,24 +228,21 @@ public class EditarSolicitante extends JPanel {
 		txtapellidos2.setColumns(10);
 		txtapellidos2.setBounds(690, 144, 180, 20);
 		add(txtapellidos2);
-		txtapellidos2.setText(unSolicitante.getApellido2());
 
 		txtDisponibilidad = new Choice();
 		txtDisponibilidad.setBounds(690, 290, 180, 20);
 		for (int i = 0; i < tipo_disp.values().length; i++)
 			txtDisponibilidad.add(tipo_disp.values()[i].toString());
 		add(txtDisponibilidad);
-		txtDisponibilidad.select(unSolicitante.getDisponibilidad().ordinal());
 
 		checkVehiculo = new JCheckBox("Veh\u00EDculo propio");
 		checkVehiculo.setBounds(181, 417, 103, 23);
 		add(checkVehiculo);
-		checkVehiculo.setSelected(unSolicitante.getVehiculo());
-		
+
 		JButton btnDarDeBaja = new JButton("Dar de Baja");
 		btnDarDeBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//ToDo
+				// ToDo
 			}
 		});
 		btnDarDeBaja.setBounds(471, 482, 89, 23);
@@ -285,30 +256,61 @@ public class EditarSolicitante extends JPanel {
 
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
+				padre.getControladorOfertas()
+						.modificarSolicitante(unSolicitante.getId(),
+								txtDNI.getText(),
+								txtnombre.getText(),
+								txtapellidos.getText(),
+								txtapellidos2.getText(),
+								txtfechanac.getText(),
+								Integer.parseInt(txttelefono.getText()),
+								txtlugarnac.getText(),
+								txtdireccion.getText(),
+								Integer.parseInt(txtcodpostal.getText()),
+								false,
+								txtemail.getText(),
+								txtestudios.getText(),
+								txtexperiencia.getText(),
+								txtcurriculum.getText(),
+								tipo_permiso.values()[textpermisoconduc
+										.getSelectedIndex()],
+								checkVehiculo.isSelected(),
+								tipo_disp.values()[txtDisponibilidad
+										.getSelectedIndex()],
+								Integer.parseInt(txttiempoincor.getText()));
+				
 
-				controladorOfertas.modificarSolicitante(
-						txtDNI.getText(),
-						txtnombre.getText(),
-						txtapellidos.getText(),
-						txtapellidos2.getText(),
-						txtfechanac.getText(),
-						Integer.parseInt(txttelefono.getText()),
-						txtlugarnac.getText(),
-						txtdireccion.getText(),
-						Integer.parseInt(txtcodpostal.getText()),
-						false,
-						txtemail.getText(),
-						txtestudios.getText(),
-						txtexperiencia.getText(),
-						txtcurriculum.getText(),
-						tipo_permiso.values()[textpermisoconduc
-								.getSelectedIndex()],
-						checkVehiculo.isSelected(),
-						tipo_disp.values()[txtDisponibilidad.getSelectedIndex()],
-						Integer.parseInt(txttiempoincor.getText()));
+				ini.gestion_solicitante.refrescar();
+				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 
 			}
 		});
 	}
+
+	public void setSolicitanteFromTable(Solicitante sol) {
+		unSolicitante = sol;
+		cargarInfo();
+	}
+
+	public void cargarInfo() {
+		txtDNI.setText(unSolicitante.getDni());
+		txtnombre.setText(unSolicitante.getNombre());
+		textpermisoconduc.select(unSolicitante.getPer_conducir().ordinal());
+		txtfechanac.setText(unSolicitante.getfNacimiento());
+		txtcodpostal.setText(unSolicitante.getCp().toString());
+		txtemail.setText(unSolicitante.getemail());
+		txtapellidos.setText(unSolicitante.getApellido1());
+		txtlugarnac.setText(unSolicitante.getLugarNacimiento());
+		txtdireccion.setText(unSolicitante.getDomicilio());
+		txtcurriculum.setText(unSolicitante.getCurriculum());
+		txttelefono.setText(unSolicitante.getTelefono().toString());
+		txtestudios.setText(unSolicitante.getEstudios());
+		txtexperiencia.setText(unSolicitante.getExperiencia());
+		txtestado.setText(unSolicitante.getEstado().toString());
+		txttiempoincor.setText(unSolicitante.getIncorpora().toString());
+		txtapellidos2.setText(unSolicitante.getApellido2());
+		txtDisponibilidad.select(unSolicitante.getDisponibilidad().ordinal());
+		checkVehiculo.setSelected(unSolicitante.getVehiculo());
+	}
+
 }

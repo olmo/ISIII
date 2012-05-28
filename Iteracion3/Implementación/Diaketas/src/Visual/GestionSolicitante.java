@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import GestionAyudas.Ayuda;
+import GestionEmpresaOfertadora.Empresa_Ofertadora;
 import GestionOfertas.ControladorOfertas;
 import GestionSolicitante.Solicitante;
 
@@ -24,28 +25,39 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 @SuppressWarnings("serial")
 public class GestionSolicitante extends JPanel {
 
-	private JTextField textField_1;
+	private JTextField campoBusqueda;
 	VentanaPrincipal padre;
 	PanelInicio ini;
-	JScrollPane scrollPane;
+	JScrollPane panelResultBusqueda;
 	private JTable tablaSolicitantes = new JTable();
 	private DefaultTableModel tabla_modelo;
-	
-	private ControladorOfertas controladorOfertas = new ControladorOfertas();
+
+	ArrayList<Solicitante> lista_solicitantes = new ArrayList<Solicitante>();
 
 	/**
 	 * Create the panel.
 	 */
-	public void fillTable(ArrayList<Ayuda> lista_ayudas) {// Integer->Donaciones
-		scrollPane.setVisible(true);
+	public void fillTable(ArrayList<Solicitante> lista) {
+		panelResultBusqueda.setVisible(true);
+		lista_solicitantes = lista;
 
 		DefaultTableModel modelo = new DefaultTableModel();
-		Object[] tupla = new Object[5];
-		// Relleneamos la cabecera de la tabla.
+		Object[] tupla = new Object[4];
+
 		modelo.addColumn("DNI");
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Apellidos");
 		modelo.addColumn("Estudios");
+
+		for (int i = 0; i < lista_solicitantes.size(); i++) {
+			tupla[0] = lista_solicitantes.get(i).getDni();
+			tupla[1] = lista_solicitantes.get(i).getNombre();
+			tupla[2] = lista_solicitantes.get(i).getApellido1() + " "
+					+ lista_solicitantes.get(i).getApellido2();
+			tupla[3] = lista_solicitantes.get(i).getEstudios();
+
+			modelo.addRow(tupla);
+		}
 
 		tabla_modelo = modelo;
 		this.tablaSolicitantes.setModel(tabla_modelo);
@@ -53,66 +65,71 @@ public class GestionSolicitante extends JPanel {
 
 	public GestionSolicitante(VentanaPrincipal p, PanelInicio pIni) {
 
-		// setSize(1100, 500);
 		ini = pIni;
 		padre = p;
 		setSize(PanelInicio.tamanoPaneles);
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField_1.setColumns(15);
+		campoBusqueda = new JTextField();
+		campoBusqueda.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		campoBusqueda.setColumns(15);
 
-		JButton button_5 = new JButton("Buscar");
-		button_5.addActionListener(new ActionListener() {
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				//ini.panel_ayudas.fillTable(listaAyudas);
-				ini.setPanelOnTab(ini.panel_demandas, PanelInicio.DEMANDAS);
+				lista_solicitantes = padre.getControladorOfertas().listarSolicitantes();
+				fillTable(lista_solicitantes);
+				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 			}
 		});
-		button_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
-		
-		JButton btnAadirDemanda = new JButton("Aniadir Solicitante");
-		btnAadirDemanda.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAadirDemanda.addActionListener(new ActionListener() {
+		JButton btnAddSolicitante = new JButton("Aniadir Solicitante");
+		btnAddSolicitante.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAddSolicitante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ini.setPanelOnTab(ini.aniadir_solicitante, PanelInicio.DEMANDAS);
 			}
 		});
 
-		JButton btnGestinD = new JButton("Editar Solicitante");
-		btnGestinD.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnGestinD.addActionListener(new ActionListener() {
+		JButton btnEdtiSolicitante = new JButton("Editar Solicitante");
+		btnEdtiSolicitante.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEdtiSolicitante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.setPanelOnTab(ini.editar_solicitante, PanelInicio.DEMANDAS);
-			}
-		});
-
-		JButton btnVerDetalles = new JButton("Eliminar Solicitante");
-		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnVerDetalles.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				EliminarSolicitante es= new EliminarSolicitante(padre);
-				es.setVisible(true);
-				es.setAlwaysOnTop(true);
-
-				if(es.getConfirmacionBorrado()==true){
-					try{
-						int idmagica = tablaSolicitantes.getSelectedRow(); //num fila
-						Solicitante unSolicitante = new Solicitante();
-						unSolicitante.setId(101);
-						controladorOfertas.borrarSolicitante(unSolicitante);
-						JOptionPane.showMessageDialog(null, "Se ha borrado el solicitante\n");
-						
-					}catch(Exception e1){
-						JOptionPane.showMessageDialog(null, "Error al borrar solicitante\n"+e1.getMessage());
-					}
+				if(tablaSolicitantes.getSelectedRow() != -1){
+					ini.editar_solicitante.setSolicitanteFromTable(lista_solicitantes.get(tablaSolicitantes.getSelectedRow()));
+					ini.setPanelOnTab(ini.editar_solicitante, PanelInicio.DEMANDAS);
 				}
-				
-				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 			}
 		});
-		
+
+		JButton btnElimSolicitante = new JButton("Eliminar Solicitante");
+		btnElimSolicitante.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnElimSolicitante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if( tablaSolicitantes.getSelectedRow() != -1){
+					EliminarSolicitante es = new EliminarSolicitante(padre);
+					es.setVisible(true);
+					es.setAlwaysOnTop(true);
+	
+					if (es.getConfirmacionBorrado() == true) {
+						try {
+	
+							padre.getControladorOfertas().borrarSolicitante(lista_solicitantes.get(tablaSolicitantes.getSelectedRow()));
+							JOptionPane.showMessageDialog(null,
+									"Se ha borrado el solicitante\n");
+	
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(
+									null,
+									"Error al borrar solicitante\n"
+											+ e1.getMessage());
+						}
+					}
+					refrescar();
+					ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
+				}
+			}
+		});
+
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVolver.addActionListener(new ActionListener() {
@@ -121,64 +138,136 @@ public class GestionSolicitante extends JPanel {
 			}
 		});
 
-		scrollPane = new JScrollPane(tablaSolicitantes);
-		scrollPane.setVisible(false);
-		
+		panelResultBusqueda = new JScrollPane(tablaSolicitantes);
+		panelResultBusqueda.setVisible(false);
+
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(14)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
-							.addGap(5)
-							.addComponent(button_5))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 886, GroupLayout.PREFERRED_SIZE)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(34)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnGestinD, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-										.addComponent(btnVerDetalles, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(btnAadirDemanda, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)))
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
-									.addGap(16)))))
-					.addGap(23))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(5)
-							.addComponent(button_5))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(6)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addGap(43)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(201)
-					.addComponent(btnAadirDemanda)
-					.addGap(19)
-					.addComponent(btnGestinD)
-					.addGap(18)
-					.addComponent(btnVerDetalles)
-					.addGap(18)
-					.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(294, Short.MAX_VALUE))
-		);
+		groupLayout
+				.setHorizontalGroup(groupLayout
+						.createParallelGroup(Alignment.LEADING)
+						.addGroup(
+								groupLayout
+										.createSequentialGroup()
+										.addGap(14)
+										.addGroup(
+												groupLayout
+														.createParallelGroup(
+																Alignment.LEADING)
+														.addGroup(
+																groupLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				campoBusqueda,
+																				GroupLayout.PREFERRED_SIZE,
+																				362,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addGap(5)
+																		.addComponent(
+																				btnBuscar))
+														.addGroup(
+																groupLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				panelResultBusqueda,
+																				GroupLayout.PREFERRED_SIZE,
+																				886,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addGroup(
+																				groupLayout
+																						.createParallelGroup(
+																								Alignment.LEADING)
+																						.addGroup(
+																								groupLayout
+																										.createSequentialGroup()
+																										.addGap(34)
+																										.addGroup(
+																												groupLayout
+																														.createParallelGroup(
+																																Alignment.LEADING)
+																														.addComponent(
+																																btnEdtiSolicitante,
+																																GroupLayout.DEFAULT_SIZE,
+																																143,
+																																Short.MAX_VALUE)
+																														.addComponent(
+																																btnElimSolicitante,
+																																GroupLayout.DEFAULT_SIZE,
+																																GroupLayout.DEFAULT_SIZE,
+																																Short.MAX_VALUE)
+																														.addComponent(
+																																btnAddSolicitante,
+																																Alignment.TRAILING,
+																																GroupLayout.DEFAULT_SIZE,
+																																143,
+																																Short.MAX_VALUE)))
+																						.addGroup(
+																								Alignment.TRAILING,
+																								groupLayout
+																										.createSequentialGroup()
+																										.addPreferredGap(
+																												ComponentPlacement.RELATED)
+																										.addComponent(
+																												btnVolver,
+																												GroupLayout.PREFERRED_SIZE,
+																												106,
+																												GroupLayout.PREFERRED_SIZE)
+																										.addGap(16)))))
+										.addGap(23)));
+		groupLayout
+				.setVerticalGroup(groupLayout
+						.createParallelGroup(Alignment.LEADING)
+						.addGroup(
+								groupLayout
+										.createSequentialGroup()
+										.addGroup(
+												groupLayout
+														.createParallelGroup(
+																Alignment.LEADING)
+														.addGroup(
+																groupLayout
+																		.createSequentialGroup()
+																		.addGap(5)
+																		.addComponent(
+																				btnBuscar))
+														.addGroup(
+																groupLayout
+																		.createSequentialGroup()
+																		.addGap(6)
+																		.addComponent(
+																				campoBusqueda,
+																				GroupLayout.PREFERRED_SIZE,
+																				GroupLayout.DEFAULT_SIZE,
+																				GroupLayout.PREFERRED_SIZE)))
+										.addGap(43)
+										.addComponent(panelResultBusqueda,
+												GroupLayout.DEFAULT_SIZE, 577,
+												Short.MAX_VALUE))
+						.addGroup(
+								groupLayout
+										.createSequentialGroup()
+										.addGap(201)
+										.addComponent(btnAddSolicitante)
+										.addGap(19)
+										.addComponent(btnEdtiSolicitante)
+										.addGap(18)
+										.addComponent(btnElimSolicitante)
+										.addGap(18)
+										.addComponent(btnVolver,
+												GroupLayout.PREFERRED_SIZE, 25,
+												GroupLayout.PREFERRED_SIZE)
+										.addContainerGap(294, Short.MAX_VALUE)));
 
-		if (textField_1.getText().isEmpty())
-			this.fillTable(padre.getControladorAyudas().listarAyudasConcedidas(
-					""));
+		if (campoBusqueda.getText().isEmpty()){
+			this.fillTable(padre.getControladorOfertas().listarSolicitantes());
+		}
 
 		setLayout(groupLayout);
 
+	}
+	
+	public void refrescar(){
+		lista_solicitantes = padre.getControladorOfertas().listarSolicitantes();
+		fillTable(lista_solicitantes);
 	}
 }

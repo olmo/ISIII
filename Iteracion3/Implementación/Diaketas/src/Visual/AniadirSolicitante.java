@@ -252,7 +252,6 @@ public class AniadirSolicitante extends JPanel {
 
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 
 				controladorOfertas.registrarSolicitante(
 						txtDNI.getText(),
@@ -275,7 +274,11 @@ public class AniadirSolicitante extends JPanel {
 						tipo_disp.values()[txtDisponibilidad.getSelectedIndex()],
 						Integer.parseInt(txttiempoincor.getText()));
 
+				ini.gestion_solicitante.refrescar();
+				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
+
 			}
+
 		});
 	}
 }

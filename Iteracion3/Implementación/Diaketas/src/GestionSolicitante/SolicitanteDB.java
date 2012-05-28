@@ -1,5 +1,6 @@
 package GestionSolicitante;
 
+import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,9 +9,6 @@ import javax.swing.JOptionPane;
 
 import Basedatos.GestorJDBC;
 import GestionOfertas.Oferta;
-import GestionPersona.Socio;
-import GestionSolicitante.Solicitante.tipo_disp;
-import GestionSolicitante.Solicitante.tipo_permiso;
 
 /**
  * Hay que probar: add, borrar y modificar. El resto estan sin hacer.
@@ -73,7 +71,7 @@ public class SolicitanteDB {
 
 		gestor.desconectar();
 
-		if (insertPersonas>-1 && insertSolicitante>-1)
+		if (insertPersonas > -1 && insertSolicitante > -1)
 			return true;
 		else
 			return false;
@@ -111,9 +109,19 @@ public class SolicitanteDB {
 				+ sol.getLugarNacimiento() + "',domicilio='"
 				+ sol.getDomicilio() + "', cp=" + sol.getCp() + ",estado="
 				+ (sol.getEstado() ? "1" : "0") + ",email='" + sol.getemail()
-				+ "' WHERE id=" + sol.getId());
+				+  "' WHERE id =" + sol.getId());
 
-		if (modificarPersonas)
+		System.out.println("\n1."+"UPDATE Personas SET dni='"
+				+ sol.getDni() + "',nombre='" + sol.getNombre()
+				+ "',apellido1='" + sol.getApellido1() + "', apellido2='"
+				+ sol.getApellido2() + "',fnac='" + sol.getfNacimiento()
+				+ "', telefono=" + sol.getTelefono() + " ,lugarnac='"
+				+ sol.getLugarNacimiento() + "',domicilio='"
+				+ sol.getDomicilio() + "', cp=" + sol.getCp() + ",estado="
+				+ (sol.getEstado() ? "1" : "0") + ",email='" + sol.getemail()
+				+  "' WHERE id =" + sol.getId() +"\n");
+		
+		if (modificarPersonas){
 			modificarSolicitante = gestor
 					.Modificar("UPDATE Solicitantes SET estudios='"
 							+ sol.getEstudios() + "',experiencia='"
@@ -122,8 +130,20 @@ public class SolicitanteDB {
 							+ sol.tipoPermisoToString() + "',vehiculo_propio='"
 							+ (sol.getVehiculo() ? "1" : "0")
 							+ "',disponibilidad_horaria='" + sol.dispToString()
-							+ "'tiempo_incorporacion,='" + sol.getIncorpora()
-							+ "' WHERE id =" + sol.getId());
+							+ "',tiempo_incorporacion='" + sol.getIncorpora()
+							+  "' WHERE id =" + sol.getId());
+			
+		}
+		
+		System.out.println("\n1."+ "UPDATE Solicitantes SET estudios='"
+				+ sol.getEstudios() + "',experiencia='"
+				+ sol.getExperiencia() + "',curriculum='"
+				+ sol.getCurriculum() + "',permiso_conducir='"
+				+ sol.tipoPermisoToString() + "',vehiculo_propio='"
+				+ (sol.getVehiculo() ? "1" : "0")
+				+ "',disponibilidad_horaria='" + sol.dispToString()
+				+ "',tiempo_incorporacion='" + sol.getIncorpora()
+				+  "' WHERE id =" + sol.getId()+"\n");
 
 		gestor.desconectar();
 
@@ -136,49 +156,117 @@ public class SolicitanteDB {
 	// probar
 	public Solicitante consultarSolicitante(int id_solicitante) {
 		Solicitante unSolicitante = new Solicitante();
-		
+
 		gestor.conectar();
-		ResultSet rs=null;
-		rs = gestor.RealizarConsulta("select * from Personas,Solicitantes where (Personas.id='"+id_solicitante+"' AND Solicitantes.id='"+id_solicitante+"')");
-		
+		ResultSet rs = null;
+		rs = gestor
+				.RealizarConsulta("select * from Personas,Solicitantes where (Personas.id='"
+						+ id_solicitante
+						+ "' AND Solicitantes.id='"
+						+ id_solicitante + "')");
+
 		try {
 			rs.next();
 
-			unSolicitante.setId((Integer)rs.getObject("id"));
+			unSolicitante.setId((Integer) rs.getObject("id"));
 			unSolicitante.setDni(rs.getObject("dni").toString());
 			unSolicitante.setNombre(rs.getObject("nombre").toString());
 			unSolicitante.setApellido1(rs.getObject("apellido1").toString());
 			unSolicitante.setApellido2(rs.getObject("apellido2").toString());
 			unSolicitante.setfNacimiento(rs.getObject("fnac").toString());
-			unSolicitante.setTelefono((Integer)rs.getObject("telefono"));
-			unSolicitante.setLugarNacimiento(rs.getObject("lugarnac").toString());
+			unSolicitante.setTelefono((Integer) rs.getObject("telefono"));
+			unSolicitante.setLugarNacimiento(rs.getObject("lugarnac")
+					.toString());
 			unSolicitante.setDomicilio(rs.getObject("domicilio").toString());
-			unSolicitante.setCp((Integer)rs.getObject("cp"));
-			unSolicitante.setEstado((Boolean)rs.getObject("estado"));
+			unSolicitante.setCp((Integer) rs.getObject("cp"));
+			unSolicitante.setEstado((Boolean) rs.getObject("estado"));
 			unSolicitante.setemail(rs.getObject("email").toString());
-			unSolicitante.setEstudios (rs.getObject("estudios").toString());
-			unSolicitante.setExperiencia (rs.getObject("experiencia").toString());
-			unSolicitante.setCurriculum (rs.getObject("curriculum").toString());
-			unSolicitante.setPerConducir(unSolicitante.StringToTipoPermiso((String)rs.getObject("permiso_conducir")));
-			unSolicitante.setVehiculo((Boolean)rs.getObject("vehiculo_propio"));
-			unSolicitante.setDisponibilidad(unSolicitante.StringToDisponibilidad((String)rs.getObject("disponibilidad_horaria")));
-			unSolicitante.setIncorpora((Integer)rs.getObject("tiempo_incorporacion"));
-			
+			unSolicitante.setEstudios(rs.getObject("estudios").toString());
+			unSolicitante
+					.setExperiencia(rs.getObject("experiencia").toString());
+			unSolicitante.setCurriculum(rs.getObject("curriculum").toString());
+			unSolicitante.setPerConducir(unSolicitante
+					.StringToTipoPermiso((String) rs
+							.getObject("permiso_conducir")));
+			unSolicitante
+					.setVehiculo((Boolean) rs.getObject("vehiculo_propio"));
+			unSolicitante.setDisponibilidad(unSolicitante
+					.StringToDisponibilidad((String) rs
+							.getObject("disponibilidad_horaria")));
+			unSolicitante.setIncorpora((Integer) rs
+					.getObject("tiempo_incorporacion"));
+
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Error obtener los datos DEL SOLICITANTE\n"+e.getMessage());
+			JOptionPane.showMessageDialog(
+					null,
+					"Error obtener los datos del solicitante**\n"
+							+ e.getMessage());
+			unSolicitante = null;
 		}
-		
 
 		gestor.desconectar();
 		return unSolicitante;
 	}
 
-	public ArrayList<Solicitante> listarSolicitantes(Solicitante sol) {
+	public ArrayList<Solicitante> listarSolicitantes() {
 		ArrayList<Solicitante> lista = new ArrayList<Solicitante>();
-		// ToDo
+		ResultSet rs = null;
+		gestor.conectar();
+
+		rs = gestor
+				.RealizarConsulta("select * from Personas,Solicitantes where Personas.id = Solicitantes.id");
+
+		try {
+			while (rs.next()) {
+				Solicitante unSolicitante = new Solicitante();
+
+				unSolicitante.setId((Integer) rs.getObject("id"));
+				unSolicitante.setDni(rs.getObject("dni").toString());
+				unSolicitante.setNombre(rs.getObject("nombre").toString());
+				unSolicitante
+						.setApellido1(rs.getObject("apellido1").toString());
+				unSolicitante
+						.setApellido2(rs.getObject("apellido2").toString());
+				unSolicitante.setfNacimiento(rs.getObject("fnac").toString());
+				unSolicitante.setTelefono((Integer) rs.getObject("telefono"));
+				unSolicitante.setLugarNacimiento(rs.getObject("lugarnac")
+						.toString());
+				unSolicitante
+						.setDomicilio(rs.getObject("domicilio").toString());
+				unSolicitante.setCp((Integer) rs.getObject("cp"));
+				unSolicitante.setEstado((Boolean) rs.getObject("estado"));
+				unSolicitante.setemail(rs.getObject("email").toString());
+				unSolicitante.setEstudios(rs.getObject("estudios").toString());
+				unSolicitante.setExperiencia(rs.getObject("experiencia")
+						.toString());
+				unSolicitante.setCurriculum(rs.getObject("curriculum")
+						.toString());
+				unSolicitante.setPerConducir(unSolicitante
+						.StringToTipoPermiso((String) rs
+								.getObject("permiso_conducir")));
+				unSolicitante.setVehiculo((Boolean) rs
+						.getObject("vehiculo_propio"));
+				unSolicitante.setDisponibilidad(unSolicitante
+						.StringToDisponibilidad((String) rs
+								.getObject("disponibilidad_horaria")));
+				unSolicitante.setIncorpora((Integer) rs
+						.getObject("tiempo_incorporacion"));
+
+				lista.add(unSolicitante);
+			}
+
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(
+					null,
+					"Error obtener los datos DEL SOLICITANTE\n"
+							+ e.getMessage());
+		}
+
+		gestor.desconectar();
+
 		return lista;
 	}
-	
+
 	public boolean registrarSolicitud(int id_oferta, int id_solicitante) {
 		// ToDo
 		return false;

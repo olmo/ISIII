@@ -47,9 +47,7 @@ public class ControladorOfertas {
 	}
 
 	public ArrayList<Solicitante> listarSolicitantes() {
-		ArrayList<Solicitante> lista = new ArrayList<Solicitante>();
-		// ToDo
-		return lista;
+		return solicitanteDB.listarSolicitantes();
 	}
 
 	public boolean apuntarOferta(int id_oferta, int id_solicitante) {
@@ -67,7 +65,7 @@ public class ControladorOfertas {
 		return true;
 	}
 
-	public Solicitante modificarSolicitante(String dni, String nombre,
+	public Solicitante modificarSolicitante(int id, String dni, String nombre,
 			String apellido1, String apellido2, String fNacimiento,
 			int telefono, String lugarNacimiento, String domicilio, int cp,
 			boolean estado, String email, String estudios, String experiencia,
@@ -80,6 +78,8 @@ public class ControladorOfertas {
 				telefono, lugarNacimiento, domicilio, cp, estado, email,
 				estudios, experiencia, curriculum, per_conducir, vehiculo,
 				disponibilidad, incorpora);
+		
+		unSolicitante.setId(id);
 		
 		solicitanteDB.modificar(unSolicitante);
 		
