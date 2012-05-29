@@ -109,19 +109,18 @@ public class SolicitanteDB {
 				+ sol.getLugarNacimiento() + "',domicilio='"
 				+ sol.getDomicilio() + "', cp=" + sol.getCp() + ",estado="
 				+ (sol.getEstado() ? "1" : "0") + ",email='" + sol.getemail()
-				+  "' WHERE id =" + sol.getId());
+				+ "' WHERE id =" + sol.getId());
 
-		System.out.println("\n1."+"UPDATE Personas SET dni='"
-				+ sol.getDni() + "',nombre='" + sol.getNombre()
-				+ "',apellido1='" + sol.getApellido1() + "', apellido2='"
-				+ sol.getApellido2() + "',fnac='" + sol.getfNacimiento()
-				+ "', telefono=" + sol.getTelefono() + " ,lugarnac='"
-				+ sol.getLugarNacimiento() + "',domicilio='"
-				+ sol.getDomicilio() + "', cp=" + sol.getCp() + ",estado="
-				+ (sol.getEstado() ? "1" : "0") + ",email='" + sol.getemail()
-				+  "' WHERE id =" + sol.getId() +"\n");
-		
-		if (modificarPersonas){
+		System.out.println("\n1." + "UPDATE Personas SET dni='" + sol.getDni()
+				+ "',nombre='" + sol.getNombre() + "',apellido1='"
+				+ sol.getApellido1() + "', apellido2='" + sol.getApellido2()
+				+ "',fnac='" + sol.getfNacimiento() + "', telefono="
+				+ sol.getTelefono() + " ,lugarnac='" + sol.getLugarNacimiento()
+				+ "',domicilio='" + sol.getDomicilio() + "', cp=" + sol.getCp()
+				+ ",estado=" + (sol.getEstado() ? "1" : "0") + ",email='"
+				+ sol.getemail() + "' WHERE id =" + sol.getId() + "\n");
+
+		if (modificarPersonas) {
 			modificarSolicitante = gestor
 					.Modificar("UPDATE Solicitantes SET estudios='"
 							+ sol.getEstudios() + "',experiencia='"
@@ -131,19 +130,18 @@ public class SolicitanteDB {
 							+ (sol.getVehiculo() ? "1" : "0")
 							+ "',disponibilidad_horaria='" + sol.dispToString()
 							+ "',tiempo_incorporacion='" + sol.getIncorpora()
-							+  "' WHERE id =" + sol.getId());
-			
+							+ "' WHERE id =" + sol.getId());
+
 		}
-		
-		System.out.println("\n1."+ "UPDATE Solicitantes SET estudios='"
-				+ sol.getEstudios() + "',experiencia='"
-				+ sol.getExperiencia() + "',curriculum='"
-				+ sol.getCurriculum() + "',permiso_conducir='"
-				+ sol.tipoPermisoToString() + "',vehiculo_propio='"
-				+ (sol.getVehiculo() ? "1" : "0")
+
+		System.out.println("\n1." + "UPDATE Solicitantes SET estudios='"
+				+ sol.getEstudios() + "',experiencia='" + sol.getExperiencia()
+				+ "',curriculum='" + sol.getCurriculum()
+				+ "',permiso_conducir='" + sol.tipoPermisoToString()
+				+ "',vehiculo_propio='" + (sol.getVehiculo() ? "1" : "0")
 				+ "',disponibilidad_horaria='" + sol.dispToString()
 				+ "',tiempo_incorporacion='" + sol.getIncorpora()
-				+  "' WHERE id =" + sol.getId()+"\n");
+				+ "' WHERE id =" + sol.getId() + "\n");
 
 		gestor.desconectar();
 
@@ -208,14 +206,30 @@ public class SolicitanteDB {
 		return unSolicitante;
 	}
 
-	public ArrayList<Solicitante> listarSolicitantes() {
+	public ArrayList<Solicitante> listarSolicitantes(String filtro) {
 		ArrayList<Solicitante> lista = new ArrayList<Solicitante>();
 		ResultSet rs = null;
 		gestor.conectar();
 
-		rs = gestor
-				.RealizarConsulta("select * from Personas,Solicitantes where Personas.id = Solicitantes.id");
+		if (filtro == null || filtro.equals(""))
+			rs = gestor
+					.RealizarConsulta("select * from Personas,Solicitantes where Personas.id = Solicitantes.id");
+		else
+			rs = gestor
+					.RealizarConsulta("select * from Personas,Solicitantes where Personas.id = Solicitantes.id  AND ( "
+							+ "nombre LIKE '%"
+							+ filtro
+							+ "%' OR apellido1 LIKE '%"
+							+ filtro
+							+ "%' OR apellido2 LIKE '%"
+							+ filtro
+							+ "%' OR dni LIKE '%"
+							+ filtro
+							+ "%' OR estudios LIKE '%"
+							+ filtro
+							+ "%' OR disponibilidad_horaria LIKE '%" + filtro + "%')");
 
+	
 		try {
 			while (rs.next()) {
 				Solicitante unSolicitante = new Solicitante();

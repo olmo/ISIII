@@ -39,32 +39,7 @@ public class ControladorOfertas {
 	public void modificarSolicitante(Solicitante sol) {
 		solicitanteDB.modificar(sol);
 	}
-
-	public Solicitante consultarSolicitante(int id_solicitante) {
-		Solicitante unSolicitante = new Solicitante();
-		unSolicitante = solicitanteDB.consultarSolicitante(id_solicitante);
-		return unSolicitante;
-	}
-
-	public ArrayList<Solicitante> listarSolicitantes() {
-		return solicitanteDB.listarSolicitantes();
-	}
-
-	public boolean apuntarOferta(int id_oferta, int id_solicitante) {
-		// ToDo
-		return true;
-	}
-
-	public ArrayList<Oferta> listarOfertasDeSolicitante(int id_solicitante) {
-		ArrayList<Oferta> lista = new ArrayList<Oferta>();
-		// ToDo
-		return lista;
-	}
-
-	public boolean borrarSolicitanteDeOferta(int id_oferta, int id_solicitante) {
-		return true;
-	}
-
+	
 	public Solicitante modificarSolicitante(int id, String dni, String nombre,
 			String apellido1, String apellido2, String fNacimiento,
 			int telefono, String lugarNacimiento, String domicilio, int cp,
@@ -84,6 +59,33 @@ public class ControladorOfertas {
 		solicitanteDB.modificar(unSolicitante);
 		
 		return unSolicitante;
+	}
+
+	public Solicitante consultarSolicitante(int id_solicitante) {
+		Solicitante unSolicitante = new Solicitante();
+		unSolicitante = solicitanteDB.consultarSolicitante(id_solicitante);
+		return unSolicitante;
+	}
+
+	public ArrayList<Solicitante> listarSolicitantes(String filtro) {
+		return solicitanteDB.listarSolicitantes(filtro);
+	}
+	
+	
+
+	public boolean apuntarOferta(int id_oferta, int id_solicitante) {
+		// ToDo
+		return true;
+	}
+
+	public ArrayList<Oferta> listarOfertasDeSolicitante(int id_solicitante) {
+		ArrayList<Oferta> lista = new ArrayList<Oferta>();
+		// ToDo
+		return lista;
+	}
+
+	public boolean borrarSolicitanteDeOferta(int id_oferta, int id_solicitante) {
+		return true;
 	}
 
 	/********************************************************************************************/

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -242,11 +243,31 @@ public class EditarSolicitante extends JPanel {
 		JButton btnDarDeBaja = new JButton("Dar de Baja");
 		btnDarDeBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// ToDo
+				
+				ConfirmarBorradoUsuario cbu= new ConfirmarBorradoUsuario(padre);
+				cbu.setVisible(true);
+				cbu.setAlwaysOnTop(true);
+
+				
+				if(cbu.getConfirmacionBaja()){
+			
+					try{
+						if(cbu.getConfirmacionBorrado()){
+								padre.getControladorOfertas().borrarSolicitante(unSolicitante);			
+						}else
+							padre.getControladorPersonas().darBaja(unSolicitante.getId());
+					}catch(Exception e1){
+						JOptionPane.showMessageDialog(null, "Error al dar de baja\n"+e1.getMessage());
+					}
+				}
+				
+				ini.gestion_solicitante.refrescar();
+				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 			}
 		});
 		btnDarDeBaja.setBounds(471, 482, 89, 23);
 		add(btnDarDeBaja);
+
 
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

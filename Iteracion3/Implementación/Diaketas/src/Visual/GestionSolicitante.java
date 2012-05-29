@@ -75,7 +75,7 @@ public class GestionSolicitante extends JPanel {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lista_solicitantes = padre.getControladorOfertas().listarSolicitantes();
+				lista_solicitantes = padre.getControladorOfertas().listarSolicitantes(campoBusqueda.getText());
 				fillTable(lista_solicitantes);
 				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 			}
@@ -259,7 +259,7 @@ public class GestionSolicitante extends JPanel {
 										.addContainerGap(294, Short.MAX_VALUE)));
 
 		if (campoBusqueda.getText().isEmpty()){
-			this.fillTable(padre.getControladorOfertas().listarSolicitantes());
+			this.fillTable(padre.getControladorOfertas().listarSolicitantes(""));
 		}
 
 		setLayout(groupLayout);
@@ -267,7 +267,7 @@ public class GestionSolicitante extends JPanel {
 	}
 	
 	public void refrescar(){
-		lista_solicitantes = padre.getControladorOfertas().listarSolicitantes();
+		lista_solicitantes = padre.getControladorOfertas().listarSolicitantes("");
 		fillTable(lista_solicitantes);
 	}
 }
