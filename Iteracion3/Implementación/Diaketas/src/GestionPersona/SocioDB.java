@@ -45,6 +45,8 @@ public class SocioDB {
 		ResultSet rs=null;
 		rs = gestor.RealizarConsulta("select * from Personas,Donantes,Socios where (Personas.id=Socios.id_persona AND Donantes.id_persona=Socios.id_persona AND id='"+id+"')");
 
+		//JOptionPane.showMessageDialog(null, "select * from Personas,Donantes,Socios where (Personas.id=Socios.id_persona AND Donantes.id_persona=Socios.id_persona AND id='"+id+"')");
+
 		Socio p = new Socio();
 		
 		try {
@@ -90,5 +92,43 @@ public class SocioDB {
 		gestor.desconectar();
 		return true;
 	}
+	
+	public Boolean introduceDatosInicioSesion(String user, String pw){	
+		gestor.conectar();
+		ResultSet rs=null;
+		rs=gestor.RealizarConsulta("select usuario,contrasena from Socios where usuario='"+user+"' AND contrasena='"+pw+"'");
+		Boolean aux=false;
+		try {
+			if(rs.next())
+				aux=true;
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al comprobar usuario y contraseña:\n"+e.getMessage());
+		}
+		gestor.desconectar();
+		return aux;
+	}
+	
+	public Integer introduceDatosInicioSesionID(String user, String pw){
+		Integer id=-1;
+		gestor.conectar();
+		ResultSet rs=null;
+		rs=gestor.RealizarConsulta("select usuario,contrasena, id_persona from Socios where usuario='"+user+"' AND contrasena='"+pw+"'");
+		Boolean aux=false;
+		try {
+			if(rs.next()){
+				aux=true;
+				id=(Integer)rs.getObject("id_persona");
+			}
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al comprobar usuario y contraseña:\n"+e.getMessage());
+		}
+		gestor.desconectar();
+		
+		if (aux)
+			return id.intValue(); 
+		else
+			return -1;
 
+	}
+	
 }

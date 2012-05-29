@@ -6,6 +6,9 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.Choice;
 import javax.swing.JButton;
+
+import GestionPersona.Socio;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -14,15 +17,15 @@ public class DatosUsuarioMovil extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 2268770203627124208L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
+	private JTextField dniField;
+	private JTextField nombreField;
+	private JTextField apellidosField;
+	private JTextField fnField;
+	private JTextField telField;
+	private JTextField lnField;
+	private JTextField dirField;
+	private JTextField cpField;
+	private JTextField emailField;
 	PanelInicioMovil ini;
 	VentanaPrincipalMovil padre;
 
@@ -73,54 +76,54 @@ public class DatosUsuarioMovil extends JPanel {
 		frecLabel.setBounds(40, 362, 82, 14);
 		add(frecLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(147, 86, 163, 20);
-		add(textField);
-		textField.setColumns(10);
+		dniField = new JTextField();
+		dniField.setBounds(147, 86, 163, 20);
+		add(dniField);
+		dniField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(147, 116, 163, 20);
-		add(textField_1);
+		nombreField = new JTextField();
+		nombreField.setColumns(10);
+		nombreField.setBounds(147, 116, 163, 20);
+		add(nombreField);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(147, 146, 163, 20);
-		add(textField_2);
+		apellidosField = new JTextField();
+		apellidosField.setColumns(10);
+		apellidosField.setBounds(147, 146, 163, 20);
+		add(apellidosField);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(147, 176, 163, 20);
-		add(textField_3);
+		fnField = new JTextField();
+		fnField.setColumns(10);
+		fnField.setBounds(147, 176, 163, 20);
+		add(fnField);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(147, 206, 163, 20);
-		add(textField_4);
+		telField = new JTextField();
+		telField.setColumns(10);
+		telField.setBounds(147, 206, 163, 20);
+		add(telField);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(147, 236, 163, 20);
-		add(textField_5);
+		lnField = new JTextField();
+		lnField.setColumns(10);
+		lnField.setBounds(147, 236, 163, 20);
+		add(lnField);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(147, 266, 163, 20);
-		add(textField_6);
+		dirField = new JTextField();
+		dirField.setColumns(10);
+		dirField.setBounds(147, 266, 163, 20);
+		add(dirField);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(147, 296, 163, 20);
-		add(textField_7);
+		cpField = new JTextField();
+		cpField.setColumns(10);
+		cpField.setBounds(147, 296, 163, 20);
+		add(cpField);
 		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(147, 326, 163, 20);
-		add(textField_8);
+		emailField = new JTextField();
+		emailField.setColumns(10);
+		emailField.setBounds(147, 326, 163, 20);
+		add(emailField);
 		
-		Choice choice = new Choice();
-		choice.setBounds(147, 356, 82, 20);
-		add(choice);
+		Choice frecChoice = new Choice();
+		frecChoice.setBounds(147, 356, 82, 20);
+		add(frecChoice);
 		
 		JButton volverBoton = new JButton("Volver");
 		volverBoton.addActionListener(new ActionListener() {
@@ -143,5 +146,17 @@ public class DatosUsuarioMovil extends JPanel {
 		guardarBoton.setBounds(192, 430, 118, 65);
 		add(guardarBoton);
 
+	}
+	
+	public void rellenaVista(Socio s){
+		dniField.setText(s.getDni());
+		nombreField.setText(s.getNombre());
+		apellidosField.setText(s.getApellido1()+" "+s.getApellido2());
+		fnField.setText(s.getfNacimiento());
+		telField.setText(s.getTelefono().toString());
+		lnField.setText(s.getLugarNacimiento());
+		dirField.setText(s.getDomicilio());
+		cpField.setText(s.getCp().toString());
+		emailField.setText(s.getemail());
 	}
 }

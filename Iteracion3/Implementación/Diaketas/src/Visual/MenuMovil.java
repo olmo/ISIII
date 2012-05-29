@@ -3,12 +3,16 @@ package Visual;
 import javax.swing.AbstractButton;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
+import GestionPersona.Socio;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Frame;
 
 public class MenuMovil extends JPanel {
 	private VentanaPrincipalMovil padre;
+	private Socio s;
 	DatosUsuarioMovil datosUsuarioMovil;
 	DatosDonacionesMovil donacionesMovil;
 	PanelInicioMovil panelInicio;
@@ -19,12 +23,13 @@ public class MenuMovil extends JPanel {
 	public MenuMovil(VentanaPrincipalMovil mipadre) {
 		padre = mipadre;
 		setLayout(null);
-		
-		//menuMovil = new MenuMovil(padre);
-		
+				
 		JButton consultarDatosBoton = new JButton("Consultar datos");
 		consultarDatosBoton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {
+				Integer id = padre.getIDsesion();
+				Socio s=padre.getControladorMovil().consultarSocio(id);
+				
 				padre.getContentPane().removeAll();
 				padre.getContentPane().validate();
 				datosUsuarioMovil = new DatosUsuarioMovil(padre);
@@ -33,6 +38,9 @@ public class MenuMovil extends JPanel {
 				datosUsuarioMovil.setBounds(10, 10, 370, 514);
 				padre.getContentPane().add(panelInicio);
 				padre.getContentPane().add(datosUsuarioMovil);
+				
+				datosUsuarioMovil.rellenaVista(s);
+				
 				padre.getContentPane().repaint();
 			}
 		});

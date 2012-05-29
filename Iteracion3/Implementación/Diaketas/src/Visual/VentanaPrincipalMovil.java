@@ -10,10 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import GestionActuacion.ControladorActuaciones;
-import GestionAyudas.ControladorAyudas;
-import GestionDonaciones.ControladorDonaciones;
-import GestionPersona.ControladorPersona;
+import GestionPersona.ControladorMovil;
 
 
 
@@ -24,12 +21,12 @@ public class VentanaPrincipalMovil extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	//private ControladorDonaciones controlador_donaciones = new ControladorDonaciones();
-	private String trabajador;
+	private ControladorMovil controlador_movil = new ControladorMovil();
+	private String socio;
 	private HomeMovil homeMovil;
+	private Integer idSesion;
+
 	//private DonacionesMovil donacionesmovil;
-	private DatosUsuarioMovil datosusuariomovil;
-	private MenuMovil menuMovil;
 	
 	public VentanaPrincipalMovil() {
 		
@@ -48,7 +45,6 @@ public class VentanaPrincipalMovil extends JFrame {
 		setLocation(50, 0);
 		setSize(372,565);
 
-		//setSize(1200, 700);
 		setResizable(false);
 		setTitle("Asociaci\u00F3n Diaketas M\u00F3vil");
 		
@@ -63,6 +59,9 @@ public class VentanaPrincipalMovil extends JFrame {
 		
 	}
 	
+	public ControladorMovil getControladorMovil(){
+		return controlador_movil;
+	}
 	
 	public JPanel getpanelcontenido(){
 		return (JPanel) getContentPane();
@@ -70,12 +69,18 @@ public class VentanaPrincipalMovil extends JFrame {
 	
 	
 	public void setusuario(String s){
-		trabajador=s;
+		socio=s;
 	}
 	
 	public String getusuario(){
-		return trabajador;
+		return socio;
 	}
 	
-
+	public Integer getIDsesion(){
+		return idSesion;
+	}
+	
+	public void setIDsesion(Integer id){
+		idSesion = id;
+	}
 }
