@@ -82,10 +82,11 @@ public class GestionSolicitante extends JPanel {
 		});
 		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
-		JButton btnAddSolicitante = new JButton("Aniadir Solicitante");
+		JButton btnAddSolicitante = new JButton("A\u00F1adir Solicitante");
 		btnAddSolicitante.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAddSolicitante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ini.aniadir_solicitante.cargarInfo();
 				ini.setPanelOnTab(ini.aniadir_solicitante, PanelInicio.DEMANDAS);
 			}
 		});
@@ -143,120 +144,53 @@ public class GestionSolicitante extends JPanel {
 
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout
-				.setHorizontalGroup(groupLayout
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addGap(14)
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				campoBusqueda,
-																				GroupLayout.PREFERRED_SIZE,
-																				362,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addGap(5)
-																		.addComponent(
-																				btnBuscar))
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				panelResultBusqueda,
-																				GroupLayout.PREFERRED_SIZE,
-																				886,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addGroup(
-																				groupLayout
-																						.createParallelGroup(
-																								Alignment.LEADING)
-																						.addGroup(
-																								groupLayout
-																										.createSequentialGroup()
-																										.addGap(34)
-																										.addGroup(
-																												groupLayout
-																														.createParallelGroup(
-																																Alignment.LEADING)
-																														.addComponent(
-																																btnEdtiSolicitante,
-																																GroupLayout.DEFAULT_SIZE,
-																																143,
-																																Short.MAX_VALUE)
-																														.addComponent(
-																																btnElimSolicitante,
-																																GroupLayout.DEFAULT_SIZE,
-																																GroupLayout.DEFAULT_SIZE,
-																																Short.MAX_VALUE)
-																														.addComponent(
-																																btnAddSolicitante,
-																																Alignment.TRAILING,
-																																GroupLayout.DEFAULT_SIZE,
-																																143,
-																																Short.MAX_VALUE)))
-																						.addGroup(
-																								Alignment.TRAILING,
-																								groupLayout
-																										.createSequentialGroup()
-																										.addPreferredGap(
-																												ComponentPlacement.RELATED)
-																										.addComponent(
-																												btnVolver,
-																												GroupLayout.PREFERRED_SIZE,
-																												106,
-																												GroupLayout.PREFERRED_SIZE)
-																										.addGap(16)))))
-										.addGap(23)));
-		groupLayout
-				.setVerticalGroup(groupLayout
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addGap(5)
-																		.addComponent(
-																				btnBuscar))
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addGap(6)
-																		.addComponent(
-																				campoBusqueda,
-																				GroupLayout.PREFERRED_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.PREFERRED_SIZE)))
-										.addGap(43)
-										.addComponent(panelResultBusqueda,
-												GroupLayout.DEFAULT_SIZE, 577,
-												Short.MAX_VALUE))
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addGap(201)
-										.addComponent(btnAddSolicitante)
-										.addGap(19)
-										.addComponent(btnEdtiSolicitante)
-										.addGap(18)
-										.addComponent(btnElimSolicitante)
-										.addGap(18)
-										.addComponent(btnVolver,
-												GroupLayout.PREFERRED_SIZE, 25,
-												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap(294, Short.MAX_VALUE)));
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(14)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(campoBusqueda, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
+							.addGap(5)
+							.addComponent(btnBuscar))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panelResultBusqueda, GroupLayout.PREFERRED_SIZE, 886, GroupLayout.PREFERRED_SIZE)
+							.addGap(40)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnEdtiSolicitante, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+								.addComponent(btnElimSolicitante, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnAddSolicitante, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))))
+					.addGap(23))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(393)
+					.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(601, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(5)
+									.addComponent(btnBuscar))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(6)
+									.addComponent(campoBusqueda, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addGap(43)
+							.addComponent(panelResultBusqueda, GroupLayout.PREFERRED_SIZE, 487, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(201)
+							.addComponent(btnAddSolicitante)
+							.addGap(19)
+							.addComponent(btnEdtiSolicitante)
+							.addGap(18)
+							.addComponent(btnElimSolicitante)))
+					.addGap(18)
+					.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(47, Short.MAX_VALUE))
+		);
 
 		if (campoBusqueda.getText().isEmpty()){
 			this.fillTable(padre.getControladorOfertas().listarSolicitantes(""));
