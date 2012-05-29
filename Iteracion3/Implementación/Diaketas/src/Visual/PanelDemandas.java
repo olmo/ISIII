@@ -66,6 +66,7 @@ public class PanelDemandas extends javax.swing.JPanel {
 		btnAadirDemanda.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAadirDemanda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ini.anadir_demandas.refrescar();
 				ini.setPanelOnTab(ini.anadir_demandas, PanelInicio.DEMANDAS);
 	
 			}
@@ -84,6 +85,8 @@ public class PanelDemandas extends javax.swing.JPanel {
 		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//ini.verDetallesDemandas.setIdOferta(id);
+				//lista_ofertas.get(tablaDemandas.getSelectedRow()).getId();
 				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 			}
 		});
