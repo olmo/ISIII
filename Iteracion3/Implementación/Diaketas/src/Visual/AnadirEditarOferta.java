@@ -3,24 +3,28 @@ package Visual;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import GestionEmpresaOfertadora.Empresa_Ofertadora;
+import GestionEmpresaOfertadora.Empresa_OfertadoraDB;
 import GestionOfertas.Oferta;
 
-public class AnadirOferta extends JPanel{
+public class AnadirEditarOferta extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private VentanaPrincipal padre;
 	private PanelInicio ini;
 	private JTextField txtBuscar;
 	private JTextField txtTitulo;
-	private JTextField txtFecha;
+	private JFormattedTextField txtFecha;
 	private JTextField txtPuesto;
 	private JTextField txtVacantes;
 	private JTextField txtEmail;
@@ -28,18 +32,20 @@ public class AnadirOferta extends JPanel{
 	private JTextField txtLocalidad;
 	private JTextField txtProvincia;
 	private JComboBox cbEmpresa;
-	private JTextArea textArea;
+	private JTextArea txtDescripcion;
 	private JComboBox cbTipoContrato;
 	private JComboBox cbHorario;
 	
 	Oferta oferta;
 	
-	public AnadirOferta(VentanaPrincipal p, PanelInicio pIni, Oferta o) {
+	public AnadirEditarOferta(VentanaPrincipal p, PanelInicio pIni, Oferta o) {
 		this.ini = pIni;
 		padre = p;
 		oferta = o;
 		setSize(PanelInicio.tamanoPaneles);
 		setLayout(null);
+		
+		Empresa_OfertadoraDB eodb = new Empresa_OfertadoraDB();
 		
 		txtBuscar = new JTextField();
 		txtBuscar.setToolTipText("T\u00EDtulo, Puesto, Empresa, Fecha Fin, Provincia");
@@ -56,8 +62,9 @@ public class AnadirOferta extends JPanel{
 		add(txtTitulo);
 		txtTitulo.setColumns(10);
 		
-		txtFecha = new JTextField();
+		txtFecha = new JFormattedTextField(new SimpleDateFormat("d/M/yyyy"));
 		txtFecha.setBounds(297, 139, 180, 20);
+		txtFecha.setValue(new Date());
 		add(txtFecha);
 		txtFecha.setColumns(10);
 		
@@ -103,9 +110,9 @@ public class AnadirOferta extends JPanel{
 		cbHorario.setBounds(677, 366, 180, 20);
 		add(cbHorario);
 		
-		textArea = new JTextArea();
-		textArea.setBounds(297, 434, 560, 105);
-		add(textArea);
+		txtDescripcion = new JTextArea();
+		txtDescripcion.setBounds(297, 434, 560, 105);
+		add(txtDescripcion);
 		
 		JLabel lblTtulo = new JLabel("T\u00EDtulo");
 		lblTtulo.setBounds(241, 84, 46, 14);
@@ -155,6 +162,33 @@ public class AnadirOferta extends JPanel{
 		lblDescripcin.setBounds(226, 439, 61, 14);
 		add(lblDescripcin);
 		
+		for(Empresa_Ofertadora e : eodb.getListEmpresaOfertadora("")){
+			cbEmpresa.addItem(e);
+		}
+		
+		cbTipoContrato.addItem("Fijo");
+		cbTipoContrato.addItem("Temporal");
+		cbTipoContrato.addItem("Renovable");
+		
+		cbHorario.addItem("Mañana");
+		cbHorario.addItem("Tarde");
+		cbHorario.addItem("Jornada Partida");
+		
+		if(oferta!=null){
+			cbEmpresa.setSelectedItem(eodb.getEmpresaOfertadora(oferta.getId_empresa()));
+			txtTitulo.setText(oferta.getTitulo());
+			txtDescripcion.setText(oferta.getDescripcion());
+			txtPuesto.setText(oferta.getPuesto());
+			txtVacantes.setText(Integer.toString(oferta.getVacantes()));
+			cbTipoContrato.setSelectedItem(oferta.getTipo_contrato());
+			txtDuracion.setText(Integer.toString(oferta.getDuracion()));
+			txtFecha.setValue(oferta.getFechafin());
+			txtLocalidad.setText(oferta.getLocalidad());
+			txtProvincia.setText(oferta.getProvincia());
+			cbHorario.setSelectedItem(oferta.getHorario());
+			txtEmail.setText(oferta.getObservaciones());
+		}
+		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.setBounds(441, 557, 89, 23);
 		add(btnVolver);
@@ -165,10 +199,16 @@ public class AnadirOferta extends JPanel{
 		
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int vacantes=0, duracion=0;
+				if(!txtVacantes.getText().equals(""))
+					Integer.valueOf(txtVacantes.getText());
+				if(!txtDuracion.getText().equals(""))
+					Integer.valueOf(txtDuracion.getText());
+				
 				if(oferta==null)
-					padre.getControladorOfertas().RegistrarOferta(((Empresa_Ofertadora)cbEmpresa.getSelectedItem()).getId(), txtTitulo.getText(), textArea.getText(), txtPuesto.getText(), Integer.valueOf(txtVacantes.getText()), (String)cbTipoContrato.getSelectedItem(), Integer.valueOf(txtDuracion.getText()), Timestamp.valueOf(txtFecha.getText()), txtLocalidad.getText(), txtProvincia.getText(), (String)cbHorario.getSelectedItem(), txtEmail.getText());
+					padre.getControladorOfertas().RegistrarOferta(((Empresa_Ofertadora)cbEmpresa.getSelectedItem()).getId(), txtTitulo.getText(), txtDescripcion.getText(), txtPuesto.getText(), vacantes, (String)cbTipoContrato.getSelectedItem(), duracion, new Timestamp(((Date)txtFecha.getValue()).getTime()), txtLocalidad.getText(), txtProvincia.getText(), (String)cbHorario.getSelectedItem(), txtEmail.getText());
 				else
-					padre.getControladorOfertas().ModificarOferta(oferta.getId(), ((Empresa_Ofertadora)cbEmpresa.getSelectedItem()).getId(), txtTitulo.getText(), textArea.getText(), txtPuesto.getText(), Integer.valueOf(txtVacantes.getText()), (String)cbTipoContrato.getSelectedItem(), Integer.valueOf(txtDuracion.getText()), Timestamp.valueOf(txtFecha.getText()), txtLocalidad.getText(), txtProvincia.getText(), (String)cbHorario.getSelectedItem(), txtEmail.getText());
+					padre.getControladorOfertas().ModificarOferta(oferta.getId(), ((Empresa_Ofertadora)cbEmpresa.getSelectedItem()).getId(), txtTitulo.getText(), txtDescripcion.getText(), txtPuesto.getText(), vacantes, (String)cbTipoContrato.getSelectedItem(), duracion, new Timestamp(((Date)txtFecha.getValue()).getTime()), txtLocalidad.getText(), txtProvincia.getText(), (String)cbHorario.getSelectedItem(), txtEmail.getText());
 				
 				ini.setPanelOnTab(new PanelOfertas(padre,ini), PanelInicio.OFERTAS);
 			}

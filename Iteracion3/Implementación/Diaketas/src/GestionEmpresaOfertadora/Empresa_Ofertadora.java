@@ -73,4 +73,23 @@ public class Empresa_Ofertadora {
 		this.localidad = localidad;
 		this.sector = sector;
 	}
+	
+	public String toString(){
+		return this.getNombre();
+	}
+	
+	public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (obj == this)
+            return true;
+        if (obj.getClass() != getClass())
+            return false;
+
+        Empresa_Ofertadora rhs = (Empresa_Ofertadora) obj;
+        if(this.getId()==rhs.getId())
+        	return true;
+        else
+        	return false;
+    }
 }

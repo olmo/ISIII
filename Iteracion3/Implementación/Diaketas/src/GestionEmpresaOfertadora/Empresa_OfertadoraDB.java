@@ -61,6 +61,7 @@ public class Empresa_OfertadoraDB {
 		
 		Empresa_Ofertadora empresa = new Empresa_Ofertadora();
 		try {
+			rs.next();
 			empresa.setId(rs.getInt(1));
 			empresa.setNombre(rs.getString(2));
 			empresa.setDireccion(rs.getString(3));
@@ -74,7 +75,7 @@ public class Empresa_OfertadoraDB {
 		
 		gestor.desconectar();
 		
-		return new Empresa_Ofertadora();
+		return empresa;
 	}
 	
 	public ArrayList<Empresa_Ofertadora> getListEmpresaOfertadora(String filtro){

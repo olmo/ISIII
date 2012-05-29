@@ -45,7 +45,7 @@ public class PanelInicio extends JPanel {
 	public EditarTipoAyuda editar_tipo_ayuda;
 	public NuevoFamiliar nuevo_familiar;
 	public NuevoUsuario nuevo_usuario;
-	public AnadirOferta anadir_oferta;
+	public AnadirEditarOferta anadir_oferta;
 	public AniadirDemandas anadir_demandas;
 	public VerDetallesDemandas verDetallesDemandas;
 	public AniadirSolicitante aniadir_solicitante;
@@ -168,7 +168,7 @@ public class PanelInicio extends JPanel {
 		panel_GestionBajas = new PanelGestionBajas(p, this);
 		
 		panel_ofertas = new PanelOfertas(p, this);
-		anadir_oferta = new AnadirOferta(p, this, null);
+		anadir_oferta = new AnadirEditarOferta(p, this, null);
 		gestion_empresa = new GestionEmpresa(p, this);
 		
 

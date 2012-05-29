@@ -3,12 +3,13 @@ package Visual;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,12 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
-import GestionAyudas.Ayuda;
-import GestionAyudas.AyudaDB;
-import GestionAyudas.TipoAyuda;
-import GestionAyudas.TipoAyudaDB;
-import GestionPersona.Beneficiario;
-import GestionPersona.BeneficiarioDB;
+import GestionEmpresaOfertadora.Empresa_OfertadoraDB;
+import GestionOfertas.Oferta;
 
 @SuppressWarnings("serial")
 public class PanelOfertas extends JPanel {
@@ -32,20 +29,14 @@ public class PanelOfertas extends JPanel {
 	JScrollPane scrollPane;
 	
 	private JTable tablaOfertas = new JTable();
-	//private DefaultTableModel tabla_modelo;
+	private DefaultTableModel tabla_modelo;
 	
-	AyudaDB adb = new AyudaDB();
-	BeneficiarioDB bdb = new BeneficiarioDB();
-	TipoAyudaDB tabd = new TipoAyudaDB();
+	ArrayList<Oferta> listaOfertas = new ArrayList<Oferta>();
 	
-	ArrayList<Ayuda> listaAyudas = new ArrayList<Ayuda>();
-	
-	Hashtable<Integer, TipoAyuda> tiposAyudas = new Hashtable<Integer, TipoAyuda>();
-	Hashtable<Integer, Beneficiario> beneficiarios = new Hashtable<Integer, Beneficiario>();
-	
-	public void fillTable(ArrayList<Ayuda> lista_ayudas){//Integer->Donaciones
+	public void fillTable(ArrayList<Oferta> lista_ofertas){//Integer->Donaciones
 		scrollPane.setVisible(true);
-		//listaAyudas = lista_ayudas;
+		listaOfertas = lista_ofertas;
+		
 		DefaultTableModel modelo = new DefaultTableModel();
 		Object [] tupla = new Object[4];
 		
@@ -55,32 +46,19 @@ public class PanelOfertas extends JPanel {
 		modelo.addColumn("Puesto");
 		modelo.addColumn("Fecha fin");
 		
-		tiposAyudas.clear();
-		beneficiarios.clear();
+		Empresa_OfertadoraDB eodb = new Empresa_OfertadoraDB();
 		
-		/*ArrayList<TipoAyuda> tiposAyudas2 = tabd.getList();
-		ArrayList<Beneficiario> beneficiarios2 = bdb.getBeneficiarios("");
-		
-		//ordenamos los tipos de ayudas por su id para poder hacer la operacion de tupla[1]
-		for (int i=0; i<tiposAyudas2.size(); i++){
-			tiposAyudas.put(tiposAyudas2.get(i).getId(), tiposAyudas2.get(i));
-		}
-		//Ordenamos los beneficiarios por su id para tupla[2]
-		for (int i=0; i<beneficiarios2.size(); i++){
-			beneficiarios.put(beneficiarios2.get(i).getId(), beneficiarios2.get(i));
-		}
-		
-		for(int i=0;i<lista_ayudas.size();i++){
-			tupla[0]= lista_ayudas.get(i).getDate().toString();//.get(i).getfecha
-			tupla[1]= ((TipoAyuda) tiposAyudas.get(lista_ayudas.get(i).getIdTipoAyuda())).getNombre();//.get(i).getcantidad
-			tupla[2]= ((Beneficiario) beneficiarios.get(lista_ayudas.get(i).getIdBeneficiario())).getNombre();//.get(i).getDonante
-			tupla[3]= lista_ayudas.get(i).getCantidadMonetaria();//.get(i).getEstado
-			tupla[4]= lista_ayudas.get(i).getObservaciones();//.get(i).getEstado
+		for(int i=0;i<listaOfertas.size();i++){
+			tupla[0]= listaOfertas.get(i).getTitulo();
+			tupla[1]= eodb.getEmpresaOfertadora(listaOfertas.get(i).getId_empresa()).toString();
+			tupla[2]= listaOfertas.get(i).getPuesto();
+			tupla[3]= listaOfertas.get(i).getFechafin().toLocaleString();
 
 			modelo.addRow(tupla);
-		}*/
-		
-		this.tablaOfertas.setModel(modelo);
+		}
+
+		tabla_modelo = modelo;
+		this.tablaOfertas.setModel(tabla_modelo);
 	}
 	public PanelOfertas(VentanaPrincipal p, PanelInicio pIni) {
 		ini=pIni;
@@ -93,12 +71,9 @@ public class PanelOfertas extends JPanel {
 		JButton button_buscar = new JButton("Buscar");
 		button_buscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				//Obtenemos lista de ayudas
-				/*listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas(busqueda_txt.getText());
-
-				ini.panel_ayudas.fillTable(listaAyudas);
-				ini.setPanelOnTab(ini.panel_ayudas, PanelInicio.AYUDAS);*/
+				listaOfertas = padre.getControladorOfertas().ListarOfertas(busqueda_txt.getText());
+				fillTable(listaOfertas);
+				ini.setPanelOnTab(ini.panel_ofertas, PanelInicio.OFERTAS);
 			}
 		});
 		button_buscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -107,10 +82,7 @@ public class PanelOfertas extends JPanel {
 		button_ver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_ver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				ini.editar_ayuda.setParametros(listaAyudas.get(tablaOfertas.getSelectedRow()), beneficiarios.get(listaAyudas.get(tablaOfertas.getSelectedRow()).getIdBeneficiario()));
-				ini.setPanelOnTab(ini.editar_ayuda, PanelInicio.AYUDAS);
+				ini.setPanelOnTab(new AnadirEditarOferta(padre,ini,listaOfertas.get(tablaOfertas.getSelectedRow())), PanelInicio.OFERTAS);
 				
 			}
 		});
@@ -119,11 +91,7 @@ public class PanelOfertas extends JPanel {
 		button_add.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				ini.setPanelOnTab(ini.anadir_oferta, PanelInicio.OFERTAS);
-				/*ini.conceder_ayuda.fillTable(bdb.getBeneficiarios(""));
-				ini.setPanelOnTab(ini.conceder_ayuda, PanelInicio.AYUDAS);*/
-				
+				ini.setPanelOnTab(new AnadirEditarOferta(padre,ini,null), PanelInicio.OFERTAS);
 			}
 		});
 		
@@ -180,7 +148,7 @@ public class PanelOfertas extends JPanel {
 		);
 		
 		if(busqueda_txt.getText().isEmpty())
-			this.fillTable(padre.getControladorAyudas().listarAyudasConcedidas(""));
+			this.fillTable(padre.getControladorOfertas().ListarOfertas(""));
 		
 		setLayout(groupLayout);
 		
