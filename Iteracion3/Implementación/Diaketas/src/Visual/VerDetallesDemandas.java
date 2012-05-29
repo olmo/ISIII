@@ -57,7 +57,7 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 				//Obtenemos lista de ofertas
 				/////////////////////////listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas(textFieldOfertas.getText());
 				//
-				ini.anadir_demandas.fillTableSolicitantes(/***********/);
+				//+++++ini.anadir_demandas.fillTableSolicitantes(/***********/);
 			}
 		});
 		buttonOfertas.setFont(new Font("Tahoma", Font.PLAIN, 14));
