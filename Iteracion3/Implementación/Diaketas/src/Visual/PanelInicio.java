@@ -168,7 +168,7 @@ public class PanelInicio extends JPanel {
 		panel_GestionBajas = new PanelGestionBajas(p, this);
 		
 		panel_ofertas = new PanelOfertas(p, this);
-		anadir_oferta = new AnadirOferta(p, this);
+		anadir_oferta = new AnadirOferta(p, this, null);
 		gestion_empresa = new GestionEmpresa(p, this);
 		
 

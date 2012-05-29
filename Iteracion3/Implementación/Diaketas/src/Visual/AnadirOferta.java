@@ -2,14 +2,17 @@ package Visual;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Timestamp;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import GestionEmpresaOfertadora.Empresa_Ofertadora;
+import GestionOfertas.Oferta;
 
 public class AnadirOferta extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -21,13 +24,20 @@ public class AnadirOferta extends JPanel{
 	private JTextField txtPuesto;
 	private JTextField txtVacantes;
 	private JTextField txtEmail;
-	private JTextField txtDireccion;
+	private JTextField txtDuracion;
 	private JTextField txtLocalidad;
 	private JTextField txtProvincia;
+	private JComboBox cbEmpresa;
+	private JTextArea textArea;
+	private JComboBox cbTipoContrato;
+	private JComboBox cbHorario;
 	
-	public AnadirOferta(VentanaPrincipal p, PanelInicio pIni) {
+	Oferta oferta;
+	
+	public AnadirOferta(VentanaPrincipal p, PanelInicio pIni, Oferta o) {
 		this.ini = pIni;
 		padre = p;
+		oferta = o;
 		setSize(PanelInicio.tamanoPaneles);
 		setLayout(null);
 		
@@ -51,7 +61,7 @@ public class AnadirOferta extends JPanel{
 		add(txtFecha);
 		txtFecha.setColumns(10);
 		
-		JComboBox cbEmpresa = new JComboBox();
+		cbEmpresa = new JComboBox();
 		cbEmpresa.setBounds(297, 196, 180, 20);
 		add(cbEmpresa);
 		
@@ -70,14 +80,14 @@ public class AnadirOferta extends JPanel{
 		add(txtEmail);
 		txtEmail.setColumns(10);
 		
-		JComboBox cbTipoContrato = new JComboBox();
+		cbTipoContrato = new JComboBox();
 		cbTipoContrato.setBounds(677, 139, 180, 20);
 		add(cbTipoContrato);
 		
-		txtDireccion = new JTextField();
-		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(677, 192, 180, 20);
-		add(txtDireccion);
+		txtDuracion = new JTextField();
+		txtDuracion.setColumns(10);
+		txtDuracion.setBounds(677, 192, 180, 20);
+		add(txtDuracion);
 		
 		txtLocalidad = new JTextField();
 		txtLocalidad.setColumns(10);
@@ -89,11 +99,11 @@ public class AnadirOferta extends JPanel{
 		txtProvincia.setBounds(677, 308, 180, 20);
 		add(txtProvincia);
 		
-		JComboBox cbHorario = new JComboBox();
+		cbHorario = new JComboBox();
 		cbHorario.setBounds(677, 366, 180, 20);
 		add(cbHorario);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setBounds(297, 434, 560, 105);
 		add(textArea);
 		
@@ -152,6 +162,17 @@ public class AnadirOferta extends JPanel{
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(578, 557, 89, 23);
 		add(btnGuardar);
+		
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(oferta==null)
+					padre.getControladorOfertas().RegistrarOferta(((Empresa_Ofertadora)cbEmpresa.getSelectedItem()).getId(), txtTitulo.getText(), textArea.getText(), txtPuesto.getText(), Integer.valueOf(txtVacantes.getText()), (String)cbTipoContrato.getSelectedItem(), Integer.valueOf(txtDuracion.getText()), Timestamp.valueOf(txtFecha.getText()), txtLocalidad.getText(), txtProvincia.getText(), (String)cbHorario.getSelectedItem(), txtEmail.getText());
+				else
+					padre.getControladorOfertas().ModificarOferta(oferta.getId(), ((Empresa_Ofertadora)cbEmpresa.getSelectedItem()).getId(), txtTitulo.getText(), textArea.getText(), txtPuesto.getText(), Integer.valueOf(txtVacantes.getText()), (String)cbTipoContrato.getSelectedItem(), Integer.valueOf(txtDuracion.getText()), Timestamp.valueOf(txtFecha.getText()), txtLocalidad.getText(), txtProvincia.getText(), (String)cbHorario.getSelectedItem(), txtEmail.getText());
+				
+				ini.setPanelOnTab(new PanelOfertas(padre,ini), PanelInicio.OFERTAS);
+			}
+		});
 		
 		
 		btnVolver.addActionListener(new ActionListener() {
