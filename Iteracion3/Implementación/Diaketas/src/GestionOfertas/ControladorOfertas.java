@@ -40,6 +40,27 @@ public class ControladorOfertas {
 	public void modificarSolicitante(Solicitante sol) {
 		solicitanteDB.modificar(sol);
 	}
+	
+	public Solicitante modificarSolicitante(int id, String dni, String nombre,
+			String apellido1, String apellido2, String fNacimiento,
+			int telefono, String lugarNacimiento, String domicilio, int cp,
+			boolean estado, String email, String estudios, String experiencia,
+			String curriculum, tipo_permiso per_conducir, boolean vehiculo,
+			tipo_disp disponibilidad, int incorpora) {
+
+		Solicitante unSolicitante = new Solicitante();
+
+		unSolicitante.setDatos(dni, nombre, apellido1, apellido2, fNacimiento,
+				telefono, lugarNacimiento, domicilio, cp, estado, email,
+				estudios, experiencia, curriculum, per_conducir, vehiculo,
+				disponibilidad, incorpora);
+		
+		unSolicitante.setId(id);
+		
+		solicitanteDB.modificar(unSolicitante);
+		
+		return unSolicitante;
+	}
 
 	public Solicitante consultarSolicitante(int id_solicitante) {
 		Solicitante unSolicitante = new Solicitante();
@@ -47,11 +68,11 @@ public class ControladorOfertas {
 		return unSolicitante;
 	}
 
-	public ArrayList<Solicitante> listarSolicitantes() {
-		ArrayList<Solicitante> lista = new ArrayList<Solicitante>();
-		// ToDo
-		return lista;
+	public ArrayList<Solicitante> listarSolicitantes(String filtro) {
+		return solicitanteDB.listarSolicitantes(filtro);
 	}
+	
+	
 
 	public boolean apuntarOferta(int id_oferta, int id_solicitante) {
 		// ToDo
@@ -66,25 +87,6 @@ public class ControladorOfertas {
 
 	public boolean borrarSolicitanteDeOferta(int id_oferta, int id_solicitante) {
 		return true;
-	}
-
-	public Solicitante modificarSolicitante(String dni, String nombre,
-			String apellido1, String apellido2, String fNacimiento,
-			int telefono, String lugarNacimiento, String domicilio, int cp,
-			boolean estado, String email, String estudios, String experiencia,
-			String curriculum, tipo_permiso per_conducir, boolean vehiculo,
-			tipo_disp disponibilidad, int incorpora) {
-
-		Solicitante unSolicitante = new Solicitante();
-
-		unSolicitante.setDatos(dni, nombre, apellido1, apellido2, fNacimiento,
-				telefono, lugarNacimiento, domicilio, cp, estado, email,
-				estudios, experiencia, curriculum, per_conducir, vehiculo,
-				disponibilidad, incorpora);
-		
-		solicitanteDB.modificar(unSolicitante);
-		
-		return unSolicitante;
 	}
 
 	/********************************************************************************************/
