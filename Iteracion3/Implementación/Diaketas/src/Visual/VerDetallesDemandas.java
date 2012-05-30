@@ -74,17 +74,10 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 		JButton buttonOfertas = new JButton("Buscar");
 		buttonOfertas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
 				lista_solicitantes = padre.getControladorOfertas().listarSolicitantes(textFieldOfertas.getText());
 				//System.out.println("buscar: "+ lista_solicitantes.size());
 				fillTableSolicitantes(lista_solicitantes);
 				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
-=======
-				//Obtenemos lista de ofertas
-				/////////////////////////listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas(textFieldOfertas.getText());
-				//
-				//+++++ini.anadir_demandas.fillTableSolicitantes(/***********/);
->>>>>>> parent of bdb3167... Consultar datos socio desde Movil terminado
 			}
 		});
 		buttonOfertas.setFont(new Font("Tahoma", Font.PLAIN, 14));

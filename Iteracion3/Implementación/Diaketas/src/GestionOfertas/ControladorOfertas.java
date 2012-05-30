@@ -72,21 +72,16 @@ public class ControladorOfertas {
 		return solicitanteDB.listarSolicitantes(filtro);
 	}
 	
-	
-
 	public boolean apuntarOferta(int id_oferta, int id_solicitante) {
-		// ToDo
-		return true;
+		return solicitanteDB.registrarSolicitud(id_oferta, id_solicitante);
 	}
 
 	public ArrayList<Oferta> listarOfertasDeSolicitante(int id_solicitante) {
-		ArrayList<Oferta> lista = new ArrayList<Oferta>();
-		// ToDo
-		return lista;
+		return solicitanteDB.listarOfertasDeSolicitante(id_solicitante);
 	}
 
 	public boolean borrarSolicitanteDeOferta(int id_oferta, int id_solicitante) {
-		return true;
+		return solicitanteDB.borrarSolicitanteOferta(id_oferta, id_solicitante);
 	}
 
 	/********************************************************************************************/
