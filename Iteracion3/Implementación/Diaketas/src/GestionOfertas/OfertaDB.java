@@ -2,10 +2,15 @@ package GestionOfertas;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Basedatos.GestorJDBC;
-import GestionEmpresaOfertadora.Empresa_Ofertadora;
 
 public class OfertaDB {
 	private GestorJDBC gestor = GestorJDBC.getInstance();
@@ -69,8 +74,26 @@ public class OfertaDB {
 		
 		if(filtro==null || filtro.equals(""))
 			rs = gestor.RealizarConsulta("SELECT id, id_empresa, titulo, descripcion, puesto, vacantes, tipo_contrato, duracion, fechafin, localidad, provincia, horario, observaciones FROM Ofertas");
+		else if(Pattern.matches("^\\d{2}/\\d{2}/\\d{4}$", filtro)){	// Si el filtrado es por fecha
+			Pattern pattern = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
+			Matcher matcher = pattern.matcher(filtro);
+			
+			String fecha = matcher.group();
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date date = null;
+			try {
+				date = sdf.parse(fecha);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			Timestamp timestamp = new Timestamp(date.getTime());
+			
+			rs = gestor.RealizarConsulta("SELECT id, id_empresa, titulo, descripcion, puesto, vacantes, tipo_contrato, duracion, fechafin, localidad, provincia, horario, observaciones FROM Ofertas WHERE fechafin='"+timestamp+"'");
+		}
 		else
-			rs = gestor.RealizarConsulta("SELECT id, id_empresa, titulo, descripcion, puesto, vacantes, tipo_contrato, duracion, fechafin, localidad, provincia, horario, observaciones FROM Ofertas");
+			rs = gestor.RealizarConsulta("SELECT Ofertas.id, id_empresa, titulo, descripcion, puesto, vacantes, tipo_contrato, duracion, fechafin, Ofertas.localidad, Ofertas.provincia, horario, observaciones, nombre FROM Ofertas,Empresas_ofertadoras "
+					+"WHERE titulo LIKE '%"+filtro+"%' OR puesto LIKE '%"+filtro+"%' OR nombre LIKE '%"+filtro+"%' OR provincia LIKE '%"+filtro+"%'");
 		
 		
 		try {
