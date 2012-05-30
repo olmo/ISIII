@@ -74,8 +74,8 @@ public class HomeMovil extends JPanel {
 					idSesion = padre.getControladorMovil().introduceDatosInicioSesion(textField.getText(),passwordField.getText());
 					if( idSesion != -1){
 						PanelInicioMovil panIni = new PanelInicioMovil(padre,textField.getText());
-						JOptionPane.showMessageDialog(null, "ID "+idSesion);
 						padre.setIDsesion(idSesion);
+						padre.setContrasena(passwordField.getText());
 						padre.getContentPane().removeAll();
 						padre.getContentPane().validate();
 						padre.getContentPane().add(panIni);

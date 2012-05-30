@@ -1,5 +1,6 @@
 package Visual;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -19,15 +20,18 @@ public class DatosUsuarioMovil extends JPanel {
 	private static final long serialVersionUID = 2268770203627124208L;
 	private JTextField dniField;
 	private JTextField nombreField;
-	private JTextField apellidosField;
+	private JTextField apellido1Field;
 	private JTextField fnField;
 	private JTextField telField;
 	private JTextField lnField;
 	private JTextField dirField;
 	private JTextField cpField;
 	private JTextField emailField;
+	private Choice frecChoice;
+
 	PanelInicioMovil ini;
 	VentanaPrincipalMovil padre;
+	private JTextField apellido2Field;
 
 	/**
 	 * Create the panel.
@@ -44,36 +48,36 @@ public class DatosUsuarioMovil extends JPanel {
 		nombreLabel.setBounds(40, 119, 46, 14);
 		add(nombreLabel);
 		
-		JLabel apellidosLabel = new JLabel("Apellidos:");
-		apellidosLabel.setBounds(40, 149, 46, 14);
-		add(apellidosLabel);
+		JLabel apellido1Label = new JLabel("Primer apellido:");
+		apellido1Label.setBounds(40, 149, 97, 14);
+		add(apellido1Label);
 		
 		JLabel fechNaciLabel = new JLabel("Fecha nacimiento:");
-		fechNaciLabel.setBounds(40, 179, 97, 14);
+		fechNaciLabel.setBounds(40, 210, 97, 14);
 		add(fechNaciLabel);
 		
 		JLabel teleLabel = new JLabel("Tel\u00E9fono:");
-		teleLabel.setBounds(40, 209, 46, 14);
+		teleLabel.setBounds(40, 241, 46, 14);
 		add(teleLabel);
 		
 		JLabel lugNaciLabel = new JLabel("Lugar nacimiento:");
-		lugNaciLabel.setBounds(40, 239, 97, 14);
+		lugNaciLabel.setBounds(40, 272, 97, 14);
 		add(lugNaciLabel);
 		
 		JLabel direLabel = new JLabel("Direcci\u00F3n:");
-		direLabel.setBounds(40, 269, 97, 14);
+		direLabel.setBounds(40, 305, 97, 14);
 		add(direLabel);
 		
 		JLabel cpLabel = new JLabel("C\u00F3digo postal:");
-		cpLabel.setBounds(40, 299, 97, 14);
+		cpLabel.setBounds(40, 336, 97, 14);
 		add(cpLabel);
 		
 		JLabel emailLabel = new JLabel("Email:");
-		emailLabel.setBounds(40, 329, 46, 14);
+		emailLabel.setBounds(40, 367, 46, 14);
 		add(emailLabel);
 		
 		JLabel frecLabel = new JLabel("Frecuencia:");
-		frecLabel.setBounds(40, 362, 82, 14);
+		frecLabel.setBounds(40, 392, 82, 14);
 		add(frecLabel);
 		
 		dniField = new JTextField();
@@ -86,43 +90,42 @@ public class DatosUsuarioMovil extends JPanel {
 		nombreField.setBounds(147, 116, 163, 20);
 		add(nombreField);
 		
-		apellidosField = new JTextField();
-		apellidosField.setColumns(10);
-		apellidosField.setBounds(147, 146, 163, 20);
-		add(apellidosField);
+		apellido1Field = new JTextField();
+		apellido1Field.setColumns(10);
+		apellido1Field.setBounds(147, 146, 163, 20);
+		add(apellido1Field);
 		
 		fnField = new JTextField();
 		fnField.setColumns(10);
-		fnField.setBounds(147, 176, 163, 20);
+		fnField.setBounds(147, 207, 163, 20);
 		add(fnField);
 		
 		telField = new JTextField();
 		telField.setColumns(10);
-		telField.setBounds(147, 206, 163, 20);
+		telField.setBounds(147, 238, 163, 20);
 		add(telField);
 		
 		lnField = new JTextField();
 		lnField.setColumns(10);
-		lnField.setBounds(147, 236, 163, 20);
+		lnField.setBounds(147, 269, 163, 20);
 		add(lnField);
 		
 		dirField = new JTextField();
 		dirField.setColumns(10);
-		dirField.setBounds(147, 266, 163, 20);
+		dirField.setBounds(147, 302, 163, 20);
 		add(dirField);
 		
 		cpField = new JTextField();
 		cpField.setColumns(10);
-		cpField.setBounds(147, 296, 163, 20);
+		cpField.setBounds(147, 333, 163, 20);
 		add(cpField);
 		
 		emailField = new JTextField();
 		emailField.setColumns(10);
-		emailField.setBounds(147, 326, 163, 20);
+		emailField.setBounds(147, 364, 163, 20);
 		add(emailField);
-		
-		Choice frecChoice = new Choice();
-		frecChoice.setBounds(147, 356, 82, 20);
+		frecChoice = new Choice();
+		frecChoice.setBounds(147, 390, 82, 20);
 		add(frecChoice);
 		
 		JButton volverBoton = new JButton("Volver");
@@ -141,22 +144,50 @@ public class DatosUsuarioMovil extends JPanel {
 		JButton guardarBoton = new JButton("Guardar");
 		guardarBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				int opcion = JOptionPane.showConfirmDialog(null,"¿Desea guardar la información actual?", "¿Desea guardar la información actual?", JOptionPane.YES_NO_OPTION);
+				if(opcion == 0){
+					padre.getControladorMovil().modificarDatosSocio(padre.getIDsesion().intValue(), dniField.getText(), nombreField.getText(), 
+					apellido1Field.getText(), apellido2Field.getText(), fnField.getText(), Integer.parseInt(telField.getText()), lnField.getText(), 
+					dirField.getText(), Integer.parseInt(cpField.getText()), emailField.getText(), Integer.parseInt(frecChoice.getSelectedItem()), padre.getusuario(),padre.getContrasena());
+				}
 			}
 		});
 		guardarBoton.setBounds(192, 430, 118, 65);
 		add(guardarBoton);
+		
+		apellido2Field = new JTextField();
+		apellido2Field.setColumns(10);
+		apellido2Field.setBounds(147, 176, 163, 20);
+		add(apellido2Field);
+		
+		JLabel apellido2Label = new JLabel("Segundo apellido:");
+		apellido2Label.setBounds(40, 179, 97, 14);
+		add(apellido2Label);
 
 	}
 	
 	public void rellenaVista(Socio s){
+		Integer peri=0;
 		dniField.setText(s.getDni());
 		nombreField.setText(s.getNombre());
-		apellidosField.setText(s.getApellido1()+" "+s.getApellido2());
+		apellido1Field.setText(s.getApellido1());
+		apellido2Field.setText(s.getApellido2());
 		fnField.setText(s.getfNacimiento());
 		telField.setText(s.getTelefono().toString());
 		lnField.setText(s.getLugarNacimiento());
 		dirField.setText(s.getDomicilio());
 		cpField.setText(s.getCp().toString());
 		emailField.setText(s.getemail());
+		peri = s.getPeriocidad();
+		frecChoice.add(peri.toString());
+		peri +=1;
+		frecChoice.add(peri.toString());
+		peri +=1;
+		frecChoice.add(peri.toString());
+		peri +=1;
+		frecChoice.add(peri.toString());
+		peri +=1;
+		frecChoice.add(peri.toString());
 	}
 }

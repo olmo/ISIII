@@ -23,6 +23,7 @@ public class VentanaPrincipalMovil extends JFrame {
 
 	private ControladorMovil controlador_movil = new ControladorMovil();
 	private String socio;
+	private String contrasena;
 	private HomeMovil homeMovil;
 	private Integer idSesion;
 
@@ -76,6 +77,13 @@ public class VentanaPrincipalMovil extends JFrame {
 		return socio;
 	}
 	
+	public void setContrasena(String pass){
+		contrasena = pass;
+	}
+	
+	public String getContrasena(){
+		return contrasena;
+	}
 	public Integer getIDsesion(){
 		return idSesion;
 	}

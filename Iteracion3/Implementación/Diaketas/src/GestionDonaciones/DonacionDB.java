@@ -51,6 +51,41 @@ public class DonacionDB {
 		return valido;
 	}
 	
+	public ArrayList<Donacion> getListPorSocio(Integer id){
+		ArrayList<Donacion> lista = new ArrayList<Donacion>();
+		ResultSet rs;
+		JOptionPane.showMessageDialog(null,"SELECT * from ObjetosMonitorizables, Donantes, Donaciones " +
+				"WHERE ObjetosMonitorizables.id=Donaciones.id_objetomonitorizable AND Donantes.id_persona=Donaciones.id_donante AND Donantes.id_persona="+id);
+		Estado miestado = null;
+		
+		try{
+			gestor.conectar();
+			rs = gestor.RealizarConsulta("SELECT fecha,cantidad,estado from ObjetosMonitorizables, Donantes, Donaciones " +
+					"WHERE ObjetosMonitorizables.id=Donaciones.id_objetomonitorizable AND Donantes.id_persona=Donaciones.id_donante AND Donantes.id_persona="+id);
+			String auxestado="";
+			while(rs.next()){
+				Donacion donacion = new Donacion();
+				
+				donacion.setDate(rs.getTimestamp("fecha"));
+				auxestado = rs.getObject("estado").toString();
+				donacion.setCantidad((Float)rs.getObject("cantidad"));
+				if(auxestado.equals("Pagado"))
+					miestado = Estado.Pagado;
+				if (auxestado.equals("Pendiente"))
+					miestado = Estado.Pendiente;
+				if (auxestado.equals("Cancelado"))
+					miestado = Estado.Cancelado;
+				donacion.setEstado(miestado);		
+				lista.add(donacion);
+			}	
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, "Error al listar las donaciones donacionDB: "+e.getMessage());
+			return null;
+		}
+		
+		
+		return lista;
+	}
 	
 	ArrayList<Donacion> getList(String filtro){
 		ArrayList<Donacion> lista = new ArrayList<Donacion>();
