@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import Basedatos.GestorJDBC;
 import GestionOfertas.Oferta;
+import GestionOfertas.OfertaDB;
 
 /**
  * Hay que probar: add, borrar y modificar. El resto estan sin hacer.
@@ -111,7 +112,6 @@ public class SolicitanteDB {
 				+ (sol.getEstado() ? "1" : "0") + ",email='" + sol.getemail()
 				+ "' WHERE id =" + sol.getId());
 
-
 		if (modificarPersonas) {
 			modificarSolicitante = gestor
 					.Modificar("UPDATE Solicitantes SET estudios='"
@@ -126,7 +126,6 @@ public class SolicitanteDB {
 
 		}
 
-
 		gestor.desconectar();
 
 		if (modificarPersonas && modificarSolicitante)
@@ -135,7 +134,6 @@ public class SolicitanteDB {
 			return false;
 	}
 
-	// probar
 	public Solicitante consultarSolicitante(int id_solicitante) {
 		Solicitante unSolicitante = new Solicitante();
 
@@ -211,9 +209,10 @@ public class SolicitanteDB {
 							+ filtro
 							+ "%' OR estudios LIKE '%"
 							+ filtro
-							+ "%' OR disponibilidad_horaria LIKE '%" + filtro + "%')");
+							+ "%' OR disponibilidad_horaria LIKE '%"
+							+ filtro
+							+ "%')");
 
-	
 		try {
 			while (rs.next()) {
 				Solicitante unSolicitante = new Solicitante();
@@ -266,13 +265,40 @@ public class SolicitanteDB {
 	}
 
 	public boolean registrarSolicitud(int id_oferta, int id_solicitante) {
-		// ToDo
-		return false;
+		boolean exito = false;
+		gestor.conectar();
+		exito = gestor
+				.Modificar("INSERT INTO Demandas (id_solicitante, id_oferta) VALUES('"
+						+ id_solicitante + "','" + id_oferta + "')");
+		gestor.desconectar();
+		return exito;
 	}
 
 	public ArrayList<Oferta> listarOfertasDeSolicitante(int id_solicitante) {
 		ArrayList<Oferta> lista = new ArrayList<Oferta>();
-		// ToDo
+		ResultSet rs = null;
+
+		gestor.conectar();
+
+		rs = gestor
+				.RealizarConsulta("SELECT * FROM `demandas` WHERE `id_solicitante` = "
+						+ id_solicitante);
+
+		try {
+			while (rs.next()) {
+				OfertaDB ofertaDB = new OfertaDB();
+				lista.add(ofertaDB.getOferta((Integer) rs.getObject("id_oferta")));
+			}
+
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(
+					null,
+					"Error obtener las ofertas del solicitante\n"
+							+ e.getMessage());
+		}
+
+		gestor.desconectar();
+
 		return lista;
 	}
 
