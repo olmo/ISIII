@@ -74,10 +74,11 @@ public class OfertaDB {
 		
 		if(filtro==null || filtro.equals(""))
 			rs = gestor.RealizarConsulta("SELECT id, id_empresa, titulo, descripcion, puesto, vacantes, tipo_contrato, duracion, fechafin, localidad, provincia, horario, observaciones FROM Ofertas");
-		else if(Pattern.matches("^\\d{2}/\\d{2}/\\d{4}$", filtro)){	// Si el filtrado es por fecha
-			Pattern pattern = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
+		else if(Pattern.matches("[0-9][0-9]?/[0-9][0-9]?/[0-9][0-9][0-9][0-9]", filtro)){	// Si el filtrado es por fecha
+			Pattern pattern = Pattern.compile("[0-9][0-9]?/[0-9][0-9]?/[0-9][0-9][0-9][0-9]");
 			Matcher matcher = pattern.matcher(filtro);
 			
+			matcher.find();
 			String fecha = matcher.group();
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -93,7 +94,7 @@ public class OfertaDB {
 		}
 		else
 			rs = gestor.RealizarConsulta("SELECT Ofertas.id, id_empresa, titulo, descripcion, puesto, vacantes, tipo_contrato, duracion, fechafin, Ofertas.localidad, Ofertas.provincia, horario, observaciones, nombre FROM Ofertas,Empresas_ofertadoras "
-					+"WHERE titulo LIKE '%"+filtro+"%' OR puesto LIKE '%"+filtro+"%' OR nombre LIKE '%"+filtro+"%' OR provincia LIKE '%"+filtro+"%'");
+					+"WHERE id_empresa=Empresas_ofertadoras.id AND (titulo LIKE '%"+filtro+"%' OR puesto LIKE '%"+filtro+"%' OR nombre LIKE '%"+filtro+"%' OR provincia LIKE '%"+filtro+"%')");
 		
 		
 		try {
