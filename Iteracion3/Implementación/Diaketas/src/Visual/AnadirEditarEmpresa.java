@@ -7,6 +7,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -83,6 +84,20 @@ public class AnadirEditarEmpresa extends JPanel {
 		});
 		
 		JButton btnBaja = new JButton("Dar Baja");
+		btnBaja.setVisible(false);
+		if(empresa!=null){
+			btnBaja.setVisible(true);
+			
+			btnBaja.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere borrar la empresa?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
+						padre.getControladorOfertas().BorrarEmpresaOfertadora(empresa);
+						
+						ini.setPanelOnTab(new GestionEmpresa(padre,ini), PanelInicio.OFERTAS);
+					}
+				}
+			});
+		}
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {

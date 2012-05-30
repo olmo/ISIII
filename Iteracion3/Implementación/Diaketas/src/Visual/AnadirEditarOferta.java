@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -194,8 +195,24 @@ public class AnadirEditarOferta extends JPanel{
 		add(btnVolver);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(578, 557, 89, 23);
+		btnGuardar.setBounds(639, 557, 89, 23);
 		add(btnGuardar);
+		
+		if(oferta!=null){
+			JButton btnBaja = new JButton("Dar Baja");
+			btnBaja.setBounds(540, 557, 89, 23);
+			add(btnBaja);
+			
+			btnBaja.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que quiere borrar la oferta?", "Confirmacion de seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
+						padre.getControladorOfertas().BorrarOferta(oferta);
+						
+						ini.setPanelOnTab(new PanelOfertas(padre,ini), PanelInicio.OFERTAS);
+					}
+				}
+			});
+		}
 		
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
