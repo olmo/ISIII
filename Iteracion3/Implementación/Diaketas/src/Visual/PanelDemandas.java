@@ -16,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
 
 import GestionOfertas.Oferta;
 import GestionSolicitante.Solicitante;
+import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
 public class PanelDemandas extends javax.swing.JPanel {
@@ -99,12 +101,13 @@ public class PanelDemandas extends javax.swing.JPanel {
 			}
 		});
 
-		JButton btnVerDetalles = new JButton("Ver Detalles Ofertas");
+		JButton btnVerDetalles = new JButton("Ver Solicitantes de Ofertas");
 		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int idOferta;
 				if( tablaDemandas.getSelectedRow() != -1 ){
-					int idOferta = hashFilaOferta.get(tablaDemandas.getSelectedRow());
+					idOferta = hashFilaOferta.get(tablaDemandas.getSelectedRow());
 					ini.verDetallesDemandas.setIdOferta(idOferta);
 					ini.verDetallesDemandas.refrescar();
 					ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
@@ -113,94 +116,51 @@ public class PanelDemandas extends javax.swing.JPanel {
 		});
 
 		scrollPane = new JScrollPane(tablaDemandas);
+		
+		JLabel lblSolicitante = new JLabel("Solicitante:");
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout
-				.setHorizontalGroup(groupLayout
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addGap(14)
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				textField_1,
-																				GroupLayout.PREFERRED_SIZE,
-																				362,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addGap(5)
-																		.addComponent(
-																				button_5))
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				scrollPane,
-																				GroupLayout.PREFERRED_SIZE,
-																				886,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addGap(34)
-																		.addGroup(
-																				groupLayout
-																						.createParallelGroup(
-																								Alignment.LEADING,
-																								false)
-																						.addComponent(
-																								btnVerDetalles,
-																								Alignment.TRAILING,
-																								GroupLayout.DEFAULT_SIZE,
-																								GroupLayout.DEFAULT_SIZE,
-																								Short.MAX_VALUE)
-																						.addComponent(
-																								btnAadirDemanda,
-																								Alignment.TRAILING,
-																								GroupLayout.DEFAULT_SIZE,
-																								GroupLayout.DEFAULT_SIZE,
-																								Short.MAX_VALUE)
-																						.addComponent(
-																								btnGestinD))))
-										.addGap(23)));
-		groupLayout
-				.setVerticalGroup(groupLayout
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addGap(5)
-																		.addComponent(
-																				button_5))
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addGap(6)
-																		.addComponent(
-																				textField_1,
-																				GroupLayout.PREFERRED_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.PREFERRED_SIZE)))
-										.addGap(43)
-										.addComponent(scrollPane,
-												GroupLayout.DEFAULT_SIZE, 577,
-												Short.MAX_VALUE))
-						.addGroup(
-								groupLayout.createSequentialGroup().addGap(201)
-										.addComponent(btnAadirDemanda)
-										.addGap(28)
-										.addComponent(btnVerDetalles)
-										.addGap(34).addComponent(btnGestinD)
-										.addContainerGap(312, Short.MAX_VALUE)));
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(14)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 886, GroupLayout.PREFERRED_SIZE)
+							.addGap(34)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnVerDetalles, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnAadirDemanda, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnGestinD, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(21)
+							.addComponent(lblSolicitante)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
+							.addGap(5)
+							.addComponent(button_5)))
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(button_5)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(1)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblSolicitante))))
+					.addGap(48)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(201)
+					.addComponent(btnAadirDemanda)
+					.addGap(28)
+					.addComponent(btnVerDetalles)
+					.addGap(34)
+					.addComponent(btnGestinD)
+					.addContainerGap(312, Short.MAX_VALUE))
+		);
 
 		if (textField_1.getText().isEmpty())
 			this.fillTable(padre.getControladorOfertas().listarSolicitantes(""));

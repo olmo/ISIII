@@ -83,6 +83,8 @@ public class ControladorOfertas {
 	public boolean borrarSolicitanteDeOferta(int id_oferta, int id_solicitante) {
 		return solicitanteDB.borrarSolicitanteOferta(id_oferta, id_solicitante);
 	}
+	
+	
 
 	/********************************************************************************************/
 
