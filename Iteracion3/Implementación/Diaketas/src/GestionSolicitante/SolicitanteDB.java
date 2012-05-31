@@ -306,4 +306,49 @@ public class SolicitanteDB {
 		// ToDo
 		return false;
 	}
+	
+	public ArrayList<Solicitante> getSolicitantes(int id_oferta) {
+		ArrayList<Solicitante> lista = new ArrayList<Solicitante>();
+		ResultSet rs = null;
+
+		gestor.conectar();
+
+		rs = gestor.RealizarConsulta("SELECT solicitantes.id,estudios,experiencia,curriculum,permiso_conducir,vehiculo_propio,disponibilidad_horaria,tiempo_incorporacion"+
+		", dni, nombre, apellido1, apellido2, fnac, telefono, lugarnac, domicilio, cp, estado, email "+
+		"FROM solicitantes, demandas, personas WHERE id_oferta = "+ id_oferta+" AND id_solicitante=solicitantes.id AND personas.id=solicitantes.id");
+
+		try {
+			while(rs.next()){
+				Solicitante solicitante = new Solicitante();
+				solicitante.setId(rs.getInt(1));
+				solicitante.setEstudios(rs.getString(2));
+				solicitante.setExperiencia(rs.getString(3));
+				solicitante.setCurriculum(rs.getString(4));
+				solicitante.setPerConducir(solicitante.StringToTipoPermiso(rs.getString(5)));
+				solicitante.setVehiculo(rs.getBoolean(6));
+				solicitante.setDisponibilidad(solicitante.StringToDisponibilidad(rs.getString(7)));
+				solicitante.setIncorpora(rs.getInt(8));
+				
+				solicitante.setDni(rs.getString(9));
+				solicitante.setNombre(rs.getString(10));
+				solicitante.setApellido1(rs.getString(11));
+				solicitante.setApellido2(rs.getString(12));
+				solicitante.setfNacimiento(rs.getString(13));
+				solicitante.setTelefono(rs.getInt(14));
+				solicitante.setLugarNacimiento(rs.getString(15));
+				solicitante.setDomicilio(rs.getString(16));
+				solicitante.setCp(rs.getInt(17));
+				solicitante.setEstado(rs.getBoolean(18));
+				solicitante.setemail(rs.getString(19));
+				
+				lista.add(solicitante);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		gestor.desconectar();
+
+		return lista;
+	}
 }
