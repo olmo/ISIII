@@ -15,12 +15,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import GestionAyudas.Ayuda;
-import GestionEmpresaOfertadora.Empresa_Ofertadora;
-import GestionOfertas.ControladorOfertas;
 import GestionSolicitante.Solicitante;
-
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
 public class GestionSolicitante extends JPanel {

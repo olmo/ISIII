@@ -1,6 +1,5 @@
 package GestionSolicitante;
 
-import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

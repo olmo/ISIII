@@ -9,8 +9,6 @@
 
 package Basedatos;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,30 +26,8 @@ final public class GestorJDBC {
 	private ResultSet rs;
 	private PreparedStatement st;
 
-	private static String DB;
-	private static String usuario;
-	private static String contrasena;
-	private static String direccionDB;
-
 	private synchronized static void createInstance() {
 		if (instance == null) {
-			/*
-			 * //Cargar Configuracion de la base de datos FileReader
-			 * entrada=null; StringBuffer str=new StringBuffer(); try {
-			 * entrada=new FileReader("src\\Basedatos\\db.conf"); int c;
-			 * while((c=entrada.read())!=-1){ str.append((char)c); }
-			 * 
-			 * }catch (IOException ex) {
-			 * 
-			 * }finally{ //cerrar los flujos de datos if(entrada!=null){ try{
-			 * entrada.close(); }catch(IOException ex){} } }
-			 * 
-			 * String fichero = str.toString().trim(); String[] datos =
-			 * fichero.split(";"); DB = datos[0].split(":")[1]; usuario =
-			 * datos[1].split(":")[1]; contrasena = datos[2].split(":")[1];
-			 * direccionDB = datos[3].split(":")[1];
-			 */
-
 			instance = new GestorJDBC();
 		}
 	}
@@ -73,17 +49,19 @@ final public class GestorJDBC {
 	public boolean conectar() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/isiii", "root", "");
 			
-			//if (conexion == null)
-			/*	conexion = DriverManager.getConnection(
-						"jdbc:mysql://1984.dyndns.org:3306/isiii", "isiii",
-						"qwerty");*/
-						
-			// conexion =
-			// DriverManager.getConnection("jdbc:mysql://"+direccionDB+"/"+DB,
-			// usuario, contrasena);
+			conexion = DriverManager.getConnection( "jdbc:mysql://localhost:3306/isiii", "root", "");
+
+			// conexion = DriverManager.getConnection("jdbc:mysql://"+direccionDB+"/"+DB, usuario, contrasena);
+			
+		
+			//Conexion Lin
+			//conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/isiii", "root", "mysqlstart");
+			
+			
+			//Servidor Olmo
+			//conexion = DriverManager.getConnection("jdbc:mysql://1984.dyndns.org:3306/isiii", "isiii","qwerty");
+
 			return true;
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(

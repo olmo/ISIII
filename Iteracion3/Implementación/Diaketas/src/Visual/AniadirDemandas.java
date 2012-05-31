@@ -121,16 +121,19 @@ public class AniadirDemandas extends javax.swing.JPanel {
 				int idSolicitante = -1;
 				int idOferta = -1;
 				
-				idSolicitante = lista_solicitantes.get(tableSolicitante.getSelectedRow()).getId();
-				idOferta = lista_ofertas.get(tablaOfertas.getSelectedRow()).getId();
-				
-				if(idSolicitante > -1 && idOferta > -1)
-					padre.getControladorOfertas().apuntarOferta(idOferta, idSolicitante);
-				
-				ini.panel_demandas.refrescar();
-				ini.verDetallesDemandas.setIdOferta(idOferta);
-				ini.verDetallesDemandas.refrescar();
-				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
+				if( tableSolicitante.getSelectedRow() > -1 && tablaOfertas.getSelectedRow()>-1){
+					idSolicitante = lista_solicitantes.get(tableSolicitante.getSelectedRow()).getId();
+					idOferta = lista_ofertas.get(tablaOfertas.getSelectedRow()).getId();
+					
+					if(idSolicitante > -1 && idOferta > -1){
+						padre.getControladorOfertas().apuntarOferta(idOferta, idSolicitante);
+					
+						ini.panel_demandas.refrescar();
+						ini.verDetallesDemandas.setIdOferta(idOferta);
+						ini.verDetallesDemandas.refrescar();
+						ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
+					}
+				}
 			}
 		});
 
