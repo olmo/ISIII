@@ -3,6 +3,8 @@ package Visual;
 import java.awt.Choice;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,9 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 
 import GestionOfertas.ControladorOfertas;
+import GestionPersona.Persona;
+import GestionPersona.PersonaDB;
 import GestionSolicitante.Solicitante.tipo_permiso;
 import GestionSolicitante.Solicitante.tipo_disp;
-
 
 public class AniadirSolicitante extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -39,6 +42,7 @@ public class AniadirSolicitante extends JPanel {
 	private Choice txtDisponibilidad;
 
 	private ControladorOfertas controladorOfertas = new ControladorOfertas();
+	private Persona unaPersonaSolicitante;
 
 	public AniadirSolicitante(VentanaPrincipal p, PanelInicio pIni) {
 		this.ini = pIni;
@@ -50,6 +54,22 @@ public class AniadirSolicitante extends JPanel {
 		txtDNI.setBounds(296, 82, 180, 20);
 		add(txtDNI);
 		txtDNI.setColumns(10);
+
+		FocusListener listenerDNI = new FocusListener() {
+			public void focusGained(FocusEvent e) {
+			}
+
+			public void focusLost(FocusEvent e) {
+				unaPersonaSolicitante =	new Persona();
+				unaPersonaSolicitante=	PersonaDB.getDatos(txtDNI.getText());
+				if(unaPersonaSolicitante != null)
+					cargarInfoPersona();
+				else
+					cargarInfo();				
+			}
+		};
+		
+		txtDNI.addFocusListener(listenerDNI);
 
 		txtnombre = new JTextField();
 		txtnombre.setBounds(296, 113, 180, 20);
@@ -73,7 +93,7 @@ public class AniadirSolicitante extends JPanel {
 		txtcodpostal.setColumns(10);
 
 		txtemail = new JTextField();
-		txtemail.setBounds(296, 251, 180, 20);
+		txtemail.setBounds(690, 216, 180, 20);
 		add(txtemail);
 		txtemail.setColumns(10);
 
@@ -117,7 +137,7 @@ public class AniadirSolicitante extends JPanel {
 		add(lblcodpostal);
 
 		JLabel lblemail = new JLabel("Email");
-		lblemail.setBounds(181, 254, 46, 14);
+		lblemail.setBounds(577, 219, 46, 14);
 		add(lblemail);
 
 		JLabel lblapellidos = new JLabel("Apellido 1");
@@ -176,7 +196,7 @@ public class AniadirSolicitante extends JPanel {
 		add(txtexperiencia);
 
 		JLabel lbldisponibilidad = new JLabel("Disponibilidad");
-		lbldisponibilidad.setBounds(578, 219, 89, 14);
+		lbldisponibilidad.setBounds(181, 254, 89, 14);
 		add(lbldisponibilidad);
 
 		txttiempoincor = new JTextField();
@@ -194,7 +214,7 @@ public class AniadirSolicitante extends JPanel {
 		add(txtapellidos2);
 
 		txtDisponibilidad = new Choice();
-		txtDisponibilidad.setBounds(691, 216, 180, 20);
+		txtDisponibilidad.setBounds(296, 248, 180, 20);
 		for (int i = 0; i < tipo_disp.values().length; i++)
 			txtDisponibilidad.add(tipo_disp.values()[i].toString());
 		add(txtDisponibilidad);
@@ -239,13 +259,13 @@ public class AniadirSolicitante extends JPanel {
 			}
 
 		});
-		
+
 	}
-	
+
 	public void cargarInfo() {
 		txtDNI.setText("");
 		txtnombre.setText("");
-		//textpermisoconduc.select();
+		// textpermisoconduc.select();
 		txtfechanac.setText("");
 		txtcodpostal.setText("");
 		txtemail.setText("");
@@ -258,7 +278,20 @@ public class AniadirSolicitante extends JPanel {
 		txtexperiencia.setText("");
 		txttiempoincor.setText("");
 		txtapellidos2.setText("");
-		//txtDisponibilidad.select();
+		// txtDisponibilidad.select();
 		checkVehiculo.setSelected(false);
+	}
+	
+	public void cargarInfoPersona(){
+		txtnombre.setText(unaPersonaSolicitante.getNombre());
+		txtfechanac.setText(unaPersonaSolicitante.getfNacimiento());
+		txtcodpostal.setText(unaPersonaSolicitante.getCp().toString());
+		txtemail.setText(unaPersonaSolicitante.getemail());
+		txtapellidos.setText(unaPersonaSolicitante.getApellido1());
+		txtlugarnac.setText(unaPersonaSolicitante.getLugarNacimiento());
+		txtdireccion.setText(unaPersonaSolicitante.getDomicilio());
+		txttelefono.setText(unaPersonaSolicitante.getTelefono().toString());
+		txtapellidos2.setText(unaPersonaSolicitante.getApellido2());
+
 	}
 }
