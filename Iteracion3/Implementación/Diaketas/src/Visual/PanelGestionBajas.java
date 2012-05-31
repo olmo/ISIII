@@ -17,12 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
-import GestionAyudas.Ayuda;
-import GestionAyudas.AyudaDB;
-import GestionAyudas.TipoAyuda;
-import GestionAyudas.TipoAyudaDB;
-import GestionPersona.Beneficiario;
-import GestionPersona.BeneficiarioDB;
+import GestionPersona.Persona;
+import GestionPersona.PersonaDB;
+import GestionPersona.Socio;
 
 @SuppressWarnings("serial")
 public class PanelGestionBajas extends JPanel {
@@ -31,65 +28,41 @@ public class PanelGestionBajas extends JPanel {
 	VentanaPrincipal padre;
 	PanelInicio ini;
 	JScrollPane scrollPane;
-	private JTable tablaAyudas = new JTable();
+	private JTable tablaSolicitudes = new JTable();
 	private DefaultTableModel tabla_modelo;
-	//AyudaDB adb = new AyudaDB();
-	//BeneficiarioDB bdb = new BeneficiarioDB();
-	//TipoAyudaDB tabd = new TipoAyudaDB();
-	//ArrayList<Ayuda> listaAyudas = new ArrayList<Ayuda>();
+	ArrayList<ArrayList<Object>> listaSolicitudes = new ArrayList<ArrayList<Object>>();
+	
+	
 	/**
 	 * Create the panel.
-	 */
-	
-	//Hashtable<Integer, TipoAyuda> tiposAyudas = new Hashtable<Integer, TipoAyuda>();
-	//Hashtable<Integer, Beneficiario> beneficiarios = new Hashtable<Integer, Beneficiario>();
-	
-	public void fillTable(ArrayList<Ayuda> lista_ayudas){//Integer->Donaciones
+	 */	
+	public void fillTable(ArrayList<ArrayList<Object>> lista_resultados){//Integer->Donaciones
 		scrollPane.setVisible(true);
-		//listaAyudas = lista_ayudas;
+		listaSolicitudes = lista_resultados;
 		DefaultTableModel modelo = new DefaultTableModel();
 		Object [] tupla = new Object[5];
+		
 		//Relleneamos la cabecera de la tabla.
 		modelo.addColumn("DNI");
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Apellidos");
 		modelo.addColumn("Fecha solicitado");
 		modelo.addColumn("Borrado de BD");
-		
-		/*
-		//tiposAyudas.clear();
-		//beneficiarios.clear();
-		
-		ArrayList<TipoAyuda> tiposAyudas2 = tabd.getList();
-		ArrayList<Beneficiario> beneficiarios2 = bdb.getBeneficiarios("");
-		
-		
-		
-		//ordenamos los tipos de ayudas por su id para poder hacer la operacion de tupla[1]
-		for (int i=0; i<tiposAyudas2.size(); i++){
-			tiposAyudas.put(tiposAyudas2.get(i).getId(), tiposAyudas2.get(i));
-		}
-		//Ordenamos los beneficiarios por su id para tupla[2]
-		for (int i=0; i<beneficiarios2.size(); i++){
-			beneficiarios.put(beneficiarios2.get(i).getId(), beneficiarios2.get(i));
-		}
-		
-		for(int i=0;i<lista_ayudas.size();i++){
-			tupla[0]= lista_ayudas.get(i).getDate().toString();//.get(i).getfecha
-			tupla[1]= ((TipoAyuda) tiposAyudas.get(lista_ayudas.get(i).getIdTipoAyuda())).getNombre();//.get(i).getcantidad
-			tupla[2]= ((Beneficiario) beneficiarios.get(lista_ayudas.get(i).getIdBeneficiario())).getNombre();//.get(i).getDonante
-			tupla[3]= lista_ayudas.get(i).getCantidadMonetaria();//.get(i).getEstado
-			tupla[4]= lista_ayudas.get(i).getObservaciones();//.get(i).getEstado
-
+			
+		for(int i=0; i < lista_resultados.size(); i++){
+			tupla[0]= ((Persona) lista_resultados.get(i).get(0)).getDni();
+			tupla[1]= ((Persona) lista_resultados.get(i).get(0)).getNombre();
+			tupla[2]= ((Persona) lista_resultados.get(i).get(0)).getApellido1() +" "+ ((Persona) lista_resultados.get(i).get(0)).getApellido2();
+			tupla[3]= lista_resultados.get(i).get(1);
+			tupla[4]= ((boolean) lista_resultados.get(i).get(2) ? "Si" : "No");
 			modelo.addRow(tupla);
 		}
-		*/
+		
 		tabla_modelo = modelo;
-		this.tablaAyudas.setModel(tabla_modelo);
+		this.tablaSolicitudes.setModel(tabla_modelo);
 	}
+	
 	public PanelGestionBajas(VentanaPrincipal p, PanelInicio pIni) {
-
-//		setSize(1100, 500);
 		ini=pIni;
 		padre = p;
 		setSize(PanelInicio.tamanoPaneles);
@@ -100,13 +73,10 @@ public class PanelGestionBajas extends JPanel {
 		JButton button_5 = new JButton("Buscar");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				//Obtenemos lista de ayudas
-				/*
-				listaAyudas = padre.getControladorAyudas().listarAyudasConcedidas(textField_1.getText());//textField_1.getText());
-				//
+				//Obtenemos lista de personas
+				listaSolicitudes = padre.getControladorPersonas().listarSolicitudesBajas(textField_1.getText());
 
-				ini.panel_ayudas.fillTable(listaAyudas);*/
+				ini.panel_GestionBajas.fillTable(listaSolicitudes);
 				ini.setPanelOnTab(ini.panel_GestionBajas, PanelInicio.GESTIONBAJAS);
 			}
 		});
@@ -130,15 +100,16 @@ public class PanelGestionBajas extends JPanel {
 						JOptionPane.showMessageDialog(null, "Error al dar de baja\n"+e1.getMessage());
 					}
 				}
-				
-				ini.setPanelOnTab(ini.panel_GestionBajas, PanelInicio.GESTIONBAJAS);
-				/*ini.configurar_tipo_ayuda.fillTable(tabd.getList());*/
-	
+				//Obtenemos lista de personas
+				listaSolicitudes = padre.getControladorPersonas().listarSolicitudesBajas(textField_1.getText());
+
+				ini.panel_GestionBajas.fillTable(listaSolicitudes);
+				ini.setPanelOnTab(ini.panel_GestionBajas, PanelInicio.GESTIONBAJAS);	
 			}
 		});
 
 		
-		JButton btnCancelarBaja = new JButton("Cancelar Baja");
+		JButton btnCancelarBaja = new JButton("Cancelar Solicitud Baja");
 		btnCancelarBaja.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCancelarBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -148,8 +119,9 @@ public class PanelGestionBajas extends JPanel {
 
 				if(ccb.getconfirmacionCancelado()==true){
 					try{
+						int idSocio = ((Persona)listaSolicitudes.get(tablaSolicitudes.getSelectedRow()).get(0)).getId();
 						//padre.getControladorPersonas().borrarDatosFamiliar(getId());
-						//JOptionPane.showMessageDialog(null, "Se ha dado de baja el usuario\n");
+						JOptionPane.showMessageDialog(null, "Se ha cancelado la solicitud de baja\n");
 						
 					}catch(Exception e1){
 						JOptionPane.showMessageDialog(null, "Error al dar de baja\n"+e1.getMessage());
@@ -161,7 +133,7 @@ public class PanelGestionBajas extends JPanel {
 			}
 		});
 		
-		scrollPane = new JScrollPane(tablaAyudas);
+		scrollPane = new JScrollPane(tablaSolicitudes);
 		scrollPane.setVisible(false);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -203,7 +175,7 @@ public class PanelGestionBajas extends JPanel {
 		);
 		
 		if(textField_1.getText().isEmpty())
-			this.fillTable(padre.getControladorAyudas().listarAyudasConcedidas(""));
+			this.fillTable(padre.getControladorPersonas().listarSolicitudesBajas(""));
 		
 		setLayout(groupLayout);
 		

@@ -5,10 +5,12 @@ package GestionPersona;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 import Basedatos.GestorJDBC;
+import GestionSolicitante.Solicitante;
 
 
 
@@ -129,4 +131,78 @@ public class TrabajadorDB {
 		}
 		return p;
 	}
+	
+	public ArrayList<ArrayList<Object>> listarSolicitudesBajas(String filtro) {
+		ArrayList<ArrayList<Object>> listaSolicitudes = new ArrayList<ArrayList<Object>>();
+
+		ResultSet rs = null;
+		gestor.conectar();
+
+		if (filtro == null || filtro.equals(""))
+			rs = gestor
+					.RealizarConsulta("select * from Personas,Donantes,Socios,Solicitudes_bajas where (Personas.id=Socios.id_persona AND Donantes.id_persona=Socios.id_persona AND Socios.id_persona = Solicitudes_bajas.id_socio)");
+		else
+			rs = gestor
+					.RealizarConsulta("select * from Personas,Donantes,Socios,Solicitudes_bajas where (Personas.id=Socios.id_persona AND Donantes.id_persona=Socios.id_persona AND Socios.id_persona = Solicitudes_bajas.id_socio) AND ( "
+							+ "nombre LIKE '%"
+							+ filtro
+							+ "%' OR apellido1 LIKE '%"
+							+ filtro
+							+ "%' OR apellido2 LIKE '%"
+							+ filtro
+							+ "%' OR dni LIKE '%"
+							+ filtro
+							+ "%' OR fecha LIKE '%"
+							+ filtro
+							+ "%')");
+
+		try {
+			while(rs.next()) {
+				Socio socio = new Socio();
+				ArrayList<Object> solicitud = new ArrayList<Object>();
+				
+				//socio = socioDB.getDatos((Integer)rs.getObject("id"));
+
+				socio.setId((Integer)rs.getObject("id"));
+				
+				socio.setDni(rs.getObject("dni").toString());
+				socio.setNombre(rs.getObject("nombre").toString());
+				socio.setApellido1(rs.getObject("apellido1").toString());
+				socio.setApellido2(rs.getObject("apellido2").toString());
+			
+				socio.setfNacimiento(rs.getObject("fnac").toString());
+		
+				socio.setTelefono((Integer)rs.getObject("telefono"));
+				socio.setLugarNacimiento(rs.getObject("lugarnac").toString());
+				socio.setDomicilio(rs.getObject("domicilio").toString());
+		
+				socio.setCp((Integer)rs.getObject("cp"));
+				socio.setEstado((Boolean)rs.getObject("estado"));
+		
+				socio.setfBaja(rs.getObject("fbaja").toString());
+				socio.setemail(rs.getObject("email").toString());
+				
+				socio.setPeriocidad(new Integer(rs.getObject("periocidad").toString()));
+				socio.setUsuario(rs.getObject("usuario").toString());
+				socio.setContrasena(rs.getObject("contrasena").toString());
+
+				solicitud.add(socio);
+				solicitud.add(rs.getObject("fecha").toString());
+				solicitud.add((Boolean)rs.getObject("borrado"));
+				
+				listaSolicitudes.add(solicitud);
+			}
+
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(
+					null,
+					"Error al obtener los datos de las solicitudes de baja\n"
+							+ e.getMessage());
+		}
+
+		gestor.desconectar();
+
+		return listaSolicitudes;
+	}
+	
 }

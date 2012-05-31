@@ -69,11 +69,9 @@ public class ControladorPersona {
 		personaDB.darBajaPersona(id);
 	}
 	
-	
-	
-	
-	
-	
+	public ArrayList<ArrayList<Object>> listarSolicitudesBajas(String filtro) {
+		return trabajadorDB.listarSolicitudesBajas(filtro);
+	}
 	
 	//Modificar
 	public Boolean modificarDatosBeneficiario(int id,String dni, String nombre, String apellido1, String apellido2, String fNacimiento, int telefono, String lugarNacimiento, String domicilio, int cp,String email,String localidad, String eCivil, String nEstudios, String nacionalidad, String sEconomica,String observacionesPersonales, String observacionesVivienda,String observacionesFamiliares){
