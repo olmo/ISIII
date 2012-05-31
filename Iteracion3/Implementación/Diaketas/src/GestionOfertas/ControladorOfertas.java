@@ -133,6 +133,12 @@ public class ControladorOfertas {
 		return odb.getOferta(id_oferta);
 	}
 	
+	public ArrayList<Solicitante> listarSolicitantesDeOferta(int idOferta){
+		return solicitanteDB.getSolicitantes(idOferta);
+	}
+	
+	
+	
 
 	/********************************************************************************************/
 

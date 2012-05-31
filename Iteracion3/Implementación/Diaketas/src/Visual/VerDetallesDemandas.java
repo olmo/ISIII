@@ -21,6 +21,7 @@ import java.awt.Dimension;
 import java.awt.Component;
 import javax.swing.JLabel;
 
+import GestionOfertas.Oferta;
 import GestionSolicitante.Solicitante;
 
 @SuppressWarnings("serial")
@@ -74,8 +75,22 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 		JButton buttonOfertas = new JButton("Buscar");
 		buttonOfertas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lista_solicitantes = padre.getControladorOfertas().listarSolicitantes(textFieldOfertas.getText());
-				//System.out.println("buscar: "+ lista_solicitantes.size());
+				//Obtenemos todas las ofertas segun el filtro
+				ArrayList<Oferta> lista_ofertas = padre.getControladorOfertas().ListarOfertas(textFieldOfertas.getText());
+				
+				lista_solicitantes.clear();
+				
+				//Para cada oferta...
+				for(int i=0; i<lista_ofertas.size(); i++){
+					//Obtenemos los solicitantes de esa oferta
+					int idUnaOferta = lista_ofertas.get(i).getId();
+					ArrayList<Solicitante> unosSolicitantes = padre.getControladorOfertas().listarSolicitantesDeOferta(idUnaOferta);
+					
+					//Añadimos a la lista de solicitantes los solicitantes de la oferta i
+					for(int j=0; j<unosSolicitantes.size(); j++){
+						lista_solicitantes.add(unosSolicitantes.get(j));
+					}
+				}
 				fillTableSolicitantes(lista_solicitantes);
 				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 			}
@@ -238,11 +253,11 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 
 	public void setIdOferta(int id) {
 		idOferta = id;
+		textFieldOfertas.setText(padre.getControladorOfertas().ConsultarOferta(idOferta).getTitulo());
 	}
 	
 	public void refrescar() {
-		lista_solicitantes = padre.getControladorOfertas().listarSolicitantes(
-				"");
+		lista_solicitantes = padre.getControladorOfertas().listarSolicitantesDeOferta(idOferta);
 		fillTableSolicitantes(lista_solicitantes);
 	}
 }

@@ -46,7 +46,7 @@ public class PanelDemandas extends javax.swing.JPanel {
 		
 		int fila = 0;
 		for (int i = 0; i < lista_solicitantes.size(); i++) {
-			tupla[1] = lista_solicitantes.get(i).getNombre();
+			tupla[1] = lista_solicitantes.get(i).getNombre()+" "+lista_solicitantes.get(i).getApellido1()+" "+lista_solicitantes.get(i).getApellido2();
 			
 			lista_ofertas = padre.getControladorOfertas().listarOfertasDeSolicitante(lista_solicitantes.get(i).getId());
 			
@@ -99,13 +99,14 @@ public class PanelDemandas extends javax.swing.JPanel {
 			}
 		});
 
-		JButton btnVerDetalles = new JButton("Ver Detalles");
+		JButton btnVerDetalles = new JButton("Ver Detalles Ofertas");
 		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if( tablaDemandas.getSelectedRow() != -1 ){
 					int idOferta = hashFilaOferta.get(tablaDemandas.getSelectedRow());
 					ini.verDetallesDemandas.setIdOferta(idOferta);
+					ini.verDetallesDemandas.refrescar();
 					ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 				}
 			}
