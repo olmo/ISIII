@@ -25,28 +25,54 @@ public class SolicitanteDB {
 		int insertSolicitante = -1;
 		gestor.conectar();
 
+		String consulta = "INSERT INTO Personas (dni, nombre, apellido1, apellido2, fnac, telefono, lugarnac, domicilio, cp, estado, email) "
+				+ "VALUES('"
+				+ sol.getDni()
+				+ "','"
+				+ sol.getNombre()
+				+ "','"
+				+ sol.getApellido1()
+				+ "','"
+				+ sol.getApellido2()
+				+ "','"
+				+ sol.getfNacimiento()
+				+ "','"
+				+ sol.getTelefono()
+				+ "','"
+				+ sol.getLugarNacimiento()
+				+ "','"
+				+ sol.getDomicilio()
+				+ "','"
+				+ sol.getCp()
+				+ "','" 
+				+ (sol.getEstado() ? "1" : "0")
+				+ "','" + sol.getemail() 
+				+ "') ON DUPLICATE KEY UPDATE "
+				+ "nombre='"
+				+ sol.getNombre()
+				+ "',apellido1='"
+				+ sol.getApellido1()
+				+ "',apellido2='"
+				+ sol.getApellido2()
+				+ "',fnac='"
+				+ sol.getfNacimiento()
+				+ "',telefono='"
+				+ sol.getTelefono()
+				+ "',lugarnac='"
+				+ sol.getLugarNacimiento()
+				+ "',domicilio='"
+				+ sol.getDomicilio()
+				+ "',cp='"
+				+ sol.getCp()
+				+ "',estado='" 
+				+ (sol.getEstado() ? "1" : "0")
+				+ "',email='" 
+				+ sol.getemail() 
+				+ "'";
 		insertPersonas = gestor
-				.Insertar("INSERT INTO Personas (dni, nombre, apellido1, apellido2, fnac, telefono, lugarnac, domicilio, cp, estado, email) "
-						+ "VALUES('"
-						+ sol.getDni()
-						+ "','"
-						+ sol.getNombre()
-						+ "','"
-						+ sol.getApellido1()
-						+ "','"
-						+ sol.getApellido2()
-						+ "','"
-						+ sol.getfNacimiento()
-						+ "','"
-						+ sol.getTelefono()
-						+ "','"
-						+ sol.getLugarNacimiento()
-						+ "','"
-						+ sol.getDomicilio()
-						+ "','"
-						+ sol.getCp()
-						+ "','" + "1" // (sol.getEstado() ? "1" : "0")
-						+ "','" + sol.getemail() + "')");
+				.Insertar(consulta);
+		
+		System.out.println("\n"+consulta+"\n");
 
 		if (insertPersonas > -1) {
 			insertSolicitante = gestor

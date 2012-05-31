@@ -86,7 +86,7 @@ public class GestionSolicitante extends JPanel {
 		btnAddSolicitante.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAddSolicitante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ini.aniadir_solicitante.cargarInfo();
+				ini.aniadir_solicitante.cargarInfo(true);
 				ini.setPanelOnTab(ini.aniadir_solicitante, PanelInicio.DEMANDAS);
 			}
 		});

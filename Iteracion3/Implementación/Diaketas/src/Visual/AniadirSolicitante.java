@@ -65,7 +65,7 @@ public class AniadirSolicitante extends JPanel {
 				if(unaPersonaSolicitante != null)
 					cargarInfoPersona();
 				else
-					cargarInfo();				
+					cargarInfo(false);	//no carga el dni			
 			}
 		};
 		
@@ -242,7 +242,7 @@ public class AniadirSolicitante extends JPanel {
 						txtlugarnac.getText(),
 						txtdireccion.getText(),
 						Integer.parseInt(txtcodpostal.getText()),
-						false,
+						true,
 						txtemail.getText(),
 						txtestudios.getText(),
 						txtexperiencia.getText(),
@@ -262,8 +262,9 @@ public class AniadirSolicitante extends JPanel {
 
 	}
 
-	public void cargarInfo() {
-		txtDNI.setText("");
+	public void cargarInfo(boolean dni) {
+		if(dni)
+			txtDNI.setText("");
 		txtnombre.setText("");
 		// textpermisoconduc.select();
 		txtfechanac.setText("");
