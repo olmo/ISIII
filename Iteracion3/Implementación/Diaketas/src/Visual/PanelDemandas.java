@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -28,6 +29,7 @@ public class PanelDemandas extends javax.swing.JPanel {
 	private DefaultTableModel tabla_modelo;
 	private ArrayList<Solicitante> lista_solicitantes = new ArrayList<Solicitante>();
 	private ArrayList<Oferta> lista_ofertas = new ArrayList<Oferta>();
+	private HashMap<Integer, Integer> hashFilaOferta = new HashMap<Integer, Integer>();
 
 	/**
 	 * Create the panel.
@@ -38,20 +40,21 @@ public class PanelDemandas extends javax.swing.JPanel {
 
 		DefaultTableModel modelo = new DefaultTableModel();
 		Object[] tupla = new Object[3];
-		modelo.addColumn("Identificador");
 		modelo.addColumn("Oferta");
 		modelo.addColumn("Solicitante");
 
 		
+		int fila = 0;
 		for (int i = 0; i < lista_solicitantes.size(); i++) {
-			tupla[0] = "WTF?";
-			tupla[2] = lista_solicitantes.get(i).getNombre();
+			tupla[1] = lista_solicitantes.get(i).getNombre();
 			
 			lista_ofertas = padre.getControladorOfertas().listarOfertasDeSolicitante(lista_solicitantes.get(i).getId());
 			
 			for (int j = 0; j < lista_ofertas.size(); j++) {
-				tupla[1] = lista_ofertas.get(j).getTitulo();
+				tupla[0] = lista_ofertas.get(j).getTitulo();
 				modelo.addRow(tupla);
+				hashFilaOferta.put(fila, lista_ofertas.get(j).getId());
+				fila++;
 			}
 		}
 
@@ -71,9 +74,8 @@ public class PanelDemandas extends javax.swing.JPanel {
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				// filtro: identificador, oferta y solicitante
-				lista_solicitantes = padre.getControladorOfertas()
-						.listarSolicitantes(textField_1.getText());
+				//Solo busca por solicitante, como busco por ofertas?
+				lista_solicitantes = padre.getControladorOfertas().listarSolicitantes(textField_1.getText());
 				fillTable(lista_solicitantes);
 				ini.setPanelOnTab(ini.panel_demandas, PanelInicio.DEMANDAS);
 			}
@@ -101,9 +103,11 @@ public class PanelDemandas extends javax.swing.JPanel {
 		btnVerDetalles.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerDetalles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//ini.verDetallesDemandas.setIdOferta(id);
-				//lista_ofertas.get(tablaDemandas.getSelectedRow()).getId();
-				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
+				if( tablaDemandas.getSelectedRow() != -1 ){
+					int idOferta = hashFilaOferta.get(tablaDemandas.getSelectedRow());
+					ini.verDetallesDemandas.setIdOferta(idOferta);
+					ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
+				}
 			}
 		});
 
