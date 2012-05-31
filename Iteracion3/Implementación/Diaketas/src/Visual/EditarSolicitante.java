@@ -39,6 +39,7 @@ public class EditarSolicitante extends JPanel {
 	private Choice txtDisponibilidad;
 
 	private Solicitante unSolicitante = new Solicitante();
+	private JTextField txtEstado;
 
 	public EditarSolicitante(VentanaPrincipal p, PanelInicio pIni) {
 		this.ini = pIni;
@@ -90,11 +91,11 @@ public class EditarSolicitante extends JPanel {
 
 		txtdireccion = new JTextField();
 		txtdireccion.setColumns(10);
-		txtdireccion.setBounds(690, 181, 180, 20);
+		txtdireccion.setBounds(690, 212, 180, 20);
 		add(txtdireccion);
 
 		txtcurriculum = new JTextArea();
-		txtcurriculum.setBounds(690, 293, 372, 147);
+		txtcurriculum.setBounds(690, 324, 372, 147);
 		add(txtcurriculum);
 
 		JLabel lblDNI = new JLabel("DNI");
@@ -130,15 +131,15 @@ public class EditarSolicitante extends JPanel {
 		add(lbllugarnac);
 
 		JLabel lbldir = new JLabel("Direcci\u00F3n");
-		lbldir.setBounds(577, 184, 46, 14);
+		lbldir.setBounds(577, 215, 46, 14);
 		add(lbldir);
 
 		JLabel lbltiempoincor = new JLabel("Tiempo Incorporaci\u00F3n");
-		lbltiempoincor.setBounds(577, 248, 103, 14);
+		lbltiempoincor.setBounds(577, 279, 103, 14);
 		add(lbltiempoincor);
 
 		JLabel lblcurriculum = new JLabel("Curriculum");
-		lblcurriculum.setBounds(577, 298, 61, 14);
+		lblcurriculum.setBounds(577, 329, 61, 14);
 		add(lblcurriculum);
 
 		JButton btnVolver = new JButton("Volver");
@@ -177,12 +178,12 @@ public class EditarSolicitante extends JPanel {
 		add(txtexperiencia);
 
 		JLabel lbldisponibilidad = new JLabel("Disponibilidad");
-		lbldisponibilidad.setBounds(578, 219, 89, 14);
+		lbldisponibilidad.setBounds(578, 250, 89, 14);
 		add(lbldisponibilidad);
 
 		txttiempoincor = new JTextField();
 		txttiempoincor.setColumns(10);
-		txttiempoincor.setBounds(691, 247, 180, 20);
+		txttiempoincor.setBounds(691, 278, 180, 20);
 		add(txttiempoincor);
 
 		JLabel lblapellidos2 = new JLabel("Apellido 2");
@@ -195,7 +196,7 @@ public class EditarSolicitante extends JPanel {
 		add(txtapellidos2);
 
 		txtDisponibilidad = new Choice();
-		txtDisponibilidad.setBounds(691, 216, 180, 20);
+		txtDisponibilidad.setBounds(691, 247, 180, 20);
 		for (int i = 0; i < tipo_disp.values().length; i++)
 			txtDisponibilidad.add(tipo_disp.values()[i].toString());
 		add(txtDisponibilidad);
@@ -231,6 +232,16 @@ public class EditarSolicitante extends JPanel {
 		});
 		btnDarDeBaja.setBounds(471, 482, 89, 23);
 		add(btnDarDeBaja);
+		
+		JLabel lblEstado = new JLabel("Estado");
+		lblEstado.setBounds(577, 179, 46, 14);
+		add(lblEstado);
+		
+		txtEstado = new JTextField();
+		txtEstado.setColumns(10);
+		txtEstado.setBounds(690, 176, 180, 20);
+		txtEstado.disable();
+		add(txtEstado);
 
 
 		btnVolver.addActionListener(new ActionListener() {
@@ -286,6 +297,7 @@ public class EditarSolicitante extends JPanel {
 		txtemail.setText(unSolicitante.getemail());
 		txtapellidos.setText(unSolicitante.getApellido1());
 		txtlugarnac.setText(unSolicitante.getLugarNacimiento());
+		txtEstado.setText(unSolicitante.getEstado() ? "Dado de baja" : "Activo");
 		txtdireccion.setText(unSolicitante.getDomicilio());
 		txtcurriculum.setText(unSolicitante.getCurriculum());
 		txttelefono.setText(unSolicitante.getTelefono().toString());
@@ -296,5 +308,4 @@ public class EditarSolicitante extends JPanel {
 		txtDisponibilidad.select(unSolicitante.getDisponibilidad().ordinal());
 		checkVehiculo.setSelected(unSolicitante.getVehiculo());
 	}
-
 }
