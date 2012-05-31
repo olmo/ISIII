@@ -74,7 +74,7 @@ final public class GestorJDBC {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conexion = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/isiii", "root", "mysqlstart");
+					"jdbc:mysql://localhost:3306/isiii", "root", "");
 			
 			//if (conexion == null)
 			/*	conexion = DriverManager.getConnection(

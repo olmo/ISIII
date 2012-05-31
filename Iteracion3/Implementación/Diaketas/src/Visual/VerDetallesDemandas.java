@@ -227,8 +227,7 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 																btnDarBajaSolicitante))
 										.addContainerGap(163, Short.MAX_VALUE)));
 
-		tablaSolicitantes = new JTable();
-		scrollPane_1.setColumnHeaderView(tablaSolicitantes);
+		//scrollPane_1.setColumnHeaderView(tablaSolicitantes);
 
 		if (textFieldOfertas.getText().isEmpty())
 			this.fillTableSolicitantes(padre.getControladorOfertas()
