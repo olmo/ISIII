@@ -208,4 +208,9 @@ public class PanelDemandas extends javax.swing.JPanel {
 		setLayout(groupLayout);
 
 	}
+	
+	public void refrescar(){
+		lista_solicitantes = padre.getControladorOfertas().listarSolicitantes("");
+		fillTable(lista_solicitantes);
+	}
 }

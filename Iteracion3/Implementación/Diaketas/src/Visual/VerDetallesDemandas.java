@@ -109,25 +109,32 @@ public class VerDetallesDemandas extends javax.swing.JPanel {
 		btnDarBajaSolicitante.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDarBajaSolicitante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EliminarSolicitante es = new EliminarSolicitante(padre);
-				es.setVisible(true);
-				es.setAlwaysOnTop(true);
-
-				if (es.getConfirmacionBorrado() == true) {
-					try {
-						// padre.getControladorPersonas().borrarDatosFamiliar(getId());
-						JOptionPane.showMessageDialog(null,
-								"Se ha borrado el solicitante\n");
-
-					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(
-								null,
-								"Error al borrar solicitante\n"
-										+ e1.getMessage());
+				if( tablaSolicitantes.getSelectedRow() != -1){
+					EliminarSolicitante es = new EliminarSolicitante(padre);
+					es.setVisible(true);
+					es.setAlwaysOnTop(true);
+	
+					if (es.getConfirmacionBorrado() == true) {
+						try {
+							
+							
+							int idSolicitante = lista_solicitantes.get(tablaSolicitantes.getSelectedRow()).getId();
+							padre.getControladorOfertas().borrarSolicitanteDeOferta(idOferta, idSolicitante);
+							JOptionPane.showMessageDialog(null,
+									"Se ha borrado la demanda del solicitante\n");
+							refrescar();
+							ini.panel_demandas.refrescar();
+						
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(
+									null,
+									"Error al borrar la demanda del solicitante\n"
+											+ e1.getMessage());
+						}
 					}
+	
+					ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 				}
-
-				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 			}
 		});
 

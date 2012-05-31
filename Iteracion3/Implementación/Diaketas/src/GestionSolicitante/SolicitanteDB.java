@@ -329,8 +329,13 @@ public class SolicitanteDB {
 	}
 
 	public boolean borrarSolicitanteOferta(int id_oferta, int id_solicitante) {
-		// ToDo
-		return false;
+		boolean exito = false;
+
+		gestor.conectar();
+		exito = gestor.Modificar("DELETE FROM demandas WHERE id_solicitante='"+id_solicitante+"' and id_oferta='"+id_oferta+"'");
+		gestor.desconectar();
+
+		return exito;
 	}
 	
 	public ArrayList<Solicitante> getSolicitantes(int id_oferta) {

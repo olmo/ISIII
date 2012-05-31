@@ -126,6 +126,10 @@ public class AniadirDemandas extends javax.swing.JPanel {
 				
 				if(idSolicitante > -1 && idOferta > -1)
 					padre.getControladorOfertas().apuntarOferta(idOferta, idSolicitante);
+				
+				ini.panel_demandas.refrescar();
+				ini.verDetallesDemandas.setIdOferta(idOferta);
+				ini.verDetallesDemandas.refrescar();
 				ini.setPanelOnTab(ini.verDetallesDemandas, PanelInicio.DEMANDAS);
 			}
 		});
