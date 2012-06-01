@@ -208,41 +208,42 @@ public class EditarSolicitante extends JPanel {
 		JButton btnDarDeBaja = new JButton("Dar de Baja");
 		btnDarDeBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				ConfirmarBorradoUsuario cbu= new ConfirmarBorradoUsuario(padre);
+
+				ConfirmarBorradoUsuario cbu = new ConfirmarBorradoUsuario(padre);
 				cbu.setVisible(true);
 				cbu.setAlwaysOnTop(true);
 
-				
-				if(cbu.getConfirmacionBaja()){
-			
-					try{
-						if(cbu.getConfirmacionBorrado()){
-								padre.getControladorOfertas().borrarSolicitante(unSolicitante);			
-						}else
-							padre.getControladorPersonas().darBaja(unSolicitante.getId());
-					}catch(Exception e1){
-						JOptionPane.showMessageDialog(null, "Error al dar de baja\n"+e1.getMessage());
+				if (cbu.getConfirmacionBaja()) {
+
+					try {
+						if (cbu.getConfirmacionBorrado()) {
+							padre.getControladorOfertas().borrarSolicitante(
+									unSolicitante);
+						} else
+							padre.getControladorPersonas().darBaja(
+									unSolicitante.getId());
+					} catch (Exception e1) {
+						JOptionPane.showMessageDialog(null,
+								"Error al dar de baja\n" + e1.getMessage());
 					}
 				}
-				
+
 				ini.gestion_solicitante.refrescar();
 				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
 			}
 		});
 		btnDarDeBaja.setBounds(471, 482, 89, 23);
 		add(btnDarDeBaja);
-		
+
 		JLabel lblEstado = new JLabel("Estado");
 		lblEstado.setBounds(577, 179, 46, 14);
 		add(lblEstado);
-		
+
 		txtEstado = new JTextField();
 		txtEstado.setColumns(10);
 		txtEstado.setBounds(690, 176, 180, 20);
 		txtEstado.disable();
 		add(txtEstado);
-
 
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -252,32 +253,50 @@ public class EditarSolicitante extends JPanel {
 
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				padre.getControladorOfertas()
-						.modificarSolicitante(unSolicitante.getId(),
-								txtDNI.getText(),
-								txtnombre.getText(),
-								txtapellidos.getText(),
-								txtapellidos2.getText(),
-								txtfechanac.getText(),
-								Integer.parseInt(txttelefono.getText()),
-								txtlugarnac.getText(),
-								txtdireccion.getText(),
-								Integer.parseInt(txtcodpostal.getText()),
-								false,
-								txtemail.getText(),
-								txtestudios.getText(),
-								txtexperiencia.getText(),
-								txtcurriculum.getText(),
-								tipo_permiso.values()[textpermisoconduc
-										.getSelectedIndex()],
-								checkVehiculo.isSelected(),
-								tipo_disp.values()[txtDisponibilidad
-										.getSelectedIndex()],
-								Integer.parseInt(txttiempoincor.getText()));
-				
 
-				ini.gestion_solicitante.refrescar();
-				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
+				if (!txtDNI.getText().isEmpty()
+						&& !txtnombre.getText().isEmpty()
+						&& !txtapellidos.getText().isEmpty()
+						&& !txtapellidos2.getText().isEmpty()
+						&& !txtfechanac.getText().isEmpty()
+						&& !txttelefono.getText().isEmpty()
+						&& !txtlugarnac.getText().isEmpty()
+						&& !txtdireccion.getText().isEmpty()
+						&& !txtcodpostal.getText().isEmpty()
+						&& !txtemail.getText().isEmpty()
+						&& !txtestudios.getText().isEmpty()
+						&& !txtexperiencia.getText().isEmpty()
+						&& !txtcurriculum.getText().isEmpty()
+						&& !txttiempoincor.getText().isEmpty()) {
+
+					padre.getControladorOfertas().modificarSolicitante(
+							unSolicitante.getId(),
+							txtDNI.getText(),
+							txtnombre.getText(),
+							txtapellidos.getText(),
+							txtapellidos2.getText(),
+							txtfechanac.getText(),
+							Integer.parseInt(txttelefono.getText()),
+							txtlugarnac.getText(),
+							txtdireccion.getText(),
+							Integer.parseInt(txtcodpostal.getText()),
+							false,
+							txtemail.getText(),
+							txtestudios.getText(),
+							txtexperiencia.getText(),
+							txtcurriculum.getText(),
+							tipo_permiso.values()[textpermisoconduc
+									.getSelectedIndex()],
+							checkVehiculo.isSelected(),
+							tipo_disp.values()[txtDisponibilidad
+									.getSelectedIndex()],
+							Integer.parseInt(txttiempoincor.getText()));
+
+					ini.gestion_solicitante.refrescar();
+					ini.setPanelOnTab(ini.gestion_solicitante,
+							PanelInicio.DEMANDAS);
+
+				}
 
 			}
 		});
@@ -297,7 +316,8 @@ public class EditarSolicitante extends JPanel {
 		txtemail.setText(unSolicitante.getemail());
 		txtapellidos.setText(unSolicitante.getApellido1());
 		txtlugarnac.setText(unSolicitante.getLugarNacimiento());
-		txtEstado.setText(unSolicitante.getEstado() ? "Dado de baja" : "Activo");
+		txtEstado
+				.setText(unSolicitante.getEstado() ? "Activo" : "Dado de baja");
 		txtdireccion.setText(unSolicitante.getDomicilio());
 		txtcurriculum.setText(unSolicitante.getCurriculum());
 		txttelefono.setText(unSolicitante.getTelefono().toString());

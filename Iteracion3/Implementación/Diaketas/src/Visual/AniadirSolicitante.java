@@ -60,15 +60,15 @@ public class AniadirSolicitante extends JPanel {
 			}
 
 			public void focusLost(FocusEvent e) {
-				unaPersonaSolicitante =	new Persona();
-				unaPersonaSolicitante=	PersonaDB.getDatos(txtDNI.getText());
-				if(unaPersonaSolicitante != null)
+				unaPersonaSolicitante = new Persona();
+				unaPersonaSolicitante = PersonaDB.getDatos(txtDNI.getText());
+				if (unaPersonaSolicitante != null)
 					cargarInfoPersona();
 				else
-					cargarInfo(false);	//no carga el dni			
+					cargarInfo(false); // no carga el dni
 			}
 		};
-		
+
 		txtDNI.addFocusListener(listenerDNI);
 
 		txtnombre = new JTextField();
@@ -232,29 +232,40 @@ public class AniadirSolicitante extends JPanel {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				controladorOfertas.registrarSolicitante(
-						txtDNI.getText(),
-						txtnombre.getText(),
-						txtapellidos.getText(),
-						txtapellidos2.getText(),
-						txtfechanac.getText(),
-						Integer.parseInt(txttelefono.getText()),
-						txtlugarnac.getText(),
-						txtdireccion.getText(),
-						Integer.parseInt(txtcodpostal.getText()),
-						true,
-						txtemail.getText(),
-						txtestudios.getText(),
-						txtexperiencia.getText(),
-						txtcurriculum.getText(),
-						tipo_permiso.values()[textpermisoconduc
-								.getSelectedIndex()],
-						checkVehiculo.isSelected(),
-						tipo_disp.values()[txtDisponibilidad.getSelectedIndex()],
-						Integer.parseInt(txttiempoincor.getText()));
+				if (!txtDNI.getText().isEmpty()
+						&& !txtnombre.getText().isEmpty()
+						&& !txtapellidos.getText().isEmpty()
+						&& !txtapellidos2.getText().isEmpty()
+						&& !txtfechanac.getText().isEmpty()
+						&& !txttelefono.getText().isEmpty()
+						&& !txtlugarnac.getText().isEmpty()
+						&& !txtdireccion.getText().isEmpty()
+						&& !txtcodpostal.getText().isEmpty()
+						&& !txtemail.getText().isEmpty()
+						&& !txtestudios.getText().isEmpty()
+						&& !txtexperiencia.getText().isEmpty()
+						&& !txtcurriculum.getText().isEmpty()
+						&& !txttiempoincor.getText().isEmpty()) {
 
-				ini.gestion_solicitante.refrescar();
-				ini.setPanelOnTab(ini.gestion_solicitante, PanelInicio.DEMANDAS);
+					controladorOfertas.registrarSolicitante(txtDNI.getText(),
+							txtnombre.getText(), txtapellidos.getText(),
+							txtapellidos2.getText(), txtfechanac.getText(),
+							Integer.parseInt(txttelefono.getText()),
+							txtlugarnac.getText(), txtdireccion.getText(),
+							Integer.parseInt(txtcodpostal.getText()), true,
+							txtemail.getText(), txtestudios.getText(),
+							txtexperiencia.getText(), txtcurriculum.getText(),
+							tipo_permiso.values()[textpermisoconduc
+									.getSelectedIndex()], checkVehiculo
+									.isSelected(),
+							tipo_disp.values()[txtDisponibilidad
+									.getSelectedIndex()], Integer
+									.parseInt(txttiempoincor.getText()));
+
+					ini.gestion_solicitante.refrescar();
+					ini.setPanelOnTab(ini.gestion_solicitante,
+							PanelInicio.DEMANDAS);
+				}
 
 			}
 
@@ -263,7 +274,7 @@ public class AniadirSolicitante extends JPanel {
 	}
 
 	public void cargarInfo(boolean dni) {
-		if(dni)
+		if (dni)
 			txtDNI.setText("");
 		txtnombre.setText("");
 		// textpermisoconduc.select();
@@ -282,8 +293,8 @@ public class AniadirSolicitante extends JPanel {
 		// txtDisponibilidad.select();
 		checkVehiculo.setSelected(false);
 	}
-	
-	public void cargarInfoPersona(){
+
+	public void cargarInfoPersona() {
 		txtnombre.setText(unaPersonaSolicitante.getNombre());
 		txtfechanac.setText(unaPersonaSolicitante.getfNacimiento());
 		txtcodpostal.setText(unaPersonaSolicitante.getCp().toString());

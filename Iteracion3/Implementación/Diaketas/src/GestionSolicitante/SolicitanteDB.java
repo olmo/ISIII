@@ -70,8 +70,6 @@ public class SolicitanteDB {
 				+ "'";
 		insertPersonas = gestor
 				.Insertar(consulta);
-		
-		System.out.println("\n"+consulta+"\n");
 
 		if (insertPersonas > -1) {
 			insertSolicitante = gestor
