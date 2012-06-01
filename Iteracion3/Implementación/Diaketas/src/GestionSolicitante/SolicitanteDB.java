@@ -109,6 +109,8 @@ public class SolicitanteDB {
 		deleteSolicitante = gestor
 				.Modificar("DELETE FROM Solicitantes WHERE id='" + sol.getId()
 						+ "'");
+		
+		//??
 		deletePersonas = gestor.Modificar("DELETE FROM Personas WHERE id='"
 				+ sol.getId() + "'");
 		gestor.desconectar();
