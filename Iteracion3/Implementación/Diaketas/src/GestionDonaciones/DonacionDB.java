@@ -54,8 +54,8 @@ public class DonacionDB {
 	public ArrayList<Donacion> getListPorSocio(Integer id){
 		ArrayList<Donacion> lista = new ArrayList<Donacion>();
 		ResultSet rs;
-		JOptionPane.showMessageDialog(null,"SELECT * from ObjetosMonitorizables, Donantes, Donaciones " +
-				"WHERE ObjetosMonitorizables.id=Donaciones.id_objetomonitorizable AND Donantes.id_persona=Donaciones.id_donante AND Donantes.id_persona="+id);
+	//	JOptionPane.showMessageDialog(null,"SELECT * from ObjetosMonitorizables, Donantes, Donaciones " +
+	//			"WHERE ObjetosMonitorizables.id=Donaciones.id_objetomonitorizable AND Donantes.id_persona=Donaciones.id_donante AND Donantes.id_persona="+id);
 		Estado miestado = null;
 		
 		try{

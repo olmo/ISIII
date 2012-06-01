@@ -10,6 +10,7 @@ import GestionPersona.CodificacionPW;
 
 public class ControladorMovil {
 	
+	private PersonaDB personaDB=new PersonaDB();
 	private SocioDB socioDB = new SocioDB();
 	private DonacionDB donacionDB = new DonacionDB();
 	
@@ -31,6 +32,11 @@ public class ControladorMovil {
 	
 	public ArrayList<Donacion> listarDonaciones(Integer id){
 		return donacionDB.getListPorSocio(id);
+	}
+	
+	public void solicitarBaja(Integer id, int borrado) {
+		// TODO Auto-generated method stub
+		socioDB.solicitarBaja(id, borrado);
 	}
 	
 	/*public Boolean modificarDatosSocio(int id, String dni, String nombre, String apellido1, String apellido2, String fNacimiento,int telefono, String lugarNacimiento, String domicilio, Integer cp, String email, Integer periocidad, String usuario){

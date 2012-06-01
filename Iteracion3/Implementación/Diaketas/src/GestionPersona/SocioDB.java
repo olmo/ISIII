@@ -5,6 +5,8 @@ package GestionPersona;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.JOptionPane;
 
@@ -26,7 +28,7 @@ public class SocioDB {
 		gestor.Modificar("INSERT INTO Donantes (id_persona, periocidad) VALUES('"+s.getId()+"','"+s.getPeriocidad()+"')");
 		gestor.Modificar("INSERT INTO Socios (id_persona, usuario, contrasena) VALUES('"+s.getId()+"','"+s.getUsuario()+"','"+s.getContrasena()+"')");
 		gestor.desconectar();
-		}
+	}
 	
 	public Boolean modificarDatos(Socio s){
 		gestor.conectar();
@@ -129,6 +131,19 @@ public class SocioDB {
 		else
 			return -1;
 
+	}
+
+	public void solicitarBaja(Integer id, int borrado) {
+		GregorianCalendar fecha = new GregorianCalendar();
+		int dia = fecha.get(Calendar.DAY_OF_MONTH);
+		int mes = fecha.get(Calendar.MONTH) + 1;
+		int ano = fecha.get(Calendar.YEAR);
+		
+		String f = new String(ano + "-" + mes + "-" + dia);
+
+		gestor.conectar();
+		gestor.Modificar("INSERT INTO Solicitudes_bajas (id_socio, fecha, borrado) VALUES('"+id.intValue()+"','"+f+"','"+borrado+"')");
+		gestor.desconectar();
 	}
 	
 }

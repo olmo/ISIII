@@ -1,6 +1,7 @@
 package Visual;
 
 import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
@@ -8,7 +9,6 @@ import GestionPersona.Socio;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Frame;
 
 public class MenuMovil extends JPanel {
 	private VentanaPrincipalMovil padre;
@@ -51,8 +51,9 @@ public class MenuMovil extends JPanel {
 		bajaBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BajaSocioMovil dialogobaja;
-				dialogobaja = new BajaSocioMovil();
+				dialogobaja = new BajaSocioMovil(padre);
 				dialogobaja.setVisible(true);
+				dialogobaja.setAlwaysOnTop(true);
 			}
 		});
 		bajaBoton.setBounds(46, 88, 241, 41);

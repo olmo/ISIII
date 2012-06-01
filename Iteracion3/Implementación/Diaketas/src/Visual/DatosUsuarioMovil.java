@@ -144,13 +144,18 @@ public class DatosUsuarioMovil extends JPanel {
 		JButton guardarBoton = new JButton("Guardar");
 		guardarBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				int opcion = JOptionPane.showConfirmDialog(null,"¿Desea guardar la información actual?", "¿Desea guardar la información actual?", JOptionPane.YES_NO_OPTION);
+				
+				ConfirmacionModificacionMovil dialoconfirmacion;
+				dialoconfirmacion = new ConfirmacionModificacionMovil(padre,dniField.getText(), nombreField.getText(),apellido1Field.getText(), apellido2Field.getText(), fnField.getText(), Integer.parseInt(telField.getText()),lnField.getText(), 
+						dirField.getText(), Integer.parseInt(cpField.getText()), emailField.getText(), Integer.parseInt(frecChoice.getSelectedItem()));
+				dialoconfirmacion.setVisible(true);
+				dialoconfirmacion.setAlwaysOnTop(true);
+				/*int opcion = JOptionPane.showConfirmDialog(null,"¿Desea guardar la información actual?", "¿Desea guardar la información actual?", JOptionPane.YES_NO_OPTION);
 				if(opcion == 0){
 					padre.getControladorMovil().modificarDatosSocio(padre.getIDsesion().intValue(), dniField.getText(), nombreField.getText(), 
 					apellido1Field.getText(), apellido2Field.getText(), fnField.getText(), Integer.parseInt(telField.getText()), lnField.getText(), 
 					dirField.getText(), Integer.parseInt(cpField.getText()), emailField.getText(), Integer.parseInt(frecChoice.getSelectedItem()), padre.getusuario(),padre.getContrasena());
-				}
+				}*/
 			}
 		});
 		guardarBoton.setBounds(192, 430, 118, 65);
@@ -181,13 +186,10 @@ public class DatosUsuarioMovil extends JPanel {
 		emailField.setText(s.getemail());
 		peri = s.getPeriocidad();
 		frecChoice.add(peri.toString());
-		peri +=1;
-		frecChoice.add(peri.toString());
-		peri +=1;
-		frecChoice.add(peri.toString());
-		peri +=1;
-		frecChoice.add(peri.toString());
-		peri +=1;
-		frecChoice.add(peri.toString());
+		frecChoice.add("1");
+		frecChoice.add("2");
+		frecChoice.add("3");
+		frecChoice.add("6");
+		frecChoice.add("12");
 	}
 }

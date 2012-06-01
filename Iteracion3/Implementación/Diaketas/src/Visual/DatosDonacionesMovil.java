@@ -44,24 +44,6 @@ public class DatosDonacionesMovil extends JPanel {
 		modelo.addColumn("Fecha");
 		modelo.addColumn("Cantidad");
 		modelo.addColumn("Estado");
-		
-		/*tiposAyudas.clear();
-		beneficiarios.clear();
-		
-		ArrayList<TipoAyuda> tiposAyudas2 = tabd.getList();
-		ArrayList<Beneficiario> beneficiarios2 = bdb.getBeneficiarios("");
-		*/
-		
-		
-		//ordenamos los tipos de ayudas por su id para poder hacer la operacion de tupla[1]
-/*		for (int i=0; i<tiposAyudas2.size(); i++){
-			tiposAyudas.put(tiposAyudas2.get(i).getId(), tiposAyudas2.get(i));
-		}
-		//Ordenamos los beneficiarios por su id para tupla[2]
-		for (int i=0; i<beneficiarios2.size(); i++){
-			beneficiarios.put(beneficiarios2.get(i).getId(), beneficiarios2.get(i));
-		}
-	*/	
 		for(int i=0;i<lista_donaciones.size();i++){
 			tupla[0]= lista_donaciones.get(i).getDate().toString();//.get(i).getfecha
 			tupla[1]= lista_donaciones.get(i).getCantidad(); //Cantidad 
@@ -79,18 +61,16 @@ public class DatosDonacionesMovil extends JPanel {
 		setLayout(null);
 		padre = mipadre;
 		
-		//JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(26, 95, 257, 351);
 		add(scrollPane);
 		
 		table = new JTable();
 		table.getTableHeader().setReorderingAllowed(false) ;
 		setLayout(null);
-		//table.setModel(new DefaultTableModel(new Object[][] {},new String[] {}));
 		scrollPane.setViewportView(table);
 		
 		listaDonaciones = padre.getControladorMovil().listarDonaciones(padre.getIDsesion());
-		JOptionPane.showMessageDialog(null,"SIZE "+listaDonaciones.size());
+	//	JOptionPane.showMessageDialog(null,"SIZE "+listaDonaciones.size());
 		this.fillTable(listaDonaciones);
 		
 		JButton volverBoton = new JButton("Volver");
