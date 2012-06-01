@@ -20,7 +20,7 @@ public class ConfirmacionCancelarBaja extends JDialog {
 		setResizable(false);
 		getContentPane().setLayout(null);
 		
-		JLabel lblestSeguroQue = new JLabel("¿Está seguro de que quiere borrar el solicitante?");
+		JLabel lblestSeguroQue = new JLabel("¿Está seguro de que quiere borrar la solicitud de baja?");
 		lblestSeguroQue.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblestSeguroQue.setBounds(45, 40, 340, 23);
 		getContentPane().add(lblestSeguroQue);

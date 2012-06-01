@@ -57,6 +57,12 @@ public class PersonaDB {
 		gestor.desconectar();
 		return valido;
 	}
+	
+	public void cancelarBajaPersona(Integer id){
+		gestor.conectar();
+		boolean valido = gestor.Modificar("DELETE FROM Solicitudes_bajas WHERE id_socio='" + id + "'");
+		gestor.desconectar();
+	}
 
 	public int introducirDatos(Persona p) {
 		gestor.conectar();

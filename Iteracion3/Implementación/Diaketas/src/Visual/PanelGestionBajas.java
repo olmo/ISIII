@@ -87,13 +87,20 @@ public class PanelGestionBajas extends JPanel {
 		btnDarBaja.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDarBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(tablaSolicitudes.getSelectedRow() == -1)
+					return;
 				ConfirmacionDarBaja cdb= new ConfirmacionDarBaja(padre);
 				cdb.setVisible(true);
 				cdb.setAlwaysOnTop(true);
 
 				if(cdb.getConfirmacionBorrado()==true){
 					try{
-						//padre.getControladorPersonas().borrarDatosFamiliar(getId());
+						int idSocio = ((Persona)listaSolicitudes.get(tablaSolicitudes.getSelectedRow()).get(0)).getId();
+						if((boolean)listaSolicitudes.get(tablaSolicitudes.getSelectedRow()).get(2) == false)
+							padre.getControladorPersonas().darBaja(idSocio); //Ponemos el estado a 0
+						else
+							;///BORRAR PERMANENTEMENTE DE LA BASE DE DATOS
+						padre.getControladorPersonas().cancelarBaja(idSocio); //Eliminamos la solicitud de baja
 						JOptionPane.showMessageDialog(null, "Se ha dado de baja el usuario\n");
 						
 					}catch(Exception e1){
@@ -113,6 +120,8 @@ public class PanelGestionBajas extends JPanel {
 		btnCancelarBaja.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCancelarBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(tablaSolicitudes.getSelectedRow() == -1)
+					return;
 				ConfirmacionCancelarBaja ccb= new ConfirmacionCancelarBaja(padre);
 				ccb.setVisible(true);
 				ccb.setAlwaysOnTop(true);
@@ -120,11 +129,13 @@ public class PanelGestionBajas extends JPanel {
 				if(ccb.getconfirmacionCancelado()==true){
 					try{
 						int idSocio = ((Persona)listaSolicitudes.get(tablaSolicitudes.getSelectedRow()).get(0)).getId();
-						//padre.getControladorPersonas().borrarDatosFamiliar(getId());
+						padre.getControladorPersonas().cancelarBaja(idSocio);
 						JOptionPane.showMessageDialog(null, "Se ha cancelado la solicitud de baja\n");
+						listaSolicitudes = padre.getControladorPersonas().listarSolicitudesBajas(textField_1.getText());
+						ini.panel_GestionBajas.fillTable(listaSolicitudes);
 						
 					}catch(Exception e1){
-						JOptionPane.showMessageDialog(null, "Error al dar de baja\n"+e1.getMessage());
+						JOptionPane.showMessageDialog(null, "Error al cancelar la solicitud de baja\n"+e1.getMessage());
 					}
 				}
 				

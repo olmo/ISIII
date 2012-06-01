@@ -68,6 +68,9 @@ public class ControladorPersona {
 	public void darBaja(Integer id){
 		personaDB.darBajaPersona(id);
 	}
+	public void cancelarBaja(Integer id){
+		personaDB.cancelarBajaPersona(id);
+	}
 	
 	public ArrayList<ArrayList<Object>> listarSolicitudesBajas(String filtro) {
 		return trabajadorDB.listarSolicitudesBajas(filtro);
