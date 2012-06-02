@@ -96,11 +96,12 @@ public class PanelGestionBajas extends JPanel {
 				if(cdb.getConfirmacionBorrado()==true){
 					try{
 						int idSocio = ((Persona)listaSolicitudes.get(tablaSolicitudes.getSelectedRow()).get(0)).getId();
+						padre.getControladorPersonas().cancelarBaja(idSocio); //Eliminamos la solicitud de baja
 						if((boolean)listaSolicitudes.get(tablaSolicitudes.getSelectedRow()).get(2) == false)
 							padre.getControladorPersonas().darBaja(idSocio); //Ponemos el estado a 0
 						else
-							;///BORRAR PERMANENTEMENTE DE LA BASE DE DATOS
-						padre.getControladorPersonas().cancelarBaja(idSocio); //Eliminamos la solicitud de baja
+							padre.getControladorPersonas().borrarDatosSocio(idSocio);///BORRAR PERMANENTEMENTE DE LA BASE DE DATOS
+						
 						JOptionPane.showMessageDialog(null, "Se ha dado de baja el usuario\n");
 						
 					}catch(Exception e1){
@@ -140,7 +141,6 @@ public class PanelGestionBajas extends JPanel {
 				}
 				
 				ini.setPanelOnTab(ini.panel_GestionBajas, PanelInicio.GESTIONBAJAS);
-				/*ini.configurar_tipo_ayuda.fillTable(tabd.getList());*/
 			}
 		});
 		
