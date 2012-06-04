@@ -306,7 +306,7 @@ public class SolicitanteDB {
 		gestor.conectar();
 
 		rs = gestor
-				.RealizarConsulta("SELECT * FROM `demandas` WHERE `id_solicitante` = "
+				.RealizarConsulta("SELECT * FROM Demandas WHERE id_solicitante = "
 						+ id_solicitante);
 
 		try {
@@ -331,7 +331,7 @@ public class SolicitanteDB {
 		boolean exito = false;
 
 		gestor.conectar();
-		exito = gestor.Modificar("DELETE FROM demandas WHERE id_solicitante='"+id_solicitante+"' and id_oferta='"+id_oferta+"'");
+		exito = gestor.Modificar("DELETE FROM Demandas WHERE id_solicitante='"+id_solicitante+"' and id_oferta='"+id_oferta+"'");
 		gestor.desconectar();
 
 		return exito;
@@ -343,9 +343,9 @@ public class SolicitanteDB {
 
 		gestor.conectar();
 
-		rs = gestor.RealizarConsulta("SELECT solicitantes.id,estudios,experiencia,curriculum,permiso_conducir,vehiculo_propio,disponibilidad_horaria,tiempo_incorporacion"+
+		rs = gestor.RealizarConsulta("SELECT Solicitantes.id,estudios,experiencia,curriculum,permiso_conducir,vehiculo_propio,disponibilidad_horaria,tiempo_incorporacion"+
 		", dni, nombre, apellido1, apellido2, fnac, telefono, lugarnac, domicilio, cp, estado, email "+
-		"FROM solicitantes, demandas, personas WHERE id_oferta = "+ id_oferta+" AND id_solicitante=solicitantes.id AND personas.id=solicitantes.id");
+		"FROM Solicitantes, Demandas, Personas WHERE id_oferta = "+ id_oferta+" AND id_solicitante=Solicitantes.id AND Personas.id=Solicitantes.id");
 
 		try {
 			while(rs.next()){
