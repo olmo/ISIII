@@ -86,7 +86,7 @@ public class Home extends JPanel {
 		add(Mensaje);
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setIcon(new ImageIcon((this.getClass().getResource("/img/imagen.JPG"))));
+		label.setIcon(new ImageIcon((this.getClass().getResource("/img/imagen.jpg"))));
 		label.setBounds(24, 11, 558, 378);
 		add(label);
 		
