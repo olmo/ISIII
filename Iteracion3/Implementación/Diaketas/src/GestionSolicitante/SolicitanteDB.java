@@ -102,7 +102,6 @@ public class SolicitanteDB {
 	}
 
 	public boolean borrar(Solicitante sol) {
-		boolean deletePersonas = false;
 		boolean deleteSolicitante = false;
 
 		gestor.conectar();
@@ -110,12 +109,13 @@ public class SolicitanteDB {
 				.Modificar("DELETE FROM Solicitantes WHERE id='" + sol.getId()
 						+ "'");
 		
-		//??
+		/*
 		deletePersonas = gestor.Modificar("DELETE FROM Personas WHERE id='"
 				+ sol.getId() + "'");
+		*/
 		gestor.desconectar();
 
-		if (deleteSolicitante && deletePersonas)
+		if (deleteSolicitante)
 			return true;
 		else
 			return false;
